@@ -1,0 +1,914 @@
+2026-01-01 13:05:34,269 - INFO - ✅ Database indexes created successfully
+2026-01-01 13:05:34,435 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 13:06:25,670 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 13:06:30,937 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 13:06:30,937 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 13:06:30,937 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 13:06:30,950 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 13:06:30,963 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 13:06:30,972 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 13:06:30,981 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 13:06:30,986 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 13:06:30,991 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 13:06:30,996 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 13:06:31,000 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 13:06:31,004 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 13:06:31,004 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 13:06:31,010 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 13:06:31,010 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 13:06:31,019 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 13:06:31,023 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 13:06:31,027 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 13:06:31,031 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 13:06:31,036 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 13:06:31,040 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 13:06:31,047 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 13:06:31,050 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 13:06:31,054 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 13:06:31,060 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 13:06:31,064 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 13:06:31,066 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 13:06:31,072 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 13:06:31,076 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 13:06:31,080 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 13:06:31,086 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 13:06:31,090 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 13:06:31,094 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 13:06:31,099 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 13:06:31,101 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 13:06:31,106 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 13:06:31,110 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 13:06:31,114 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 13:06:31,117 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 13:06:31,121 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 13:06:31,125 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 13:06:31,129 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 13:06:31,133 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 13:06:31,137 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 13:06:31,140 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 13:06:31,142 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 13:06:31,147 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 13:06:31,152 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 13:06:31,155 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 13:06:31,160 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 13:06:31,164 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 13:06:31,166 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 13:06:31,170 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 13:06:31,171 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 13:06:31,171 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 13:06:31,171 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 13:06:31,176 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 13:06:31,182 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 13:06:31,187 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 13:06:31,190 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 13:06:31,195 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 13:06:31,199 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 13:06:31,200 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 13:06:31,206 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 13:06:31,210 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 13:06:31,214 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 13:06:31,219 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 13:06:31,222 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 13:06:31,227 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 13:06:31,230 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 13:06:31,234 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 13:06:31,236 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 13:06:31,242 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 13:06:31,248 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 13:06:31,251 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 13:06:31,254 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 13:06:31,258 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 13:06:31,263 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 13:06:31,266 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 13:06:31,270 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 13:06:31,273 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 13:06:31,277 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 13:06:31,281 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 13:06:31,284 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 13:06:31,286 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 13:06:31,293 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 13:06:31,297 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 13:06:31,303 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 13:06:31,305 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 13:06:31,311 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 13:06:31,313 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 13:06:31,316 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 13:06:31,322 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 13:06:31,325 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 13:06:31,330 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 13:06:31,333 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 13:06:31,336 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 13:06:31,341 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 13:06:31,347 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 13:06:31,350 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 13:06:31,354 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 13:06:31,354 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 13:06:31,361 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 13:06:31,365 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 13:06:31,369 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 13:06:31,371 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 13:06:31,376 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 13:06:31,381 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 13:06:31,385 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 13:06:31,388 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 13:06:31,389 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 13:06:31,389 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 13:06:31,389 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 13:06:34,119 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:34,150 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 13:06:34,154 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 13:06:35,780 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:35,801 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 13:06:35,801 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 13:06:37,501 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:37,512 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 13:06:37,513 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 13:06:39,279 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:39,299 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 13:06:39,299 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 13:06:40,678 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:40,685 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 13:06:40,685 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 13:06:42,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:42,751 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 13:06:42,751 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 13:06:44,600 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:44,622 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 13:06:44,622 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 13:06:46,332 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:46,355 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 13:06:46,355 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 13:06:48,169 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:48,185 - INFO - ✅ Upserted: Savings Account
+2026-01-01 13:06:48,186 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 13:06:50,088 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:06:50,118 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 13:06:50,120 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 13:06:50,357 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 13:06:52,222 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 13:06:52,222 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 13:06:55,780 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 13:06:55,780 - INFO - ✅ Ingestion Complete.
+2026-01-01 13:06:55,780 - INFO - Database Stats - SBI: 58, HDFC: 56
+2026-01-01 13:55:03,722 - INFO - ✅ Database indexes created successfully
+2026-01-01 13:55:03,854 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 13:55:13,411 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 13:55:19,427 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 13:55:19,429 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 13:55:19,429 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 13:55:19,438 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 13:55:19,446 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 13:55:19,454 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 13:55:19,460 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 13:55:19,465 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 13:55:19,471 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 13:55:19,476 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 13:55:19,479 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 13:55:19,482 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 13:55:19,486 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 13:55:19,490 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 13:55:19,494 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 13:55:19,497 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 13:55:19,502 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 13:55:19,524 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 13:55:19,530 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 13:55:19,534 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 13:55:19,538 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 13:55:19,543 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 13:55:19,546 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 13:55:19,552 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 13:55:19,556 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 13:55:19,558 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 13:55:19,564 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 13:55:19,569 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 13:55:19,573 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 13:55:19,575 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 13:55:19,577 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 13:55:19,583 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 13:55:19,587 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 13:55:19,587 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 13:55:19,595 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 13:55:19,600 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 13:55:19,604 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 13:55:19,608 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 13:55:19,612 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 13:55:19,616 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 13:55:19,620 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 13:55:19,636 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 13:55:19,641 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 13:55:19,644 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 13:55:19,650 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 13:55:19,654 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 13:55:19,658 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 13:55:19,663 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 13:55:19,667 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 13:55:19,672 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 13:55:19,675 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 13:55:19,677 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 13:55:19,683 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 13:55:19,686 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 13:55:19,686 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 13:55:19,686 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 13:55:19,686 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 13:55:19,694 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 13:55:19,719 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 13:55:19,727 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 13:55:19,737 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 13:55:19,751 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 13:55:19,767 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 13:55:19,777 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 13:55:19,815 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 13:55:19,822 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 13:55:19,829 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 13:55:19,836 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 13:55:19,842 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 13:55:19,846 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 13:55:19,850 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 13:55:19,856 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 13:55:19,861 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 13:55:19,886 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 13:55:19,892 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 13:55:19,898 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 13:55:19,904 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 13:55:19,913 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 13:55:19,917 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 13:55:19,923 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 13:55:19,927 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 13:55:19,934 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 13:55:19,940 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 13:55:19,945 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 13:55:19,950 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 13:55:19,954 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 13:55:19,972 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 13:55:19,979 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 13:55:19,984 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 13:55:19,991 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 13:55:19,996 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 13:55:20,000 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 13:55:20,004 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 13:55:20,013 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 13:55:20,016 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 13:55:20,023 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 13:55:20,034 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 13:55:20,037 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 13:55:20,037 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 13:55:20,049 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 13:55:20,054 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 13:55:20,058 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 13:55:20,061 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 13:55:20,065 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 13:55:20,069 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 13:55:20,073 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 13:55:20,077 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 13:55:20,081 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 13:55:20,084 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 13:55:20,090 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 13:55:20,090 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 13:55:20,090 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 13:55:20,091 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 13:55:22,317 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:22,337 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 13:55:22,337 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 13:55:24,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:24,081 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 13:55:24,081 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 13:55:25,592 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:25,596 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 13:55:25,598 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 13:55:27,092 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:27,101 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 13:55:27,101 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 13:55:28,538 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:28,553 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 13:55:28,554 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 13:55:30,483 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:30,502 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 13:55:30,502 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 13:55:32,547 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:32,573 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 13:55:32,574 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 13:55:33,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:33,879 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 13:55:33,879 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 13:55:35,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:35,035 - INFO - ✅ Upserted: Savings Account
+2026-01-01 13:55:35,035 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 13:55:36,879 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 13:55:36,899 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 13:55:36,900 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 13:55:37,161 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 13:55:38,974 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 13:55:38,974 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 13:55:42,495 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 13:55:42,496 - INFO - ✅ Ingestion Complete.
+2026-01-01 13:55:42,497 - INFO - Database Stats - SBI: 58, HDFC: 56
+2026-01-01 14:19:53,631 - INFO - ✅ Database indexes created successfully
+2026-01-01 14:19:53,763 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 14:20:02,541 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 14:20:07,654 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 14:20:07,658 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 14:20:07,659 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 14:20:07,665 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:20:07,671 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 14:20:07,677 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 14:20:07,682 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 14:20:07,687 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 14:20:07,694 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 14:20:07,697 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 14:20:07,704 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 14:20:07,706 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 14:20:07,711 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 14:20:07,715 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 14:20:07,719 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 14:20:07,721 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 14:20:07,727 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 14:20:07,732 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 14:20:07,741 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 14:20:07,747 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 14:20:07,751 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 14:20:07,755 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 14:20:07,758 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 14:20:07,763 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 14:20:07,769 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 14:20:07,772 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 14:20:07,772 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 14:20:07,780 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 14:20:07,786 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 14:20:07,787 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 14:20:07,791 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 14:20:07,798 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 14:20:07,802 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 14:20:07,805 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 14:20:07,812 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 14:20:07,816 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 14:20:07,822 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 14:20:07,827 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 14:20:07,833 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 14:20:07,839 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 14:20:07,843 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 14:20:07,849 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 14:20:07,852 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 14:20:07,855 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 14:20:07,861 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 14:20:07,864 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 14:20:07,869 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 14:20:07,872 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 14:20:07,877 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 14:20:07,880 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 14:20:07,883 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 14:20:07,889 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 14:20:07,891 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 14:20:07,897 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 14:20:07,897 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 14:20:07,897 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 14:20:07,899 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:20:07,904 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 14:20:07,907 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 14:20:07,911 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 14:20:07,915 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 14:20:07,923 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 14:20:07,928 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 14:20:07,932 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 14:20:07,936 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 14:20:07,940 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 14:20:07,945 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 14:20:07,950 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 14:20:07,954 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 14:20:07,958 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 14:20:07,961 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 14:20:07,966 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 14:20:07,969 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 14:20:07,974 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 14:20:07,977 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 14:20:07,980 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 14:20:07,985 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 14:20:07,988 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 14:20:07,992 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 14:20:07,998 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 14:20:08,003 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 14:20:08,006 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 14:20:08,021 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 14:20:08,025 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 14:20:08,029 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 14:20:08,033 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 14:20:08,039 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 14:20:08,043 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 14:20:08,046 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 14:20:08,052 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 14:20:08,055 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 14:20:08,058 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 14:20:08,065 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 14:20:08,070 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 14:20:08,074 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 14:20:08,078 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 14:20:08,083 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 14:20:08,088 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 14:20:08,091 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 14:20:08,095 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 14:20:08,099 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 14:20:08,104 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 14:20:08,107 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 14:20:08,111 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 14:20:08,118 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 14:20:08,121 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 14:20:08,121 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 14:20:08,129 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 14:20:08,134 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 14:20:08,138 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 14:20:08,138 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 14:20:08,138 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 14:20:08,138 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 14:20:10,669 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:10,691 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 14:20:10,691 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 14:20:12,495 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:12,502 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 14:20:12,502 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 14:20:13,799 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:13,821 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 14:20:13,821 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 14:20:15,616 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:15,622 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 14:20:15,622 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 14:20:17,021 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:17,045 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 14:20:17,046 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 14:20:18,867 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:18,892 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 14:20:18,892 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 14:20:20,572 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:20,591 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 14:20:20,592 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 14:20:22,404 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:22,440 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 14:20:22,441 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 14:20:24,182 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:24,217 - INFO - ✅ Upserted: Savings Account
+2026-01-01 14:20:24,217 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 14:20:26,753 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:20:26,767 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 14:20:26,769 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 14:20:27,297 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 14:20:29,362 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 14:20:29,362 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 14:20:33,019 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 14:20:33,020 - INFO - ✅ Ingestion Complete.
+2026-01-01 14:20:33,021 - INFO - Database Stats - SBI: 58, HDFC: 56
+2026-01-01 14:28:22,128 - INFO - ✅ Database indexes created successfully
+2026-01-01 14:28:22,277 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 14:28:30,604 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 14:28:36,139 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 14:28:36,140 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 14:28:36,140 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 14:28:36,147 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:28:36,154 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 14:28:36,163 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 14:28:36,167 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 14:28:36,173 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 14:28:36,178 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 14:28:36,191 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 14:28:36,200 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 14:28:36,207 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 14:28:36,211 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 14:28:36,219 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 14:28:36,224 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 14:28:36,230 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 14:28:36,232 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 14:28:36,237 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 14:28:36,241 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 14:28:36,245 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 14:28:36,248 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 14:28:36,253 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 14:28:36,256 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 14:28:36,261 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 14:28:36,263 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 14:28:36,271 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 14:28:36,277 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 14:28:36,279 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 14:28:36,279 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 14:28:36,287 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 14:28:36,293 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 14:28:36,296 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 14:28:36,301 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 14:28:36,304 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 14:28:36,308 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 14:28:36,312 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 14:28:36,316 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 14:28:36,319 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 14:28:36,323 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 14:28:36,328 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 14:28:36,330 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 14:28:36,336 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 14:28:36,341 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 14:28:36,345 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 14:28:36,348 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 14:28:36,351 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 14:28:36,355 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 14:28:36,363 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 14:28:36,366 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 14:28:36,369 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 14:28:36,374 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 14:28:36,377 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 14:28:36,381 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 14:28:36,385 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 14:28:36,385 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 14:28:36,385 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 14:28:36,387 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:28:36,390 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 14:28:36,395 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 14:28:36,399 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 14:28:36,402 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 14:28:36,406 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 14:28:36,411 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 14:28:36,415 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 14:28:36,418 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 14:28:36,422 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 14:28:36,427 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 14:28:36,429 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 14:28:36,430 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 14:28:36,436 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 14:28:36,440 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 14:28:36,441 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 14:28:36,448 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 14:28:36,455 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 14:28:36,460 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 14:28:36,464 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 14:28:36,467 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 14:28:36,472 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 14:28:36,475 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 14:28:36,480 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 14:28:36,483 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 14:28:36,487 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 14:28:36,491 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 14:28:36,495 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 14:28:36,497 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 14:28:36,502 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 14:28:36,507 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 14:28:36,511 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 14:28:36,514 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 14:28:36,517 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 14:28:36,522 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 14:28:36,525 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 14:28:36,529 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 14:28:36,533 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 14:28:36,537 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 14:28:36,545 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 14:28:36,549 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 14:28:36,549 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 14:28:36,555 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 14:28:36,561 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 14:28:36,561 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 14:28:36,567 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 14:28:36,571 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 14:28:36,575 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 14:28:36,580 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 14:28:36,582 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 14:28:36,587 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 14:28:36,591 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 14:28:36,595 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 14:28:36,598 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 14:28:36,598 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 14:28:36,600 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 14:28:36,600 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 14:28:39,069 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:39,105 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 14:28:39,106 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 14:28:40,582 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:40,620 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 14:28:40,620 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 14:28:42,300 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:42,313 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 14:28:42,314 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 14:28:44,438 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:44,460 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 14:28:44,462 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 14:28:45,898 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:45,910 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 14:28:45,910 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 14:28:48,027 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:48,037 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 14:28:48,037 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 14:28:49,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:49,937 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 14:28:49,938 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 14:28:51,411 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:51,432 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 14:28:51,433 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 14:28:52,829 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:52,850 - INFO - ✅ Upserted: Savings Account
+2026-01-01 14:28:52,852 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 14:28:55,400 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:28:55,412 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 14:28:55,414 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 14:28:55,792 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 14:28:57,251 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 14:28:57,251 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 14:29:00,819 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 14:29:00,819 - INFO - ✅ Ingestion Complete.
+2026-01-01 14:29:00,820 - INFO - Database Stats - SBI: 58, HDFC: 56
+2026-01-01 14:40:23,125 - INFO - ✅ Database indexes created successfully
+2026-01-01 14:40:23,785 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 14:40:49,479 - WARNING - From C:\Users\babar\AppData\Local\Programs\Python\Python312\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2026-01-01 14:40:50,337 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 14:40:58,197 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 14:40:58,226 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 14:40:58,226 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 14:40:58,250 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:40:58,273 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 14:40:58,283 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 14:40:58,293 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 14:40:58,301 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 14:40:58,309 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 14:40:58,320 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 14:40:58,335 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 14:40:58,346 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 14:40:58,354 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 14:40:58,370 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 14:40:58,380 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 14:40:58,387 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 14:40:58,402 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 14:40:58,411 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 14:40:58,420 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 14:40:58,429 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 14:40:58,439 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 14:40:58,446 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 14:40:58,454 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 14:40:58,465 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 14:40:58,473 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 14:40:58,486 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 14:40:58,579 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 14:40:58,589 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 14:40:58,598 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 14:40:58,604 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 14:40:58,651 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 14:40:58,659 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 14:40:58,665 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 14:40:58,672 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 14:40:58,679 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 14:40:58,687 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 14:40:58,694 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 14:40:58,703 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 14:40:58,711 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 14:40:58,716 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 14:40:58,727 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 14:40:58,733 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 14:40:58,737 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 14:40:58,745 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 14:40:58,751 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 14:40:58,759 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 14:40:58,766 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 14:40:58,773 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 14:40:58,779 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 14:40:58,786 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 14:40:58,792 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 14:40:58,800 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 14:40:58,808 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 14:40:58,815 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 14:40:58,815 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 14:40:58,816 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 14:40:58,819 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:40:58,827 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 14:40:58,833 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 14:40:58,836 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 14:40:58,845 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 14:40:58,849 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 14:40:58,859 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 14:40:58,863 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 14:40:58,872 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 14:40:58,877 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 14:40:58,885 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 14:40:58,925 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 14:40:58,931 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 14:40:58,935 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 14:40:58,941 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 14:40:58,946 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 14:40:58,950 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 14:40:58,956 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 14:40:58,961 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 14:40:58,966 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 14:40:58,973 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 14:40:58,979 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 14:40:58,986 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 14:40:58,988 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 14:40:58,995 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 14:40:59,003 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 14:40:59,009 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 14:40:59,012 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 14:40:59,017 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 14:40:59,023 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 14:40:59,027 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 14:40:59,029 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 14:40:59,037 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 14:40:59,043 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 14:40:59,048 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 14:40:59,054 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 14:40:59,059 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 14:40:59,063 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 14:40:59,067 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 14:40:59,074 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 14:40:59,079 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 14:40:59,083 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 14:40:59,090 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 14:40:59,092 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 14:40:59,099 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 14:40:59,104 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 14:40:59,109 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 14:40:59,113 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 14:40:59,119 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 14:40:59,123 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 14:40:59,127 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 14:40:59,137 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 14:40:59,140 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 14:40:59,146 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 14:40:59,147 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 14:40:59,148 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 14:40:59,150 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 14:41:01,877 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:01,920 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 14:41:01,921 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 14:41:04,100 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:04,111 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 14:41:04,113 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 14:41:05,877 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:05,891 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 14:41:05,891 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 14:41:07,331 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:07,343 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 14:41:07,344 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 14:41:08,728 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:08,772 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 14:41:08,772 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 14:41:11,343 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:11,389 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 14:41:11,389 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 14:41:13,083 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:13,133 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 14:41:13,133 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 14:41:14,673 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:14,693 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 14:41:14,695 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 14:41:16,099 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:16,129 - INFO - ✅ Upserted: Savings Account
+2026-01-01 14:41:16,131 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 14:41:17,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:41:18,017 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 14:41:18,019 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 14:41:18,577 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 14:41:21,856 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 14:41:21,857 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 14:41:28,929 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 14:41:28,929 - INFO - ✅ Ingestion Complete.
+2026-01-01 14:41:28,929 - INFO - Database Stats - SBI: 58, HDFC: 56
+2026-01-01 14:44:18,747 - INFO - ✅ Database indexes created successfully
+2026-01-01 14:44:18,921 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-01 14:44:28,354 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-01 14:44:34,329 - INFO - 🚀 Starting Ingestion Pipeline...
+2026-01-01 14:44:34,331 - INFO - Found 2 Product CSV files in C:\Users\babar\Desktop\genai_cust_agent\data
+2026-01-01 14:44:34,331 - INFO - 📂 Processing CSV: hdfc_products.csv...
+2026-01-01 14:44:34,348 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:44:34,368 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-01 14:44:34,383 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-01 14:44:34,391 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-01 14:44:34,400 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-01 14:44:34,411 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-01 14:44:34,420 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-01 14:44:34,433 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-01 14:44:34,446 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-01 14:44:34,457 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-01 14:44:34,474 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-01 14:44:34,489 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-01 14:44:34,502 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-01 14:44:34,514 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-01 14:44:34,525 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-01 14:44:34,539 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-01 14:44:34,554 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-01 14:44:34,567 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-01 14:44:34,584 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-01 14:44:34,606 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-01 14:44:34,617 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-01 14:44:34,625 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-01 14:44:34,632 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-01 14:44:34,641 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-01 14:44:34,651 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-01 14:44:34,659 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-01 14:44:34,666 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-01 14:44:34,673 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-01 14:44:34,682 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-01 14:44:34,691 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-01 14:44:34,700 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-01 14:44:34,707 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-01 14:44:34,716 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-01 14:44:34,724 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-01 14:44:34,733 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-01 14:44:34,741 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-01 14:44:34,750 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-01 14:44:34,758 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-01 14:44:34,765 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-01 14:44:34,772 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-01 14:44:34,779 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-01 14:44:34,789 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-01 14:44:34,799 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-01 14:44:34,805 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-01 14:44:34,811 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-01 14:44:34,822 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-01 14:44:34,829 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-01 14:44:34,837 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-01 14:44:34,839 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-01 14:44:34,854 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-01 14:44:34,862 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-01 14:44:34,862 - INFO -    Processed 50 rows from hdfc_products.csv
+2026-01-01 14:44:34,862 - INFO - 📂 Processing CSV: sbi_products.csv...
+2026-01-01 14:44:34,866 - INFO -    Columns: ['bank_name', 'category', 'product_name', 'features', 'fees', 'interest_rate', 'eligibility']
+2026-01-01 14:44:34,872 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-01 14:44:34,879 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-01 14:44:34,889 - INFO - ✅ Upserted: SBI Prime
+2026-01-01 14:44:34,900 - INFO - ✅ Upserted: SBI Elite
+2026-01-01 14:44:34,904 - INFO - ✅ Upserted: SBI Aurum
+2026-01-01 14:44:34,917 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-01 14:44:34,921 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-01 14:44:34,931 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-01 14:44:34,939 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-01 14:44:34,947 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-01 14:44:34,954 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-01 14:44:34,961 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-01 14:44:34,976 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-01 14:44:34,983 - INFO - ✅ Upserted: Max SBI Card
+2026-01-01 14:44:34,989 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-01 14:44:35,000 - INFO - ✅ Upserted: SBI Global International
+2026-01-01 14:44:35,004 - INFO - ✅ Upserted: SBI Gold International
+2026-01-01 14:44:35,015 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-01 14:44:35,022 - INFO - ✅ Upserted: SBI Pride
+2026-01-01 14:44:35,029 - INFO - ✅ Upserted: SBI Premium
+2026-01-01 14:44:35,039 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-01 14:44:35,047 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-01 14:44:35,084 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-01 14:44:35,091 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-01 14:44:35,104 - INFO - ✅ Upserted: SBI My Card
+2026-01-01 14:44:35,112 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-01 14:44:35,119 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-01 14:44:35,127 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-01 14:44:35,132 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-01 14:44:35,140 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-01 14:44:35,150 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-01 14:44:35,158 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-01 14:44:35,167 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-01 14:44:35,173 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-01 14:44:35,183 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-01 14:44:35,190 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-01 14:44:35,198 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-01 14:44:35,207 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-01 14:44:35,216 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-01 14:44:35,223 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-01 14:44:35,231 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-01 14:44:35,237 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-01 14:44:35,246 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-01 14:44:35,252 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-01 14:44:35,261 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-01 14:44:35,271 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-01 14:44:35,278 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-01 14:44:35,288 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-01 14:44:35,296 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-01 14:44:35,303 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-01 14:44:35,311 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-01 14:44:35,322 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-01 14:44:35,329 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-01 14:44:35,329 - INFO -    Processed 53 rows from sbi_products.csv
+2026-01-01 14:44:35,329 - INFO - Processing 10 Unstructured Documents...
+2026-01-01 14:44:35,329 - INFO -    -> Analyzing hdfc_biz_black_launch.md...
+2026-01-01 14:44:38,189 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:38,249 - INFO - ✅ Upserted: HDFC Biz Black Credit Card
+2026-01-01 14:44:38,249 - INFO -    -> Analyzing hdfc_infinia_metal_guide.md...
+2026-01-01 14:44:40,059 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:40,069 - INFO - ✅ Upserted: HDFC Infinia Metal Edition
+2026-01-01 14:44:40,069 - INFO -    -> Analyzing hdfc_millennia_update.md...
+2026-01-01 14:44:41,581 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:41,629 - INFO - ✅ Upserted: HDFC Millennia Credit Card
+2026-01-01 14:44:41,629 - INFO -    -> Analyzing hdfc_new_car_loan_offer.md...
+2026-01-01 14:44:43,338 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:43,347 - INFO - ✅ Upserted: Monsoon Bonanza - Car Loan Offer
+2026-01-01 14:44:43,347 - INFO -    -> Analyzing hdfc_smartbuy_terms.md...
+2026-01-01 14:44:44,765 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:44,771 - INFO - ✅ Upserted: HDFC SmartBuy - 10X Reward Points
+2026-01-01 14:44:44,773 - INFO -    -> Analyzing sbi_aurum_terms.md...
+2026-01-01 14:44:47,539 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:47,589 - INFO - ✅ Upserted: SBI Aurum Credit Card
+2026-01-01 14:44:47,589 - INFO -    -> Analyzing sbi_debit_card_agreement.md...
+2026-01-01 14:44:49,900 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:49,904 - INFO - ✅ Upserted: SBI Debit Card
+2026-01-01 14:44:49,906 - INFO -    -> Analyzing sbi_home_loan_policy.md...
+2026-01-01 14:44:51,834 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:51,840 - INFO - ✅ Upserted: SBI Green Home Loan
+2026-01-01 14:44:51,842 - INFO -    -> Analyzing sbi_kyc_guidelines.md...
+2026-01-01 14:44:53,089 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:53,137 - INFO - ✅ Upserted: Savings Account
+2026-01-01 14:44:53,139 - INFO -    -> Analyzing sbi_scholar_loan_brochure.md...
+2026-01-01 14:44:55,115 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-01 14:44:55,127 - INFO - ✅ Upserted: SBI Scholar Loan Scheme
+2026-01-01 14:44:55,138 - INFO - 📚 Found 2 FAQ files for Vector DB ingestion.
+2026-01-01 14:44:55,522 - INFO -    Using hdfc_faq.csv for FAQs...
+2026-01-01 14:44:58,089 - INFO -       Ingested 252 FAQs from hdfc_faq.csv
+2026-01-01 14:44:58,089 - INFO -    Using sbi_faq.csv for FAQs...
+2026-01-01 14:45:04,681 - INFO -       Ingested 594 FAQs from sbi_faq.csv
+2026-01-01 14:45:04,681 - INFO - ✅ Ingestion Complete.
+2026-01-01 14:45:04,681 - INFO - Database Stats - SBI: 58, HDFC: 56

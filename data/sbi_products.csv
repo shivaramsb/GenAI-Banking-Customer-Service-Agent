@@ -1,0 +1,54 @@
+bank_name,category,product_name,features,fees,interest_rate,eligibility
+SBI,Credit Card,SBI SimplySave,"10X Reward Points on Dining, Movies & Grocery; Fuel Surcharge Waiver",Rs. 499 + Taxes,3.5% p.m.,Salaried/Self-Employed > 20k/month
+SBI,Credit Card,SBI SimplyClick,10X Rewards on Online Spends; Amazon/ClearTrip Vouchers on joining,Rs. 499 + Taxes,3.5% p.m.,Salaried/Self-Employed > 20k/month
+SBI,Credit Card,SBI Prime,Free PI/Trident Lounge Access; Pizza Hut Vouchers; 20 Reward points per Rs 100 on utility,Rs. 2999 + Taxes,3.35% p.m.,Income > 6L PA
+SBI,Credit Card,SBI Elite,Welcome Gift worth Rs. 5000; Free Movie Tickets; 5X Rewards on Dining,Rs. 4999 + Taxes,3.35% p.m.,Income > 10L PA
+SBI,Credit Card,SBI Aurum,Metal Card; Unlimited Lounge Access; Tata Cliq Vouchers,Rs. 9999 + Taxes,3.0% p.m.,Invitation Only
+SBI,Credit Card,BPCL SBI Card,4.25% Valueback on Fuel; 5X Rewards on Groceries,Rs. 499 + Taxes,3.5% p.m.,Vehicle Owner
+SBI,Credit Card,BPCL SBI Octane,7.25% Valueback on Fuel; 4 Turbo Points per Rs 100,Rs. 1499 + Taxes,3.5% p.m.,Vehicle Owner
+SBI,Credit Card,Air India SBI Signature,20000 Reward Points on joining; 4 Reward points for every Rs 100 spent,Rs. 4999 + Taxes,3.35% p.m.,Frequent Flyer
+SBI,Credit Card,Air India SBI Platinum,5000 Reward Points on joining; Up to 15 Reward points on Air India tickets,Rs. 1499 + Taxes,3.5% p.m.,Occasional Flyer
+SBI,Credit Card,Club Vistara SBI Prime,1 Club Vistara Ticket on joining; 4 CV Points per Rs 200,Rs. 2999 + Taxes,3.35% p.m.,Frequent Flyer
+SBI,Credit Card,Etihad Guest SBI Premier,5000 Etihad Guest Miles on joining; 3% Discount on Etihad Airways,Rs. 4999 + Taxes,3.35% p.m.,Frequent Flyer
+SBI,Credit Card,Fabindia SBI Card,1100 Reward Points; Gold Status; 10% discount at Fabindia,Rs. 1499 + Taxes,3.5% p.m.,Shopper
+SBI,Credit Card,Lifestyle Home Centre SBI,2000 Bonus points; 5X rewards at Lifestyle stores,Rs. 499 + Taxes,3.5% p.m.,Shopper
+SBI,Credit Card,Max SBI Card,Reward points on every purchase; Milestone benefits,Rs. 499 + Taxes,3.5% p.m.,Shopper
+SBI,Credit Card,Spar SBI Card,Reward points suitable for grocery shopping at SPAR,Rs. 499 + Taxes,3.5% p.m.,Shopper
+SBI,Debit Card,SBI Global International,International usage; 2 Reward points per Rs 200,Rs. 125 + Taxes,N/A,Account Holder
+SBI,Debit Card,SBI Gold International,Higher withdrawal limit; Complimentary Insurance,Rs. 175 + Taxes,N/A,Account Holder
+SBI,Debit Card,SBI Platinum International,Airport Lounge Access; 2X Reward Points,Rs. 300 + Taxes,N/A,High Net Worth Account
+SBI,Debit Card,SBI Pride,Business Debit Card for Current Accounts; High limits,Rs. 300 + Taxes,N/A,Current Account
+SBI,Debit Card,SBI Premium,High transaction limits; Visa Signature benefits,Rs. 300 + Taxes,N/A,Premium Account
+SBI,Debit Card,SBI Salary Account Card,Zero issuance fee; Accident insurance up to 20L,Nil,N/A,Salary Account
+SBI,Debit Card,SBI IOCL Global,Earn rewards on fuel purchase at IOCL outlets,Rs. 125 + Taxes,N/A,Account Holder
+SBI,Debit Card,SBI Mumbai Metro,Dual purpose: Debit Card + Metro Travel Card,Rs. 100 + Taxes,N/A,Account Holder
+SBI,Debit Card,SBI Intouch Tap & Go,Contactless payments; 2X points on retail,Rs. 125 + Taxes,N/A,Account Holder
+SBI,Debit Card,SBI My Card,Personalized Image on Card,Rs. 250 + Taxes,N/A,Account Holder
+SBI,Home Loan,SBI Regular Home Loan,Low Interest Rates; No Hidden Charges; Interest on Daily Reducing Balance,Rs. 10000 (Max),8.40% - 9.00%,Salaried/Self-Employed
+SBI,Home Loan,SBI FlexiPay Home Loan,Applicable for young professionals; Higher eligibility; Step-up EMI,Rs. 10000 (Max),8.50% - 9.10%,Salaried Young Professional
+SBI,Home Loan,SBI MaxGain,Home Loan as an Overdraft; Save interest by parking surplus funds,Rs. 10000 (Max),8.80% - 9.50%,Salaried/Self-Employed
+SBI,Home Loan,SBI Realty Home Loan,Loan for purchase of plot for construction of house,Rs. 10000 (Max),8.70% - 9.20%,Salaried/Self-Employed
+SBI,Home Loan,SBI Shaurya Home Loan,Special rates for Defense Personnel,Nil Processing Fee,8.30% - 8.90%,Defense Personnel
+SBI,Home Loan,SBI Privilege Home Loan,Special rates for Government Employees,Nil Processing Fee,8.30% - 8.90%,Govt Employee
+SBI,Home Loan,SBI Tribal Plus,For Purchase/Construction in Hill/Tribal areas,Rs. 5000 (Max),8.60%,Applicable Areas
+SBI,Home Loan,SBI NRI Home Loan,Home Loans for Non-Resident Indians,Rs. 10000 (Max),8.50% - 9.10%,NRI
+SBI,Home Loan,SBI Smart Home Top Up,Top up loan for existing customers for personal use,Rs. 2000 + Taxes,9.00% - 10.00%,Existing Borrower
+SBI,Loan,SBI Car Loan,Financing for new car; Up to 90% On-Road Price,Rs. 1500 (approx),8.65% - 9.50%,Income > 3L PA
+SBI,Loan,SBI Loyalty Car Loan,Pre-approved car loan for existing housing loan borrowers,Nil Processing Fee,8.60% - 9.40%,Existing Home Loan
+SBI,Loan,SBI Electric Vehicle Loan,Discounted rates for Green Car Loans,Rs. 1000 (approx),8.55% - 9.15%,Income > 3L PA
+SBI,Loan,SBI Two-Wheeler Loan,Loan for buying bike/scooter; Up to 85% On-Road,1% of Loan Amount,12.00% - 14.00%,Income > 1.5L PA
+SBI,Loan,SBI Super Bike Loan,For bikes costing > 2.5L; Lower rates,2% of Loan Amount,10.50% - 11.50%,Income > 5L PA
+SBI,Loan,SBI Education Loan,For studies in India and Abroad; Up to 1.5 Cr,Nil for < 20L,8.50% - 10.50%,Student Admission
+SBI,Loan,SBI Scholar Loan,For Premier Institutes (IIT/IIM); collateral free up to 40L,Nil,8.20% - 9.00%,Secured Admission
+SBI,Loan,SBI Global Ed-Vantage,For Foreign Education; High Loan Amount; Tax Benefit,Rs. 10000,9.00% - 10.50%,Student Admission
+SBI,Loan,SBI Personal Loan (Xpress Credit),For Salaried accounts with SBI; Instant Approval,Nil to Low,10.50% - 13.00%,Salaried with SBI A/c
+SBI,Loan,SBI Pension Loan,Personal loan for Pensioners,Nil,11.00% - 12.00%,Pensioner
+SBI,Loan,SBI Gold Loan,Instant loan against Gold Ornaments,0.50%,8.50% - 9.50%,Any Individual with Gold
+SBI,Loan,SBI Realty Gold Loan,Gold loan specifically for realty purposes,0.50%,8.60%,Any Individual
+SBI,Loan,SBI Loan Against Property,Unlock value of property for personal needs,1% of Loan Amount,9.50% - 10.50%,Property Owner
+SBI,Loan,SBI Reverse Mortgage,Regular cash flow for Senior Citizens against property,Rs. 5000,9.00%,Senior Citizen
+SBI,Scheme,Public Provident Fund (PPF),Long term investment; Tax Free Returns; EEE Status,N/A,7.10%,Resident Indian
+SBI,Scheme,Sukanya Samriddhi Yojana,For Girl Child; High Interest; Tax Benefit,N/A,8.00%,Girl Child < 10 yrs
+SBI,Scheme,Senior Citizen Savings Scheme,Regular Income; High Safety; Quarterly payout,N/A,8.20%,Senior Citizen > 60
+SBI,Scheme,Kisan Vikas Patra,Money doubles in ~115 months,N/A,7.50%,Resident Indian
+SBI,Scheme,National Pension System (NPS),Retirement Planning; Market linked returns,N/A,Market Linked,Resident Indian

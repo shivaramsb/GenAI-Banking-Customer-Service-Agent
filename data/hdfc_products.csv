@@ -1,0 +1,51 @@
+bank_name,category,product_name,features,fees,interest_rate,eligibility
+HDFC,Credit Card,HDFC Regalia Gold,Mark-up fee 2%; 4 Lounge access/qtr; Club Vistara Membership,Rs. 2500 + Taxes,3.60% p.m.,Income > 1L/month
+HDFC,Credit Card,HDFC Millennia,"5% Cashback on Amazon, Flipkart; 1% Fuel Surcharge waiver",Rs. 1000 + Taxes,3.60% p.m.,Income > 35k/month
+HDFC,Credit Card,HDFC Infinia Metal,Unlimited Lounge Access; 3.3% Reward Rate; Golf Games,Rs. 12500 + Taxes,1.99% p.m.,Invitation Only / High Net Worth
+HDFC,Credit Card,HDFC Diners Club Black,Global Lounge Access; 10X Rewards; Annual Membership benefits,Rs. 10000 + Taxes,1.99% p.m.,Income > 1.75L/month
+HDFC,Credit Card,HDFC MoneyBack+,10X CashPoints on Amazon/Flipkart/BigBasket; 500 CashPoints on joining,Rs. 500 + Taxes,3.60% p.m.,Income > 20k/month
+HDFC,Credit Card,HDFC Freedom,10X CashPoints on BigBasket/BookMyShow; 5x on Dining,Rs. 500 + Taxes,3.60% p.m.,Salaried/Self-Employed
+HDFC,Credit Card,HDFC Bharat,5% Cashback on Fuel/Rail/Groceries; 1% Fuel Surcharge Waiver,Rs. 500 + Taxes,3.60% p.m.,Salaried/Self-Employed
+HDFC,Credit Card,HDFC Tata Neu Infinity,5% NeuCoins on Tata Neu App; Airport Lounge Access,Rs. 1499 + Taxes,3.49% p.m.,Income > 1L/month
+HDFC,Credit Card,HDFC Tata Neu Plus,2% NeuCoins on Tata Neu App; 1% on other spends,Rs. 499 + Taxes,3.49% p.m.,Income > 25k/month
+HDFC,Credit Card,HDFC Swiggy,10% Cashback on Swiggy; 5% on Online shopping,Rs. 500 + Taxes,3.60% p.m.,Income > 25k/month
+HDFC,Credit Card,HDFC Shoppers Stop,Lifetime Free; 1% Cashback on Shoppers Stop spends,Nil,3.60% p.m.,Shopper
+HDFC,Credit Card,HDFC InterMiles Signature,8000 InterMiles on joining; 50% discount on EazyDiner,Rs. 2500 + Taxes,3.60% p.m.,Frequent Flyer
+HDFC,Credit Card,HDFC Indigo 6E Rewards,2.5% 6E Rewards on Indigo; Free Meal voucher,Rs. 700 + Taxes,3.60% p.m.,Frequent Flyer
+HDFC,Credit Card,HDFC Marriott Bonvoy,1 Free Night Award; Silver Elite Status; 8 Points/Rs 150 on Marriott,Rs. 3000 + Taxes,3.60% p.m.,Traveler
+HDFC,Credit Card,HDFC Business MoneyBack,5% Cashback on Tax/Utility/Electronics; Business tools,Rs. 500 + Taxes,3.60% p.m.,Business Owner
+HDFC,Debit Card,HDFC Millennia Debit,5% CashBack on PayZapp/SmartBuy; 2.5% on Online Spends,Rs. 500 + Taxes,N/A,Account Holder
+HDFC,Debit Card,HDFC Platinum Debit,High withdrawal limit; Cashback on BillPay; Lounge Access,Rs. 750 + Taxes,N/A,Account Holder
+HDFC,Debit Card,HDFC MoneyBack Debit,Cashback on varied spends; Fuel Surcharge waiver,Rs. 200 + Taxes,N/A,Savings Account
+HDFC,Debit Card,HDFC EasyShop Woman,First usage CashBack; Shopping offers; Insurance cover,Rs. 200 + Taxes,N/A,Women Account Holder
+HDFC,Debit Card,HDFC EasyShop Titanium,High daily shopping limit; Zero liability on lost card,Rs. 250 + Taxes,N/A,Account Holder
+HDFC,Debit Card,HDFC RuPay Premium,Lounge Access; Utility Bill Cashback,Rs. 200 + Taxes,N/A,Account Holder
+HDFC,Debit Card,HDFC Times Points,Discounts on Times Prime; Food & Dining offers,Rs. 650 + Taxes,N/A,Youth
+HDFC,Debit Card,HDFC Rewards,Points on every spend; redeemable for products,Rs. 500 + Taxes,N/A,Account Holder
+HDFC,Debit Card,HDFC Imperia,Exclusive for Imperia Banking customers; Higher limits,Nil,N/A,Imperia Customer
+HDFC,Debit Card,HDFC Preferred,Exclusive for Preferred Banking; Lounge Access,Nil,N/A,Preferred Customer
+HDFC,Loan,HDFC Personal Loan,Quick disbursal (10 sec for existing customers); Minimal Doc,Rs. 4999 (Max),10.50% - 21.00%,Salaried (Net Salary > 25k)
+HDFC,Loan,HDFC Xpress Personal Loan,100% Digital; Instant Credit; No Paperwork,Low Processing Fee,10.75% - 20.00%,Salaried with HDFC A/c
+HDFC,Loan,HDFC Marriage Loan,Special PL for wedding expenses; Flexible tenure,Standard Fees,10.75% - 21.00%,Salaried/Self-Employed
+HDFC,Loan,HDFC Travel Loan,Loan for vacation; Quick approval,Standard Fees,10.75% - 21.00%,Salaried
+HDFC,Loan,HDFC Home Loan,Housing loan for new purchase; PMAY benefits,0.50% or Rs. 3000,8.75% - 9.40%,Salaried/Self-Employed
+HDFC,Loan,HDFC Reach Home Loan,Home loan for Micro-Entrepreneurs and Salaried with cash salary,Up to 2%,9.00% - 10.00%,Cash Salary / Micro Biz
+HDFC,Loan,HDFC Rural Housing Loan,For Agriculturists/Planters/Horticulturists,1.25%,8.85% - 9.50%,Rural Customer
+HDFC,Loan,HDFC Home Extension Loan,Add a room or floor to existing home,0.50% or Rs. 3000,8.75% - 9.40%,Property Owner
+HDFC,Loan,HDFC Home Renovation Loan,"For tiling, flooring, painting, etc.",0.50%,8.75% - 9.40%,Home Owner
+HDFC,Loan,HDFC Top Up Loan,Additional loan on existing Home Loan,0.50%,9.00% - 9.80%,Existing Borrower
+HDFC,Loan,HDFC New Car Loan,Loans for broad range of cars; 100% on-road funding on select models,0.50%,8.75% - 10.00%,Income > 3L PA
+HDFC,Loan,HDFC Used Car Loan,Finance for pre-owned cars; Quick processing,1.00%,11.00% - 14.00%,Income > 2.5L PA
+HDFC,Loan,HDFC ZipDrive,Instant Car Loan for HDFC customers; 10 second approval,Nil,8.70% - 9.50%,Existing HDFC Customer
+HDFC,Loan,HDFC Two Wheeler Loan,Finance for bikes; 100% funding available,2.00%,12.00% - 20.00%,Salaried/Self-Employed
+HDFC,Loan,HDFC Super Bike Loan,"Funding for Premium Bikes (Harley, Triumph, etc.)",2.00%,10.00% - 12.00%,Income > 10L PA
+HDFC,Loan,HDFC Education Loan,Loans for Indian Education; Doorstep service,1.00%,9.50% - 13.00%,Student with Co-borrower
+HDFC,Loan,HDFC Foreign Education Loan,Unsecured loans for top universities; Tax benefits,1.00%,9.50% - 13.00%,Student Admitted Abroad
+HDFC,Loan,HDFC Doctor Loan,Professional loan for Doctors for clinic expansion,1.00%,11.00% - 15.00%,Doctor
+HDFC,Loan,HDFC Business Loan,Unsecured loan for Business expansion; Overdraft facility,2.00%,11.90% - 21.35%,Business Vintage > 3 Yrs
+HDFC,Loan,HDFC Loan Against Securities,Loan against Shares/Mutual Funds; Digital limit setting,Rs. 500,9.90% - 11.00%,Investor
+HDFC,Loan,HDFC Gold Loan,Term Loan or Overdraft against Gold Jewelry,1.00%,9.00% - 16.00%,Anyone with Gold
+HDFC,Loan,HDFC Kishore Mudra Loan,For small business needs (Rs 50k - 5L),Nil,8.50% - 10.00%,Small Business
+HDFC,Loan,HDFC Tarun Mudra Loan,For business expansion (Rs 5L - 10L),0.50%,8.50% - 10.00%,Small Business
+HDFC,Loan,HDFC Loan Against Property,High value loan for personal/business needs,1.00%,9.50% - 11.00%,Property Owner
+HDFC,Scheme,HDFC Life Sanchay Plus,Guaranteed Income Plan; Life Cover,N/A,IRR ~ 5-6%,Any Individual

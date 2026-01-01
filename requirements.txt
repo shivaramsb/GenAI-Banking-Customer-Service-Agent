@@ -1,0 +1,8 @@
+streamlit
+sentence-transformers
+openai
+chromadb
+pandas
+python-dotenv
+
+#.\venv\Scripts\activate

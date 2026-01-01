@@ -1,0 +1,253 @@
+bank_name,category,question,answer
+HDFC,Savings Accounts,How do I open an HDFC Savings Account online?,You can open an account via the HDFC Bank website or mobile app using Aadhaar-based Video KYC.
+HDFC,Savings Accounts,What is the minimum balance for HDFC Regular Savings Account?,"The Average Monthly Balance (AMB) requirement is Rs. 10,000 for Metro/Urban branches, Rs. 5,000 for Semi-Urban, and Rs. 2,500 for Rural branches."
+HDFC,Savings Accounts,What are the charges for non-maintenance of AMB?,Charges range from Rs. 150 to Rs. 600 plus taxes depending on the shortfall percentage.
+HDFC,Savings Accounts,Can I open a joint account online?,"No, currently online account opening via Video KYC is valid for single holding only. For joint accounts, visit the branch."
+HDFC,Savings Accounts,What documents are required for opening an account?,"You need PAN, Aadhaar (or other OVDs), and a passport-sized photograph. Proof of address is required if it differs from the ID proof."
+HDFC,Savings Accounts,How do I activiate NetBanking for the first time?,"Use your Customer ID and the IPIN (Password) sent in the Welcome Kit. If you don't have IPIN, you can regenerate it online using a Debit Card."
+HDFC,Savings Accounts,What is the HDFC Classic Banking programme?,"It is a premium segment for customers maintaining a high relationship value (TRV), offering designated Personal Bankers and preferred rates."
+HDFC,Savings Accounts,How do I transfer my account to another branch?,You can submit a transfer request via NetBanking under the 'Accounts' tab or visit your nearest branch.
+HDFC,Savings Accounts,Is there a penalty for closing the account within 14 days?,"No, there are no closure charges if the account is closed within 14 days of opening."
+HDFC,Savings Accounts,What is the Max Savings Account?,It is a premium savings account that offers Platinum Debit Cards and higher transaction limits.
+HDFC,Savings Accounts,How do I add a nominee?,Log in to NetBanking > Request > View/Update Nomination Details. You can also do it via the MobileBanking App.
+HDFC,Savings Accounts,What is the limit for cash deposit at Home Branch?,"You can deposit cash freely. However, for amounts above Rs. 2 lakhs, PAN is mandatory."
+HDFC,Savings Accounts,Can I upgrade my account variant?,"Yes, you can request an upgrade (e.g., Regular to Classic/Preferred) if you meet the eligibility criteria of that programme."
+HDFC,Savings Accounts,What is the 'DigiSave' Youth Account?,It is a digital-first savings account designed for millennials (18-25 years) offering distinct deals on online spends.
+HDFC,Savings Accounts,How do I download my account statement?,"Log in to NetBanking > Enquire > Download Historical Statement. You can choose PDF, Excel, or Text format."
+HDFC,Savings Accounts,What is the interest rate on Savings Account?,"Interest is calculated daily. Typically, it is around 3.00% to 3.50% p.a. depending on the balance."
+HDFC,Savings Accounts,How do I update my email ID?,Log in to NetBanking > Profile > Contact Details > Update Email ID. It requires OTP authentication.
+HDFC,Savings Accounts,Can I change my mobile number online?,"No, for security reasons, you must visit an HDFC ATM or Branch to update your registered mobile number."
+HDFC,Savings Accounts,What is the Senior Citizen Savings Account?,"It offers special benefits like higher FD rates, free rewards, and preferential service for customers aged 60+."
+HDFC,Savings Accounts,How do I check my account balance via SMS?,Send 'BAL' to 5676712 from your registered mobile number.
+HDFC,Savings Accounts,What is InstaAlert?,InstaAlert sends real-time SMS/Email notifications for transactions. You can customize the threshold limits in NetBanking.
+HDFC,Savings Accounts,How do I enable international usage on my Debit Card?,Log in to NetBanking > Cards > Debit Cards > Request > International Enable/Disable.
+HDFC,Savings Accounts,What happens if my account is dormant?,"If there are no customer-induced transactions for 2 years, the account becomes dormant. You must visit the branch with KYC to reactivate it."
+HDFC,Savings Accounts,Can I convert my account to NRO?,"Yes, if your residential status changes to NRI, you must inform the bank and convert your resident account to an NRO account."
+HDFC,Savings Accounts,What is the Family Banking Group?,It allows family members to group their accounts to meet the relationship value criteria (TRV) collectively.
+HDFC,Current Accounts,What is the minimum balance for a Current Account?,"It varies by variant. E.g., Ascent Current Account requires Rs. 10,000 Quarterly Average Balance (QAB)."
+HDFC,Current Accounts,Can I open a Current Account online?,Sole proprietorships can apply online. Partnerships and Companies usually need to visit the branch with constitutive documents.
+HDFC,Current Accounts,What are the cash deposit limits for Current Accounts?,"Free deposit limits depend on the variant (e.g., Rs. 2 Lakhs/month for Ascent). Beyond that, charges apply."
+HDFC,Current Accounts,Do Current Accounts earn interest?,"No, generally Current Accounts do not earn any interest."
+HDFC,Current Accounts,What is the 'SmartUp' solution?,"SmartUp is a banking suite tailored for Startups, offering banking, payment, and advisory solutions."
+HDFC,Current Accounts,How do I get a Point of Sale (POS) machine?,You can apply for Merchant Services (POS) via NetBanking or by contacting your Relationship Manager.
+HDFC,Current Accounts,What docs are needed for a Proprietorship Current Account?,"KYC of the proprietor (PAN/Aadhaar) and two proofs of business entity (e.g., GST Registration, Shop Act License)."
+HDFC,Current Accounts,Can I operate my Current Account via MobileBanking?,"Yes, HDFC offers the 'Corporate Mobile App' for business entities to manage accounts on the go."
+HDFC,Current Accounts,What is the 'E-Monies' facility?,It allows bulk payments and collections electronically for businesses managed via ENet.
+HDFC,Current Accounts,How do I issue a bulk demand draft?,You can upload a bulk file on ENet or Corporate NetBanking to issue multiple DDs.
+HDFC,Credit Cards,How do I apply for an HDFC Credit Card?,"You can apply online via the HDFC website, through NetBanking (if you have an account), or by visiting a branch."
+HDFC,Credit Cards,What is the annual fee for HDFC Regalia Gold?,"The annual fee is Rs. 2,500 + taxes. It may be waived on spending Rs. 4 Lakhs in a year."
+HDFC,Credit Cards,How do I check my credit card limit?,Log in to NetBanking or the Mobile App and go to the 'Cards' section to view available and total limits.
+HDFC,Credit Cards,What is the foreign currency markup fee?,"It is typically 3.5% + GST. Premium cards like Infinia have a lower markup (e.g., 2%)."
+HDFC,Credit Cards,How do I redeem Reward Points?,Login toNetBanking > Cards > Enquire > Redeem Reward Points. You will be redirected to the SmartBuy rewards portal.
+HDFC,Credit Cards,What is the value of 1 Reward Point?,"It varies. For Statement Credit (CashBack), 1 RP = Rs. 0.20 to Rs. 0.50. For Airmiles/Vouchers on Infinia, 1 RP = Rs. 1."
+HDFC,Credit Cards,How do I pin-set my new Credit Card?,"You can set the PIN via NetBanking, Mobile App, or by calling the IVR (1860 267 6161)."
+HDFC,Credit Cards,What is 'Smart EMI'?,Smart EMI allows you to convert large purchases (processed transactions) into monthly installments at a special interest rate.
+HDFC,Credit Cards,How do I block a lost Credit Card?,Immediately log in to NetBanking/App > Cards > Request > Block Credit Card. This is instant.
+HDFC,Credit Cards,What is the Millennia Credit Card?,"It is a cashback-focused card offering 5% CashBack on Amazon, Flipkart, Myntra, etc., and 1% on other spends."
+HDFC,Credit Cards,How do I pay my credit card bill?,"You can pay via NetBanking, Mobile App, UPI, BillDesk, or Auto-Pay from your HDFC Savings Account."
+HDFC,Credit Cards,What is the minimum amount due?,It is approx 5% of the total outstanding. Paying only this amount attracts interest on the remaining balance.
+HDFC,Credit Cards,Can I withdraw cash with my credit card?,"Yes, but it attracts a Cash Advance Fee (2.5% or min Rs. 500) and interest from day one. Avoid unless urgent."
+HDFC,Credit Cards,What is features of Infinia Metal Card?,"It is a super-premium card with unlimited lounge access, dedicated concierge, and 3.3% reward rate."
+HDFC,Credit Cards,How do I increase my credit limit?,"Check for 'Limit Enhancement' offers in NetBanking. If eligible, you can increase it instantly. Or, email income docs to Chennai office."
+HDFC,Credit Cards,What is the Fuel Surcharge Waiver?,"Most HDFC cards offer a 1% waiver on fuel transactions between Rs. 400 and Rs. 5,000."
+HDFC,Credit Cards,How do I correct a billing dispute?,Fill the Dispute Form available online and email it to the disputes team within 30 days of the statement date.
+HDFC,Credit Cards,What is add-on card?,It is a supplementary card for family members. It shares the primary card's limit but usually has no annual fee.
+HDFC,Credit Cards,Is there a charge for card replacement?,"Yes, a replacement fee of Rs. 100 + taxes applies unless the card was defective."
+HDFC,Credit Cards,How do I enable contactless payments?,Go to 'Manage Card Limits' in NetBanking/App and toggle 'Contactless Usage' to ON.
+HDFC,Credit Cards,What is EasyEMI?,It is an option to convert purchases into EMI at the merchant POS itself during checkout.
+HDFC,Credit Cards,Can I transfer balance from other bank cards?,"Yes, HDFC offers 'Balance Transfer on EMI' to transfer other card dues at a lower interest rate."
+HDFC,Credit Cards,What are the late payment charges?,Charges range from Rs. 100 to Rs. 1300 depending on the outstanding amount.
+HDFC,Credit Cards,How do I check my CIBIL score?,You can check your CIBIL score for free via the HDFC NetBanking dashboard under 'General Services'.
+HDFC,Credit Cards,What is the Tata Neu Infinity HDFC Card?,It is a co-branded card offering up to 10% NeuCoins on Tata Neu app purchases.
+HDFC,Loans,What is the current Home Loan interest rate?,HDFC Home Loan rates are linked to the repo rate. They currently start from ~8.70% p.a. for high CIBIL scores.
+HDFC,Loans,How can I apply for a Personal Loan?,Existing customers can apply via NetBanking for pre-approved offers (10-second loan). Others can apply on the website.
+HDFC,Loans,What is the processing fee for Personal Loans?,"It is up to 2.50% of the loan amount, subject to a minimum and maximum cap."
+HDFC,Loans,Can I prepay my Personal Loan?,"Yes, but lock-in period applies (usually 1 year). Prepayment charges are 2-4% of principal outstanding."
+HDFC,Loans,What documents are needed for a Home Loan?,"KYC, Income Proof (Salary Slips/ITR), Bank Statements, and Property Documents (Agreement to Sell, Chain deeds)."
+HDFC,Loans,How do I check my loan status?,Visit the HDFC Bank website > Loans > Track Application and enter your App Reference Number.
+HDFC,Loans,What is the 'Reach' Home Loan?,It is a specialized product for micro-markets and self-employed individuals with informal income documents.
+HDFC,Loans,How can I get a loan against my car?,HDFC offers 'Loan Against Car' where you avail funds up to 150% of the car's original value.
+HDFC,Loans,What is a Top-Up Loan?,It is an additional loan on your existing Home Loan for personal or business needs.
+HDFC,Loans,Is there a foreclosure charge on Home Loans?,"No, there are no foreclosure charges for floating rate home loans for individual borrowers."
+HDFC,Loans,What is the maximum tenure for a Car Loan?,HDFC offers flexible tenures up to 84 months (7 years) for new car loans.
+HDFC,Loans,Can I change my EMI date?,"Generally, the EMI cycle is fixed. You may request a change at the branch, but it involves re-calculating interest."
+HDFC,Loans,How do I download the Provisional Interest Certificate?,Log in to NetBanking > Loans > Request > Download Interest Certificate (Provisional).
+HDFC,Loans,What is the 'Jumbo Loan' on Credit Card?,"It is a pre-approved loan given *above* your credit limit. It is blocked as a separate loan account, not affecting card limit."
+HDFC,Loans,What is a Gold Loan?,You can pledge gold ornaments to get instant funds. The process is quick (approx 45 mins) at designated branches.
+HDFC,Loans,How do I pay my missed EMI?,You can pay via the 'Overdue Loan Payment' link on the website or visit the branch.
+HDFC,Loans,What is the Education Loan limit?,"For studies in India, up to Rs. 30 Lakhs. For abroad, limits are higher. Collateral is needed for higher amounts."
+HDFC,Loans,Do you offer loans for Two-Wheelers?,"Yes, HDFC offers two-wheeler loans up to 100% of the on-road price for select models."
+HDFC,Loans,How is interest calculated on Personal Loans?,It is calculated on a monthly reducing balance method.
+HDFC,Loans,What is the difference between Flat and Reducing interest?,Flat rate is calculated on full principal. Reducing rate is calculated on the outstanding balance. Reducing is always better.
+HDFC,Loans,Can I transfer my Home Loan from another bank?,"Yes, HDFC offers Balance Transfer facility with an option for a Top-Up loan."
+HDFC,Loans,What is the 'Plot Loan'?,It is a loan to purchase a residential plot of land. Construction must usually begin within a specific period.
+HDFC,Loans,Is insurance mandatory for loans?,Property insurance is mandatory for Home Loans. Life insurance (Loan Shield) is optional but recommended.
+HDFC,Loans,How do I get a No Objection Certificate (NOC) for closed car loan?,The NOC is dispatched to your registered address upon closure. You can also request a copy at the branch.
+HDFC,Loans,What is the 'Golden Edge' loan?,It is a loan against securities (Shares/Mutual Funds) where you pledge digital assets for an overdraft limit.
+HDFC,Digital Banking,How do I register for MobileBanking?,"Download the 'HDFC Bank MobileBanking' app, enter Cust ID/Mobile No, and authenticate via Debit Card or NetBanking credentials."
+HDFC,Digital Banking,What is EVA?,EVA is HDFC Bank's AI Chatbot available on the website to answer basic queries instantly.
+HDFC,Digital Banking,How do I use BHIM UPI on the app?,"Go to 'UPI Payments', create a VPA (e.g., mobile@hdfcbank), link your account, and set a UPI PIN."
+HDFC,Digital Banking,What is the transaction limit for UPI?,The standard limit is Rs. 1 Lakh per day. New users may have a lower limit for the first 24 hours.
+HDFC,Digital Banking,How do I download Form 26AS via NetBanking?,Login > Request > View Tax Credit Statement. It redirects you to the Income Tax TRACES portal.
+HDFC,Digital Banking,Can I apply for IPO online?,"Yes, use the ASBA facility in NetBanking under the 'Request' tab to block funds for IPO applications."
+HDFC,Digital Banking,How do I stop a cheque payment online?,NetBanking > Accounts > Request > Stop Cheque Payment. Enter the cheque number.
+HDFC,Digital Banking,What is Cardless Cash Withdrawal?,It allows you to transfer money to a beneficiary who can withdraw cash from an HDFC ATM without a card using a one-time code.
+HDFC,Digital Banking,How do I link my Aadhaar to my account?,NetBanking > Request > Update Aadhaar Number. Or visit the branch.
+HDFC,Digital Banking,How do I reset my NetBanking password (IPIN)?,Click 'Forgot IPIN' on the login page. Reset using OTP + Debit Card details.
+HDFC,Digital Banking,What is biometric login?,You can enable Fingerprint or Face ID login on the Mobile App for quick access.
+HDFC,Digital Banking,How do I pay utility bills?,"Use the 'BillPay' tab to register billers (Electricity, Gas, Mobile) and pay instantly or set Auto-Pay."
+HDFC,Digital Banking,Where can I find my Customer ID?,"It is printed on your Welcome Letter, Cheque Book, and Passbook. You can also retrieve it online via the 'Forgot Customer ID' link."
+HDFC,Digital Banking,How do I enable distinct limits for ATM and Online?,"'Manage Card Limits' in the app allows you to set separate daily limits for ATM, POS, and Online usage."
+HDFC,Digital Banking,What is 'SmartBuy'?,It is HDFC's shopping portal. Shopping via SmartBuy on partners (Amazon/Flipkart) gives extra reward points/cashback.
+HDFC,Digital Banking,How do I update FASTag balance?,Recharge your FASTag wallet via UPI or NetBanking. It is linked to your vehicle/wallet.
+HDFC,Digital Banking,Can I open a Fixed Deposit online?,"Yes, NetBanking > Transact > Open Fixed Deposit. The receipt is generated instantly."
+HDFC,Digital Banking,What is 'Virtual' Card?,NetSafe cards or Virtual cards are generated for one-time online use to protect your actual card details.
+HDFC,Digital Banking,How do I download the Mobile App?,Search for 'HDFC Bank MobileBanking' on Google Play Store or Apple App Store.
+HDFC,Digital Banking,Can I invest in Mutual Funds via HDFC?,"Yes, you can register for the 'ISA' (Investment Services Account) to buy/sell Mutual Funds via NetBanking."
+HDFC,Digital Banking,How do I block my User ID?,"If suspicious, lock your ID via the link on proper login page or call customer care."
+HDFC,Digital Banking,What is 'PayZapp'?,"PayZapp is HDFC's standalone payment wallet app for bill payments, recharges, and groceries."
+HDFC,Digital Banking,How do I access 'MyCards'?,"MyCards is a web-app (PWA) to manage credit cards, view unbilled transactions, and block cards without full NetBanking login."
+HDFC,Digital Banking,Can I pay tax online?,"Yes, use the 'Direct Tax' or 'GST' payment options in NetBanking."
+HDFC,Digital Banking,How do I view my cheque status?,NetBanking > Accounts > Enquire > Cheque Status Inquiry.
+HDFC,Security,How do I report a fraudulent transaction?,Call 1800 258 6161 immediately. Then report it on the HDFC website/NetBanking disputes section.
+HDFC,Security,What should I do if I lose my phone?,Contact the bank to block MobileBanking access immediately to prevent misuse.
+HDFC,Security,How do I verify if an email is really from HDFC?,HDFC emails always come from an '@hdfcbank.com' domain. They never ask for PIN/Passwords directly.
+HDFC,Security,What is 'SIM Binding'?,The Mobile App works only on the device with the registered SIM. You cannot use it on a different phone without re-verification.
+HDFC,Security,How do I set a cooling period for beneficiaries?,"Newly added beneficiaries have a cooling period of 30 mins, and transfer limits apply for the first 24 hours."
+HDFC,Security,What is 'Secure Access'?,It is an image/message you choose during login. Always verify this image is present before entering your password.
+HDFC,Security,How do I de-register a device?,"In the App settings, select 'De-register'. Or do it via NetBanking under MobileBanking registration."
+HDFC,Security,Is it safe to use public Wi-Fi?,"No, avoid accessing banking apps on public Wi-Fi. Use your cellular data."
+HDFC,Security,What is the 'Kill Switch'?,You can block all digital channels instantly via the IVR or specialized SMS codes in case of emergencies.
+HDFC,Security,How do I avoid phishing?,Never click links in SMS/Email claiming 'Account Blocked' or 'KYC Pending'. Check the URL carefully.
+HDFC,Security,What is 'Vishing'?,Fraudsters calling pretending to be bank officials. HDFC never calls asking for OTP or CVV. Hang up.
+HDFC,Security,How do I secure my Cheque Book?,Keep it locked. Destroy unused leaves if closing account. Record issued cheque details.
+HDFC,Security,Can I restrict international transactions?,"Yes, keep International Usage 'OFF' in Card Settings and only enable it when travelling."
+HDFC,Security,What is 'Positive Pay'?,"For cheques > Rs. 50,000, you must re-confirm details electronically. Otherwise, the cheque may be rejected."
+HDFC,Security,How do I change my security questions?,NetBanking > Profile > Security Questions. Update them periodically.
+HDFC,Savings Accounts,What is the minimum balance for HDFC Women's Savings Account?,"The requirement is typically Rs. 5,000 or Rs. 10,000 AMB depending on location, with special cashback offers."
+HDFC,Savings Accounts,What is the HDFC Kids Advantage Account?,"It is an account for minors, linked to parents' account, allowing an accumulation of savings for the child's future."
+HDFC,Savings Accounts,Can I use HDFC ATM card in other bank ATMs?,"Yes, you get 3-5 free transactions at other bank ATMs per month depending on your account variant."
+HDFC,Current Accounts,What is the 'E-Commerce' Current Account?,"Designed for online merchants, it offers lower transaction rates for payment gateways."
+HDFC,Credit Cards,What is the 'MoneyBack+' Credit Card?,"It gives 10X CashPoints on Amazon, BigBasket, Flipkart, Reliance Smart SuperStore & Swiggy."
+HDFC,Loans,What is the 'Rural Housing Loan'?,Tailored for agriculturists and rural salaried persons to build homes in villages.
+HDFC,Digital Banking,How do I update my PAN in HDFC records?,"If not linked, you can update PAN via NetBanking > Profile > Contact Details."
+HDFC,Security,What is the 24x7 Fraud Reporting number?,The number is 1930 (National Cyber Crime) or HDFC's specific 1800 258 6161.
+HDFC,Savings Accounts,Variant 133: How do I open an HDFC Savings Account online?,You can open an account via the HDFC Bank website or mobile app using Aadhaar-based Video KYC.
+HDFC,Savings Accounts,Variant 134: What is the minimum balance for HDFC Regular Savings Account?,"The Average Monthly Balance (AMB) requirement is Rs. 10,000 for Metro/Urban branches, Rs. 5,000 for Semi-Urban, and Rs. 2,500 for Rural branches."
+HDFC,Savings Accounts,Variant 135: What are the charges for non-maintenance of AMB?,Charges range from Rs. 150 to Rs. 600 plus taxes depending on the shortfall percentage.
+HDFC,Savings Accounts,Variant 136: Can I open a joint account online?,"No, currently online account opening via Video KYC is valid for single holding only. For joint accounts, visit the branch."
+HDFC,Savings Accounts,Variant 137: What documents are required for opening an account?,"You need PAN, Aadhaar (or other OVDs), and a passport-sized photograph. Proof of address is required if it differs from the ID proof."
+HDFC,Savings Accounts,Variant 138: How do I activiate NetBanking for the first time?,"Use your Customer ID and the IPIN (Password) sent in the Welcome Kit. If you don't have IPIN, you can regenerate it online using a Debit Card."
+HDFC,Savings Accounts,Variant 139: What is the HDFC Classic Banking programme?,"It is a premium segment for customers maintaining a high relationship value (TRV), offering designated Personal Bankers and preferred rates."
+HDFC,Savings Accounts,Variant 140: How do I transfer my account to another branch?,You can submit a transfer request via NetBanking under the 'Accounts' tab or visit your nearest branch.
+HDFC,Savings Accounts,Variant 141: Is there a penalty for closing the account within 14 days?,"No, there are no closure charges if the account is closed within 14 days of opening."
+HDFC,Savings Accounts,Variant 142: What is the Max Savings Account?,It is a premium savings account that offers Platinum Debit Cards and higher transaction limits.
+HDFC,Savings Accounts,Variant 143: How do I add a nominee?,Log in to NetBanking > Request > View/Update Nomination Details. You can also do it via the MobileBanking App.
+HDFC,Savings Accounts,Variant 144: What is the limit for cash deposit at Home Branch?,"You can deposit cash freely. However, for amounts above Rs. 2 lakhs, PAN is mandatory."
+HDFC,Savings Accounts,Variant 145: Can I upgrade my account variant?,"Yes, you can request an upgrade (e.g., Regular to Classic/Preferred) if you meet the eligibility criteria of that programme."
+HDFC,Savings Accounts,Variant 146: What is the 'DigiSave' Youth Account?,It is a digital-first savings account designed for millennials (18-25 years) offering distinct deals on online spends.
+HDFC,Savings Accounts,Variant 147: How do I download my account statement?,"Log in to NetBanking > Enquire > Download Historical Statement. You can choose PDF, Excel, or Text format."
+HDFC,Savings Accounts,Variant 148: What is the interest rate on Savings Account?,"Interest is calculated daily. Typically, it is around 3.00% to 3.50% p.a. depending on the balance."
+HDFC,Savings Accounts,Variant 149: How do I update my email ID?,Log in to NetBanking > Profile > Contact Details > Update Email ID. It requires OTP authentication.
+HDFC,Savings Accounts,Variant 150: Can I change my mobile number online?,"No, for security reasons, you must visit an HDFC ATM or Branch to update your registered mobile number."
+HDFC,Savings Accounts,Variant 151: What is the Senior Citizen Savings Account?,"It offers special benefits like higher FD rates, free rewards, and preferential service for customers aged 60+."
+HDFC,Savings Accounts,Variant 152: How do I check my account balance via SMS?,Send 'BAL' to 5676712 from your registered mobile number.
+HDFC,Savings Accounts,Variant 153: What is InstaAlert?,InstaAlert sends real-time SMS/Email notifications for transactions. You can customize the threshold limits in NetBanking.
+HDFC,Savings Accounts,Variant 154: How do I enable international usage on my Debit Card?,Log in to NetBanking > Cards > Debit Cards > Request > International Enable/Disable.
+HDFC,Savings Accounts,Variant 155: What happens if my account is dormant?,"If there are no customer-induced transactions for 2 years, the account becomes dormant. You must visit the branch with KYC to reactivate it."
+HDFC,Savings Accounts,Variant 156: Can I convert my account to NRO?,"Yes, if your residential status changes to NRI, you must inform the bank and convert your resident account to an NRO account."
+HDFC,Savings Accounts,Variant 157: What is the Family Banking Group?,It allows family members to group their accounts to meet the relationship value criteria (TRV) collectively.
+HDFC,Current Accounts,Variant 158: What is the minimum balance for a Current Account?,"It varies by variant. E.g., Ascent Current Account requires Rs. 10,000 Quarterly Average Balance (QAB)."
+HDFC,Current Accounts,Variant 159: Can I open a Current Account online?,Sole proprietorships can apply online. Partnerships and Companies usually need to visit the branch with constitutive documents.
+HDFC,Current Accounts,Variant 160: What are the cash deposit limits for Current Accounts?,"Free deposit limits depend on the variant (e.g., Rs. 2 Lakhs/month for Ascent). Beyond that, charges apply."
+HDFC,Current Accounts,Variant 161: Do Current Accounts earn interest?,"No, generally Current Accounts do not earn any interest."
+HDFC,Current Accounts,Variant 162: What is the 'SmartUp' solution?,"SmartUp is a banking suite tailored for Startups, offering banking, payment, and advisory solutions."
+HDFC,Current Accounts,Variant 163: How do I get a Point of Sale (POS) machine?,You can apply for Merchant Services (POS) via NetBanking or by contacting your Relationship Manager.
+HDFC,Current Accounts,Variant 164: What docs are needed for a Proprietorship Current Account?,"KYC of the proprietor (PAN/Aadhaar) and two proofs of business entity (e.g., GST Registration, Shop Act License)."
+HDFC,Current Accounts,Variant 165: Can I operate my Current Account via MobileBanking?,"Yes, HDFC offers the 'Corporate Mobile App' for business entities to manage accounts on the go."
+HDFC,Current Accounts,Variant 166: What is the 'E-Monies' facility?,It allows bulk payments and collections electronically for businesses managed via ENet.
+HDFC,Current Accounts,Variant 167: How do I issue a bulk demand draft?,You can upload a bulk file on ENet or Corporate NetBanking to issue multiple DDs.
+HDFC,Credit Cards,Variant 168: How do I apply for an HDFC Credit Card?,"You can apply online via the HDFC website, through NetBanking (if you have an account), or by visiting a branch."
+HDFC,Credit Cards,Variant 169: What is the annual fee for HDFC Regalia Gold?,"The annual fee is Rs. 2,500 + taxes. It may be waived on spending Rs. 4 Lakhs in a year."
+HDFC,Credit Cards,Variant 170: How do I check my credit card limit?,Log in to NetBanking or the Mobile App and go to the 'Cards' section to view available and total limits.
+HDFC,Credit Cards,Variant 171: What is the foreign currency markup fee?,"It is typically 3.5% + GST. Premium cards like Infinia have a lower markup (e.g., 2%)."
+HDFC,Credit Cards,Variant 172: How do I redeem Reward Points?,Login toNetBanking > Cards > Enquire > Redeem Reward Points. You will be redirected to the SmartBuy rewards portal.
+HDFC,Credit Cards,Variant 173: What is the value of 1 Reward Point?,"It varies. For Statement Credit (CashBack), 1 RP = Rs. 0.20 to Rs. 0.50. For Airmiles/Vouchers on Infinia, 1 RP = Rs. 1."
+HDFC,Credit Cards,Variant 174: How do I pin-set my new Credit Card?,"You can set the PIN via NetBanking, Mobile App, or by calling the IVR (1860 267 6161)."
+HDFC,Credit Cards,Variant 175: What is 'Smart EMI'?,Smart EMI allows you to convert large purchases (processed transactions) into monthly installments at a special interest rate.
+HDFC,Credit Cards,Variant 176: How do I block a lost Credit Card?,Immediately log in to NetBanking/App > Cards > Request > Block Credit Card. This is instant.
+HDFC,Credit Cards,Variant 177: What is the Millennia Credit Card?,"It is a cashback-focused card offering 5% CashBack on Amazon, Flipkart, Myntra, etc., and 1% on other spends."
+HDFC,Credit Cards,Variant 178: How do I pay my credit card bill?,"You can pay via NetBanking, Mobile App, UPI, BillDesk, or Auto-Pay from your HDFC Savings Account."
+HDFC,Credit Cards,Variant 179: What is the minimum amount due?,It is approx 5% of the total outstanding. Paying only this amount attracts interest on the remaining balance.
+HDFC,Credit Cards,Variant 180: Can I withdraw cash with my credit card?,"Yes, but it attracts a Cash Advance Fee (2.5% or min Rs. 500) and interest from day one. Avoid unless urgent."
+HDFC,Credit Cards,Variant 181: What is features of Infinia Metal Card?,"It is a super-premium card with unlimited lounge access, dedicated concierge, and 3.3% reward rate."
+HDFC,Credit Cards,Variant 182: How do I increase my credit limit?,"Check for 'Limit Enhancement' offers in NetBanking. If eligible, you can increase it instantly. Or, email income docs to Chennai office."
+HDFC,Credit Cards,Variant 183: What is the Fuel Surcharge Waiver?,"Most HDFC cards offer a 1% waiver on fuel transactions between Rs. 400 and Rs. 5,000."
+HDFC,Credit Cards,Variant 184: How do I correct a billing dispute?,Fill the Dispute Form available online and email it to the disputes team within 30 days of the statement date.
+HDFC,Credit Cards,Variant 185: What is add-on card?,It is a supplementary card for family members. It shares the primary card's limit but usually has no annual fee.
+HDFC,Credit Cards,Variant 186: Is there a charge for card replacement?,"Yes, a replacement fee of Rs. 100 + taxes applies unless the card was defective."
+HDFC,Credit Cards,Variant 187: How do I enable contactless payments?,Go to 'Manage Card Limits' in NetBanking/App and toggle 'Contactless Usage' to ON.
+HDFC,Credit Cards,Variant 188: What is EasyEMI?,It is an option to convert purchases into EMI at the merchant POS itself during checkout.
+HDFC,Credit Cards,Variant 189: Can I transfer balance from other bank cards?,"Yes, HDFC offers 'Balance Transfer on EMI' to transfer other card dues at a lower interest rate."
+HDFC,Credit Cards,Variant 190: What are the late payment charges?,Charges range from Rs. 100 to Rs. 1300 depending on the outstanding amount.
+HDFC,Credit Cards,Variant 191: How do I check my CIBIL score?,You can check your CIBIL score for free via the HDFC NetBanking dashboard under 'General Services'.
+HDFC,Credit Cards,Variant 192: What is the Tata Neu Infinity HDFC Card?,It is a co-branded card offering up to 10% NeuCoins on Tata Neu app purchases.
+HDFC,Loans,Variant 193: What is the current Home Loan interest rate?,HDFC Home Loan rates are linked to the repo rate. They currently start from ~8.70% p.a. for high CIBIL scores.
+HDFC,Loans,Variant 194: How can I apply for a Personal Loan?,Existing customers can apply via NetBanking for pre-approved offers (10-second loan). Others can apply on the website.
+HDFC,Loans,Variant 195: What is the processing fee for Personal Loans?,"It is up to 2.50% of the loan amount, subject to a minimum and maximum cap."
+HDFC,Loans,Variant 196: Can I prepay my Personal Loan?,"Yes, but lock-in period applies (usually 1 year). Prepayment charges are 2-4% of principal outstanding."
+HDFC,Loans,Variant 197: What documents are needed for a Home Loan?,"KYC, Income Proof (Salary Slips/ITR), Bank Statements, and Property Documents (Agreement to Sell, Chain deeds)."
+HDFC,Loans,Variant 198: How do I check my loan status?,Visit the HDFC Bank website > Loans > Track Application and enter your App Reference Number.
+HDFC,Loans,Variant 199: What is the 'Reach' Home Loan?,It is a specialized product for micro-markets and self-employed individuals with informal income documents.
+HDFC,Loans,Variant 200: How can I get a loan against my car?,HDFC offers 'Loan Against Car' where you avail funds up to 150% of the car's original value.
+HDFC,Loans,Variant 201: What is a Top-Up Loan?,It is an additional loan on your existing Home Loan for personal or business needs.
+HDFC,Loans,Variant 202: Is there a foreclosure charge on Home Loans?,"No, there are no foreclosure charges for floating rate home loans for individual borrowers."
+HDFC,Loans,Variant 203: What is the maximum tenure for a Car Loan?,HDFC offers flexible tenures up to 84 months (7 years) for new car loans.
+HDFC,Loans,Variant 204: Can I change my EMI date?,"Generally, the EMI cycle is fixed. You may request a change at the branch, but it involves re-calculating interest."
+HDFC,Loans,Variant 205: How do I download the Provisional Interest Certificate?,Log in to NetBanking > Loans > Request > Download Interest Certificate (Provisional).
+HDFC,Loans,Variant 206: What is the 'Jumbo Loan' on Credit Card?,"It is a pre-approved loan given *above* your credit limit. It is blocked as a separate loan account, not affecting card limit."
+HDFC,Loans,Variant 207: What is a Gold Loan?,You can pledge gold ornaments to get instant funds. The process is quick (approx 45 mins) at designated branches.
+HDFC,Loans,Variant 208: How do I pay my missed EMI?,You can pay via the 'Overdue Loan Payment' link on the website or visit the branch.
+HDFC,Loans,Variant 209: What is the Education Loan limit?,"For studies in India, up to Rs. 30 Lakhs. For abroad, limits are higher. Collateral is needed for higher amounts."
+HDFC,Loans,Variant 210: Do you offer loans for Two-Wheelers?,"Yes, HDFC offers two-wheeler loans up to 100% of the on-road price for select models."
+HDFC,Loans,Variant 211: How is interest calculated on Personal Loans?,It is calculated on a monthly reducing balance method.
+HDFC,Loans,Variant 212: What is the difference between Flat and Reducing interest?,Flat rate is calculated on full principal. Reducing rate is calculated on the outstanding balance. Reducing is always better.
+HDFC,Loans,Variant 213: Can I transfer my Home Loan from another bank?,"Yes, HDFC offers Balance Transfer facility with an option for a Top-Up loan."
+HDFC,Loans,Variant 214: What is the 'Plot Loan'?,It is a loan to purchase a residential plot of land. Construction must usually begin within a specific period.
+HDFC,Loans,Variant 215: Is insurance mandatory for loans?,Property insurance is mandatory for Home Loans. Life insurance (Loan Shield) is optional but recommended.
+HDFC,Loans,Variant 216: How do I get a No Objection Certificate (NOC) for closed car loan?,The NOC is dispatched to your registered address upon closure. You can also request a copy at the branch.
+HDFC,Loans,Variant 217: What is the 'Golden Edge' loan?,It is a loan against securities (Shares/Mutual Funds) where you pledge digital assets for an overdraft limit.
+HDFC,Digital Banking,Variant 218: How do I register for MobileBanking?,"Download the 'HDFC Bank MobileBanking' app, enter Cust ID/Mobile No, and authenticate via Debit Card or NetBanking credentials."
+HDFC,Digital Banking,Variant 219: What is EVA?,EVA is HDFC Bank's AI Chatbot available on the website to answer basic queries instantly.
+HDFC,Digital Banking,Variant 220: How do I use BHIM UPI on the app?,"Go to 'UPI Payments', create a VPA (e.g., mobile@hdfcbank), link your account, and set a UPI PIN."
+HDFC,Digital Banking,Variant 221: What is the transaction limit for UPI?,The standard limit is Rs. 1 Lakh per day. New users may have a lower limit for the first 24 hours.
+HDFC,Digital Banking,Variant 222: How do I download Form 26AS via NetBanking?,Login > Request > View Tax Credit Statement. It redirects you to the Income Tax TRACES portal.
+HDFC,Digital Banking,Variant 223: Can I apply for IPO online?,"Yes, use the ASBA facility in NetBanking under the 'Request' tab to block funds for IPO applications."
+HDFC,Digital Banking,Variant 224: How do I stop a cheque payment online?,NetBanking > Accounts > Request > Stop Cheque Payment. Enter the cheque number.
+HDFC,Digital Banking,Variant 225: What is Cardless Cash Withdrawal?,It allows you to transfer money to a beneficiary who can withdraw cash from an HDFC ATM without a card using a one-time code.
+HDFC,Digital Banking,Variant 226: How do I link my Aadhaar to my account?,NetBanking > Request > Update Aadhaar Number. Or visit the branch.
+HDFC,Digital Banking,Variant 227: How do I reset my NetBanking password (IPIN)?,Click 'Forgot IPIN' on the login page. Reset using OTP + Debit Card details.
+HDFC,Digital Banking,Variant 228: What is biometric login?,You can enable Fingerprint or Face ID login on the Mobile App for quick access.
+HDFC,Digital Banking,Variant 229: How do I pay utility bills?,"Use the 'BillPay' tab to register billers (Electricity, Gas, Mobile) and pay instantly or set Auto-Pay."
+HDFC,Digital Banking,Variant 230: Where can I find my Customer ID?,"It is printed on your Welcome Letter, Cheque Book, and Passbook. You can also retrieve it online via the 'Forgot Customer ID' link."
+HDFC,Digital Banking,Variant 231: How do I enable distinct limits for ATM and Online?,"'Manage Card Limits' in the app allows you to set separate daily limits for ATM, POS, and Online usage."
+HDFC,Digital Banking,Variant 232: What is 'SmartBuy'?,It is HDFC's shopping portal. Shopping via SmartBuy on partners (Amazon/Flipkart) gives extra reward points/cashback.
+HDFC,Digital Banking,Variant 233: How do I update FASTag balance?,Recharge your FASTag wallet via UPI or NetBanking. It is linked to your vehicle/wallet.
+HDFC,Digital Banking,Variant 234: Can I open a Fixed Deposit online?,"Yes, NetBanking > Transact > Open Fixed Deposit. The receipt is generated instantly."
+HDFC,Digital Banking,Variant 235: What is 'Virtual' Card?,NetSafe cards or Virtual cards are generated for one-time online use to protect your actual card details.
+HDFC,Digital Banking,Variant 236: How do I download the Mobile App?,Search for 'HDFC Bank MobileBanking' on Google Play Store or Apple App Store.
+HDFC,Digital Banking,Variant 237: Can I invest in Mutual Funds via HDFC?,"Yes, you can register for the 'ISA' (Investment Services Account) to buy/sell Mutual Funds via NetBanking."
+HDFC,Digital Banking,Variant 238: How do I block my User ID?,"If suspicious, lock your ID via the link on proper login page or call customer care."
+HDFC,Digital Banking,Variant 239: What is 'PayZapp'?,"PayZapp is HDFC's standalone payment wallet app for bill payments, recharges, and groceries."
+HDFC,Digital Banking,Variant 240: How do I access 'MyCards'?,"MyCards is a web-app (PWA) to manage credit cards, view unbilled transactions, and block cards without full NetBanking login."
+HDFC,Digital Banking,Variant 241: Can I pay tax online?,"Yes, use the 'Direct Tax' or 'GST' payment options in NetBanking."
+HDFC,Digital Banking,Variant 242: How do I view my cheque status?,NetBanking > Accounts > Enquire > Cheque Status Inquiry.
+HDFC,Security,Variant 243: How do I report a fraudulent transaction?,Call 1800 258 6161 immediately. Then report it on the HDFC website/NetBanking disputes section.
+HDFC,Security,Variant 244: What should I do if I lose my phone?,Contact the bank to block MobileBanking access immediately to prevent misuse.
+HDFC,Security,Variant 245: How do I verify if an email is really from HDFC?,HDFC emails always come from an '@hdfcbank.com' domain. They never ask for PIN/Passwords directly.
+HDFC,Security,Variant 246: What is 'SIM Binding'?,The Mobile App works only on the device with the registered SIM. You cannot use it on a different phone without re-verification.
+HDFC,Security,Variant 247: How do I set a cooling period for beneficiaries?,"Newly added beneficiaries have a cooling period of 30 mins, and transfer limits apply for the first 24 hours."
+HDFC,Security,Variant 248: What is 'Secure Access'?,It is an image/message you choose during login. Always verify this image is present before entering your password.
+HDFC,Security,Variant 249: How do I de-register a device?,"In the App settings, select 'De-register'. Or do it via NetBanking under MobileBanking registration."
+HDFC,Security,Variant 250: Is it safe to use public Wi-Fi?,"No, avoid accessing banking apps on public Wi-Fi. Use your cellular data."
+HDFC,Security,Variant 251: What is the 'Kill Switch'?,You can block all digital channels instantly via the IVR or specialized SMS codes in case of emergencies.

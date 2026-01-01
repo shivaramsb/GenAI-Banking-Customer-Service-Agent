@@ -1,0 +1,9 @@
+.env
+*.pem
+*.p12
+chromadb_data/
+__pycache__/
+.venv/
+venv/
+*.db
+*.sqlite

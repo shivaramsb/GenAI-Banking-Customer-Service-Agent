@@ -304,7 +304,7 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
                         fees_num = 99999
                     
                     # Student filter: Low fees (< Rs. 1000)
-                    if 'student' in query_lower or 'low income' in query_lower:
+                    if 'student' in query_lower or 'students' in query_lower or 'low income' in query_lower:
                         if fees_num <= 1000:
                             filtered_results.append(row)
                     

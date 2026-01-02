@@ -32,7 +32,7 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # Check for greetings
     if query_lower in ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'namaste']:
         return {
-            "text": "Hello! 👋 I can help you with banking products. Try: 'List all HDFC credit cards' or 'Best card for students'",
+            "text": "Hello! 👋 I can help you with banking products.",
             "source": "Greeting",
             "data": [],
             "metadata": {}
@@ -48,7 +48,7 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # Reject gibberish (no context + very short)
     if not has_context and len(query_lower.split()) <= 3:
         return {
-            "text": "❓ I didn't understand that. I'm a banking assistant.\n\nTry: 'How many HDFC credit cards?' or 'List all SBI loans'",
+            "text": "❓ I didn't understand that. I'm a banking assistant.",
             "source": "Invalid Query",
             "data": [],
             "metadata": {}
@@ -120,10 +120,14 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # CRITICAL: Check if this is a COUNT query BEFORE applying truncation logic
     is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])
     
+    # Check if this is a RECOMMENDATION query (should use sql_tool's filtering)
+    is_recommendation = any(word in query_lower for word in ['best', 'recommend', 'suggest', 'good for', 'suitable'])
+    
     # CRITICAL FIX: Force Python formatting for large result sets (>10 products)
     # This prevents LLM truncation regardless of query phrasing
     # BUT skip for COUNT queries (they should return a number, not a list)
-    if len(product_results) > 10 and not is_count_query:
+    # AND skip for RECOMMENDATION queries (they have their own filtering logic)
+    if len(product_results) > 10 and not is_count_query and not is_recommendation:
         is_comprehensive_list = True
         logging.info(f"Forcing Python formatting for {len(product_results)} products to prevent truncation")
     

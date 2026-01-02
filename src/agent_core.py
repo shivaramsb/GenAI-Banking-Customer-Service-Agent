@@ -26,6 +26,34 @@ def process_query(user_query, user_id="guest", chat_history=None):
     """
     logging.info(f"Processing query: {user_query}")
     
+    # === QUERY VALIDATION ===
+    query_lower = user_query.lower().strip()
+    
+    # Check for greetings
+    if query_lower in ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'namaste']:
+        return {
+            "text": "Hello! 👋 I can help you with banking products. Try: 'List all HDFC credit cards' or 'Best card for students'",
+            "source": "Greeting",
+            "data": [],
+            "metadata": {}
+        }
+    
+    # Check if query has banking context
+    banking_keywords = [
+        'card', 'credit', 'debit', 'loan', 'account', 'bank', 
+        'hdfc', 'sbi', 'how', 'what', 'best', 'compare', 'list', 'show'
+    ]
+    has_context = any(kw in query_lower for kw in banking_keywords)
+    
+    # Reject gibberish (no context + very short)
+    if not has_context and len(query_lower.split()) <= 3:
+        return {
+            "text": "❓ I didn't understand that. I'm a banking assistant.\n\nTry: 'How many HDFC credit cards?' or 'List all SBI loans'",
+            "source": "Invalid Query",
+            "data": [],
+            "metadata": {}
+        }
+    
     # === MULTI-SOURCE RETRIEVAL ===
     # Search ALL sources in parallel (SQL + FAQ)
     # For comprehensive queries, increase max_results to avoid truncation

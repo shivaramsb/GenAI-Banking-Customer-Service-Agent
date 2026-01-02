@@ -89,9 +89,21 @@ def process_csv_files():
                     logging.warning(f"Skipping row - Missing required fields (bank_name, category, or product_name)")
                     continue
                 
-                # Extract attributes (all columns NOT in the mapping)
-                mapped_csv_cols = set(reverse_mapping.values())
+                # Build attributes JSON - include ALL product details
                 attributes = {}
+                
+                # Add core product fields to attributes
+                if mapped_data.get('features'):
+                    attributes['features'] = str(mapped_data['features'])
+                if mapped_data.get('fees'):
+                    attributes['fees'] = str(mapped_data['fees'])
+                if mapped_data.get('interest_rate'):
+                    attributes['interest_rate'] = str(mapped_data['interest_rate'])
+                if mapped_data.get('eligibility'):
+                    attributes['eligibility'] = str(mapped_data['eligibility'])
+                
+                # Also add any EXTRA columns not in the core mapping
+                mapped_csv_cols = set(reverse_mapping.values())
                 for col in df.columns:
                     if col not in mapped_csv_cols and row.get(col) is not None:
                         # Convert to snake_case for consistency

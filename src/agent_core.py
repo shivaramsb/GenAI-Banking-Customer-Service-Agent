@@ -31,7 +31,17 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # For comprehensive queries, increase max_results to avoid truncation
     query_lower = user_query.lower().strip()
     is_comprehensive = any(phrase in query_lower for phrase in ['all', 'list all', 'explain all'])
-    max_results = 50 if is_comprehensive else 15
+    
+    # FIX: COUNT queries need all results, not max_results=15
+    is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])
+    
+    # Set appropriate max_results
+    if is_count_query:
+        max_results = 100  # Get all products for count queries
+    elif is_comprehensive:
+        max_results = 50  #Get all for comprehensive lists
+    else:
+        max_results = 15  # Default for focused queries
     
     retrieval_response = retriever.retrieve(user_query, max_results=max_results, chat_history=chat_history)
     results = retrieval_response['results']
@@ -90,32 +100,54 @@ def process_query(user_query, user_id="guest", chat_history=None):
         logging.info(f"Forcing Python formatting for {len(product_results)} products to prevent truncation")
     
     if is_comprehensive_list and len(product_results) > 5:
-        # User wants a comprehensive list - format directly to guarantee completeness
+        # === PYTHON FORMATTING for comprehensive lists ===
+        # Check if user wants detailed explanation or just a list
+        query_lower = user_query.lower()
+        wants_details = 'explain' in query_lower or 'detail' in query_lower or 'tell me about' in query_lower
         
-        response_text = f"**Here are ALL {len(product_results)} products found:**\n\n"
-        
-        for i, result in enumerate(product_results, 1):
-            product = result['raw_data']
+        if wants_details:
+            # Show full details
+            formatted_text = f"Here are ALL {len(product_results)} products with full details:\n\n"
             
-            # Parse attributes
-            attrs = product.get('attributes', {})
-            if isinstance(attrs, str):
-                try:
-                    attrs = json.loads(attrs)
-                except:
-                    attrs = {}
-            
-            response_text += f"{i}. **{product.get('product_name', 'Unknown')}** ({product.get('category', 'N/A')})\n"
-            response_text += f"   - **Bank**: {product.get('bank_name', 'N/A')}\n"
-            response_text += f"   - **Fees**: {attrs.get('fees', 'N/A')}\n"
-            response_text += f"   - **Features**: {attrs.get('features', 'N/A')}\n"
-            response_text += f"   - **Eligibility**: {attrs.get('eligibility', 'N/A')}\n"
-            if attrs.get('interest_rate'):
-                response_text += f"   - **Interest Rate**: {attrs.get('interest_rate')}\n"
-            response_text += "\n"
+            for i, result in enumerate(product_results, 1):
+                product = result.get('raw_data', {})
+                
+                # Parse attributes JSON if it's a string
+                attrs = product.get('attributes', {})
+                if isinstance(attrs, str):
+                    try:
+                        import json
+                        attrs = json.loads(attrs)
+                    except:
+                        attrs = {}
+                
+                # Extract details from attributes
+                bank = product.get('bank_name', 'HDFC')  # Default to bank from query
+                name = product.get('product_name', 'Unknown')
+                category = product.get('category', 'N/A')
+                fees = attrs.get('fees', 'N/A')
+                features = attrs.get('features', 'N/A')
+                eligibility = attrs.get('eligibility', 'N/A')
+                interest_rate = attrs.get('interest_rate', 'N/A')
+                
+                formatted_text += f"{i}. **{name}**\n"
+                formatted_text += f"   - Bank: {bank}\n"
+                formatted_text += f"   - Fees: {fees}\n"
+                formatted_text += f"   - Features: {features}\n"
+                formatted_text += f"   - Eligibility: {eligibility}\n"
+                if interest_rate != 'N/A':
+                    formatted_text += f"   - Interest Rate: {interest_rate}\n"
+                formatted_text += "\n"
+        else:
+            # Just show concise list of names
+            formatted_text = f"Here are ALL {len(product_results)} products:\n\n"
+            for i, result in enumerate(product_results, 1):
+                product = result.get('raw_data', {})
+                name = product.get('product_name', 'Unknown')
+                formatted_text += f"{i}. {name}\n"
         
         return {
-            "text": response_text,
+            "text": formatted_text,
             "source": f"Multi-Source ({metadata['sql_count']} products, {metadata['faq_count']} FAQs)",
             "data": [r['raw_data'] for r in product_results],
             "metadata": metadata

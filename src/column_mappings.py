@@ -18,13 +18,13 @@ DEFAULT_COLUMN_MAPPING = {
 CUSTOM_COLUMN_MAPPINGS = {
     # Example 1: Your bank uses different naming
     'ICICI': {
-        'Bank': 'bank_name',           # Your CSV has "Bank" → maps to "bank_name"
-        'Type': 'category',            # Your CSV has "Type" → maps to "category"
-        'Name': 'product_name',        # Your CSV has "Name" → maps to "product_name"
-        'Benefits': 'features',        # Your CSV has "Benefits" → maps to "features"
-        'Annual Fee': 'fees',          # Your CSV has "Annual Fee" → maps to "fees"
-        'Rate': 'interest_rate',       # Your CSV has "Rate" → maps to "interest_rate"
-        'Requirements': 'eligibility'  # Your CSV has "Requirements" → maps to "eligibility"
+        'Bank': 'bank_name',           
+        'Type': 'category',            
+        'Name': 'product_name',        
+        'Benefits': 'features',        
+        'Annual Fee': 'fees',          
+        'Rate': 'interest_rate',       
+        'Requirements': 'eligibility'  
     },
     
     # Example 2: Another bank with completely different schema

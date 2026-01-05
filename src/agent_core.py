@@ -77,6 +77,30 @@ def process_query(user_query, user_id="guest", chat_history=None):
     
     logging.info(f"Retrieved {len(results)} results from {metadata['sources_searched']}")
     
+    # === SMART SUGGESTIONS FOR FAILED COMPARISONS ===
+    # Check this BEFORE the early return for no results
+    query_lower = user_query.lower().strip()
+    is_comparison = any(word in query_lower for word in ['compare', 'vs', 'versus', 'difference between', 'better than'])
+    
+    if is_comparison and not results:
+        # No products found for comparison - suggest similar names
+        suggestion_text = "❓ I couldn't find the products you're trying to compare.\n\n"
+        suggestion_text += "💡 **Tips for better comparisons:**\n"
+        suggestion_text += "1. Use full product names (e.g., 'HDFC Millennia Credit Card')\n"
+        suggestion_text += "2. Try: 'List all HDFC credit cards' to see available products\n"
+        suggestion_text += "3. Or ask: 'Best credit card for students'\n\n"
+        suggestion_text += "**Popular comparisons:**\n"
+        suggestion_text += "• HDFC Millennia vs HDFC Regalia Gold\n"
+        suggestion_text += "• HDFC Swiggy vs SBI SimplySave\n"
+        suggestion_text += "• HDFC Infinia Metal vs SBI Aurum"
+        
+        return {
+            "text": suggestion_text,
+            "source": "Comparison Help",
+            "data": [],
+            "metadata": metadata
+        }
+    
     # Check if we have any results
     if not results:
         # No results found

@@ -189,6 +189,37 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # Check if this is a comparison query
     is_comparison = any(word in query_lower for word in ['compare', 'vs', 'versus', 'difference between', 'better than'])
     
+    # Smart Suggestions: If comparison query but found 0-1 products, suggest correct names
+    if is_comparison and len(product_results) < 2:
+        # Extract keywords from query
+        keywords = []
+        for word in query_lower.split():
+            if word not in ['compare', 'vs', 'versus', 'difference', 'between', 'and', 'the', 'a', 'an', 'card', 'loan']:
+                keywords.append(word)
+        
+        # Search for similar product names
+        all_products = [r.get('raw_data', {}) for r in results if r.get('type') == 'product']
+        suggestions = []
+        
+        for keyword in keywords[:3]:  # Check first 3 keywords
+            for product in all_products[:20]:  # Check first 20 products
+                name = product.get('product_name', '').lower()
+                if keyword in name and product.get('product_name') not in suggestions:
+                    suggestions.append(product.get('product_name'))
+        
+        if suggestions:
+            suggestion_text = "❓ I couldn't find enough products to compare. Did you mean one of these?\n\n"
+            for i, name in enumerate(suggestions[:5], 1):
+                suggestion_text += f"{i}. {name}\n"
+            suggestion_text += "\n💡 Try: \"Compare " + " vs ".join(suggestions[:2]) + "\""
+            
+            return {
+                "text": suggestion_text,
+                "source": "Comparison Suggestions",
+                "data": [],
+                "metadata": metadata
+            }
+    
     if is_comparison and 2 <= len(product_results) <= 3:
         # Format as comparison table
         import json

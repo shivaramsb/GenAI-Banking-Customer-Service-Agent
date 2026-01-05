@@ -185,6 +185,83 @@ def process_query(user_query, user_id="guest", chat_history=None):
             "metadata": metadata
         }
     
+    # === COMPARISON TABLE FORMATTING ===
+    # Check if this is a comparison query
+    is_comparison = any(word in query_lower for word in ['compare', 'vs', 'versus', 'difference between', 'better than'])
+    
+    if is_comparison and 2 <= len(product_results) <= 3:
+        # Format as comparison table
+        import json
+        
+        # Extract product data
+        products_data = []
+        for result in product_results[:3]:  # Max 3 products
+            product = result.get('raw_data', {})
+            
+            # Parse attributes
+            attrs = product.get('attributes', {})
+            if isinstance(attrs, str):
+                try:
+                    attrs = json.loads(attrs)
+                except:
+                    attrs = {}
+            
+            products_data.append({
+                'name': product.get('product_name', 'Unknown'),
+                'bank': product.get('bank_name', 'N/A'),
+                'fees': attrs.get('fees', 'N/A'),
+                'features': attrs.get('features', 'N/A'),
+                'eligibility': attrs.get('eligibility', 'N/A'),
+                'interest_rate': attrs.get('interest_rate', 'N/A')
+            })
+        
+        # Build comparison table
+        table_text = "## Product Comparison\n\n"
+        
+        # Header row
+        table_text += "| Feature | "
+        table_text += " | ".join([p['name'] for p in products_data])
+        table_text += " |\n"
+        
+        # Separator row
+        table_text += "|" + "---|" * (len(products_data) + 1) + "\n"
+        
+        # Bank row
+        table_text += "| **Bank** | "
+        table_text += " | ".join([p['bank'] for p in products_data])
+        table_text += " |\n"
+        
+        # Fees row
+        table_text += "| **Annual Fees** | "
+        table_text += " | ".join([p['fees'] for p in products_data])
+        table_text += " |\n"
+        
+        # Features row (truncate if too long)
+        table_text += "| **Key Features** | "
+        table_text += " | ".join([p['features'][:50] + "..." if len(p['features']) > 50 else p['features'] for p in products_data])
+        table_text += " |\n"
+        
+        # Eligibility row
+        table_text += "| **Eligibility** | "
+        table_text += " | ".join([p['eligibility'] for p in products_data])
+        table_text += " |\n"
+        
+        # Interest rate row (if applicable)
+        if any(p['interest_rate'] != 'N/A' for p in products_data):
+            table_text += "| **Interest Rate** | "
+            table_text += " | ".join([p['interest_rate'] for p in products_data])
+            table_text += " |\n"
+        
+        table_text += "\n---\n"
+        table_text += f"💡 **Quick Tip:** Choose based on your spending pattern and income level."
+        
+        return {
+            "text": table_text,
+            "source": f"Product Comparison ({len(products_data)} products)",
+            "data": [r['raw_data'] for r in product_results],
+            "metadata": metadata
+        }
+    
     # === SYNTHESIZE FROM ALL SOURCES ===
     # Build context from all retrieved results
     # Increase to 20 to handle comprehensive queries like "all SBI credit cards"

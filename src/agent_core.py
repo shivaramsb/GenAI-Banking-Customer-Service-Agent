@@ -58,7 +58,13 @@ def process_query(user_query, user_id="guest", chat_history=None):
     # Search ALL sources in parallel (SQL + FAQ)
     # For comprehensive queries, increase max_results to avoid truncation
     query_lower = user_query.lower().strip()
-    is_comprehensive = any(phrase in query_lower for phrase in ['all', 'list all', 'explain all'])
+    
+    # FIX: Improved detection for comprehensive listing queries
+    # Catch both explicit ("list all", "explain all") and implicit ("what are the", "which") queries
+    is_comprehensive = any(phrase in query_lower for phrase in [
+        'all', 'list all', 'explain all', 'list of', 'show me all',
+        'what are the', 'what are all', 'which', 'show me the'
+    ])
     
     # FIX: COUNT queries need all results, not max_results=15
     is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])
@@ -67,7 +73,7 @@ def process_query(user_query, user_id="guest", chat_history=None):
     if is_count_query:
         max_results = 100  # Get all products for count queries
     elif is_comprehensive:
-        max_results = 50  #Get all for comprehensive lists
+        max_results = 50  # Get all for comprehensive lists
     else:
         max_results = 15  # Default for focused queries
     

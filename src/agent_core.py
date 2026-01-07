@@ -15,16 +15,29 @@ from src.config import (
     get_banks_short, get_categories_display
 )
 from src.multi_retriever import MultiSourceRetriever
+from src.chatgpt_agent import chatgpt_query  # Import ChatGPT-style handler
 
 # Initialize OpenAI and Multi-Source Retriever
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
 
-def process_query(user_query, user_id="guest", chat_history=None):
+def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     """
-    Main Orchestrator - Uses Multi-Source Retrieval (no routing needed).
+    Main Orchestrator with Hybrid Mode Support.
+    
+    Args:
+        user_query: User's question
+        user_id: User identifier
+        chat_history: Conversation history
+        mode: Response mode - "auto", "structured", or "chatgpt"
+            - auto: Intelligently chooses based on query type (default)
+            - structured: Always use structured responses (guaranteed accuracy)
+            - chatgpt: Always use ChatGPT-style conversations
+    
+    Returns:
+        Response dict with text, source, data, metadata
     """
-    logging.info(f"Processing query: {user_query}")
+    logging.info(f"Processing query: {user_query} [mode={mode}]")
     
     # === QUERY VALIDATION ===
     query_lower = user_query.lower().strip()
@@ -54,17 +67,79 @@ def process_query(user_query, user_id="guest", chat_history=None):
             "metadata": {}
         }
     
+    # FIX: Detect overly generic single-word queries
+    # Queries like "bank", "card", "loan" alone are too vague and lead to incomplete results
+    generic_words = ['bank', 'card', 'loan', 'product', 'account', 'banking']
+    query_words = query_lower.split()
+    
+    if len(query_words) == 1 and query_lower in generic_words:
+        return {
+            "text": f"💡 Could you be more specific?\n\n**Try asking:**\n• 'HDFC credit cards'\n• 'List all {SUPPORTED_BANKS[0]} loans'\n• 'What are the products?'\n\n**Supported banks:** {get_banks_short()}",
+            "source": "Clarification Needed",
+            "data": [],
+            "metadata": {}
+        }
+    
+    # === HYBRID MODE ROUTING ===
+    # Auto mode: Intelligently choose structured vs ChatGPT based on query type
+    if mode == "auto":
+        # Accuracy-critical queries → use structured mode for guaranteed correctness
+        accuracy_critical_keywords = [
+            'how many', 'count', 'number of',  # Count queries
+            'list all', 'explain all', 'show all', 'give me all',  # Complete listing
+            'all the', 'every', 'complete list'
+        ]
+        
+        needs_structured = any(keyword in query_lower for keyword in accuracy_critical_keywords)
+        
+        if needs_structured:
+            logging.info("→ AUTO MODE: Using STRUCTURED (accuracy-critical query)")
+            selected_mode = "structured"
+        else:
+            logging.info("→ AUTO MODE: Using CHATGPT (conversational query)")
+            selected_mode = "chatgpt"
+    else:
+        selected_mode = mode
+        logging.info(f"→ MANUAL MODE: {selected_mode.upper()}")
+    
+    # Route to appropriate handler
+    if selected_mode == "chatgpt":
+        # Use ChatGPT-style conversational handler
+        return chatgpt_query(user_query, chat_history)
+    
+    # Otherwise, continue with structured mode below
+    # (All the existing agent_core logic remains unchanged)
+    
     # === MULTI-SOURCE RETRIEVAL ===
     # Search ALL sources in parallel (SQL + FAQ)
     # For comprehensive queries, increase max_results to avoid truncation
     query_lower = user_query.lower().strip()
     
     # FIX: Improved detection for comprehensive listing queries
-    # Catch both explicit ("list all", "explain all") and implicit ("what are the", "which") queries
-    is_comprehensive = any(phrase in query_lower for phrase in [
+    # Strategy: Detect both explicit listing phrases AND implicit category queries
+    
+    # Explicit listing phrases
+    explicit_list_phrases = [
         'all', 'list all', 'explain all', 'list of', 'show me all',
-        'what are the', 'what are all', 'which', 'show me the'
-    ])
+        'what are the', 'what are all', 'which', 'show me',  # Changed "show me the" to "show me"
+        'give me', 'tell me about'
+    ]
+    
+    # Product category keywords that typically expect comprehensive results
+    # e.g., "hdfc credit cards" is implicitly asking for ALL hdfc credit cards
+    product_keywords = [
+        'credit card', 'debit card', 'loan', 'account', 
+        'cards', 'loans', 'products'  # Plural forms often mean "all"
+    ]
+    
+    has_explicit_phrase = any(phrase in query_lower for phrase in explicit_list_phrases)
+    has_product_plural = any(keyword in query_lower for keyword in product_keywords)
+    
+    # If query contains a bank name + product category keyword, it's likely asking for all
+    # e.g., "hdfc credit cards", "sbi loans"
+    has_bank_name = any(bank.lower() in query_lower for bank in SUPPORTED_BANKS)
+    
+    is_comprehensive = has_explicit_phrase or (has_bank_name and has_product_plural)
     
     # FIX: COUNT queries need all results, not max_results=15
     is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])

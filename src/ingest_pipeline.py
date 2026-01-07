@@ -48,7 +48,7 @@ def process_csv_files():
     
     for file_path in product_csvs:
         filename = os.path.basename(file_path)
-        logging.info(f"📂 Processing CSV: {filename}...")
+        logging.info(f"Processing CSV: {filename}...")
         
         # Extract bank name from filename for column mapping
         bank_name_from_file = filename.split('_')[0].upper()
@@ -164,7 +164,7 @@ def extract_product_info_llm(text_content):
         result = response.choices[0].message.content
         return json.loads(result)
     except Exception as e:
-        logging.error(f"⚠️ Extraction Error: {e}")
+        logging.error(f"Extraction Error: {e}")
         return None
 
 def process_unstructured_docs():
@@ -237,17 +237,17 @@ def process_faqs():
             logging.info(f"      Ingested {len(records)} FAQs from {filename}")
             
         except Exception as e:
-            logging.error(f"❌ Error processing FAQ {filename}: {e}", exc_info=True)
+            logging.error(f"Error processing FAQ {filename}: {e}", exc_info=True)
 
 if __name__ == "__main__":
-    logging.info("🚀 Starting Ingestion Pipeline...")
+    logging.info("Starting Ingestion Pipeline...")
     
     try:
         process_csv_files()
         process_unstructured_docs()
         process_faqs()
 
-        logging.info("✅ Ingestion Complete.")
+        logging.info("Ingestion Complete.")
         
         # Validation
         # Log statistics for each bank

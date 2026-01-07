@@ -28,6 +28,28 @@ with st.sidebar:
     
     st.divider()
     
+    # Mode Selector
+    st.subheader("🤖 Response Mode")
+    response_mode = st.radio(
+        "Choose how the assistant responds:",
+        ["Auto (Recommended)", "Structured", "ChatGPT-style"],
+        help="""
+        - **Auto**: Intelligently chooses best mode (structured for counts/lists, ChatGPT for conversations)
+        - **Structured**: Guaranteed accurate counts and complete listings
+        - **ChatGPT-style**: Natural conversations, more flexible but less predictable
+        """
+    )
+    
+    # Map display name to mode parameter
+    mode_mapping = {
+        "Auto (Recommended)": "auto",
+        "Structured": "structured",
+        "ChatGPT-style": "chatgpt"
+    }
+    selected_mode = mode_mapping[response_mode]
+    
+    st.divider()
+    
     st.subheader("🔧 Session Controls")
     if st.button("🔄 Reset Conversation", use_container_width=True):
         st.session_state.messages = []
@@ -49,9 +71,9 @@ if prompt := st.chat_input("Type your question here... e.g., 'How many SBI Cards
 
     with st.chat_message("assistant"):
         with st.spinner("Agent is thinking..."):
-            # CALL THE NEW AGENT CORE
+            # CALL THE NEW AGENT CORE WITH MODE PARAMETER
             try:
-                response_obj = process_query(prompt, chat_history=st.session_state.messages)
+                response_obj = process_query(prompt, chat_history=st.session_state.messages, mode=selected_mode)
                 
                 # Check format
                 if isinstance(response_obj, dict):

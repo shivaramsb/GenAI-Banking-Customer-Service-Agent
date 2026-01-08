@@ -106,34 +106,31 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
     context_category_filter = None
     
     if chat_history:
-        # Get last 2 turns
-        # Extract context filters from chat history
-        context_bank_filter = None
-        context_category_filter = None
+        # FIX: Only extract context from USER messages, not bot responses
+        # This prevents auto-filtering when bot mentions a bank
+        user_messages = [msg for msg in chat_history[-5:] if msg.get('role') == 'user']
         
-        if chat_history:
-            # Look through recent history for bank and category mentions
-            for msg in chat_history[-5:]:  # Check last 5 messages
-                msg_content = msg.get('content', '')
-                msg_lower = msg_content.lower()
-                
-                # Dynamic bank detection
-                for bank in SUPPORTED_BANKS:
-                    bank_lower = bank.lower()
-                    if bank_lower in msg_lower:
-                        # Check if only this bank mentioned (not others)
-                        other_banks = [b for b in SUPPORTED_BANKS if b != bank]
-                        if not any(other_b.lower() in msg_lower for other_b in other_banks):
-                            context_bank_filter = bank
-                            break
-                
-                # Category detection
-                if 'credit card' in msg_lower:
-                    context_category_filter = 'Credit Card'
-                elif 'debit card' in msg_lower:
-                    context_category_filter = 'Debit Card'
-                elif 'loan' in msg_lower:
-                    context_category_filter = 'Loan'
+        for msg in user_messages:
+            msg_content = msg.get('content', '')
+            msg_lower = msg_content.lower()
+            
+            # Dynamic bank detection - only from user's queries
+            for bank in SUPPORTED_BANKS:
+                bank_lower = bank.lower()
+                if bank_lower in msg_lower:
+                    # Check if only this bank mentioned (not others)
+                    other_banks = [b for b in SUPPORTED_BANKS if b != bank]
+                    if not any(other_b.lower() in msg_lower for other_b in other_banks):
+                        context_bank_filter = bank
+                        break
+            
+            # Category detection
+            if 'credit card' in msg_lower:
+                context_category_filter = 'Credit Card'
+            elif 'debit card' in msg_lower:
+                context_category_filter = 'Debit Card'
+            elif 'loan' in msg_lower:
+                context_category_filter = 'Loan'
 
     sql_generation_prompt = f"""
     {schema_prompt}

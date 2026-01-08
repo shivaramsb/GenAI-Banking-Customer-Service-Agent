@@ -58,8 +58,9 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     ]
     has_context = any(kw in query_lower for kw in banking_keywords)
     
-    # Reject gibberish (no context + very short)
-    if not has_context and len(query_lower.split()) <= 3:
+    # FIX: Allow short queries if there's conversation history (context-aware follow-ups)
+    # Reject gibberish only if: no banking context + no chat history + very short
+    if not has_context and not chat_history and len(query_lower.split()) <= 3:
         return {
             "text": "❓ I didn't understand that. I'm a banking assistant.",
             "source": "Invalid Query",
@@ -69,10 +70,11 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     # FIX: Detect overly generic single-word queries
     # Queries like "bank", "card", "loan" alone are too vague and lead to incomplete results
+    # BUT: Allow them if there's chat history (might be follow-up context)
     generic_words = ['bank', 'card', 'loan', 'product', 'account', 'banking']
     query_words = query_lower.split()
     
-    if len(query_words) == 1 and query_lower in generic_words:
+    if len(query_words) == 1 and query_lower in generic_words and not chat_history:
         return {
             "text": f"💡 Could you be more specific?\n\n**Try asking:**\n• 'HDFC credit cards'\n• 'List all {SUPPORTED_BANKS[0]} loans'\n• 'What are the products?'\n\n**Supported banks:** {get_banks_short()}",
             "source": "Clarification Needed",

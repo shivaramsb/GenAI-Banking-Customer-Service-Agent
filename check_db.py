@@ -1,19 +1,22 @@
 import sqlite3
 
+# Connect to the database
 conn = sqlite3.connect('banking_assistant.db')
 cursor = conn.cursor()
 
-# Count total HDFC credit cards
-cursor.execute("SELECT COUNT(*) FROM products WHERE bank_name='HDFC' AND category LIKE '%Credit Card%'")
+# Query to count debit cards
+cursor.execute("""
+    SELECT category, COUNT(*) as count 
+    FROM products 
+    WHERE category LIKE '%Debit%'
+    GROUP BY category
+""")
+
+print("Debit Card Categories:")
+for row in cursor.fetchall():
+    print(f"  {row[0]}: {row[1]} products")
+
+# Total debit cards
+cursor.execute("SELECT COUNT(*) FROM products WHERE category LIKE '%Debit%'")
 total = cursor.fetchone()[0]
-print(f"Total HDFC Credit Cards in database: {total}")
-
-# List all HDFC credit cards
-cursor.execute("SELECT product_name FROM products WHERE bank_name='HDFC' AND category LIKE '%Credit Card%' ORDER BY product_name")
-cards = cursor.fetchall()
-
-print(f"\nAll {len(cards)} HDFC Credit Cards:")
-for i, (name,) in enumerate(cards, 1):
-    print(f"{i}. {name}")
-
 conn.close()

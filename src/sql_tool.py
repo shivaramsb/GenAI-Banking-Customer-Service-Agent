@@ -104,11 +104,15 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
     history_context = ""
     context_bank_filter = None
     context_category_filter = None
+    context_product_name = None  # NEW: Track specific product mentions
     
     if chat_history:
         # FIX: Only extract context from USER messages, not bot responses
         # This prevents auto-filtering when bot mentions a bank
         user_messages = [msg for msg in chat_history[-5:] if msg.get('role') == 'user']
+        
+        # Also check the LAST bot response for product mentions
+        bot_messages = [msg for msg in chat_history[-2:] if msg.get('role') == 'assistant']
         
         for msg in user_messages:
             msg_content = msg.get('content', '')
@@ -131,6 +135,34 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
                 context_category_filter = 'Debit Card'
             elif 'loan' in msg_lower:
                 context_category_filter = 'Loan'
+            
+            # NEW: Product name extraction
+            # Look for common product name patterns
+            # E.g., "tell me about HDFC Regalia Gold"
+            if 'tell me about' in msg_lower or 'what is' in msg_lower or 'about the' in msg_lower:
+                # Extract everything after the trigger phrase
+                for trigger in ['tell me about ', 'what is ', 'about the ', 'about ']:
+                    if trigger in msg_lower:
+                        potential_product = msg_content[msg_lower.index(trigger) + len(trigger):].strip()
+                        # Clean up (remove trailing punctuation)
+                        potential_product = potential_product.rstrip('?.!,')
+                        if len(potential_product) > 3:  # Avoid short false positives
+                            context_product_name = potential_product
+                            break
+        
+        # Also check bot's last response for product name in the first sentence
+        if not context_product_name and bot_messages:
+            last_bot = bot_messages[-1].get('content', '')
+            # Look for patterns like "The HDFC Regalia Gold is..."
+            if ' is a ' in last_bot or ' is an ' in last_bot:
+                first_sentence = last_bot.split('.')[0]
+                if 'The ' in first_sentence:
+                    # Extract between "The " and " is"
+                    start = first_sentence.index('The ') + 4
+                    end = first_sentence.index(' is')
+                    if end > start:
+                        context_product_name = first_sentence[start:end].strip()
+
 
     sql_generation_prompt = f"""
     {schema_prompt}
@@ -142,10 +174,13 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
     CONTEXT FILTERS (extracted from conversation history):
     - Bank filter: {context_bank_filter if context_bank_filter else "None (search all banks)"}
     - Category filter: {context_category_filter if context_category_filter else "None (search all categories)"}
+    - Product name filter: {context_product_name if context_product_name else "None"}
     
     Generate a valid SQLite query to answer this question.
     
     CRITICAL - CONTEXT AWARENESS:
+    - If a PRODUCT NAME is in context and the user asks a vague follow-up like "what are the fees", "eligibility", "features", etc., 
+      add a WHERE clause to filter by that specific product: `WHERE product_name LIKE '%{context_product_name if context_product_name else ""}%'`
     - If the user's question contains "all", "them", "those", "these" without specifying what, USE THE CONTEXT FILTERS ABOVE
     - Example: If context shows "Bank filter: SBI" and user says "give me all information", generate: 
       `SELECT * FROM products WHERE bank_name='SBI' AND category='Credit Card'`

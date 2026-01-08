@@ -23,21 +23,22 @@ retriever = MultiSourceRetriever()
 
 def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     """
-    Main Orchestrator with Hybrid Mode Support.
+    Main Orchestrator with Intelligent Auto Mode.
+    
+    Automatically routes queries to the best handler:
+    - Accuracy-critical queries (counts, lists) → Structured mode
+    - Conversational queries → ChatGPT mode
     
     Args:
         user_query: User's question
         user_id: User identifier
         chat_history: Conversation history
-        mode: Response mode - "auto", "structured", or "chatgpt"
-            - auto: Intelligently chooses based on query type (default)
-            - structured: Always use structured responses (guaranteed accuracy)
-            - chatgpt: Always use ChatGPT-style conversations
+        mode: Always "auto" (intelligent routing)
     
     Returns:
         Response dict with text, source, data, metadata
     """
-    logging.info(f"Processing query: {user_query} [mode={mode}]")
+    logging.info(f"Processing query: {user_query}")
     
     # === QUERY VALIDATION ===
     query_lower = user_query.lower().strip()
@@ -82,27 +83,23 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
             "metadata": {}
         }
     
-    # === HYBRID MODE ROUTING ===
-    # Auto mode: Intelligently choose structured vs ChatGPT based on query type
-    if mode == "auto":
-        # Accuracy-critical queries → use structured mode for guaranteed correctness
-        accuracy_critical_keywords = [
-            'how many', 'count', 'number of',  # Count queries
-            'list all', 'explain all', 'show all', 'give me all',  # Complete listing
-            'all the', 'every', 'complete list'
-        ]
-        
-        needs_structured = any(keyword in query_lower for keyword in accuracy_critical_keywords)
-        
-        if needs_structured:
-            logging.info("→ AUTO MODE: Using STRUCTURED (accuracy-critical query)")
-            selected_mode = "structured"
-        else:
-            logging.info("→ AUTO MODE: Using CHATGPT (conversational query)")
-            selected_mode = "chatgpt"
+    # === INTELLIGENT AUTO MODE ROUTING ===
+    # Automatically choose structured vs ChatGPT based on query type
+    # Accuracy-critical queries → use structured mode for guaranteed correctness
+    accuracy_critical_keywords = [
+        'how many', 'count', 'number of',  # Count queries
+        'list all', 'explain all', 'show all', 'give me all',  # Complete listing
+        'all the', 'every', 'complete list'
+    ]
+    
+    needs_structured = any(keyword in query_lower for keyword in accuracy_critical_keywords)
+    
+    if needs_structured:
+        logging.info("→ AUTO MODE: Using STRUCTURED (accuracy-critical query)")
+        selected_mode = "structured"
     else:
-        selected_mode = mode
-        logging.info(f"→ MANUAL MODE: {selected_mode.upper()}")
+        logging.info("→ AUTO MODE: Using CHATGPT (conversational query)")
+        selected_mode = "chatgpt"
     
     # Route to appropriate handler
     if selected_mode == "chatgpt":

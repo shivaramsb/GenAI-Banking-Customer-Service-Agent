@@ -224,8 +224,10 @@ def process_all_files():
 
 def process_faqs_dynamic():
     """
-    Process FAQ files from organized faqs folder
+    Process FAQ files with intelligent column mapping and extra fields support
     """
+    from src.dynamic_faq_utils import fuzzy_map_faq_columns, extract_faq_with_extra_columns
+    
     faq_files = glob.glob(os.path.join(FAQS_DIR, "*.csv"))
     logging.info(f"\n📚 Processing {len(faq_files)} FAQ files...")
     
@@ -233,15 +235,41 @@ def process_faqs_dynamic():
     
     for file_path in faq_files:
         filename = os.path.basename(file_path)
+        logging.info(f"\n  📄 {filename}")
+        
         try:
             df = pd.read_csv(file_path)
-            records = df.to_dict(orient='records')
+            logging.info(f"     Loaded {len(df)} FAQs, {len(df.columns)} columns")
+            
+            # Intelligently map columns
+            column_mapping, confidence = fuzzy_map_faq_columns(df.columns.tolist())
+            logging.info(f"     Mapping confidence: {confidence*100:.0f}%")
+            
+            if confidence < 0.5:  # Need at least question and answer
+                logging.error(f"  ❌ {filename}: Mapping confidence too low")
+                logging.error(f"     Detected mapping: {column_mapping}")
+                continue
+            
+            # Extract FAQs with extra fields
+            records = []
+            for _, row in df.iterrows():
+                row = row.where(pd.notnull(row), None)
+                faq_data = extract_faq_with_extra_columns(row, column_mapping)
+                
+                # Validate required fields
+                if not faq_data.get('question') or not faq_data.get('answer'):
+                    continue
+                    
+                records.append(faq_data)
+            
+            # Upsert to ChromaDB
             vector_db.upsert_faqs(records)
-            logging.info(f"  ✅ {filename}: {len(records)} FAQs")
+            logging.info(f"  ✅ {filename}: {len(records)} FAQs ingested")
+            
         except Exception as e:
             logging.error(f"  ❌ {filename}: {e}")
     
-    logging.info("✅ FAQ ingestion complete\n")
+    logging.info("\n✅ FAQ ingestion complete\n")
 
 
 if __name__ == "__main__":

@@ -23,12 +23,16 @@ class FAQVectorDB:
 
     def upsert_faqs(self, faqs_list):
         """
-        Ingests a list of FAQ dictionaries.
-        Expected format:
+        Ingests a list of FAQ dictionaries with support for extra fields.
+        
+        Required format:
         [
             {'bank_name': 'SBI', 'category': 'Loans', 'question': '...', 'answer': '...'},
             ...
         ]
+        
+        Extra fields (optional):
+        - Any additional fields are stored in metadata for filtering/display
         """
         if not faqs_list:
             return
@@ -42,22 +46,30 @@ class FAQVectorDB:
             doc_id = str(uuid.uuid4())
             ids.append(doc_id)
             
-            # Content to embed: "Question: ... Answer: ..." or just Question?
-            # Usually embedding the Question is best for retrieval, 
-            # but sometimes mixing Q and A helps. 
-            # Let's embed "Question: {q} \n Answer: {a}" to capture full context.
-            # OR just Question for finding the right FAQ.
-            # Let's try: Question + Answer context.
-            text_content = f"Question: {faq.get('question', '')}\nAnswer: {faq.get('answer', '')}"
+            # Content to embed: Question + Answer for full context
+            text_content = f"Question: {faq.get('question', '')}\\nAnswer: {faq.get('answer', '')}"
             documents.append(text_content)
             
-            # Metadata for filtering
-            metadatas.append({
+            # Build metadata - core fields + any extras
+            metadata = {
                 "bank_name": faq.get("bank_name", "Unknown"),
                 "category": faq.get("category", "General"),
                 "question": faq.get("question", ""), 
-                "answer": faq.get("answer", "") # Store answer in metadata for retrieval display
-            })
+                "answer": faq.get("answer", "")
+            }
+            
+            # Add extra fields if present
+            if 'extra_fields' in faq:
+                # Merge extra fields into metadata
+                metadata.update(faq['extra_fields'])
+            
+            # Also capture any other top-level keys not in core fields
+            core_keys = {'bank_name', 'category', 'question', 'answer', 'extra_fields'}
+            for key, value in faq.items():
+                if key not in core_keys and value is not None:
+                    metadata[key] = str(value)
+            
+            metadatas.append(metadata)
             
         # Upsert in batches to avoid hitting limits
         batch_size = 100

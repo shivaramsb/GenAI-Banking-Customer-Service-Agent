@@ -4,5 +4,8 @@ openai
 chromadb
 pandas
 python-dotenv
+fuzzywuzzy
+python-Levenshtein
+openpyxl
 
 #.\venv\Scripts\activate

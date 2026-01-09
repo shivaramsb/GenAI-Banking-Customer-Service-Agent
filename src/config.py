@@ -10,6 +10,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).parent.parent.resolve()
 
 DATA_DIR = BASE_DIR / "data"
+PRODUCTS_DIR = DATA_DIR / "products"  # NEW: Organized products folder
+FAQS_DIR = DATA_DIR / "faqs"          # NEW: Organized FAQs folder
 DOCS_DIR = DATA_DIR / "docs"
 CHROMADB_DIR = BASE_DIR / "chromadb_data"
 
@@ -32,14 +34,44 @@ EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 CHROMA_COLLECTION_NAME = "bank_faqs"
 
 # --- Banking Configuration ---
-# Centralized configuration for supported banks and products
-SUPPORTED_BANKS = ['SBI', 'HDFC']
+# Dynamic configuration - queries database for actual banks/categories
 
-PRODUCT_CATEGORIES = ['Credit Card', 'Debit Card', 'Loan', 'Scheme']
+def get_supported_banks_from_db():
+    """Query database for all banks with products"""
+    try:
+        from src.database import DatabaseManager
+        db = DatabaseManager()
+        result = db.execute_raw_query("SELECT DISTINCT bank_name FROM products WHERE bank_name IS NOT NULL ORDER BY bank_name")
+        banks = [row['bank_name'] for row in result]
+        return banks if banks else ['SBI', 'HDFC']  # Fallback to defaults
+    except:
+        # Fallback if DB not initialized yet
+        return ['SBI', 'HDFC']
 
+def get_product_categories_from_db():
+    """Query database for all product categories"""
+    try:
+        from src.database import DatabaseManager
+        db = DatabaseManager()
+        result = db.execute_raw_query("SELECT DISTINCT category FROM products WHERE category IS NOT NULL ORDER BY category")
+        categories = [row['category'] for row in result]
+        return categories if categories else ['Credit Card', 'Debit Card', 'Loan', 'Scheme']
+    except:
+        # Fallback if DB not initialized yet
+        return ['Credit Card', 'Debit Card', 'Loan', 'Scheme']
+
+# Dynamic lists - update by re-running ingestion
+SUPPORTED_BANKS = get_supported_banks_from_db()
+PRODUCT_CATEGORIES = get_product_categories_from_db()
+
+# Display names - add new banks here manually if needed
 BANK_DISPLAY_NAMES = {
     'SBI': 'State Bank of India',
-    'HDFC': 'HDFC Bank'
+    'HDFC': 'HDFC Bank',
+    'ICICI': 'ICICI Bank',
+    'Axis': 'Axis Bank',
+    'Kotak': 'Kotak Mahindra Bank',
+    'IndusInd': 'IndusInd Bank'
 }
 
 # --- Helper Functions ---

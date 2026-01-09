@@ -151,6 +151,27 @@ class DatabaseManager:
         cursor.execute(query, params)
         count = cursor.fetchone()[0]
         return count
+    
+    def execute_raw_query(self, query, params=None):
+        """
+        Execute a raw SQL query and return results as list of dicts
+        Used for dynamic queries in config and reporting
+        """
+        cursor = self._connection.cursor()
+        cursor.execute(query, params or [])
+        
+        # Get column names from cursor description
+        columns = [desc[0] for desc in cursor.description] if cursor.description else []
+        
+        # Fetch all results
+        rows = cursor.fetchall()
+        
+        # Convert to list of dicts
+        results = []
+        for row in rows:
+            results.append(dict(zip(columns, row)))
+        
+        return results
 
 # Initialize DB on import
 if __name__ == "__main__":

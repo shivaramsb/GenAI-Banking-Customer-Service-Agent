@@ -16,45 +16,62 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Custom CSS for Professional Look ---
+# --- Custom CSS for Professional Look (Dark/Light Mode Compatible) ---
 st.markdown("""
 <style>
-    /* Main container */
+    /* Main container - compact */
     .main {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        background-attachment: fixed;
+        padding: 1rem;
     }
     
-    /* Chat container */
+    /* Chat message styling - COMPACT */
     .stChatMessage {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 15px;
-        margin: 10px 0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 8px 12px !important;
+        margin: 6px 0 !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
     }
     
-    /* Header styling */
+    /* User message - subtle blue tint */
+    .stChatMessage[data-testid="user-message"] {
+        background: rgba(79, 172, 254, 0.1);
+        border-left: 3px solid #4facfe;
+    }
+    
+    /* Assistant message - neutral background */
+    .stChatMessage[data-testid="assistant-message"] {
+        background: rgba(100, 100, 100, 0.05);
+        border-left: 3px solid #00f2fe;
+    }
+    
+    /* Message content compact */
+    .stChatMessage p {
+        margin-bottom: 0.3rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Header styling - compact */
     h1 {
-        color: #ffffff;
         font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.5rem;
     }
     
-    /* Sidebar */
-    .css-1d391kg {
-        background: rgba(255, 255, 255, 0.95);
+    /* Caption compact */
+    .stCaption {
+        margin-top: 0 !important;
+        font-size: 0.85rem !important;
     }
     
-    /* Input box */
+    /* Input box styling */
     .stChatInputContainer {
-        background: rgba(255, 255, 255, 0.9);
         border-radius: 25px;
-        padding: 10px;
+        padding: 5px;
     }
     
-    /* Buttons */
-    .stButton > button {
+    /* Primary buttons - blue gradient */
+    .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         color: white;
         border: none;
@@ -62,29 +79,90 @@ st.markdown("""
         padding: 10px 25px;
         font-weight: 600;
         transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
     }
     
-    .stButton > button:hover {
+    .stButton > button[kind="primary"]:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
     }
     
-    /* Feedback buttons */
-    .feedback-container {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-        justify-content: flex-end;
+    /* Regular buttons - COMPACT */
+    .stButton > button {
+        border-radius: 15px;
+        padding: 4px 12px !important;
+        font-weight: 500;
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
+        min-height: 30px !important;
     }
     
-    /* Caption text */
-    .caption-text {
-        color: #ffffff;
-        font-size: 1.1em;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    /* Metric styling */
+    [data-testid="stMetricValue"] {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #4facfe;
+    }
+    
+    /* Sidebar styling - STICKY */
+    section[data-testid="stSidebar"] {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Sidebar content wrapper */
+    section[data-testid="stSidebar"] > div {
+        position: sticky;
+        top: 0;
+    }
+    
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    
+    /* Divider line - compact */
+    hr {
+        margin: 1rem 0;
+        opacity: 0.2;
+    }
+    
+    /* Column layout - reduce gaps */
+    [data-testid="column"] {
+        gap: 0.5rem !important;
+    }
+    
+    /* Success/Error messages - compact */
+    .stSuccess, .stError {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.85rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
+# --- Helper Functions ---
+def log_feedback(message_idx, feedback_type, message_content):
+    """Log user feedback for analytics"""
+    try:
+        log_file = "feedback_log.csv"
+        file_exists = os.path.isfile(log_file)
+        
+        with open(log_file, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(['timestamp', 'message_idx', 'feedback_type', 'message_preview'])
+            writer.writerow([
+                datetime.now().isoformat(),
+                message_idx,
+                feedback_type,
+                message_content[:100]  # First 100 chars
+            ])
+    except Exception as e:
+        pass  # Silent fail for logging
 
 # --- Initialize Session State ---
 if "messages" not in st.session_state:
@@ -97,7 +175,7 @@ if "feedback" not in st.session_state:
 col1, col2 = st.columns([3, 1])
 with col1:
     st.title("💼 BankWise")
-    st.markdown('<p class="caption-text">Your Intelligent Banking Advisor • Instant Answers • Smart Recommendations</p>', unsafe_allow_html=True)
+    st.caption("Your Intelligent Banking Advisor • Instant Answers • Smart Recommendations")
 
 with col2:
     st.markdown("###")
@@ -156,28 +234,28 @@ for idx, msg in enumerate(st.session_state.messages):
     with st.chat_message(msg["role"], avatar="🧑‍💼" if msg["role"] == "user" else "🤖"):
         st.markdown(msg["content"])
         
-        # Show feedback buttons for assistant messages
+        # Show inline feedback buttons for assistant messages
         if msg["role"] == "assistant":
             feedback_key = f"feedback_{idx}"
             
-            col1, col2, col3 = st.columns([10, 1, 1])
-            with col2:
-                if st.button("👍", key=f"thumbs_up_{idx}", help="Helpful answer"):
-                    st.session_state.feedback[idx] = "positive"
-                    # Log feedback (could save to database)
-                    log_feedback(idx, "positive", msg["content"])
-                    st.success("Thanks for your feedback!")
-                    
-            with col3:
-                if st.button("👎", key=f"thumbs_down_{idx}", help="Not helpful"):
-                    st.session_state.feedback[idx] = "negative"
-                    log_feedback(idx, "negative", msg["content"])
-                    st.error("Thanks! We'll improve our answers.")
-            
-            # Show if feedback was given
-            if idx in st.session_state.feedback:
-                feedback_icon = "✅ Helpful" if st.session_state.feedback[idx] == "positive" else "❌ Not helpful"
-                st.caption(f"*{feedback_icon}*")
+            # Check if feedback already given
+            if idx not in st.session_state.feedback:
+                # Show buttons inline
+                col1, col2 = st.columns([1, 11])
+                with col1:
+                    if st.button("👍", key=f"up_{idx}", help="Helpful"):
+                        st.session_state.feedback[idx] = "positive"
+                        log_feedback(idx, "positive", msg["content"])
+                        st.rerun()
+                with col2:
+                    if st.button("👎", key=f"down_{idx}", help="Not helpful"):
+                        st.session_state.feedback[idx] = "negative"
+                        log_feedback(idx, "negative", msg["content"])
+                        st.rerun()
+            else:
+                # Show feedback status compactly
+                status = "✅ Helpful" if st.session_state.feedback[idx] == "positive" else "❌ Not helpful"
+                st.caption(f"*{status}*")
 
 # --- Chat Input ---
 if prompt := st.chat_input("💬 Ask me anything about banking products, loans, accounts, or services..."):
@@ -224,26 +302,6 @@ if prompt := st.chat_input("💬 Ask me anything about banking products, loans, 
                 error_msg = "😔 I encountered an error. Please try rephrasing your question or contact support."
                 st.error(error_msg)
                 st.caption(f"*Error details: {str(e)}*")
-
-# --- Helper Functions ---
-def log_feedback(message_idx, feedback_type, message_content):
-    """Log user feedback for analytics"""
-    try:
-        log_file = "feedback_log.csv"
-        file_exists = os.path.isfile(log_file)
-        
-        with open(log_file, 'a', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(['timestamp', 'message_idx', 'feedback_type', 'message_preview'])
-            writer.writerow([
-                datetime.now().isoformat(),
-                message_idx,
-                feedback_type,
-                message_content[:100]  # First 100 chars
-            ])
-    except Exception as e:
-        pass  # Silent fail for logging
 
 # --- Welcome Message ---
 if len(st.session_state.messages) == 0:

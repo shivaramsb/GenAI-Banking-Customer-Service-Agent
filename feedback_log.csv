@@ -3,3 +3,5 @@ timestamp,message_idx,feedback_type,message_preview
 2026-01-09T17:32:54.921506,3,negative,Hello! 👋 I can help you with banking products.
 2026-01-09T17:36:09.845508,1,positive,Hello! 👋 I can help you with banking products.
 2026-01-09T17:36:12.349790,3,negative,Hello! 👋 I can help you with banking products.
+2026-01-12T09:28:25.293737,1,positive,It looks like you're interested in debit cards. Could you let me know which bank you are interested 
+2026-01-12T09:28:31.782601,3,positive,"Sure, here is a list of debit cards available from HDFC, SBI, and Axis banks along with their key de"

@@ -440,3 +440,221 @@ AttributeError: 'DatabaseManager' object has no attribute 'execute_query'
 2026-01-09 16:38:41,870 - INFO -    Total products ingested: 121
 2026-01-09 16:38:41,872 - INFO -    Banks in database: Axis, HDFC, ICICI, SBI
 2026-01-09 16:38:41,872 - INFO -    Categories in database: Credit Card, Debit Card, Home Loan, Loan, Scheme
+2026-01-12 09:39:13,556 - INFO - ✅ Database indexes created successfully
+2026-01-12 09:39:13,859 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-12 09:40:01,160 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-12 09:40:06,583 - INFO - Starting Dynamic Ingestion Pipeline...
+2026-01-12 09:40:06,583 - INFO - 
+================================================================================
+2026-01-12 09:40:06,583 - INFO - 🚀 DYNAMIC INGESTION PIPELINE
+2026-01-12 09:40:06,583 - INFO - ================================================================================
+2026-01-12 09:40:06,588 - INFO - 
+📂 Found 3 product files
+2026-01-12 09:40:06,589 - INFO - 
+================================================================================
+2026-01-12 09:40:06,589 - INFO - 📄 Processing: axis_products.csv
+2026-01-12 09:40:06,589 - INFO - ================================================================================
+2026-01-12 09:40:06,603 - INFO - 📊 Loaded 12 rows, 15 columns
+2026-01-12 09:40:06,607 - INFO - 🔍 Detecting bank...
+2026-01-12 09:40:06,607 - INFO -    ✓ Detected from filename: AXIS
+2026-01-12 09:40:06,607 - INFO - 🗺️  Mapping columns...
+2026-01-12 09:40:06,611 - INFO -    Mapped: 'Bank' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:06,612 - INFO -    Mapped: 'Product' → 'product_name' (confidence: 100%)
+2026-01-12 09:40:06,613 - INFO -    Mapped: 'Type' → 'category' (confidence: 100%)
+2026-01-12 09:40:06,613 - INFO -    Mapped: 'Annual_Charges' → 'fees' (confidence: 100%)
+2026-01-12 09:40:06,614 - INFO -    Mapped: 'Benefits' → 'features' (confidence: 100%)
+2026-01-12 09:40:06,614 - INFO -    Mapped: 'Rate' → 'interest_rate' (confidence: 100%)
+2026-01-12 09:40:06,614 - INFO -    Mapped: 'Requirements' → 'eligibility' (confidence: 100%)
+2026-01-12 09:40:06,614 - INFO -    Mapping confidence: 100%
+2026-01-12 09:40:06,635 - INFO - ✅ Upserted: Axis Magnus
+2026-01-12 09:40:06,648 - INFO - ✅ Upserted: Axis Ace
+2026-01-12 09:40:06,656 - INFO - ✅ Upserted: Axis Vistara Infinite
+2026-01-12 09:40:06,663 - INFO - ✅ Upserted: Axis Atlas
+2026-01-12 09:40:06,672 - INFO - ✅ Upserted: Axis My Zone
+2026-01-12 09:40:06,682 - INFO - ✅ Upserted: Axis Platinum Debit
+2026-01-12 09:40:06,688 - INFO - ✅ Upserted: Axis Burgundy Debit
+2026-01-12 09:40:06,697 - INFO - ✅ Upserted: Axis Home Loan
+2026-01-12 09:40:06,706 - INFO - ✅ Upserted: Axis Shubh Aarambh Home Loan
+2026-01-12 09:40:06,713 - INFO - ✅ Upserted: Axis Personal Loan
+2026-01-12 09:40:06,724 - INFO - ✅ Upserted: Axis Car Loan
+2026-01-12 09:40:06,732 - INFO - ✅ Upserted: Axis Two Wheeler Loan
+2026-01-12 09:40:06,732 - INFO - ✅ Processed 12 products (0 skipped)
+2026-01-12 09:40:06,732 - INFO - 
+================================================================================
+2026-01-12 09:40:06,732 - INFO - 📄 Processing: hdfc_products.csv
+2026-01-12 09:40:06,732 - INFO - ================================================================================
+2026-01-12 09:40:06,753 - INFO - 📊 Loaded 50 rows, 7 columns
+2026-01-12 09:40:06,754 - INFO - 🔍 Detecting bank...
+2026-01-12 09:40:06,754 - INFO -    ✓ Detected from filename: HDFC
+2026-01-12 09:40:06,754 - INFO - 🗺️  Mapping columns...
+2026-01-12 09:40:06,754 - INFO -    Mapped: 'bank_name' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:06,756 - INFO -    Mapped: 'category' → 'category' (confidence: 100%)
+2026-01-12 09:40:06,756 - INFO -    Mapped: 'product_name' → 'product_name' (confidence: 100%)
+2026-01-12 09:40:06,757 - INFO -    Mapped: 'features' → 'features' (confidence: 100%)
+2026-01-12 09:40:06,757 - INFO -    Mapped: 'fees' → 'fees' (confidence: 100%)
+2026-01-12 09:40:06,759 - INFO -    Mapped: 'interest_rate' → 'interest_rate' (confidence: 100%)
+2026-01-12 09:40:06,759 - INFO -    Mapped: 'eligibility' → 'eligibility' (confidence: 100%)
+2026-01-12 09:40:06,760 - INFO -    Mapping confidence: 100%
+2026-01-12 09:40:06,763 - INFO - ✅ Upserted: HDFC Regalia Gold
+2026-01-12 09:40:06,775 - INFO - ✅ Upserted: HDFC Millennia
+2026-01-12 09:40:06,782 - INFO - ✅ Upserted: HDFC Infinia Metal
+2026-01-12 09:40:06,790 - INFO - ✅ Upserted: HDFC Diners Club Black
+2026-01-12 09:40:06,796 - INFO - ✅ Upserted: HDFC MoneyBack+
+2026-01-12 09:40:06,806 - INFO - ✅ Upserted: HDFC Freedom
+2026-01-12 09:40:06,814 - INFO - ✅ Upserted: HDFC Bharat
+2026-01-12 09:40:06,820 - INFO - ✅ Upserted: HDFC Tata Neu Infinity
+2026-01-12 09:40:06,828 - INFO - ✅ Upserted: HDFC Tata Neu Plus
+2026-01-12 09:40:06,838 - INFO - ✅ Upserted: HDFC Swiggy
+2026-01-12 09:40:06,845 - INFO - ✅ Upserted: HDFC Shoppers Stop
+2026-01-12 09:40:06,854 - INFO - ✅ Upserted: HDFC InterMiles Signature
+2026-01-12 09:40:06,862 - INFO - ✅ Upserted: HDFC Indigo 6E Rewards
+2026-01-12 09:40:06,871 - INFO - ✅ Upserted: HDFC Marriott Bonvoy
+2026-01-12 09:40:06,878 - INFO - ✅ Upserted: HDFC Business MoneyBack
+2026-01-12 09:40:06,886 - INFO - ✅ Upserted: HDFC Millennia Debit
+2026-01-12 09:40:06,894 - INFO - ✅ Upserted: HDFC Platinum Debit
+2026-01-12 09:40:06,903 - INFO - ✅ Upserted: HDFC MoneyBack Debit
+2026-01-12 09:40:06,909 - INFO - ✅ Upserted: HDFC EasyShop Woman
+2026-01-12 09:40:06,915 - INFO - ✅ Upserted: HDFC EasyShop Titanium
+2026-01-12 09:40:06,925 - INFO - ✅ Upserted: HDFC RuPay Premium
+2026-01-12 09:40:06,933 - INFO - ✅ Upserted: HDFC Times Points
+2026-01-12 09:40:06,943 - INFO - ✅ Upserted: HDFC Rewards
+2026-01-12 09:40:06,952 - INFO - ✅ Upserted: HDFC Imperia
+2026-01-12 09:40:06,959 - INFO - ✅ Upserted: HDFC Preferred
+2026-01-12 09:40:06,964 - INFO - ✅ Upserted: HDFC Personal Loan
+2026-01-12 09:40:06,975 - INFO - ✅ Upserted: HDFC Xpress Personal Loan
+2026-01-12 09:40:07,013 - INFO - ✅ Upserted: HDFC Marriage Loan
+2026-01-12 09:40:07,022 - INFO - ✅ Upserted: HDFC Travel Loan
+2026-01-12 09:40:07,030 - INFO - ✅ Upserted: HDFC Home Loan
+2026-01-12 09:40:07,039 - INFO - ✅ Upserted: HDFC Reach Home Loan
+2026-01-12 09:40:07,046 - INFO - ✅ Upserted: HDFC Rural Housing Loan
+2026-01-12 09:40:07,055 - INFO - ✅ Upserted: HDFC Home Extension Loan
+2026-01-12 09:40:07,063 - INFO - ✅ Upserted: HDFC Home Renovation Loan
+2026-01-12 09:40:07,071 - INFO - ✅ Upserted: HDFC Top Up Loan
+2026-01-12 09:40:07,079 - INFO - ✅ Upserted: HDFC New Car Loan
+2026-01-12 09:40:07,089 - INFO - ✅ Upserted: HDFC Used Car Loan
+2026-01-12 09:40:07,095 - INFO - ✅ Upserted: HDFC ZipDrive
+2026-01-12 09:40:07,106 - INFO - ✅ Upserted: HDFC Two Wheeler Loan
+2026-01-12 09:40:07,113 - INFO - ✅ Upserted: HDFC Super Bike Loan
+2026-01-12 09:40:07,121 - INFO - ✅ Upserted: HDFC Education Loan
+2026-01-12 09:40:07,129 - INFO - ✅ Upserted: HDFC Foreign Education Loan
+2026-01-12 09:40:07,138 - INFO - ✅ Upserted: HDFC Doctor Loan
+2026-01-12 09:40:07,143 - INFO - ✅ Upserted: HDFC Business Loan
+2026-01-12 09:40:07,154 - INFO - ✅ Upserted: HDFC Loan Against Securities
+2026-01-12 09:40:07,161 - INFO - ✅ Upserted: HDFC Gold Loan
+2026-01-12 09:40:07,165 - INFO - ✅ Upserted: HDFC Kishore Mudra Loan
+2026-01-12 09:40:07,178 - INFO - ✅ Upserted: HDFC Tarun Mudra Loan
+2026-01-12 09:40:07,186 - INFO - ✅ Upserted: HDFC Loan Against Property
+2026-01-12 09:40:07,195 - INFO - ✅ Upserted: HDFC Life Sanchay Plus
+2026-01-12 09:40:07,195 - INFO - ✅ Processed 50 products (0 skipped)
+2026-01-12 09:40:07,195 - INFO - 
+================================================================================
+2026-01-12 09:40:07,195 - INFO - 📄 Processing: sbi_products.csv
+2026-01-12 09:40:07,195 - INFO - ================================================================================
+2026-01-12 09:40:07,216 - INFO - 📊 Loaded 53 rows, 7 columns
+2026-01-12 09:40:07,216 - INFO - 🔍 Detecting bank...
+2026-01-12 09:40:07,216 - INFO -    ✓ Detected from filename: SBI
+2026-01-12 09:40:07,216 - INFO - 🗺️  Mapping columns...
+2026-01-12 09:40:07,216 - INFO -    Mapped: 'bank_name' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:07,216 - INFO -    Mapped: 'category' → 'category' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapped: 'product_name' → 'product_name' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapped: 'features' → 'features' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapped: 'fees' → 'fees' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapped: 'interest_rate' → 'interest_rate' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapped: 'eligibility' → 'eligibility' (confidence: 100%)
+2026-01-12 09:40:07,221 - INFO -    Mapping confidence: 100%
+2026-01-12 09:40:07,230 - INFO - ✅ Upserted: SBI SimplySave
+2026-01-12 09:40:07,238 - INFO - ✅ Upserted: SBI SimplyClick
+2026-01-12 09:40:07,246 - INFO - ✅ Upserted: SBI Prime
+2026-01-12 09:40:07,256 - INFO - ✅ Upserted: SBI Elite
+2026-01-12 09:40:07,263 - INFO - ✅ Upserted: SBI Aurum
+2026-01-12 09:40:07,272 - INFO - ✅ Upserted: BPCL SBI Card
+2026-01-12 09:40:07,283 - INFO - ✅ Upserted: BPCL SBI Octane
+2026-01-12 09:40:07,289 - INFO - ✅ Upserted: Air India SBI Signature
+2026-01-12 09:40:07,297 - INFO - ✅ Upserted: Air India SBI Platinum
+2026-01-12 09:40:07,306 - INFO - ✅ Upserted: Club Vistara SBI Prime
+2026-01-12 09:40:07,313 - INFO - ✅ Upserted: Etihad Guest SBI Premier
+2026-01-12 09:40:07,324 - INFO - ✅ Upserted: Fabindia SBI Card
+2026-01-12 09:40:07,333 - INFO - ✅ Upserted: Lifestyle Home Centre SBI
+2026-01-12 09:40:07,341 - INFO - ✅ Upserted: Max SBI Card
+2026-01-12 09:40:07,348 - INFO - ✅ Upserted: Spar SBI Card
+2026-01-12 09:40:07,356 - INFO - ✅ Upserted: SBI Global International
+2026-01-12 09:40:07,364 - INFO - ✅ Upserted: SBI Gold International
+2026-01-12 09:40:07,368 - INFO - ✅ Upserted: SBI Platinum International
+2026-01-12 09:40:07,375 - INFO - ✅ Upserted: SBI Pride
+2026-01-12 09:40:07,385 - INFO - ✅ Upserted: SBI Premium
+2026-01-12 09:40:07,392 - INFO - ✅ Upserted: SBI Salary Account Card
+2026-01-12 09:40:07,401 - INFO - ✅ Upserted: SBI IOCL Global
+2026-01-12 09:40:07,407 - INFO - ✅ Upserted: SBI Mumbai Metro
+2026-01-12 09:40:07,415 - INFO - ✅ Upserted: SBI Intouch Tap & Go
+2026-01-12 09:40:07,422 - INFO - ✅ Upserted: SBI My Card
+2026-01-12 09:40:07,436 - INFO - ✅ Upserted: SBI Regular Home Loan
+2026-01-12 09:40:07,447 - INFO - ✅ Upserted: SBI FlexiPay Home Loan
+2026-01-12 09:40:07,456 - INFO - ✅ Upserted: SBI MaxGain
+2026-01-12 09:40:07,463 - INFO - ✅ Upserted: SBI Realty Home Loan
+2026-01-12 09:40:07,482 - INFO - ✅ Upserted: SBI Shaurya Home Loan
+2026-01-12 09:40:07,495 - INFO - ✅ Upserted: SBI Privilege Home Loan
+2026-01-12 09:40:07,510 - INFO - ✅ Upserted: SBI Tribal Plus
+2026-01-12 09:40:07,519 - INFO - ✅ Upserted: SBI NRI Home Loan
+2026-01-12 09:40:07,532 - INFO - ✅ Upserted: SBI Smart Home Top Up
+2026-01-12 09:40:07,546 - INFO - ✅ Upserted: SBI Car Loan
+2026-01-12 09:40:07,560 - INFO - ✅ Upserted: SBI Loyalty Car Loan
+2026-01-12 09:40:07,568 - INFO - ✅ Upserted: SBI Electric Vehicle Loan
+2026-01-12 09:40:07,582 - INFO - ✅ Upserted: SBI Two-Wheeler Loan
+2026-01-12 09:40:07,594 - INFO - ✅ Upserted: SBI Super Bike Loan
+2026-01-12 09:40:07,608 - INFO - ✅ Upserted: SBI Education Loan
+2026-01-12 09:40:07,618 - INFO - ✅ Upserted: SBI Scholar Loan
+2026-01-12 09:40:07,628 - INFO - ✅ Upserted: SBI Global Ed-Vantage
+2026-01-12 09:40:07,638 - INFO - ✅ Upserted: SBI Personal Loan (Xpress Credit)
+2026-01-12 09:40:07,649 - INFO - ✅ Upserted: SBI Pension Loan
+2026-01-12 09:40:07,664 - INFO - ✅ Upserted: SBI Gold Loan
+2026-01-12 09:40:07,676 - INFO - ✅ Upserted: SBI Realty Gold Loan
+2026-01-12 09:40:07,688 - INFO - ✅ Upserted: SBI Loan Against Property
+2026-01-12 09:40:07,703 - INFO - ✅ Upserted: SBI Reverse Mortgage
+2026-01-12 09:40:07,718 - INFO - ✅ Upserted: Public Provident Fund (PPF)
+2026-01-12 09:40:07,739 - INFO - ✅ Upserted: Sukanya Samriddhi Yojana
+2026-01-12 09:40:07,749 - INFO - ✅ Upserted: Senior Citizen Savings Scheme
+2026-01-12 09:40:07,760 - INFO - ✅ Upserted: Kisan Vikas Patra
+2026-01-12 09:40:07,774 - INFO - ✅ Upserted: National Pension System (NPS)
+2026-01-12 09:40:07,775 - INFO - ✅ Processed 53 products (0 skipped)
+2026-01-12 09:40:07,776 - INFO - 
+================================================================================
+2026-01-12 09:40:07,776 - INFO - ✅ INGESTION COMPLETE: 115 total products
+2026-01-12 09:40:07,776 - INFO - ================================================================================
+
+2026-01-12 09:40:07,781 - INFO - 
+📚 Processing 3 FAQ files...
+2026-01-12 09:40:08,359 - INFO - 
+  📄 axis_faqs.csv
+2026-01-12 09:40:08,363 - INFO -      Loaded 12 FAQs, 11 columns
+2026-01-12 09:40:08,363 - INFO -    FAQ Mapped: 'Bank' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:08,363 - INFO -    FAQ Mapped: 'Topic' → 'category' (confidence: 100%)
+2026-01-12 09:40:08,363 - INFO -    FAQ Mapped: 'Query' → 'question' (confidence: 100%)
+2026-01-12 09:40:08,363 - INFO -    FAQ Mapped: 'Reply' → 'answer' (confidence: 100%)
+2026-01-12 09:40:08,363 - INFO -      Mapping confidence: 100%
+2026-01-12 09:40:09,050 - INFO -   ✅ axis_faqs.csv: 12 FAQs ingested
+2026-01-12 09:40:09,050 - INFO - 
+  📄 hdfc_faq.csv
+2026-01-12 09:40:09,078 - INFO -      Loaded 252 FAQs, 4 columns
+2026-01-12 09:40:09,079 - INFO -    FAQ Mapped: 'bank_name' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:09,079 - INFO -    FAQ Mapped: 'category' → 'category' (confidence: 100%)
+2026-01-12 09:40:09,080 - INFO -    FAQ Mapped: 'question' → 'question' (confidence: 100%)
+2026-01-12 09:40:09,080 - INFO -    FAQ Mapped: 'answer' → 'answer' (confidence: 100%)
+2026-01-12 09:40:09,081 - INFO -      Mapping confidence: 100%
+2026-01-12 09:40:11,747 - INFO -   ✅ hdfc_faq.csv: 252 FAQs ingested
+2026-01-12 09:40:11,747 - INFO - 
+  📄 sbi_faq.csv
+2026-01-12 09:40:11,775 - INFO -      Loaded 594 FAQs, 4 columns
+2026-01-12 09:40:11,777 - INFO -    FAQ Mapped: 'bank_name' → 'bank_name' (confidence: 100%)
+2026-01-12 09:40:11,777 - INFO -    FAQ Mapped: 'category' → 'category' (confidence: 100%)
+2026-01-12 09:40:11,777 - INFO -    FAQ Mapped: 'question' → 'question' (confidence: 100%)
+2026-01-12 09:40:11,777 - INFO -    FAQ Mapped: 'answer' → 'answer' (confidence: 100%)
+2026-01-12 09:40:11,777 - INFO -      Mapping confidence: 100%
+2026-01-12 09:40:18,173 - INFO -   ✅ sbi_faq.csv: 594 FAQs ingested
+2026-01-12 09:40:18,175 - INFO - 
+✅ FAQ ingestion complete
+
+2026-01-12 09:40:18,175 - INFO - 
+📊 FINAL SUMMARY:
+2026-01-12 09:40:18,175 - INFO -    Total products ingested: 115
+2026-01-12 09:40:18,175 - INFO -    Banks in database: Axis, HDFC, ICICI, SBI
+2026-01-12 09:40:18,178 - INFO -    Categories in database: Credit Card, Debit Card, Home Loan, Loan, Scheme

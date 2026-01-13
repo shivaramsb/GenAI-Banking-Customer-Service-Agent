@@ -189,7 +189,7 @@ def extract_entities(query: str) -> Dict:
 # STEP 2: ACCURACY-CRITICAL ROUTING (NEVER OVERRIDDEN)
 # =============================================================================
 
-def route_accuracy_critical(entities: Dict) -> Optional[Dict]:
+def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
     """
     Route accuracy-critical intents with guaranteed determinism.
     
@@ -198,21 +198,58 @@ def route_accuracy_critical(entities: Dict) -> Optional[Dict]:
     - LIST: Complete product list
     - EXPLAIN_ALL: All products with details
     
+    Also handles vague single-word queries with CLARIFY.
+    
     Returns routing result or None if not accuracy-critical.
     """
     bank = entities['bank']
     category = entities['category']
+    query_lower = query.lower().strip()
     
     # GREETING - Always handle first
     if entities['is_greeting']:
         return {'intent': 'GREETING', 'confidence': 0.99, 'path': 'GREETING'}
+    
+    # === VAGUE QUERY DETECTION ===
+    # Single-word or very short banking terms should ask for clarification
+    vague_terms = [
+        'loan', 'loans', 'credit', 'debit', 'card', 'cards',
+        'credit card', 'debit card', 'home loan', 'car loan',
+        'account', 'accounts', 'bank', 'banking', 'scheme', 'schemes'
+    ]
+    
+    is_vague = query_lower in vague_terms or (
+        len(query_lower.split()) <= 2 and 
+        any(term in query_lower for term in vague_terms) and
+        not bank and  # No specific bank mentioned
+        not entities['has_count_signal'] and
+        not entities['has_list_signal'] and
+        not entities['has_explain_signal'] and
+        not entities['has_recommend_signal']
+    )
+    
+    if is_vague:
+        # Create specific clarification message based on category
+        if category:
+            clarify_msg = f"I can help you with {category}s! What would you like to know?\n\n" \
+                         f"• **List** all {category}s from a specific bank\n" \
+                         f"• **Compare** different {category}s\n" \
+                         f"• **Recommend** the best {category} for you\n" \
+                         f"• **Apply** - how to apply for a {category}"
+        else:
+            clarify_msg = "What would you like to know? Please specify:\n\n" \
+                         "• Which **bank** (SBI, HDFC, etc.)?\n" \
+                         "• What **product type** (Credit Card, Loan, etc.)?\n" \
+                         "• What **action** (list all, count, compare, recommend)?"
+        
+        return {'intent': 'CLARIFY', 'confidence': 0.95, 'path': 'VAGUE_QUERY',
+                'clarify_message': clarify_msg}
     
     # COUNT - Requires bank OR category context
     if entities['has_count_signal']:
         if bank or category:
             return {'intent': 'COUNT', 'confidence': 0.95, 'path': 'ACCURACY_CRITICAL'}
         else:
-            # Missing context - need clarification
             return {'intent': 'CLARIFY', 'confidence': 0.90, 'path': 'NEEDS_CONTEXT',
                     'clarify_message': 'Which bank or product type would you like me to count?'}
     
@@ -391,7 +428,7 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
     logging.debug(f"[Step 1] Entities: {entities}")
     
     # === STEP 2: Accuracy-Critical Routing (HIGHEST PRIORITY) ===
-    critical_result = route_accuracy_critical(entities)
+    critical_result = route_accuracy_critical(entities, query)
     if critical_result:
         intent = critical_result['intent']
         logging.info(f"[Step 2] Accuracy-critical: {intent} ({critical_result['confidence']:.2f})")

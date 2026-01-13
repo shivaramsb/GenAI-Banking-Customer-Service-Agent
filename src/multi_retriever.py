@@ -91,9 +91,23 @@ class MultiSourceRetriever:
                 params.append(bank)
             
             if category:
-                # FIX: Use LIKE for broader matching (catches "Debit Card", "Debit Cards", etc.)
-                conditions.append("category LIKE ?")
-                params.append(f"%{category}%")
+                # Handle specific loan types (Home Loan, Car Loan, etc.)
+                # These are stored as category="Loan" with product_name containing the type
+                specific_loan_types = ['Home Loan', 'Car Loan', 'Personal Loan', 'Education Loan', 'Gold Loan', 'Two Wheeler']
+                
+                is_specific_loan = any(lt.lower() in category.lower() for lt in specific_loan_types)
+                
+                if is_specific_loan:
+                    # Search for products where category is "Loan" AND product_name contains the loan type
+                    # e.g., "Home Loan" → category LIKE '%Loan%' AND product_name LIKE '%Home%'
+                    loan_type_keyword = category.replace('Loan', '').strip()  # Extract "Home", "Car", etc.
+                    conditions.append("(category LIKE ? AND product_name LIKE ?)")
+                    params.append("%Loan%")
+                    params.append(f"%{loan_type_keyword}%")
+                else:
+                    # Normal category matching
+                    conditions.append("category LIKE ?")
+                    params.append(f"%{category}%")
             
             where_clause = " AND ".join(conditions) if conditions else "1=1"
             query = f"SELECT * FROM products WHERE {where_clause} ORDER BY bank_name, category, product_name"

@@ -16,7 +16,7 @@ from src.multi_retriever import MultiSourceRetriever
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
 
-def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None) -> Dict[str, Any]:
+def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, clarification_mode: bool = False) -> Dict[str, Any]:
     """
     ChatGPT-style conversational query handler.
     
@@ -26,14 +26,17 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None) ->
     Args:
         user_query: User's question
         chat_history: Full conversation history
+        clarification_mode: If True, focus on asking clarifying questions for vague queries
         
     Returns:
         Response dict with text, source, data, metadata
     """
-    logging.info(f"[ChatGPT Mode] Processing: {user_query}")
+    logging.info(f"[ChatGPT Mode] Processing: {user_query} (clarification={clarification_mode})")
     
     # 1. Retrieve relevant context (no query classification needed)
-    retrieval_result = retriever.retrieve(user_query, max_results=30, chat_history=chat_history)
+    # For clarification mode, reduce results to keep response focused on guidance
+    max_results = 15 if clarification_mode else 30
+    retrieval_result = retriever.retrieve(user_query, max_results=max_results, chat_history=chat_history)
     results = retrieval_result['results']
     metadata = retrieval_result['metadata']
     
@@ -41,10 +44,18 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None) ->
     context_docs = []
     product_data = []
     
+    # Get available banks from metadata
+    from src.config import SUPPORTED_BANKS
+    banks_text = ", ".join(SUPPORTED_BANKS[:-1]) + f", and {SUPPORTED_BANKS[-1]}" if len(SUPPORTED_BANKS) > 1 else SUPPORTED_BANKS[0]
+    
+    # Extract product categories from results for clarification
+    categories_found = set()
+    
     for result in results[:20]:  # Limit to prevent token overflow
         if result['type'] == 'product':
             product = result['raw_data']
             product_data.append(product)
+            categories_found.add(product.get('category', 'Unknown'))
             
             # Parse attributes
             attrs = product.get('attributes', {})
@@ -60,21 +71,52 @@ Product: {product.get('product_name', 'Unknown')}
 Bank: {product.get('bank_name', 'N/A')}
 Category: {product.get('category', 'N/A')}
 Fees: {attrs.get('fees', 'N/A')}
-Features: {attrs.get('features', 'N/A')}
-Eligibility: {attrs.get('eligibility', 'N/A')}
+Features: {attrs.get('features', 'N/A')[:150]}...
+Eligibility: {attrs.get('eligibility', 'N/A')[:100]}...
 """.strip())
         
         elif result['type'] == 'faq':
             faq = result['raw_data']
-            context_docs.append(f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')}")
+            context_docs.append(f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')[:150]}...")
     
-    context_text = "\n\n".join(context_docs)
+    context_text = "\n\n".join(context_docs[:15])  # Limit context for clarity
     
     # 3. Build conversation messages
     messages = []
     
     # System message with context and instructions
-    system_prompt = f"""You are a helpful banking assistant for {get_banks_short()} banks.
+    if clarification_mode:
+        # Special prompt for vague queries - focus on clarification
+        system_prompt = f"""You are a helpful banking assistant for {banks_text}.
+
+The user asked a vague question: "{user_query}"
+
+**Your goal:** Help them ask a better question by providing intelligent guidance.
+
+**Available information:**
+- We support {len(SUPPORTED_BANKS)} banks: {banks_text}
+- We found these relevant categories: {', '.join(sorted(categories_found)) if categories_found else 'multiple product types'}
+- Retrieved {len(results)} relevant items from our database
+
+**Instructions:**
+1. Acknowledge what they're looking for
+2. Mention the options we have available (banks, categories)
+3. Ask 2-3 smart clarifying questions to guide them:
+   - Which bank do they prefer?
+   - What specific type/category?
+   - Any particular needs or preferences?
+4. Be friendly, encouraging, and helpful
+
+**Format your response as:**
+- Brief acknowledgment
+- Quick overview of options
+- 2-3 specific clarifying questions
+
+DO NOT list all products or provide example queries. Just ask helpful questions.
+"""
+    else:
+        # Normal conversational mode
+        system_prompt = f"""You are a helpful banking assistant for {banks_text}.
 
 **Retrieved Context from Database:**
 {context_text}
@@ -83,14 +125,14 @@ Eligibility: {attrs.get('eligibility', 'N/A')}
 - Answer questions naturally and conversationally
 - Use ONLY the retrieved context above - do not make up information
 - If asked for counts, count the products in the context
-- If asked to list products, list them clearly with numbers
+- If asked to list products, list them clearly with numbers and key details
 - If comparing products, create clear comparison tables
 - If recommending, analyze the options and explain your reasoning
 - Be friendly, helpful, and accurate
 - Maintain conversation context from chat history
-- If information is missing, say so honestly
+- If information is missing, say so honestly and suggest asking differently
 
-**Important:** The context above shows ALL relevant products from our database. Use it as your sole source of truth.
+**Important:** The context above shows relevant products from our database. Use it as your source of truth.
 """
     
     messages.append({"role": "system", "content": system_prompt})

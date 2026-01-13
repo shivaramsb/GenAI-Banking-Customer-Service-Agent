@@ -219,6 +219,16 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
       * Compare across ALL banks for that category
       * Example: `SELECT bank_name, product_name, attributes FROM products WHERE category LIKE '%X%' ORDER BY bank_name`
     
+    🚨 CRITICAL - CATEGORY MATCHING RULES:
+    - **ALWAYS use LIKE '%keyword%' for category searches, NEVER use = (exact match)**
+    - Examples: "debit cards" → WHERE category LIKE '%Debit%' NOT WHERE category='Debit Card'
+    - Why: Category field has variations (Debit Card vs Debit Cards vs Debit)
+    - Using = exact match will miss 80% of products!
+    
+    🚨 COUNT QUERIES - CRITICAL:
+    - For "how many" queries, SELECT ALL matching rows (no LIMIT)
+    - Example: "how many SBI debit cards" → WHERE bank_name='SBI' AND category LIKE '%Debit%'
+    
     IMPORTANT: For recommendation queries, prefer broader searches and let the synthesis step filter based on user criteria.
     
     Return ONLY the SQL query, no explanations or markdown.

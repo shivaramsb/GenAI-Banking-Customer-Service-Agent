@@ -316,11 +316,6 @@ if len(st.session_state.messages) == 0:
         - 📊 **Detailed Comparisons**: Compare products side-by-side
         - ❓ **Instant Answers**: Get answers to common banking questions
         
-        **Try asking:**
-        - "What are the best travel credit cards?"
-        - "Compare home loan options"
-        - "How do I apply for a personal loan?"
-        
         How can I assist you today?
         """
         st.markdown(welcome_msg)

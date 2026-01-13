@@ -69,19 +69,58 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
             "metadata": {}
         }
     
-    # FIX: Detect overly generic single-word queries
-    # Queries like "bank", "card", "loan" alone are too vague and lead to incomplete results
-    # BUT: Allow them if there's chat history (might be follow-up context)
-    generic_words = ['bank', 'card', 'loan', 'product', 'account', 'banking']
-    query_words = query_lower.split()
+    # === VAGUE QUERY DETECTION ===
+    # Detect queries that need clarification (e.g., "loan", "credit card")
+    # These should get intelligent ChatGPT guidance, not generic responses
     
-    if len(query_words) == 1 and query_lower in generic_words and not chat_history:
-        return {
-            "text": f"💡 Could you be more specific?\n\n**Try asking:**\n• 'HDFC credit cards'\n• 'List all {SUPPORTED_BANKS[0]} loans'\n• 'What are the products?'\n\n**Supported banks:** {get_banks_short()}",
-            "source": "Clarification Needed",
-            "data": [],
-            "metadata": {}
-        }
+    def is_vague_query(query: str) -> bool:
+        """
+        Detect if query is too vague and needs clarification.
+        
+        Vague queries:
+        - Single word category queries: "loan", "card", "bank"
+        - 2-word generic queries without bank: "credit card", "debit card"
+        - Category words without specifics
+        
+        NOT vague:
+        - Has bank name: "HDFC credit card" 
+        - Has specifics: "best travel credit card"
+        - Has action words: "list all loans", "compare cards"
+        """
+        q_lower = query.lower().strip()
+        words = q_lower.split()
+        
+        # Category keywords that indicate product queries
+        category_keywords = [
+            'loan', 'card', 'credit', 'debit', 'account', 
+            'savings', 'scheme', 'insurance', 'bank', 'banking'
+        ]
+        
+        # Action keywords that indicate specific intent
+        action_keywords = [
+            'list', 'show', 'compare', 'best', 'recommend', 'difference',
+            'which', 'what are', 'how many', 'tell me', 'explain', 'apply'
+        ]
+        
+        has_category = any(cat in q_lower for cat in category_keywords)
+        has_action = any(action in q_lower for action in action_keywords)
+        has_bank = any(bank.lower() in q_lower for bank in SUPPORTED_BANKS)
+        
+        # Vague if: 1-2 words AND has category AND no bank AND no action
+        if len(words) <= 2 and has_category and not has_bank and not has_action:
+            return True
+        
+        # Also vague if just "bank" or "banking" alone
+        if q_lower in ['bank', 'banking', 'banks']:
+            return True
+        
+        return False
+    
+    # Check for vague queries first
+    if is_vague_query(user_query):
+        logging.info("→ VAGUE QUERY DETECTED: Routing to ChatGPT for clarification")
+        # Use ChatGPT with special clarification mode
+        return chatgpt_query(user_query, chat_history, clarification_mode=True)
     
     # === INTELLIGENT AUTO MODE ROUTING ===
     # Automatically choose structured vs ChatGPT based on query type
@@ -103,8 +142,8 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     # Route to appropriate handler
     if selected_mode == "chatgpt":
-        # Use ChatGPT-style conversational handler
-        return chatgpt_query(user_query, chat_history)
+        # Use ChatGPT-style conversational handler (normal mode)
+        return chatgpt_query(user_query, chat_history, clarification_mode=False)
     
     # Otherwise, continue with structured mode below
     # (All the existing agent_core logic remains unchanged)

@@ -67,6 +67,49 @@ class MultiSourceRetriever:
         
         return {'results': final_results, 'metadata': metadata}
     
+    def get_all_products(self, bank: str = None, category: str = None) -> List[Dict]:
+        """
+        Get ALL products matching bank/category filters.
+        
+        Used for COUNT/LIST/EXPLAIN queries where we need complete results
+        without any limits or truncation.
+        
+        Args:
+            bank: Filter by bank name (optional)
+            category: Filter by product category (optional)
+            
+        Returns:
+            List of product dicts from database
+        """
+        try:
+            # Build SQL query
+            conditions = []
+            params = []
+            
+            if bank:
+                conditions.append("bank_name = ?")
+                params.append(bank)
+            
+            if category:
+                # FIX: Use LIKE for broader matching (catches "Debit Card", "Debit Cards", etc.)
+                conditions.append("category LIKE ?")
+                params.append(f"%{category}%")
+            
+            where_clause = " AND ".join(conditions) if conditions else "1=1"
+            query = f"SELECT * FROM products WHERE {where_clause} ORDER BY bank_name, category, product_name"
+            
+            # Execute query using the correct method name
+            results = self.db.execute_raw_query(query, tuple(params))
+            
+            logging.info(f"[get_all_products] Retrieved {len(results)} products (bank={bank}, category={category})")
+            
+            return results
+            
+        except Exception as e:
+            logging.error(f"[get_all_products] Error: {e}")
+            return []
+
+    
     def _search_sql_products(self, query: str, n_results: int = 50, chat_history=None) -> List[Dict]:
         """
         Search SQL products database using intelligent SQL generation.

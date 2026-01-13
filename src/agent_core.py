@@ -1,8 +1,18 @@
+"""
+Agent Core - Main Query Orchestrator
+
+Uses the smart_router for intelligent query routing:
+- GREETING, CLARIFY → Instant responses
+- COUNT, LIST, EXPLAIN_ALL → Guaranteed accuracy handlers
+- FAQ, COMPARE, RECOMMEND, FOLLOWUP → ChatGPT conversational
+- UNKNOWN → ChatGPT fallback
+"""
+
 import logging
 import os
 import sys
 
-# Add project root to path so we can import 'src'
+# Add project root to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
@@ -11,519 +21,193 @@ from openai import OpenAI
 
 from src.config import (
     OPENAI_API_KEY, LLM_MODEL,
-    SUPPORTED_BANKS, PRODUCT_CATEGORIES,
     get_banks_short, get_categories_display
 )
 from src.multi_retriever import MultiSourceRetriever
-from src.chatgpt_agent import chatgpt_query  # Import ChatGPT-style handler
+from src.chatgpt_agent import chatgpt_query
+from src.smart_router import smart_route  # Direct import of smart router
 
 # Initialize OpenAI and Multi-Source Retriever
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
 
+
 def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     """
-    Main Orchestrator with Intelligent Auto Mode.
+    Main Query Orchestrator using Smart Router.
     
-    Automatically routes queries to the best handler:
-    - Accuracy-critical queries (counts, lists) → Structured mode
-    - Conversational queries → ChatGPT mode
+    Routes queries through 4-step hybrid routing:
+    1. Accuracy-critical (COUNT/LIST/EXPLAIN_ALL) → Python handlers
+    2. FAQ similarity → ChatGPT with FAQ context
+    3. Other intents → ChatGPT conversational
+    4. Unknown → ChatGPT fallback
     
     Args:
         user_query: User's question
         user_id: User identifier
         chat_history: Conversation history
-        mode: Always "auto" (intelligent routing)
+        mode: Ignored (always uses smart routing)
     
     Returns:
         Response dict with text, source, data, metadata
     """
     logging.info(f"Processing query: {user_query}")
     
-    # === QUERY VALIDATION ===
-    query_lower = user_query.lower().strip()
+    # === SMART ROUTER CLASSIFICATION ===
+    query_info = smart_route(user_query, chat_history)
+    intent = query_info['intent']
+    confidence = query_info['confidence']
+    routing_path = query_info.get('routing_path', 'UNKNOWN')
     
-    # Check for greetings
-    if query_lower in ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'namaste']:
+    logging.info(f"→ SMART ROUTER: Intent={intent}, Confidence={confidence:.2f}, Path={routing_path}")
+    
+    # === ROUTE BASED ON INTENT ===
+    
+    # GREETING
+    if intent == 'GREETING':
+        logging.info("→ ROUTING: GREETING")
         return {
-            "text": "Hello! 👋 I can help you with banking products.",
+            "text": f"Hello! 👋 I'm your Banking Assistant for {get_banks_short()}.\n\nI can help you with:\n- 💳 Credit & Debit Cards\n- 🏠 Loans (Home, Personal, Car)\n- 💰 Savings Accounts & Schemes\n- ❓ Banking procedures & FAQs\n\nHow can I assist you today?",
             "source": "Greeting",
             "data": [],
-            "metadata": {}
+            "metadata": {"routing_path": routing_path}
         }
     
-    # Check if query has banking context
-    banking_keywords = [
-        'card', 'credit', 'debit', 'loan', 'account', 'bank', 
-        'hdfc', 'sbi', 'how', 'what', 'best', 'compare', 'list', 'show'
-    ]
-    has_context = any(kw in query_lower for kw in banking_keywords)
-    
-    # FIX: Allow short queries if there's conversation history (context-aware follow-ups)
-    # Reject gibberish only if: no banking context + no chat history + very short
-    if not has_context and not chat_history and len(query_lower.split()) <= 3:
+    # CLARIFY - Missing bank/category context
+    if intent == 'CLARIFY':
+        clarify_msg = query_info.get('clarify_message', 'Could you please specify which bank or product type?')
+        logging.info(f"→ ROUTING: CLARIFY")
         return {
-            "text": "❓ I didn't understand that. I'm a banking assistant.",
-            "source": "Invalid Query",
+            "text": f"❓ {clarify_msg}\n\n**Available banks:** {get_banks_short()}\n**Product types:** {get_categories_display()}",
+            "source": "Clarification Request",
             "data": [],
-            "metadata": {}
+            "metadata": {"routing_path": routing_path}
         }
     
-    # === VAGUE QUERY DETECTION ===
-    # Detect queries that need clarification (e.g., "loan", "credit card")
-    # These should get intelligent ChatGPT guidance, not generic responses
+    # COUNT - Guaranteed accuracy
+    if intent == 'COUNT':
+        logging.info("→ ROUTING: COUNT (guaranteed accuracy)")
+        return handle_count_query(query_info)
     
-    def is_vague_query(query: str) -> bool:
-        """
-        Detect if query is too vague and needs clarification.
-        
-        Vague queries:
-        - Single word category queries: "loan", "card", "bank"
-        - 2-word generic queries without bank: "credit card", "debit card"
-        - Category words without specifics
-        
-        NOT vague:
-        - Has bank name: "HDFC credit card" 
-        - Has specifics: "best travel credit card"
-        - Has action words: "list all loans", "compare cards"
-        """
-        q_lower = query.lower().strip()
-        words = q_lower.split()
-        
-        # Category keywords that indicate product queries
-        category_keywords = [
-            'loan', 'card', 'credit', 'debit', 'account', 
-            'savings', 'scheme', 'insurance', 'bank', 'banking'
-        ]
-        
-        # Action keywords that indicate specific intent
-        action_keywords = [
-            'list', 'show', 'compare', 'best', 'recommend', 'difference',
-            'which', 'what are', 'how many', 'tell me', 'explain', 'apply'
-        ]
-        
-        has_category = any(cat in q_lower for cat in category_keywords)
-        has_action = any(action in q_lower for action in action_keywords)
-        has_bank = any(bank.lower() in q_lower for bank in SUPPORTED_BANKS)
-        
-        # Vague if: 1-2 words AND has category AND no bank AND no action
-        if len(words) <= 2 and has_category and not has_bank and not has_action:
-            return True
-        
-        # Also vague if just "bank" or "banking" alone
-        if q_lower in ['bank', 'banking', 'banks']:
-            return True
-        
-        return False
+    # LIST - Guaranteed completeness
+    if intent == 'LIST':
+        logging.info("→ ROUTING: LIST (guaranteed completeness)")
+        return handle_list_query(query_info)
     
-    # Check for vague queries first
-    if is_vague_query(user_query):
-        logging.info("→ VAGUE QUERY DETECTED: Routing to ChatGPT for clarification")
-        # Use ChatGPT with special clarification mode
-        return chatgpt_query(user_query, chat_history, clarification_mode=True)
+    # EXPLAIN_ALL - All products with details
+    if intent == 'EXPLAIN_ALL':
+        logging.info("→ ROUTING: EXPLAIN_ALL (guaranteed completeness)")
+        return handle_explain_query(query_info)
     
-    # === INTELLIGENT AUTO MODE ROUTING ===
-    # Automatically choose structured vs ChatGPT based on query type
-    # Accuracy-critical queries → use structured mode for guaranteed correctness
-    accuracy_critical_keywords = [
-        'how many', 'count', 'number of',  # Count queries
-        'list all', 'explain all', 'show all', 'give me all',  # Complete listing
-        'all the', 'every', 'complete list'
-    ]
+    # EXPLAIN - Single product/category
+    if intent == 'EXPLAIN':
+        logging.info("→ ROUTING: EXPLAIN")
+        return handle_explain_query(query_info)
     
-    needs_structured = any(keyword in query_lower for keyword in accuracy_critical_keywords)
-    
-    if needs_structured:
-        logging.info("→ AUTO MODE: Using STRUCTURED (accuracy-critical query)")
-        selected_mode = "structured"
-    else:
-        logging.info("→ AUTO MODE: Using CHATGPT (conversational query)")
-        selected_mode = "chatgpt"
-    
-    # Route to appropriate handler
-    if selected_mode == "chatgpt":
-        # Use ChatGPT-style conversational handler (normal mode)
+    # FAQ - ChatGPT with FAQ context
+    if intent == 'FAQ':
+        logging.info("→ ROUTING: FAQ (ChatGPT)")
         return chatgpt_query(user_query, chat_history, clarification_mode=False)
     
-    # Otherwise, continue with structured mode below
-    # (All the existing agent_core logic remains unchanged)
+    # COMPARE
+    if intent == 'COMPARE':
+        logging.info("→ ROUTING: COMPARE (ChatGPT)")
+        return chatgpt_query(user_query, chat_history, clarification_mode=False)
     
-    # === MULTI-SOURCE RETRIEVAL ===
-    # Search ALL sources in parallel (SQL + FAQ)
-    # For comprehensive queries, increase max_results to avoid truncation
-    query_lower = user_query.lower().strip()
+    # RECOMMEND
+    if intent == 'RECOMMEND':
+        logging.info("→ ROUTING: RECOMMEND (ChatGPT)")
+        return chatgpt_query(user_query, chat_history, clarification_mode=False)
     
-    # FIX: Improved detection for comprehensive listing queries
-    # Strategy: Detect both explicit listing phrases AND implicit category queries
+    # FOLLOWUP
+    if intent == 'FOLLOWUP':
+        logging.info("→ ROUTING: FOLLOWUP (ChatGPT with history)")
+        return chatgpt_query(user_query, chat_history, clarification_mode=False)
     
-    # Explicit listing phrases
-    explicit_list_phrases = [
-        'all', 'list all', 'explain all', 'list of', 'show me all',
-        'what are the', 'what are all', 'which', 'show me',  # Changed "show me the" to "show me"
-        'give me', 'tell me about'
-    ]
-    
-    # Product category keywords that typically expect comprehensive results
-    # e.g., "hdfc credit cards" is implicitly asking for ALL hdfc credit cards
-    product_keywords = [
-        'credit card', 'debit card', 'loan', 'account', 
-        'cards', 'loans', 'products'  # Plural forms often mean "all"
-    ]
-    
-    has_explicit_phrase = any(phrase in query_lower for phrase in explicit_list_phrases)
-    has_product_plural = any(keyword in query_lower for keyword in product_keywords)
-    
-    # If query contains a bank name + product category keyword, it's likely asking for all
-    # e.g., "hdfc credit cards", "sbi loans"
-    has_bank_name = any(bank.lower() in query_lower for bank in SUPPORTED_BANKS)
-    
-    is_comprehensive = has_explicit_phrase or (has_bank_name and has_product_plural)
-    
-    # FIX: COUNT queries need all results, not max_results=15
-    is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])
-    
-    # Set appropriate max_results
-    if is_count_query:
-        max_results = 100  # Get all products for count queries
-    elif is_comprehensive:
-        max_results = 50  # Get all for comprehensive lists
-    else:
-        max_results = 15  # Default for focused queries
-    
-    retrieval_response = retriever.retrieve(user_query, max_results=max_results, chat_history=chat_history)
-    results = retrieval_response['results']
-    metadata = retrieval_response['metadata']
-    
-    logging.info(f"Retrieved {len(results)} results from {metadata['sources_searched']}")
-    
-    # === SMART SUGGESTIONS FOR FAILED COMPARISONS ===
-    # Check this BEFORE the early return for no results
-    query_lower = user_query.lower().strip()
-    is_comparison = any(word in query_lower for word in ['compare', 'vs', 'versus', 'difference between', 'better than'])
-    
-    if is_comparison and not results:
-        # No products found for comparison - suggest similar names
-        suggestion_text = "❓ I couldn't find the products you're trying to compare.\n\n"
-        suggestion_text += "💡 **Tips for better comparisons:**\n"
-        suggestion_text += "1. Use full product names (e.g., 'HDFC Millennia Credit Card')\n"
-        suggestion_text += "2. Try: 'List all HDFC credit cards' to see available products\n"
-        suggestion_text += "3. Or ask: 'Best credit card for students'\n\n"
-        suggestion_text += "**Popular comparisons:**\n"
-        suggestion_text += "• HDFC Millennia vs HDFC Regalia Gold\n"
-        suggestion_text += "• HDFC Swiggy vs SBI SimplySave\n"
-        suggestion_text += "• HDFC Infinia Metal vs SBI Aurum"
-        
-        return {
-            "text": suggestion_text,
-            "source": "Comparison Help",
-            "data": [],
-            "metadata": metadata
-        }
-    
-    # Check if we have any results
-    if not results:
-        # No results found
-        return {
-            "text": f"I couldn't find specific information on that. Could you rephrase your question or ask about {get_banks_short()} banking products and services?",
-            "source": "No results",
-            "data": None,
-            "metadata": metadata
-        }
-    
-    # === CHECK FOR GENERAL CHAT (Simple Greetings) ===
-    # Handle greetings and non-banking queries with simple fallback
-    # IMPORTANT: Only trigger on standalone greetings, not queries containing these words
-    query_lower = user_query.lower().strip()
-    
-    # Check if query is ONLY a greeting (not part of a longer question)
-    is_greeting_only = (
-        query_lower in ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'] or
-        query_lower.startswith('hi ') or query_lower.startswith('hello ') or
-        query_lower.startswith('hey ')
-    )
-    
-    if is_greeting_only:
-        return {
-            "text": f"Hello! I'm your Banking Assistant for {get_banks_short()}. I can help you with:\n- {get_categories_display()}\n- Interest Rates, Fees, Eligibility\n- How-to guides and procedures\n\nWhat would you like to know?",
-            "source": "Greeting",
-            "data": None
-        }
-    
-    # === SMART LISTING DETECTION ===
-    # For comprehensive listing queries, bypass LLM and format directly in Python
-    # This guarantees ALL products are listed without truncation
-    is_comprehensive_list = any(phrase in query_lower for phrase in [
-        'all', 'list all', 'give me all', 'show me all', 'explain all',
-        'what are all', 'tell me all', 'information on all'
-    ])
-    
-    # Extract product data
-    product_results = [r for r in results if r['type'] == 'product']
-    
-    # CRITICAL: Check if this is a COUNT query BEFORE applying truncation logic
-    is_count_query = any(word in query_lower for word in ['how many', 'count', 'number of'])
-    
-    # Check if this is a RECOMMENDATION query (should use sql_tool's filtering)
-    is_recommendation = any(word in query_lower for word in ['best', 'recommend', 'suggest', 'good for', 'suitable'])
-    
-    # CRITICAL FIX: Force Python formatting for large result sets (>10 products)
-    # This prevents LLM truncation regardless of query phrasing
-    # BUT skip for COUNT queries (they should return a number, not a list)
-    # AND skip for RECOMMENDATION queries (they have their own filtering logic)
-    if len(product_results) > 10 and not is_count_query and not is_recommendation:
-        is_comprehensive_list = True
-        logging.info(f"Forcing Python formatting for {len(product_results)} products to prevent truncation")
-    
-    if is_comprehensive_list and len(product_results) > 5:
-        # === PYTHON FORMATTING for comprehensive lists ===
-        # Check if user wants detailed explanation or just a list
-        query_lower = user_query.lower()
-        wants_details = 'explain' in query_lower or 'detail' in query_lower or 'tell me about' in query_lower
-        
-        if wants_details:
-            # Show full details
-            formatted_text = f"Here are ALL {len(product_results)} products with full details:\n\n"
-            
-            for i, result in enumerate(product_results, 1):
-                product = result.get('raw_data', {})
-                
-                # Parse attributes JSON if it's a string
-                attrs = product.get('attributes', {})
-                if isinstance(attrs, str):
-                    try:
-                        import json
-                        attrs = json.loads(attrs)
-                    except:
-                        attrs = {}
-                
-                # Extract details from attributes
-                bank = product.get('bank_name', 'HDFC')  # Default to bank from query
-                name = product.get('product_name', 'Unknown')
-                category = product.get('category', 'N/A')
-                fees = attrs.get('fees', 'N/A')
-                features = attrs.get('features', 'N/A')
-                eligibility = attrs.get('eligibility', 'N/A')
-                interest_rate = attrs.get('interest_rate', 'N/A')
-                
-                formatted_text += f"{i}. **{name}**\n"
-                formatted_text += f"   - Bank: {bank}\n"
-                formatted_text += f"   - Fees: {fees}\n"
-                formatted_text += f"   - Features: {features}\n"
-                formatted_text += f"   - Eligibility: {eligibility}\n"
-                if interest_rate != 'N/A':
-                    formatted_text += f"   - Interest Rate: {interest_rate}\n"
-                formatted_text += "\n"
-        else:
-            # Just show concise list of names
-            formatted_text = f"Here are ALL {len(product_results)} products:\n\n"
-            for i, result in enumerate(product_results, 1):
-                product = result.get('raw_data', {})
-                name = product.get('product_name', 'Unknown')
-                formatted_text += f"{i}. {name}\n"
-        
-        return {
-            "text": formatted_text,
-            "source": f"Multi-Source ({metadata['sql_count']} products, {metadata['faq_count']} FAQs)",
-            "data": [r['raw_data'] for r in product_results],
-            "metadata": metadata
-        }
-    
-    # === COMPARISON TABLE FORMATTING ===
-    # Check if this is a comparison query
-    is_comparison = any(word in query_lower for word in ['compare', 'vs', 'versus', 'difference between', 'better than'])
-    
-    # Smart Suggestions: If comparison query but found 0-1 products, suggest correct names
-    if is_comparison and len(product_results) < 2:
-        # Extract keywords from query
-        keywords = []
-        for word in query_lower.split():
-            if word not in ['compare', 'vs', 'versus', 'difference', 'between', 'and', 'the', 'a', 'an', 'card', 'loan']:
-                keywords.append(word)
-        
-        # Search for similar product names
-        all_products = [r.get('raw_data', {}) for r in results if r.get('type') == 'product']
-        suggestions = []
-        
-        for keyword in keywords[:3]:  # Check first 3 keywords
-            for product in all_products[:20]:  # Check first 20 products
-                name = product.get('product_name', '').lower()
-                if keyword in name and product.get('product_name') not in suggestions:
-                    suggestions.append(product.get('product_name'))
-        
-        if suggestions:
-            suggestion_text = "❓ I couldn't find enough products to compare. Did you mean one of these?\n\n"
-            for i, name in enumerate(suggestions[:5], 1):
-                suggestion_text += f"{i}. {name}\n"
-            suggestion_text += "\n💡 Try: \"Compare " + " vs ".join(suggestions[:2]) + "\""
-            
-            return {
-                "text": suggestion_text,
-                "source": "Comparison Suggestions",
-                "data": [],
-                "metadata": metadata
-            }
-    
-    if is_comparison and 2 <= len(product_results) <= 3:
-        # Format as comparison table
-        import json
-        
-        # Extract product data
-        products_data = []
-        for result in product_results[:3]:  # Max 3 products
-            product = result.get('raw_data', {})
-            
-            # Parse attributes
-            attrs = product.get('attributes', {})
-            if isinstance(attrs, str):
-                try:
-                    attrs = json.loads(attrs)
-                except:
-                    attrs = {}
-            
-            products_data.append({
-                'name': product.get('product_name', 'Unknown'),
-                'bank': product.get('bank_name', 'N/A'),
-                'fees': attrs.get('fees', 'N/A'),
-                'features': attrs.get('features', 'N/A'),
-                'eligibility': attrs.get('eligibility', 'N/A'),
-                'interest_rate': attrs.get('interest_rate', 'N/A')
-            })
-        
-        # Build comparison table
-        table_text = "## Product Comparison\n\n"
-        
-        # Header row
-        table_text += "| Feature | "
-        table_text += " | ".join([p['name'] for p in products_data])
-        table_text += " |\n"
-        
-        # Separator row
-        table_text += "|" + "---|" * (len(products_data) + 1) + "\n"
-        
-        # Bank row
-        table_text += "| **Bank** | "
-        table_text += " | ".join([p['bank'] for p in products_data])
-        table_text += " |\n"
-        
-        # Fees row
-        table_text += "| **Annual Fees** | "
-        table_text += " | ".join([p['fees'] for p in products_data])
-        table_text += " |\n"
-        
-        # Features row (truncate if too long)
-        table_text += "| **Key Features** | "
-        table_text += " | ".join([p['features'][:50] + "..." if len(p['features']) > 50 else p['features'] for p in products_data])
-        table_text += " |\n"
-        
-        # Eligibility row
-        table_text += "| **Eligibility** | "
-        table_text += " | ".join([p['eligibility'] for p in products_data])
-        table_text += " |\n"
-        
-        # Interest rate row (if applicable)
-        if any(p['interest_rate'] != 'N/A' for p in products_data):
-            table_text += "| **Interest Rate** | "
-            table_text += " | ".join([p['interest_rate'] for p in products_data])
-            table_text += " |\n"
-        
-        table_text += "\n---\n"
-        table_text += f"💡 **Quick Tip:** Choose based on your spending pattern and income level."
-        
-        return {
-            "text": table_text,
-            "source": f"Product Comparison ({len(products_data)} products)",
-            "data": [r['raw_data'] for r in product_results],
-            "metadata": metadata
-        }
-    
-    # === SYNTHESIZE FROM ALL SOURCES ===
-    # Build context from all retrieved results
-    # Increase to 20 to handle comprehensive queries like "all SBI credit cards"
-    context_text = "\n\n".join([
-        f"[Source: {r['source']}]\n{r['content']}" for r in results[:20]
-    ])
-    
-    # Prepare history context
-    history_context = ""
-    if chat_history and len(chat_history) > 0:
-        recent = chat_history[-2:]
-        history_context = "\nRecent conversation:\n" + "\n".join([
-            f"- {msg['role']}: {msg['content'][:100]}" for msg in recent
-        ])
-    
-    synthesis_prompt = f"""
-You are a helpful Banking Assistant for {get_banks_short()} banks.
-Your task is to synthesize the following context into a natural, conversational answer.
+    # UNKNOWN or fallback
+    logging.info(f"→ ROUTING: FALLBACK (intent={intent})")
+    return chatgpt_query(user_query, chat_history, clarification_mode=False)
 
-User Query: "{user_query}"
-{history_context}
 
-Retrieved Information from Multiple Sources:
-{context_text}
+# =============================================================================
+# ACCURACY-CRITICAL HANDLERS
+# =============================================================================
 
-CRITICAL INSTRUCTIONS:
-
-1. **Response Type Detection**:
-   - If user asks "how many", "count", "number of" → Provide ONLY a count with brief summary
-   - If user asks "all", "list", "explain all", "what are", "show me" → List EVERY SINGLE product
-   - If follow-up query says "all", "them", "those" → User wants details about previous query results
-
-2. **Completeness Guarantee**:
-   - When listing products, start with: "Here are ALL {metadata.get('sql_count', 0)} [product type]:"
-   - DO NOT truncate or skip items - list ALL {len(results[:20])} items retrieved
-   - Use numbered lists (1., 2., 3., ...) to ensure you don't skip any
-   
-3. **Formatting**:
-   - For COUNT queries: "SBI offers 16 credit cards: [list names briefly]"
-   - For DETAILED listings: Show each product with fees, features, eligibility
-   - Use clear structure and bullet points
-
-4. **Context Awareness**:
-   - If user says "explain all" or "list those" after a count query, expand with full details
-   - Reference previous conversation context to understand what "all" or "those" refers to
-
-5. **Accuracy**:
-   - Use ONLY information from the retrieved data above
-   - If info is missing for a product (N/A), state it clearly
-   - Do NOT make up information
-
-If the context doesn't contain the answer, say "I don't have that specific information in my database."
+def handle_count_query(query_info: dict) -> dict:
     """
+    Handle COUNT queries with guaranteed accuracy.
+    Uses pure Python counting (no LLM hallucination).
+    """
+    from src.response_formatters import format_count_response
     
-    response = client.chat.completions.create(
-        messages=[
-            {"role": "system", "content": synthesis_prompt},
-            {"role": "user", "content": user_query}
-        ],
-        model=LLM_MODEL,
-        temperature=0.3
-    )
+    bank = query_info.get('bank')
+    category = query_info.get('category')
     
-    # Extract product data for table display
-    product_data = [r['raw_data'] for r in results if r['type'] == 'product']
+    logging.info(f"[COUNT Handler] Bank={bank}, Category={category}")
     
-    return {
-        "text": response.choices[0].message.content,
-        "source": f"Multi-Source ({metadata['sql_count']} products, {metadata['faq_count']} FAQs)",
-        "data": product_data[:20] if product_data else None,
-        "metadata": metadata
-    }
+    products = retriever.get_all_products(bank=bank, category=category)
+    return format_count_response(products, query_info)
+
+
+def handle_list_query(query_info: dict) -> dict:
+    """
+    Handle LIST queries with guaranteed completeness.
+    Uses pure Python formatting to ensure ALL products are listed.
+    """
+    from src.response_formatters import format_list_response
+    
+    bank = query_info.get('bank')
+    category = query_info.get('category')
+    
+    query_lower = query_info.get('original_query', '').lower()
+    detailed = 'detail' in query_lower or 'explain' in query_lower
+    
+    logging.info(f"[LIST Handler] Bank={bank}, Category={category}, Detailed={detailed}")
+    
+    products = retriever.get_all_products(bank=bank, category=category)
+    return format_list_response(products, query_info, detailed=detailed)
+
+
+def handle_explain_query(query_info: dict) -> dict:
+    """
+    Handle EXPLAIN/EXPLAIN_ALL queries with controlled LLM.
+    Uses LLM with strict validation to ensure all products are explained.
+    """
+    from src.response_formatters import format_explain_response
+    
+    bank = query_info.get('bank')
+    category = query_info.get('category')
+    product_name = query_info.get('product_name')
+    
+    logging.info(f"[EXPLAIN Handler] Bank={bank}, Category={category}, Product={product_name}")
+    
+    if product_name:
+        all_products = retriever.get_all_products(bank=bank, category=category)
+        products = [p for p in all_products if product_name.lower() in p.get('product_name', '').lower()]
+    else:
+        products = retriever.get_all_products(bank=bank, category=category)
+    
+    return format_explain_response(products, query_info, client)
+
+
+# =============================================================================
+# CLI FOR TESTING
+# =============================================================================
 
 if __name__ == "__main__":
-    # Test CLI
     logging.basicConfig(level=logging.INFO)
-    print("🤖 Agent CLI (Type 'quit' to exit)")
+    print("🤖 Banking Agent CLI (Type 'quit' to exit)")
     history = []
+    
     while True:
         q = input("\nYou: ")
-        if q.lower() == "quit": break
+        if q.lower() == "quit":
+            break
         
-        # Add user msg to history
         history.append({"role": "user", "content": q})
         
         response_obj = process_query(q, chat_history=history)
         
-        # Handle dict response
         if isinstance(response_obj, dict):
             ans_text = response_obj.get("text", "")
             source = response_obj.get("source", "")
@@ -532,5 +216,4 @@ if __name__ == "__main__":
             ans_text = str(response_obj)
             print(f"Agent: {ans_text}")
         
-        # Add assistant msg to history
         history.append({"role": "assistant", "content": ans_text})

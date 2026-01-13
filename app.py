@@ -299,9 +299,19 @@ if prompt := st.chat_input("💬 Ask me anything about banking products, loans, 
                     st.session_state.messages.append({"role": "assistant", "content": response_obj})
                     
             except Exception as e:
+                import traceback
+                error_details = traceback.format_exc()
+                
                 error_msg = "😔 I encountered an error. Please try rephrasing your question or contact support."
                 st.error(error_msg)
-                st.caption(f"*Error details: {str(e)}*")
+                
+                # Show error details in expander for debugging
+                with st.expander("🔍 Error Details (for debugging)", expanded=False):
+                    st.code(error_details)
+                
+                # Log to console as well
+                print(f"ERROR in Streamlit app:")
+                print(error_details)
 
 # --- Welcome Message ---
 if len(st.session_state.messages) == 0:

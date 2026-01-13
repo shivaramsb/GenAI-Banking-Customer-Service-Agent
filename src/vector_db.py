@@ -82,9 +82,15 @@ class FAQVectorDB:
             )
             print(f"   -> Upserted batch {i} to {end}")
 
-    def query_faqs(self, user_query, bank_filter=None, n_results=3):
+    def query_faqs(self, user_query, bank_filter=None, n_results=3, include_distances=False):
         """
         Searches for relevant FAQs.
+        
+        Args:
+            user_query: The query string
+            bank_filter: Optional filter by bank name
+            n_results: Number of results to return
+            include_distances: If True, returns similarity distances with results
         """
         where_clause = {}
         if bank_filter:
@@ -97,21 +103,30 @@ class FAQVectorDB:
         results = self.collection.query(
             query_texts=[user_query],
             n_results=n_results,
-            where=where_clause
+            where=where_clause,
+            include=['metadatas', 'distances'] if include_distances else ['metadatas']
         )
         
         # Parse results
         parsed_results = []
         if results['metadatas'] and len(results['metadatas']) > 0:
-            for meta in results['metadatas'][0]:
-                parsed_results.append(meta)
+            for i, meta in enumerate(results['metadatas'][0]):
+                result_item = dict(meta)  # Copy metadata
+                # Add distance/similarity if requested
+                if include_distances and results.get('distances') and len(results['distances']) > 0:
+                    # ChromaDB returns L2 distance - lower is more similar
+                    # Convert to similarity: 1 / (1 + distance)
+                    distance = results['distances'][0][i]
+                    result_item['distance'] = distance
+                    result_item['similarity'] = 1 / (1 + distance)
+                parsed_results.append(result_item)
                 
         return parsed_results
 
     def reset_collection(self):
         """Clears the collection - useful for re-ingestion"""
-        self.client.delete_collection("bank_faqs")
+        self.client.delete_collection(CHROMA_COLLECTION_NAME)
         self.collection = self.client.get_or_create_collection(
-            name="bank_faqs",
+            name=CHROMA_COLLECTION_NAME,
             embedding_function=self.embedding_fn
         )

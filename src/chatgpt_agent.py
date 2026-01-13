@@ -10,8 +10,12 @@ import json
 from typing import Dict, Any, List, Optional
 
 from openai import OpenAI
-from src.config import OPENAI_API_KEY, LLM_MODEL, get_banks_short
+from src.config import OPENAI_API_KEY, LLM_MODEL, get_banks_short, SUPPORTED_BANKS
 from src.multi_retriever import MultiSourceRetriever
+
+# Module-level configuration
+MAX_CONTEXT_RESULTS = 15  # Configurable: max results to include in context
+MAX_RETRIEVAL_RESULTS = 30  # Configurable: max results to retrieve
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
@@ -35,7 +39,7 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
     
     # 1. Retrieve relevant context (no query classification needed)
     # For clarification mode, reduce results to keep response focused on guidance
-    max_results = 15 if clarification_mode else 30
+    max_results = MAX_CONTEXT_RESULTS if clarification_mode else MAX_RETRIEVAL_RESULTS
     retrieval_result = retriever.retrieve(user_query, max_results=max_results, chat_history=chat_history)
     results = retrieval_result['results']
     metadata = retrieval_result['metadata']
@@ -44,9 +48,8 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
     context_docs = []
     product_data = []
     
-    # Get available banks from metadata
-    from src.config import SUPPORTED_BANKS
-    banks_text = ", ".join(SUPPORTED_BANKS[:-1]) + f", and {SUPPORTED_BANKS[-1]}" if len(SUPPORTED_BANKS) > 1 else SUPPORTED_BANKS[0]
+    # Get available banks text using config helper
+    banks_text = get_banks_short()
     
     # Extract product categories from results for clarification
     categories_found = set()
@@ -65,14 +68,18 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
                 except:
                     attrs = {}
             
-            # Format product info
+            # Format product info - safely convert to string before slicing
+            fees = str(attrs.get('fees', 'N/A'))
+            features = str(attrs.get('features', 'N/A'))[:150]
+            eligibility = str(attrs.get('eligibility', 'N/A'))[:100]
+            
             context_docs.append(f"""
 Product: {product.get('product_name', 'Unknown')}
 Bank: {product.get('bank_name', 'N/A')}
 Category: {product.get('category', 'N/A')}
-Fees: {attrs.get('fees', 'N/A')}
-Features: {attrs.get('features', 'N/A')[:150]}...
-Eligibility: {attrs.get('eligibility', 'N/A')[:100]}...
+Fees: {fees}
+Features: {features}...
+Eligibility: {eligibility}...
 """.strip())
         
         elif result['type'] == 'faq':

@@ -6,3 +6,15 @@ timestamp,message_idx,feedback_type,message_preview
 2026-01-12T09:28:25.293737,1,positive,It looks like you're interested in debit cards. Could you let me know which bank you are interested 
 2026-01-12T09:28:31.782601,3,positive,"Sure, here is a list of debit cards available from HDFC, SBI, and Axis banks along with their key de"
 2026-01-12T14:47:32.025837,11,negative,I don't have that specific information in my database.
+2026-01-13T14:11:30.227706,3,positive,"Got it! You're interested in a home loan. We offer options with Axis, HDFC, and SBI. 
+
+To assist you"
+2026-01-13T14:11:33.981115,5,positive,"You're interested in credit cards! We have options with Axis, HDFC, and SBI. 
+
+To help you find the "
+2026-01-13T14:15:10.350091,7,positive,"SBI offers 11 different debit cards. Let me walk you through them:
+
+1. **SBI Debit Card** - This one"
+2026-01-13T15:48:03.331699,3,positive,"I'm here to assist with queries related to banking products and services for Axis, HDFC, and SBI. Un"
+2026-01-13T15:48:04.703384,1,positive,"I'm sorry, but I don't have information about Rahul Gandhi. My focus is on assisting with banking pr"
+2026-01-13T15:48:07.378286,5,positive,"I'm here to assist with questions related to banking products and services for Axis, HDFC, and SBI. "

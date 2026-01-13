@@ -278,7 +278,10 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
             row_dict = dict(zip(column_names, row))
             results_text += f"\n{json.dumps(row_dict, indent=2)}\n"
         
-        # FIX 1: Handle COUNT queries properly - extract actual count value
+        # FIX: Classify query type BEFORE using it (was causing NameError)
+        detail_level = classify_query_detail_level(user_query)
+        
+        # Handle COUNT queries properly - extract actual count value
         is_count_query = 'COUNT(*' in sql_query.upper() or detail_level == 'COUNT_ONLY'
         if is_count_query and len(results) == 1 and len(column_names) == 1:
             actual_count = results[0][0]  # Extract the count value
@@ -289,9 +292,6 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
                 "sql": sql_query,
                 "source": "Product Catalog (SQL)"
             }
-        
-        # Classify query type using LLM (semantic understanding)
-        detail_level = classify_query_detail_level(user_query)
         
         # FIX 4: Enhanced comparison detection
         is_comparison = any(word in user_query.lower() for word in ['compare', 'vs', 'versus', 'difference between', 'better than', ' vs. '])
@@ -365,8 +365,12 @@ def execute_sql_tool(user_query, chat_history=None, skip_synthesis=False):
             # If filtering worked, use filtered results
             if len(filtered_results) >= 2:
                 results = filtered_results[:10]  # Max 10 cards
-                # CRITICAL: Regenerate results_text with ONLY filtered cards
-                results_text = f"Pre-filtered to {len(results)} student-friendly cards:\n"
+                # Regenerate results_text with ONLY filtered cards
+                filter_type = "student-friendly" if 'student' in query_lower else (
+                    "travel-focused" if any(w in query_lower for w in ['travel', 'fly', 'lounge']) else 
+                    "premium" if 'premium' in query_lower else "filtered"
+                )
+                results_text = f"Pre-filtered to {len(results)} {filter_type} cards:\n"
                 for row in results:
                     row_dict = dict(zip(column_names, row))
                     results_text += f"\n{json.dumps(row_dict, indent=2)}\n"

@@ -158,13 +158,20 @@ def extract_entities(query: str) -> Dict:
                 category = cat
                 break
     
-    # Detect intent signals
+    # Detect intent signals (order matters for priority)
     has_count = any(kw in query_lower for kw in COUNT_KEYWORDS)
-    has_list = any(kw in query_lower for kw in LIST_KEYWORDS) and not has_count
     has_compare = any(re.search(p, query_lower) for p in COMPARE_PATTERNS)
     has_recommend = any(kw in query_lower for kw in RECOMMEND_KEYWORDS)
     has_explain_all = any(re.search(p, query_lower) for p in EXPLAIN_ALL_PATTERNS)
     has_explain = any(re.search(p, query_lower) for p in EXPLAIN_PATTERNS) and not has_explain_all
+    
+    # LIST is only detected if no higher-priority intent is present
+    has_list = (
+        any(kw in query_lower for kw in LIST_KEYWORDS) and 
+        not has_count and 
+        not has_compare and  # "compare all" should be COMPARE, not LIST
+        not has_recommend    # "best all" should be RECOMMEND, not LIST
+    )
     
     # Check for greeting
     is_greeting = query_lower.strip() in GREETINGS or any(

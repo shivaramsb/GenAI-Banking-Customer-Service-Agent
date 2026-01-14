@@ -75,10 +75,26 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     # CLARIFY - Missing bank/category context
     if intent == 'CLARIFY':
-        clarify_msg = query_info.get('clarify_message', 'Could you please specify which bank or product type?')
+        clarify_msg = query_info.get('clarify_message', '')
         logging.info(f"→ ROUTING: CLARIFY")
+        
+        # Build well-formatted clarification response
+        response_text = "🤔 **I'd love to help!** Please tell me more:\n\n"
+        
+        if clarify_msg:
+            response_text += f"{clarify_msg}\n\n"
+        
+        response_text += "---\n\n"
+        response_text += "🏦 **Banks:** SBI • HDFC • Axis\n\n"
+        response_text += "📦 **Products:** Credit Cards • Debit Cards • Loans • Home Loans • Schemes\n\n"
+        response_text += "💡 **Try asking:**\n"
+        response_text += "- _\"List all SBI credit cards\"_\n"
+        response_text += "- _\"How many HDFC loans?\"_\n"
+        response_text += "- _\"Compare SBI vs HDFC home loans\"_\n"
+        response_text += "- _\"Best credit card for travel\"_"
+        
         return {
-            "text": f"❓ {clarify_msg}\n\n**Available banks:** {get_banks_short()}\n**Product types:** {get_categories_display()}",
+            "text": response_text,
             "source": "Clarification Request",
             "data": [],
             "metadata": {"routing_path": routing_path}

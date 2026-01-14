@@ -156,13 +156,14 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
     # Add current query
     messages.append({"role": "user", "content": user_query})
     
-    # 4. Get LLM response
+    # 4. Get LLM response with robust error handling
     try:
         response = client.chat.completions.create(
             model=LLM_MODEL,
             messages=messages,
             temperature=0.7,  # More conversational than structured mode
-            max_tokens=2000
+            max_tokens=2000,
+            timeout=30  # 30 second timeout
         )
         
         response_text = response.choices[0].message.content
@@ -175,12 +176,31 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
         }
         
     except Exception as e:
+        error_str = str(e).lower()
         logging.error(f"ChatGPT query error: {e}")
+        
+        # Provide helpful fallback based on error type
+        if 'rate limit' in error_str or 'rate_limit' in error_str:
+            error_msg = "⚠️ I'm receiving too many requests right now. Please try again in a few seconds."
+        elif 'connection' in error_str or 'timeout' in error_str:
+            error_msg = "⚠️ I'm having trouble connecting to my AI service. Please try again."
+        elif 'api key' in error_str or 'authentication' in error_str:
+            error_msg = "⚠️ There's a configuration issue. Please contact support."
+        else:
+            # Provide context-based fallback if we have retrieved data
+            if product_data:
+                product_names = [p.get('product_name', '') for p in product_data[:5]]
+                error_msg = f"I found some relevant products but couldn't generate a detailed response:\n\n"
+                error_msg += "\n".join([f"• {name}" for name in product_names if name])
+                error_msg += "\n\n_Please try rephrasing your question._"
+            else:
+                error_msg = "⚠️ Sorry, I couldn't process your query. Please try rephrasing or ask something else."
+        
         return {
-            "text": f"Sorry, I encountered an error processing your query: {str(e)}",
-            "source": "Error",
-            "data": None,
-            "metadata": {}
+            "text": error_msg,
+            "source": "Fallback",
+            "data": product_data if product_data else None,
+            "metadata": {"error": str(e)}
         }
 
 

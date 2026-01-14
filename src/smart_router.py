@@ -29,16 +29,22 @@ from src.vector_db import FAQVectorDB
 # CONFIGURATION
 # =============================================================================
 
-# FAQ similarity threshold
-FAQ_SIMILARITY_THRESHOLD = 0.50  # Slightly higher for safety
+# FAQ similarity threshold (lowered for better recall)
+FAQ_SIMILARITY_THRESHOLD = 0.40  # Lower threshold catches more FAQ matches
 
 # Dynamic bank list (fetched from DB)
 _supported_banks_cache = None
+_banks_cache_time = None
 
-def get_supported_banks() -> List[str]:
-    """Get banks from database (with caching)."""
-    global _supported_banks_cache
-    if _supported_banks_cache is None:
+def get_supported_banks(refresh: bool = False) -> List[str]:
+    """Get banks from database (with caching and refresh support)."""
+    global _supported_banks_cache, _banks_cache_time
+    import time
+    
+    # Refresh cache if requested or older than 5 minutes
+    cache_stale = _banks_cache_time and (time.time() - _banks_cache_time > 300)
+    
+    if _supported_banks_cache is None or refresh or cache_stale:
         try:
             from src.database import DatabaseManager
             db = DatabaseManager()
@@ -46,6 +52,7 @@ def get_supported_banks() -> List[str]:
                 "SELECT DISTINCT bank_name FROM products WHERE bank_name IS NOT NULL"
             )
             _supported_banks_cache = [row['bank_name'] for row in result]
+            _banks_cache_time = time.time()
             if not _supported_banks_cache:
                 _supported_banks_cache = ['SBI', 'HDFC']  # Fallback
         except:
@@ -124,16 +131,19 @@ def extract_entities(query: str) -> Dict:
     Extract entities from query using database values.
     
     Returns entity signals for routing decisions.
+    Now extracts ALL banks for COMPARE queries.
     """
     query_lower = query.lower().strip()
     banks = get_supported_banks()
     
-    # Extract bank from query
-    bank = None
+    # Extract ALL banks from query (for COMPARE queries)
+    banks_found = []
     for b in banks:
         if b.lower() in query_lower:
-            bank = b
-            break
+            banks_found.append(b)
+    
+    # Primary bank (first found) for backward compatibility
+    bank = banks_found[0] if banks_found else None
     
     # Extract category (specific before generic)
     category = None
@@ -178,8 +188,16 @@ def extract_entities(query: str) -> Dict:
         query_lower == g or query_lower.startswith(g + ' ') for g in GREETINGS
     )
     
+    # Detect FAQ-like patterns (to avoid false CLARIFY)
+    faq_patterns = [
+        r'\b(how to|how do i|process|procedure|apply|document|eligibility|requirement)\b',
+        r'\b(what is|what are|kya hai|kaise)\b'
+    ]
+    has_faq_pattern = any(re.search(p, query_lower) for p in faq_patterns)
+    
     return {
         'bank': bank,
+        'banks_found': banks_found,  # All banks for COMPARE
         'category': category,
         'has_count_signal': has_count,
         'has_list_signal': has_list,
@@ -187,6 +205,7 @@ def extract_entities(query: str) -> Dict:
         'has_recommend_signal': has_recommend,
         'has_explain_signal': has_explain,
         'has_explain_all_signal': has_explain_all,
+        'has_faq_pattern': has_faq_pattern,
         'is_greeting': is_greeting,
         'is_accuracy_critical': has_count or has_list or has_explain_all
     }
@@ -219,20 +238,25 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
     
     # === VAGUE QUERY DETECTION ===
     # Single-word or very short banking terms should ask for clarification
+    # BUT: Exclude queries with FAQ patterns (how to, apply, eligibility, etc.)
     vague_terms = [
         'loan', 'loans', 'credit', 'debit', 'card', 'cards',
         'credit card', 'debit card', 'home loan', 'car loan',
         'account', 'accounts', 'bank', 'banking', 'scheme', 'schemes'
     ]
     
-    is_vague = query_lower in vague_terms or (
-        len(query_lower.split()) <= 2 and 
-        any(term in query_lower for term in vague_terms) and
-        not bank and  # No specific bank mentioned
-        not entities['has_count_signal'] and
-        not entities['has_list_signal'] and
-        not entities['has_explain_signal'] and
-        not entities['has_recommend_signal']
+    # Only consider vague if NO FAQ pattern detected
+    is_vague = (
+        not entities.get('has_faq_pattern', False) and  # Skip if FAQ-like
+        (query_lower in vague_terms or (
+            len(query_lower.split()) <= 2 and 
+            any(term in query_lower for term in vague_terms) and
+            not bank and  # No specific bank mentioned
+            not entities['has_count_signal'] and
+            not entities['has_list_signal'] and
+            not entities['has_explain_signal'] and
+            not entities['has_recommend_signal']
+        ))
     )
     
     if is_vague:
@@ -443,6 +467,7 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
             'intent': intent,
             'confidence': critical_result['confidence'],
             'bank': entities['bank'],
+            'banks_found': entities.get('banks_found', []),
             'category': entities['category'],
             'routing_path': critical_result['path'],
             'faq_match': None,
@@ -460,6 +485,7 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
                 'intent': 'FAQ',
                 'confidence': 0.90,
                 'bank': entities['bank'],
+                'banks_found': entities.get('banks_found', []),
                 'category': entities['category'],
                 'routing_path': 'FAQ_SIMILARITY',
                 'faq_match': faq_match,
@@ -475,6 +501,7 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
         'intent': llm_result['intent'],
         'confidence': llm_result['confidence'],
         'bank': entities['bank'],
+        'banks_found': entities.get('banks_found', []),
         'category': entities['category'],
         'routing_path': 'LLM_FALLBACK',
         'faq_match': None,

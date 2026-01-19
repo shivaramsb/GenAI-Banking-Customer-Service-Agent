@@ -20,7 +20,7 @@ MAX_RETRIEVAL_RESULTS = 30  # Configurable: max results to retrieve
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
 
-def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, clarification_mode: bool = False) -> Dict[str, Any]:
+def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, clarification_mode: bool = False, intent: Optional[str] = None) -> Dict[str, Any]:
     """
     ChatGPT-style conversational query handler.
     
@@ -31,6 +31,7 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
         user_query: User's question
         chat_history: Full conversation history
         clarification_mode: If True, focus on asking clarifying questions for vague queries
+        intent: The detected intent (FAQ, RECOMMEND, COMPARE, etc.) for metadata
         
     Returns:
         Response dict with text, source, data, metadata
@@ -43,6 +44,10 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
     retrieval_result = retriever.retrieve(user_query, max_results=max_results, chat_history=chat_history)
     results = retrieval_result['results']
     metadata = retrieval_result['metadata']
+    
+    # Add intent to metadata for HistoryStateManager
+    if intent:
+        metadata['intent'] = intent
     
     # 2. Format retrieved documents as context
     context_docs = []

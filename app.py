@@ -292,7 +292,12 @@ if prompt := st.chat_input("💬 Ask me anything about banking products, loans, 
                         with st.expander("📋 View Detailed Data", expanded=False):
                             st.dataframe(data, use_container_width=True)
                     
-                    st.session_state.messages.append({"role": "assistant", "content": ans})
+                    # Store message with metadata for HistoryStateManager
+                    st.session_state.messages.append({
+                        "role": "assistant", 
+                        "content": ans,
+                        "metadata": metadata  # Critical for follow-up logic
+                    })
                     
                 else:
                     st.markdown(response_obj)

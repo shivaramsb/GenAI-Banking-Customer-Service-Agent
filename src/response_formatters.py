@@ -123,7 +123,11 @@ Write a natural, conversational response."""
             "source": f"Python Count + LLM Formatting (Verified: {count} products)",
             "data": products,
             "metadata": {
+                "intent": "COUNT",  # For HistoryStateManager
                 "count": count,
+                "bank": bank,
+                "category": category,
+                "product_names": [p['name'] for p in product_list],  # For followups
                 "method": "hybrid_count",
                 "guaranteed_accurate": True,
                 "missing_products": missing_products
@@ -232,7 +236,11 @@ def format_list_response(products: List[Dict], query_info: Dict, detailed: bool 
         "source": f"Product List ({count} items)",
         "data": products,
         "metadata": {
+            "intent": "LIST",  # For HistoryStateManager
             "count": count,
+            "bank": bank,
+            "category": category,
+            "product_names": [p.get('product_name', 'Unknown') for p in products],  # For ordinal followups
             "method": "python_list",
             "guaranteed_complete": True
         }
@@ -341,7 +349,11 @@ Remember: You MUST include all {count} products in your response."""
             "source": f"LLM Explanation ({count} products)",
             "data": products,
             "metadata": {
+                "intent": "EXPLAIN",  # For HistoryStateManager
                 "count": count,
+                "bank": query_info.get('bank'),
+                "category": query_info.get('category'),
+                "product_names": [p.get('product_name', 'Unknown') for p in products],
                 "method": "llm_explain",
                 "temperature": 0,
                 "missing_products": missing_products

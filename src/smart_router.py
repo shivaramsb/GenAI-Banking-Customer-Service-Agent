@@ -1,5 +1,5 @@
 """
-Hybrid Smart Router for Banking Agent - PRODUCTION VERSION
+Hybrid Smart Router for Banking Agent 
 
 4-step hybrid routing with production-safe fixes:
 1. DB-Based Entity Detection (0ms) - Extract bank/category
@@ -22,7 +22,7 @@ import logging
 from typing import Dict, Optional, List, Tuple
 from openai import OpenAI
 
-from src.config import OPENAI_API_KEY, LLM_MODEL, PRODUCT_CATEGORIES
+from src.config import OPENAI_API_KEY, LLM_MODEL
 from src.vector_db import FAQVectorDB
 
 # =============================================================================
@@ -58,6 +58,64 @@ def get_supported_banks(refresh: bool = False) -> List[str]:
         except:
             _supported_banks_cache = ['SBI', 'HDFC']
     return _supported_banks_cache
+
+
+# Dynamic category list (fetched from DB)
+_supported_categories_cache = None
+_categories_cache_time = None
+
+def get_supported_categories(refresh: bool = False) -> List[str]:
+    """Get categories from database (with caching and refresh support)."""
+    global _supported_categories_cache, _categories_cache_time
+    import time
+    
+    # Refresh cache if requested or older than 5 minutes
+    cache_stale = _categories_cache_time and (time.time() - _categories_cache_time > 300)
+    
+    if _supported_categories_cache is None or refresh or cache_stale:
+        try:
+            from src.database import DatabaseManager
+            db = DatabaseManager()
+            result = db.execute_raw_query(
+                "SELECT DISTINCT category FROM products WHERE category IS NOT NULL"
+            )
+            _supported_categories_cache = [row['category'] for row in result]
+            _categories_cache_time = time.time()
+            if not _supported_categories_cache:
+                _supported_categories_cache = ['Credit Card', 'Debit Card', 'Loan', 'Scheme']  # Fallback
+        except:
+            _supported_categories_cache = ['Credit Card', 'Debit Card', 'Loan', 'Scheme']
+    return _supported_categories_cache
+
+
+def build_category_patterns(categories: List[str]) -> List[Tuple[str, str]]:
+    """
+    Build regex patterns dynamically from category list.
+    
+    Generates both exact matches and partial term patterns.
+    Example: 'Credit Card' generates:
+        - r'\bcredit card' → 'Credit Card' (exact)
+        - r'\bcredit\b' → 'Credit Card' (partial)
+    """
+    patterns = []
+    
+    for cat in categories:
+        cat_lower = cat.lower()
+        
+        # Exact match pattern (e.g., "credit card")
+        patterns.append((rf'\b{cat_lower}', cat))
+        
+        # Partial term patterns (e.g., "credit" → "Credit Card")
+        words = cat_lower.split()
+        if len(words) > 1:
+            # Add first word as partial match (e.g., "credit" for "Credit Card")
+            patterns.append((rf'\b{words[0]}\b', cat))
+        
+        # Special case for plurals (e.g., "loans" → "Loan")
+        if not cat_lower.endswith('s'):
+            patterns.append((rf'\b{cat_lower}s\b', cat))
+    
+    return patterns
 
 # Lazy initialization
 _vector_db = None
@@ -122,6 +180,8 @@ GREETINGS = [
 ]
 
 
+
+
 # =============================================================================
 # STEP 1: ENTITY EXTRACTION (DB-Based)
 # =============================================================================
@@ -145,28 +205,15 @@ def extract_entities(query: str) -> Dict:
     # Primary bank (first found) for backward compatibility
     bank = banks_found[0] if banks_found else None
     
-    # Extract category (specific before generic)
+    # Extract category - DYNAMIC from DB
     category = None
-    category_patterns = [
-        (r'\bhome loan', 'Home Loan'),
-        (r'\bcredit card', 'Credit Card'),
-        (r'\bdebit card', 'Debit Card'),
-        (r'\b(car loan|personal loan|education loan|gold loan|two wheeler)', 'Loan'),
-        (r'\bloan\b', 'Loan'),
-        (r'\b(scheme|plan|saving|fd|fixed deposit)', 'Scheme'),
-    ]
+    categories = get_supported_categories()
+    category_patterns = build_category_patterns(categories)
     
     for pattern, cat in category_patterns:
         if re.search(pattern, query_lower):
             category = cat
             break
-    
-    # Fallback to config categories
-    if not category:
-        for cat in PRODUCT_CATEGORIES:
-            if cat.lower() in query_lower:
-                category = cat
-                break
     
     # Detect intent signals (order matters for priority)
     has_count = any(kw in query_lower for kw in COUNT_KEYWORDS)
@@ -190,7 +237,7 @@ def extract_entities(query: str) -> Dict:
     
     # Detect FAQ-like patterns (to avoid false CLARIFY)
     faq_patterns = [
-        r'\b(how to|how do i|process|procedure|apply|document|eligibility|requirement)\b',
+        r'\b(how to|how do i|process|procedure|apply|document|eligibility|requirement|help)\b',
         r'\b(what is|what are|kya hai|kaise)\b'
     ]
     has_faq_pattern = any(re.search(p, query_lower) for p in faq_patterns)
@@ -239,19 +286,23 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
     # === VAGUE QUERY DETECTION ===
     # Single-word or very short banking terms should ask for clarification
     # BUT: Exclude queries with FAQ patterns (how to, apply, eligibility, etc.)
+    # AND: Exclude if we have bank context from history!
     vague_terms = [
         'loan', 'loans', 'credit', 'debit', 'card', 'cards',
         'credit card', 'debit card', 'home loan', 'car loan',
         'account', 'accounts', 'bank', 'banking', 'scheme', 'schemes'
     ]
     
-    # Only consider vague if NO FAQ pattern detected
+    # Only consider vague if:
+    # - No FAQ pattern detected
+    # - No bank context (from current query OR history)
+    # - No strong intent signals
     is_vague = (
         not entities.get('has_faq_pattern', False) and  # Skip if FAQ-like
+        not bank and  # Skip if we have bank context (including from history!)
         (query_lower in vague_terms or (
             len(query_lower.split()) <= 2 and 
             any(term in query_lower for term in vague_terms) and
-            not bank and  # No specific bank mentioned
             not entities['has_count_signal'] and
             not entities['has_list_signal'] and
             not entities['has_explain_signal'] and
@@ -314,7 +365,8 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
             return {'intent': 'EXPLAIN', 'confidence': 0.85, 'path': 'DB_SIGNALS'}
     
     # Implicit LIST: bank + category without other signals
-    if bank and category:
+    # BUT: Don't trigger for FAQ-like queries ("how to apply", "process", etc.)
+    if bank and category and not entities.get('has_faq_pattern', False):
         return {'intent': 'LIST', 'confidence': 0.70, 'path': 'IMPLICIT_LIST'}
     
     return None  # Not determinable from DB signals
@@ -454,9 +506,37 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
     """
     logging.info(f"[SmartRouter] Processing: {query}")
     
-    # === STEP 1: Entity Extraction ===
+    # === STEP 0: Extract context from chat history (State Machine) ===
+    from src.history_manager import HistoryStateManager
+    from src.followup_router import FollowupRouter
+    
+    # 1. Reconstruct State
+    history_manager = HistoryStateManager()
+    state = history_manager.extract_state(chat_history)
+    
+    # 2. Check for Specific Follow-up Transitions
+    followup_router = FollowupRouter()
+    followup_result = followup_router.route_followup(query, state)
+    
+    if followup_result:
+        logging.info(f"[SmartRouter] Followup Transition: {followup_result['routing_path']}")
+        return followup_result  # Return immediately (Virtual Query Strategy)
+    
+    # === STEP 1: Entity Extraction from current query ===
     entities = extract_entities(query)
-    logging.debug(f"[Step 1] Entities: {entities}")
+    
+    # === MERGE: Fill missing entities from history state ===
+    # If current query doesn't have bank/category, use persistent state
+    if not entities['bank'] and state.bank:
+        entities['bank'] = state.bank
+        entities['banks_found'] = [state.bank]
+        logging.info(f"[Context] Using bank from history: {entities['bank']}")
+    
+    if not entities['category'] and state.category:
+        entities['category'] = state.category
+        logging.info(f"[Context] Using category from history: {entities['category']}")
+    
+    logging.debug(f"[Step 1] Entities (merged): {entities}")
     
     # === STEP 2: Accuracy-Critical Routing (HIGHEST PRIORITY) ===
     critical_result = route_accuracy_critical(entities, query)

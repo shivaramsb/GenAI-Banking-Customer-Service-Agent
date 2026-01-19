@@ -55,6 +55,13 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     # === SMART ROUTER CLASSIFICATION ===
     query_info = smart_route(user_query, chat_history)
+    
+    # Check for Virtual Query (e.g., Follow-up rewrite)
+    # If FollowupRouter rewrote the query, use that for downstream processing
+    effective_query = query_info.get('original_query', user_query)
+    if effective_query != user_query:
+        logging.info(f"→ VIRTUAL QUERY: '{user_query}' mapped to '{effective_query}'")
+    
     intent = query_info['intent']
     confidence = query_info['confidence']
     routing_path = query_info.get('routing_path', 'UNKNOWN')
@@ -75,27 +82,18 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     # CLARIFY - Missing bank/category context
     if intent == 'CLARIFY':
-        clarify_msg = query_info.get('clarify_message', '')
+        category = query_info.get('category')
         logging.info(f"→ ROUTING: CLARIFY")
         
-        # Build well-formatted clarification response
-        response_text = "🤔 **I'd love to help!** Please tell me more:\n\n"
-        
-        if clarify_msg:
-            response_text += f"{clarify_msg}\n\n"
-        
-        response_text += "---\n\n"
-        response_text += "🏦 **Banks:** SBI • HDFC • Axis\n\n"
-        response_text += "📦 **Products:** Credit Cards • Debit Cards • Loans • Home Loans • Schemes\n\n"
-        response_text += "💡 **Try asking:**\n"
-        response_text += "- _\"List all SBI credit cards\"_\n"
-        response_text += "- _\"How many HDFC loans?\"_\n"
-        response_text += "- _\"Compare SBI vs HDFC home loans\"_\n"
-        response_text += "- _\"Best credit card for travel\"_"
+        # Natural language response based on what was detected
+        if category:
+            response_text = f"I can help you with {category}s! Which bank are you interested in - SBI, HDFC, or Axis? Or would you like me to compare options across banks?"
+        else:
+            response_text = "I'd be happy to help! Are you looking for debit cards,credit cards, loans, or something else? And which bank - SBI, HDFC, or Axis?"
         
         return {
             "text": response_text,
-            "source": "Clarification Request",
+            "source": "Clarification",
             "data": [],
             "metadata": {"routing_path": routing_path}
         }
@@ -123,26 +121,26 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     # FAQ - ChatGPT with FAQ context
     if intent == 'FAQ':
         logging.info("→ ROUTING: FAQ (ChatGPT)")
-        return chatgpt_query(user_query, chat_history, clarification_mode=False)
+        return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='FAQ')
     
     # COMPARE
     if intent == 'COMPARE':
         logging.info("→ ROUTING: COMPARE (ChatGPT)")
-        return chatgpt_query(user_query, chat_history, clarification_mode=False)
+        return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='COMPARE')
     
     # RECOMMEND
     if intent == 'RECOMMEND':
         logging.info("→ ROUTING: RECOMMEND (ChatGPT)")
-        return chatgpt_query(user_query, chat_history, clarification_mode=False)
+        return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='RECOMMEND')
     
     # FOLLOWUP
     if intent == 'FOLLOWUP':
         logging.info("→ ROUTING: FOLLOWUP (ChatGPT with history)")
-        return chatgpt_query(user_query, chat_history, clarification_mode=False)
+        return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='FOLLOWUP')
     
     # UNKNOWN or fallback
     logging.info(f"→ ROUTING: FALLBACK (intent={intent})")
-    return chatgpt_query(user_query, chat_history, clarification_mode=False)
+    return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='UNKNOWN')
 
 
 # =============================================================================

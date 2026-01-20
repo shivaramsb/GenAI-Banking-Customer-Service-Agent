@@ -67,20 +67,26 @@ class FollowupRouter:
     def _handle_list_followup(self, query: str, state: ContextState) -> Optional[Dict]:
         """LIST -> EXPLAIN / COMPARE / RECOMMEND"""
         
-        # "Explain the first one", "Details of 1st", "explain 5th"
+        # "Explain the first one", "Details of 1st", "explain 5th", "explain 5"
+        # First try to match ordinal words/suffixes
         match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th)\b', query)
+        if not match:
+            # Fallback: try bare numbers (1-10) when used with "explain" context
+            if 'explain' in query or 'details' in query or 'show' in query:
+                match = re.search(r'\b([1-9]|10)\b', query)
+        
         if match and state.last_response_meta.get('product_names'):
             index_map = {
-                'first': 0, '1st': 0, 
-                'second': 1, '2nd': 1, 
-                'third': 2, '3rd': 2,
-                'fourth': 3, '4th': 3,
-                'fifth': 4, '5th': 4,
-                'sixth': 5, '6th': 5,
-                'seventh': 6, '7th': 6,
-                'eighth': 7, '8th': 7,
-                'ninth': 8, '9th': 8,
-                'tenth': 9, '10th': 9
+                'first': 0, '1st': 0, '1': 0,
+                'second': 1, '2nd': 1, '2': 1,
+                'third': 2, '3rd': 2, '3': 2,
+                'fourth': 3, '4th': 3, '4': 3,
+                'fifth': 4, '5th': 4, '5': 4,
+                'sixth': 5, '6th': 5, '6': 5,
+                'seventh': 6, '7th': 6, '7': 6,
+                'eighth': 7, '8th': 7, '8': 7,
+                'ninth': 8, '9th': 8, '9': 8,
+                'tenth': 9, '10th': 9, '10': 9
             }
             idx = index_map.get(match.group(1), 0)
             

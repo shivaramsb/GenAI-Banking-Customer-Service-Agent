@@ -237,8 +237,9 @@ def extract_entities(query: str) -> Dict:
     
     # Detect FAQ-like patterns (to avoid false CLARIFY)
     faq_patterns = [
-        r'\b(how to|how do i|process|procedure|apply|document|eligibility|requirement|help)\b',
-        r'\b(what is|what are|kya hai|kaise)\b'
+        r'\b(how to|how do i|how can i|process|procedure|apply|document|eligibility|requirement|help)\b',
+        r'\b(what is|what are|kya hai|kaise)\b',
+        r'\b(create|open|activate|close|cancel|block)\s+(account|card|loan)\b',  # Account procedures
     ]
     has_faq_pattern = any(re.search(p, query_lower) for p in faq_patterns)
     

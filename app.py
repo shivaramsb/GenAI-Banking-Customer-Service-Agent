@@ -190,7 +190,7 @@ with st.sidebar:
     **BankWise** is your AI-powered banking assistant, providing instant answers about:
     
     - 💳 Credit & Debit Cards
-    - 🏠 Loans & Mortgages  
+    - 🏠 Loans   
     - 💰 Savings & Investments
     - 🔒 Security & Support
     

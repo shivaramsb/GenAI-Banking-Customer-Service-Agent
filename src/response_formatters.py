@@ -293,8 +293,37 @@ Product {i}: {product.get('product_name', 'Unknown')}
     bank = query_info.get('bank', 'the bank')
     category = query_info.get('category', 'products')
     original_query = query_info.get('original_query', '')
+    product_name = query_info.get('product_name')
     
-    system_prompt = f"""You are explaining {count} banking products from {bank}.
+    # Determine if this is a single product explain or explain all
+    is_single_product = product_name or count == 1
+    
+    if is_single_product:
+        # Single product explanation
+        system_prompt = f"""You are explaining a specific banking product.
+
+PRODUCT DETAILS:
+{full_context}
+
+CRITICAL RULES:
+1. Explain ONLY this product in detail
+2. Include:
+   - Product name and bank
+   - Annual fees
+   - Key features (detailed)
+   - Eligibility criteria
+   - Interest rate (if applicable)
+3. Be accurate - ONLY use information provided above
+4. Do NOT mention other products
+5. Do NOT make up any information
+6. Be conversational and helpful
+
+User's question: "{original_query}"
+
+Provide a detailed explanation of this product."""
+    else:
+        # Multiple products explanation
+        system_prompt = f"""You are explaining {count} banking products from {bank}.
 
 PRODUCTS TO EXPLAIN:
 {full_context}

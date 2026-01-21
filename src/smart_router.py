@@ -140,13 +140,12 @@ def _get_llm_client():
 
 # COUNT keywords - specific to counting
 COUNT_KEYWORDS = [
-    'how many', 'count', 'number of', 'total', 'kitne', 'kitna'
+    'how many', 'count', 'number of', 'total'
 ]
 
-# LIST keywords - for listing (NO "kitne" - that's COUNT)
+# LIST keywords - for listing
 LIST_KEYWORDS = [
-    'all', 'list', 'show', 'display', 'sab', 'sabhi', 'saare',
-    'kya kya', 'konse', 'what are', 'which', 'names of'
+    'all', 'list', 'show', 'display', 'what are', 'which', 'names of'
 ]
 
 # COMPARE - STRICT patterns only (removed "better", "ya")
@@ -158,7 +157,7 @@ COMPARE_PATTERNS = [
 # RECOMMEND keywords
 RECOMMEND_KEYWORDS = [
     'best', 'recommend', 'suggest', 'suitable', 'good for', 
-    'better for', 'accha', 'sahi', 'which should i'
+    'better for', 'which should i'
 ]
 
 # EXPLAIN patterns (removed "what is" - too broad)
@@ -175,8 +174,7 @@ EXPLAIN_ALL_PATTERNS = [
 
 # Greetings
 GREETINGS = [
-    'hi', 'hello', 'hey', 'namaste', 'good morning', 'good afternoon',
-    'good evening', 'hola', 'kaise ho', 'kya hal'
+    'hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'
 ]
 
 
@@ -265,17 +263,19 @@ def extract_entities(query: str) -> Dict:
 
 def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
     """
-    Route accuracy-critical intents with guaranteed determinism.
+    Route using EVIDENCE-BASED VALIDATION (Production-Grade).
     
-    These intents are NEVER overridden by FAQ or LLM:
-    - COUNT: Exact number of products
-    - LIST: Complete product list
-    - EXPLAIN_ALL: All products with details
+    3-Step Process:
+    1. Scope Resolver: Extract bank/category from DB
+    2. Evidence Retrieval: Gather DB count + FAQ similarity
+    3. Operation Validation: Decide based on evidence, not keywords
     
-    Also handles vague single-word queries with CLARIFY.
+    Key: COUNT must be DB-validated, not keyword-detected.
     
-    Returns routing result or None if not accuracy-critical.
+    Returns routing result or None if not determinable.
     """
+    from src.evidence_router import route_with_evidence
+    
     bank = entities['bank']
     category = entities['category']
     query_lower = query.lower().strip()
@@ -328,49 +328,56 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
         return {'intent': 'CLARIFY', 'confidence': 0.95, 'path': 'VAGUE_QUERY',
                 'clarify_message': clarify_msg}
     
-    # COUNT - Requires bank OR category context
-    if entities['has_count_signal']:
-        if bank or category:
-            return {'intent': 'COUNT', 'confidence': 0.95, 'path': 'ACCURACY_CRITICAL'}
-        else:
-            return {'intent': 'CLARIFY', 'confidence': 0.90, 'path': 'NEEDS_CONTEXT',
-                    'clarify_message': 'Which bank or product type would you like me to count?'}
+    # === EVIDENCE-BASED ROUTING ===
+    # Use new evidence router for all structured queries
+    evidence_result = route_with_evidence(query, entities)
     
-    # EXPLAIN_ALL - Requires bank OR category
-    if entities['has_explain_all_signal']:
-        if bank or category:
-            return {'intent': 'EXPLAIN_ALL', 'confidence': 0.95, 'path': 'ACCURACY_CRITICAL'}
-        else:
-            return {'intent': 'CLARIFY', 'confidence': 0.90, 'path': 'NEEDS_CONTEXT',
-                    'clarify_message': 'Which bank or product type would you like me to explain?'}
+    # If evidence router returned a result, use it
+    if evidence_result:
+        # Map operations back to intents for compatibility
+        intent_map = {
+            'COUNT': 'COUNT',
+            'LIST': 'LIST',
+            'EXPLAIN': 'EXPLAIN',
+            'COMPARE': 'COMPARE',
+            'RECOMMEND': 'RECOMMEND',
+            'FAQ': 'FAQ',
+            'CLARIFY': 'CLARIFY',
+            'LLM_FALLBACK': 'UNKNOWN'
+        }
+        
+        primary_intent = intent_map.get(evidence_result['intent'], 'UNKNOWN')
+        
+        # Return enhanced result with evidence metadata
+        return {
+            'intent': primary_intent,
+            'confidence': evidence_result['confidence'],
+            'path': evidence_result['path'],
+            'operations': evidence_result.get('operations', [primary_intent]),  # Keep operations list
+            'evidence': evidence_result.get('evidence'),
+            'scope': evidence_result.get('scope')
+        }
     
-    # LIST - Requires bank OR category
-    if entities['has_list_signal']:
-        if bank or category:
-            return {'intent': 'LIST', 'confidence': 0.90, 'path': 'ACCURACY_CRITICAL'}
-        else:
-            return {'intent': 'CLARIFY', 'confidence': 0.85, 'path': 'NEEDS_CONTEXT',
-                    'clarify_message': 'Which bank or product type would you like me to list?'}
-    
-    # COMPARE - Strict detection
+    # COMPARE - Strict detection (fallback if evidence router didn't catch it)
     if entities['has_compare_signal']:
         return {'intent': 'COMPARE', 'confidence': 0.90, 'path': 'DB_SIGNALS'}
     
-    # RECOMMEND
+    # RECOMMEND (fallback)
     if entities['has_recommend_signal']:
         return {'intent': 'RECOMMEND', 'confidence': 0.90, 'path': 'DB_SIGNALS'}
     
-    # EXPLAIN (single product/category)
+    # EXPLAIN (single product/category) (fallback)
     if entities['has_explain_signal']:
         if bank or category:
             return {'intent': 'EXPLAIN', 'confidence': 0.85, 'path': 'DB_SIGNALS'}
     
-    # Implicit LIST: bank + category without other signals
+    # Implicit LIST: bank + category without other signals (fallback)
     # BUT: Don't trigger for FAQ-like queries ("how to apply", "process", etc.)
     if bank and category and not entities.get('has_faq_pattern', False):
         return {'intent': 'LIST', 'confidence': 0.70, 'path': 'IMPLICIT_LIST'}
     
     return None  # Not determinable from DB signals
+
 
 
 # =============================================================================
@@ -551,9 +558,12 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
             'banks_found': entities.get('banks_found', []),
             'category': entities['category'],
             'routing_path': critical_result['path'],
+            'operations': critical_result.get('operations', [intent]),  # Include operations list
             'faq_match': None,
             'original_query': query,
-            'clarify_message': critical_result.get('clarify_message')
+            'clarify_message': critical_result.get('clarify_message'),
+            'evidence': critical_result.get('evidence'),  # Include evidence for debugging
+            'scope': critical_result.get('scope')  # Include scope for debugging
         }
     
     # === STEP 3: FAQ Similarity (Only for non-accuracy-critical) ===

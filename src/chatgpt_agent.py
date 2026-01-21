@@ -20,7 +20,7 @@ MAX_RETRIEVAL_RESULTS = 30  # Configurable: max results to retrieve
 client = OpenAI(api_key=OPENAI_API_KEY)
 retriever = MultiSourceRetriever()
 
-def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, clarification_mode: bool = False, intent: Optional[str] = None) -> Dict[str, Any]:
+def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, clarification_mode: bool = False, intent: Optional[str] = None, suppress_count: bool = False) -> Dict[str, Any]:
     """
     ChatGPT-style conversational query handler.
     
@@ -32,11 +32,12 @@ def chatgpt_query(user_query: str, chat_history: Optional[List[Dict]] = None, cl
         chat_history: Full conversation history
         clarification_mode: If True, focus on asking clarifying questions for vague queries
         intent: The detected intent (FAQ, RECOMMEND, COMPARE, etc.) for metadata
+        suppress_count: If True, instruct LLM NOT to count products (used in multi-op when COUNT already handled)
         
     Returns:
         Response dict with text, source, data, metadata
     """
-    logging.info(f"[ChatGPT Mode] Processing: {user_query} (clarification={clarification_mode})")
+    logging.info(f"[ChatGPT Mode] Processing: {user_query} (clarification={clarification_mode}, suppress_count={suppress_count})")
     
     # 1. Retrieve relevant context (no query classification needed)
     # For clarification mode, reduce results to keep response focused on guidance
@@ -128,6 +129,8 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
 """
     else:
         # Normal conversational mode
+        count_instruction = "" if suppress_count else "- If asked for counts, count the products in the context\n"
+        
         system_prompt = f"""You are a helpful banking assistant for {banks_text}.
 
 **Retrieved Context from Database:**
@@ -136,8 +139,7 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
 **Instructions:**
 - Answer questions naturally and conversationally
 - Use ONLY the retrieved context above - do not make up information
-- If asked for counts, count the products in the context
-- If asked to list products, list them clearly with numbers and key details
+{count_instruction}- If asked to list products, list them clearly with numbers and key details
 - If comparing products, create clear comparison tables
 - If recommending, analyze the options and explain your reasoning
 - Be friendly, helpful, and accurate
@@ -146,6 +148,8 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
 
 **Important:** The context above shows relevant products from our database. Use it as your source of truth.
 """
+        if suppress_count:
+            system_prompt += "\n**Note:** Do NOT count or mention the number of products - focus only on answering the procedural/informational aspects of the question."
     
     messages.append({"role": "system", "content": system_prompt})
     

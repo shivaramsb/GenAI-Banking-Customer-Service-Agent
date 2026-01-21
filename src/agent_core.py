@@ -68,6 +68,14 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
     
     logging.info(f"→ SMART ROUTER: Intent={intent}, Confidence={confidence:.2f}, Path={routing_path}")
     
+    # === MULTI-OPERATION SUPPORT ===
+    # If evidence router detected multiple operations, handle them
+    operations = query_info.get('operations', [intent])
+    
+    if len(operations) > 1:
+        logging.info(f"→ MULTI-OPERATION: {operations}")
+        return handle_multi_operation(query_info, effective_query, chat_history)
+    
     # === ROUTE BASED ON INTENT ===
     
     # GREETING
@@ -202,6 +210,102 @@ def handle_explain_query(query_info: dict) -> dict:
         products = retriever.get_all_products(bank=bank, category=category)
     
     return format_explain_response(products, query_info, client)
+
+
+# =============================================================================
+# MULTI-OPERATION HANDLER
+# =============================================================================
+
+def handle_multi_operation(query_info: dict, effective_query: str, chat_history: list) -> dict:
+    """
+    Execute multiple operations and merge results.
+    
+    Example: "how many SBI cards and how to apply"
+    Operations: ['COUNT', 'FAQ']
+    Result: Combined response with count + application procedure
+    """
+    operations = query_info['operations']
+    results = []
+    
+    logging.info(f"[Multi-Op] Executing {len(operations)} operations: {operations}")
+    
+    for op in operations:
+        try:
+            if op == 'COUNT':
+                result = handle_count_query(query_info)
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ COUNT executed")
+            
+            elif op == 'LIST':
+                result = handle_list_query(query_info)
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ LIST executed")
+            
+            elif op == 'EXPLAIN' or op == 'EXPLAIN_ALL':
+                result = handle_explain_query(query_info)
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ EXPLAIN executed")
+            
+            
+            
+            elif op == 'FAQ':
+                # In multi-op with COUNT/LIST, extract only the FAQ-related part
+                suppress_count = 'COUNT' in operations or 'LIST' in operations
+                faq_query = effective_query
+                
+                if suppress_count:
+                    # Extract FAQ keywords from query
+                    import re
+                    faq_keywords = ['apply', 'application', 'document', 'requirement', 
+                                   'eligibility', 'process', 'procedure', 'steps', 'how to']
+                    
+                    # Find FAQ-related parts
+                    query_lower = effective_query.lower()
+                    matched_keywords = [kw for kw in faq_keywords if kw in query_lower]
+                    
+                    if matched_keywords:
+                        # Build a focused FAQ query
+                        bank_category_parts = []
+                        if query_info.get('bank'):
+                            bank_category_parts.append(query_info['bank'])
+                        if query_info.get('category'):
+                            bank_category_parts.append(query_info['category'])
+                        
+                        # Construct: "how to apply for SBI credit cards"
+                        context = ' '.join(bank_category_parts) if bank_category_parts else "this product"
+                        faq_query = f"how to {matched_keywords[0]} for {context}"
+                        logging.info(f"[Multi-Op] Extracted FAQ query: '{faq_query}'")
+                
+                result = chatgpt_query(faq_query, chat_history, clarification_mode=False, intent='FAQ', suppress_count=suppress_count)
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ FAQ executed (suppress_count={suppress_count})")
+            
+            elif op == 'COMPARE':
+                result = chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='COMPARE')
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ COMPARE executed")
+            
+            elif op == 'RECOMMEND':
+                result = chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='RECOMMEND')
+                results.append(result['text'])
+                logging.info(f"[Multi-Op] ✅ RECOMMEND executed")
+        
+        except Exception as e:
+            logging.error(f"[Multi-Op] ❌ {op} failed: {e}")
+            continue
+    
+    # Merge results with clear separation
+    merged_text = "\n\n---\n\n".join(results) if results else "I encountered an error processing your request."
+    
+    return {
+        "text": merged_text,
+        "source": "Multi-Operation",
+        "data": [],
+        "metadata": {
+            "operations": operations,
+            "routing_path": query_info.get('routing_path', 'MULTI_OP')
+        }
+    }
 
 
 # =============================================================================

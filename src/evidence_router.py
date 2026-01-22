@@ -356,7 +356,11 @@ def route_with_evidence(query: str, entities: Dict) -> Dict:
         'confidence': primary_op.confidence,
         'path': 'EVIDENCE_BASED',
         'evidence': evidence,
-        'scope': scope
+        'scope': scope,
+        # Pass through for handlers
+        'bank': scope.bank,
+        'category': scope.category,
+        'product_name': entities.get('product_name')
     }
 
 

@@ -10,8 +10,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).parent.parent.resolve()
 
 DATA_DIR = BASE_DIR / "data"
-PRODUCTS_DIR = DATA_DIR / "products"  # NEW: Organized products folder
-FAQS_DIR = DATA_DIR / "faqs"          # NEW: Organized FAQs folder
+PRODUCTS_DIR = DATA_DIR / "products"  
+FAQS_DIR = DATA_DIR / "faqs"          
 DOCS_DIR = DATA_DIR / "docs"
 CHROMADB_DIR = BASE_DIR / "chromadb_data"
 

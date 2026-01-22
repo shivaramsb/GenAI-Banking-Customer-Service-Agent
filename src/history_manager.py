@@ -20,6 +20,10 @@ class ContextState:
     bank: Optional[str] = None
     category: Optional[str] = None
     
+    # Follow-up support
+    recommended_product: Optional[str] = None     # Last recommended product
+    compared_products: List[str] = field(default_factory=list)  # Last compared products
+    
     def to_dict(self):
         return asdict(self)
 
@@ -87,11 +91,25 @@ class HistoryStateManager:
                 # For RECOMMEND, look for recommended product
                 elif intent == 'RECOMMEND':
                     state.active_intent = 'RECOMMEND'
-                    # Try to extract recommended product from text (metadata doesn't have it yet)
-                    content = bot_msg.get('content', '')
-                    recommended = self._extract_recommended_product(content)
-                    if recommended:
-                        state.last_response_meta['recommended_product'] = recommended
+                    # Get from metadata if available
+                    if metadata.get('recommended_product'):
+                        state.recommended_product = metadata.get('recommended_product')
+                    else:
+                        # Fallback: extract from text
+                        content = bot_msg.get('content', '')
+                        recommended = self._extract_recommended_product(content)
+                        if recommended:
+                            state.recommended_product = recommended
+                    logging.info(f"[HistoryState] RECOMMEND: {state.recommended_product}")
+                    break
+                
+                # For COMPARE, look for compared products
+                elif intent == 'COMPARE':
+                    state.active_intent = 'COMPARE'
+                    # Get from metadata if available
+                    if metadata.get('compared_products'):
+                        state.compared_products = metadata.get('compared_products', [])
+                    logging.info(f"[HistoryState] COMPARE: {state.compared_products}")
                     break
             
             # FALLBACK: Parse text (for old messages without metadata)

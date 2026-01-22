@@ -241,10 +241,35 @@ def extract_entities(query: str) -> Dict:
     ]
     has_faq_pattern = any(re.search(p, query_lower) for p in faq_patterns)
     
+    # Extract product name for EXPLAIN queries
+    # Remove bank and category from query to isolate product name
+    product_name = None
+    if has_explain or has_explain_all:
+        # Remove common words and signals
+        clean_query = query_lower
+        for word in ['explain', 'details', 'about', 'tell me', 'of', 'the']:
+            clean_query = clean_query.replace(word, ' ')
+        
+        # Remove bank name
+        if bank:
+            clean_query = clean_query.replace(bank.lower(), ' ')
+        
+        # Remove category
+        if category:
+            clean_query = clean_query.replace(category.lower(), ' ')
+        
+        # Clean up extra spaces
+        product_name = ' '.join(clean_query.split()).strip()
+        
+        # Only keep if it's substantial (avoid extracting noise)
+        if len(product_name) < 3:
+            product_name = None
+    
     return {
         'bank': bank,
         'banks_found': banks_found,  # All banks for COMPARE
         'category': category,
+        'product_name': product_name,  # NEW: for single-product EXPLAIN
         'has_count_signal': has_count,
         'has_list_signal': has_list,
         'has_compare_signal': has_compare,
@@ -353,9 +378,13 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
             'intent': primary_intent,
             'confidence': evidence_result['confidence'],
             'path': evidence_result['path'],
-            'operations': evidence_result.get('operations', [primary_intent]),  # Keep operations list
+            'operations': evidence_result.get('operations', [primary_intent]),
             'evidence': evidence_result.get('evidence'),
-            'scope': evidence_result.get('scope')
+            'scope': evidence_result.get('scope'),
+            # Pass through for handlers
+            'bank': evidence_result.get('bank'),
+            'category': evidence_result.get('category'),
+            'product_name': evidence_result.get('product_name')
         }
     
     # COMPARE - Strict detection (fallback if evidence router didn't catch it)
@@ -557,13 +586,14 @@ def smart_route(query: str, chat_history: Optional[List] = None) -> Dict:
             'bank': entities['bank'],
             'banks_found': entities.get('banks_found', []),
             'category': entities['category'],
+            'product_name': entities.get('product_name'),  # NEW: for EXPLAIN filtering
             'routing_path': critical_result['path'],
-            'operations': critical_result.get('operations', [intent]),  # Include operations list
+            'operations': critical_result.get('operations', [intent]),
             'faq_match': None,
             'original_query': query,
             'clarify_message': critical_result.get('clarify_message'),
-            'evidence': critical_result.get('evidence'),  # Include evidence for debugging
-            'scope': critical_result.get('scope')  # Include scope for debugging
+            'evidence': critical_result.get('evidence'),
+            'scope': critical_result.get('scope')
         }
     
     # === STEP 3: FAQ Similarity (Only for non-accuracy-critical) ===

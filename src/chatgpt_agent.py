@@ -177,6 +177,31 @@ DO NOT list all products or provide example queries. Just ask helpful questions.
         
         response_text = response.choices[0].message.content
         
+        # Extract structured data for follow-ups
+        if intent == 'RECOMMEND':
+            # Try to extract the recommended product name
+            import re
+            # Look for bolded product names
+            match = re.search(r'\*\*([A-Za-z0-9\s\-\.]+?)\*\*', response_text)
+            if match:
+                product_name = match.group(1).strip()
+                # Filter out common non-product bold text
+                if len(product_name) > 5 and not product_name.lower().startswith(('note', 'consider', 'important', 'best', 'key')):
+                    metadata['recommended_product'] = product_name
+                    logging.info(f"[RECOMMEND] Extracted product: {product_name}")
+        
+        elif intent == 'COMPARE':
+            # Try to extract compared product names
+            import re
+            # Look for product names in comparison context
+            # Pattern: "Product1 vs Product2" or "Product1 and Product2"
+            matches = re.findall(r'\b([A-Z][A-Za-z0-9\s]{3,50}?(?:Card|Loan|Account))\b', response_text)
+            if matches and len(matches) >= 2:
+                # Take first 2-3 unique products
+                compared = list(dict.fromkeys(matches))[:3]
+                metadata['compared_products'] = compared
+                logging.info(f"[COMPARE] Extracted products: {compared}")
+        
         return {
             "text": response_text,
             "source": f"ChatGPT-style ({metadata.get('sql_count', 0)} products, {metadata.get('faq_count', 0)} FAQs)",

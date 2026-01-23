@@ -1,8 +1,19 @@
 import streamlit as st
 import os
 import csv
+import logging
 from datetime import datetime
 from dotenv import load_dotenv
+
+# Configure logging to file AND console
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(message)s',
+    handlers=[
+        logging.FileHandler('app_debug.log'),
+        logging.StreamHandler()
+    ]
+)
 
 # Import the agent core
 from src.agent_core import process_query

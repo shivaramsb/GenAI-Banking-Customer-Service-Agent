@@ -373,6 +373,10 @@ Remember: You MUST include all {count} products in your response."""
         
         logging.info(f"[EXPLAIN] Generated explanation for {count} products")
         
+        # Preserve product list from previous LIST/COUNT for follow-up chaining
+        # If this EXPLAIN came from a follow-up, query_info may have original_product_list
+        product_names_for_followup = query_info.get('original_product_list') or [p.get('product_name', 'Unknown') for p in products]
+        
         return {
             "text": response_text,
             "source": f"LLM Explanation ({count} products)",
@@ -382,7 +386,7 @@ Remember: You MUST include all {count} products in your response."""
                 "count": count,
                 "bank": query_info.get('bank'),
                 "category": query_info.get('category'),
-                "product_names": [p.get('product_name', 'Unknown') for p in products],
+                "product_names": product_names_for_followup,  # Preserve full list for chained follow-ups
                 "method": "llm_explain",
                 "temperature": 0,
                 "missing_products": missing_products

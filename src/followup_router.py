@@ -29,6 +29,9 @@ class FollowupRouter:
             
         elif state.active_intent == 'COMPARE':
             return self._handle_compare_followup(query_lower, state)
+        
+        elif state.active_intent == 'EXPLAIN':
+            return self._handle_explain_followup(query_lower, state)
             
         # 2. Universal Follow-ups (Apply to any state if specific logic didn't catch it)
         # e.g. "Explain them" might apply generically
@@ -42,11 +45,11 @@ class FollowupRouter:
         
         # Check for ordinal selection FIRST (e.g., "explain third", "details of 5th")
         # This should take priority over generic "explain" routing
-        match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th)\b', query)
+        match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th|eleventh|11th|twelfth|12th|thirteenth|13th|fourteenth|14th|fifteenth|15th|sixteenth|16th|seventeenth|17th|eighteenth|18th|nineteenth|19th|twentieth|20th)\b', query)
         if not match:
-            # Fallback: try bare numbers (1-10) when used with "explain" context
+            # Fallback: try bare numbers (1-20) when used with "explain" context
             if 'explain' in query or 'details' in query or 'show' in query:
-                match = re.search(r'\b([1-9]|10)\b', query)
+                match = re.search(r'\b([1-9]|1[0-9]|20)\b', query)
         
         if match and state.last_response_meta.get('product_names'):
             index_map = {
@@ -56,10 +59,20 @@ class FollowupRouter:
                 'fourth': 3, '4th': 3, '4': 3,
                 'fifth': 4, '5th': 4, '5': 4,
                 'sixth': 5, '6th': 5, '6': 5,
-                'seventh': 6, '7th': 6, '7': 6,
-                'eighth': 7, '8th': 7, '8': 7,
+                'seventh': 6, '7th': 6, '7': 7,
+                'eighth': 7, '8th': 7, '8': 8,
                 'ninth': 8, '9th': 8, '9': 8,
-                'tenth': 9, '10th': 9, '10': 9
+                'tenth': 9, '10th': 9, '10': 9,
+                'eleventh': 10, '11th': 10, '11': 10,
+                'twelfth': 11, '12th': 11, '12': 11,
+                'thirteenth': 12, '13th': 12, '13': 12,
+                'fourteenth': 13, '14th': 13, '14': 13,
+                'fifteenth': 14, '15th': 14, '15': 14,
+                'sixteenth': 15, '16th': 15, '16': 15,
+                'seventeenth': 16, '17th': 16, '17': 16,
+                'eighteenth': 17, '18th': 17, '18': 18,
+                'nineteenth': 18, '19th': 18, '19': 19,
+                'twentieth': 19, '20th': 19, '20': 19
             }
             idx = index_map.get(match.group(1), 0)
             
@@ -110,11 +123,11 @@ class FollowupRouter:
         
         # "Explain the first one", "Details of 1st", "explain 5th", "explain 5"
         # First try to match ordinal words/suffixes
-        match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th)\b', query)
+        match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th|eleventh|11th|twelfth|12th|thirteenth|13th|fourteenth|14th|fifteenth|15th|sixteenth|16th|seventeenth|17th|eighteenth|18th|nineteenth|19th|twentieth|20th)\b', query)
         if not match:
-            # Fallback: try bare numbers (1-10) when used with "explain" context
+            # Fallback: try bare numbers (1-20) when used with "explain" context
             if 'explain' in query or 'details' in query or 'show' in query:
-                match = re.search(r'\b([1-9]|10)\b', query)
+                match = re.search(r'\b([1-9]|1[0-9]|20)\b', query)
         
         if match and state.last_response_meta.get('product_names'):
             index_map = {
@@ -132,9 +145,12 @@ class FollowupRouter:
             idx = index_map.get(match.group(1), 0)
             
             products = state.last_response_meta['product_names']
+            logging.info(f"[FollowUp LIST] Found {len(products)} products in state")
+            logging.info(f"[FollowUp LIST] Matched ordinal: '{match.group(1)}' → index: {idx}")
+            
             if idx < len(products):
                 target_product = products[idx].strip()
-                logging.info(f"[FollowUp LIST] ✅ Routing to EXPLAIN: {target_product}")
+                logging.info(f"[FollowUp LIST] ✅ Routing to EXPLAIN: '{target_product}' (index {idx})")
                 return {
                     'intent': 'EXPLAIN',
                     'confidence': 0.98,
@@ -142,8 +158,11 @@ class FollowupRouter:
                     'original_query': f"Explain {target_product}", # Virtual Query
                     'product_name': target_product, # Explicit product for handler
                     'bank': state.active_filters.get('bank'),
-                    'category': state.active_filters.get('category')
+                    'category': state.active_filters.get('category'),
+                    'original_product_list': products  # Preserve for chained follow-ups
                 }
+            else:
+                logging.warning(f"[FollowUp LIST] ❌ Index {idx} out of range (have {len(products)} products)")
 
         # "Which is best", "Recommend"
         if re.search(r'\b(best|recommend|suggest)\b', query):
@@ -204,5 +223,64 @@ class FollowupRouter:
                 }
             else:
                 logging.info(f"[FollowUp COMPARE] Which better? but no compared products in state")
+        
+        return None
+    
+    def _handle_explain_followup(self, query: str, state: ContextState) -> Optional[Dict]:
+        """EXPLAIN -> EXPLAIN (for ordinal chaining after EXPLAIN responses)"""
+        
+        logging.info(f"[FollowUp EXPLAIN] Query: '{query}'")
+        logging.info(f"[FollowUp EXPLAIN] Products in state: {len(state.last_response_meta.get('product_names', []))}")
+        
+        # Check for ordinal selection (same logic as LIST)
+        match = re.search(r'\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th|ninth|9th|tenth|10th|eleventh|11th|twelfth|12th|thirteenth|13th|fourteenth|14th|fifteenth|15th|sixteenth|16th|seventeenth|17th|eighteenth|18th|nineteenth|19th|twentieth|20th)\b', query)
+        if not match:
+            # Fallback: try bare numbers (1-20) when used with "explain" context
+            if 'explain' in query or 'details' in query or 'show' in query:
+                match = re.search(r'\b([1-9]|1[0-9]|20)\b', query)
+        
+        if match and state.last_response_meta.get('product_names'):
+            index_map = {
+                'first': 0, '1st': 0, '1': 0,
+                'second': 1, '2nd': 1, '2': 1,
+                'third': 2, '3rd': 2, '3': 2,
+                'fourth': 3, '4th': 3, '4': 3,
+                'fifth': 4, '5th': 4, '5': 4,
+                'sixth': 5, '6th': 5, '6': 5,
+                'seventh': 6, '7th': 6, '7': 7,
+                'eighth': 7, '8th': 7, '8': 8,
+                'ninth': 8, '9th': 8, '9': 8,
+                'tenth': 9, '10th': 9, '10': 9,
+                'eleventh': 10, '11th': 10, '11': 10,
+                'twelfth': 11, '12th': 11, '12': 11,
+                'thirteenth': 12, '13th': 12, '13': 12,
+                'fourteenth': 13, '14th': 13, '14': 13,
+                'fifteenth': 14, '15th': 14, '15': 14,
+                'sixteenth': 15, '16th': 15, '16': 15,
+                'seventeenth': 16, '17th': 16, '17': 16,
+                'eighteenth': 17, '18th': 17, '18': 17,
+                'nineteenth': 18, '19th': 18, '19': 19,
+                'twentieth': 19, '20th': 19, '20': 19
+            }
+            idx = index_map.get(match.group(1), 0)
+            
+            products = state.last_response_meta['product_names']
+            logging.info(f"[FollowUp EXPLAIN] Matched ordinal: '{match.group(1)}' → index: {idx}")
+            
+            if idx < len(products):
+                target_product = products[idx].strip()
+                logging.info(f"[FollowUp EXPLAIN] ✅ Routing to EXPLAIN: '{target_product}' (index {idx})")
+                return {
+                    'intent': 'EXPLAIN',
+                    'confidence': 0.98,
+                    'routing_path': 'FOLLOWUP_EXPLAIN_ORDINAL_CHAIN',
+                    'original_query': f"Explain {target_product}",
+                    'product_name': target_product,
+                    'bank': state.active_filters.get('bank'),
+                    'category': state.active_filters.get('category'),
+                    'original_product_list': products  # Preserve for further chaining
+                }
+            else:
+                logging.warning(f"[FollowUp EXPLAIN] ❌ Index {idx} out of range (have {len(products)} products)")
         
         return None

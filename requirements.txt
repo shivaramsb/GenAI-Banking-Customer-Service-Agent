@@ -9,3 +9,4 @@ python-Levenshtein
 openpyxl
 
 #.\venv\Scripts\activate
+# streamlit run app.py

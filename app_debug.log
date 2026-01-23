@@ -1,0 +1,148 @@
+2026-01-23 11:28:41,756 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-23 11:29:05,619 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-23 11:29:11,334 - root - MultiSourceRetriever initialized
+2026-01-23 11:29:12,035 - root - MultiSourceRetriever initialized
+2026-01-23 11:30:24,382 - root - Processing query: list of sbi debit cards
+2026-01-23 11:30:24,383 - root - [SmartRouter] Processing: list of sbi debit cards
+2026-01-23 11:30:24,410 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-23 11:30:25,799 - root - [Evidence] Evidence(db_count=11, faq_score=0.71)
+2026-01-23 11:30:26,495 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-23 11:30:27,678 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-23 11:30:27,685 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:30:27,695 - root - [LIST] Formatting 11 products as clean list
+2026-01-23 11:30:32,422 - root - Processing query: explain 5th
+2026-01-23 11:30:32,424 - root - [SmartRouter] Processing: explain 5th
+2026-01-23 11:30:32,426 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-23 11:30:32,426 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:30:32,427 - root - [FollowUp LIST] Query: 'explain 5th'
+2026-01-23 11:30:32,427 - root - [FollowUp LIST] State intent: LIST
+2026-01-23 11:30:32,427 - root - [FollowUp LIST] Products in state: 11
+2026-01-23 11:30:32,429 - root - [FollowUp LIST] Found 11 products in state
+2026-01-23 11:30:32,469 - root - [SmartRouter] Followup Transition: FOLLOWUP_ORDINAL_SELECTION
+2026-01-23 11:30:32,484 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=SBI Intouch Tap & Go
+2026-01-23 11:30:32,485 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:30:38,807 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:30:38,831 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-23 11:30:40,961 - root - Processing query: explain 7th
+2026-01-23 11:30:40,961 - root - [SmartRouter] Processing: explain 7th
+2026-01-23 11:30:40,963 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:30:40,963 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:30:40,964 - root - [Context] Using bank from history: SBI
+2026-01-23 11:30:40,964 - root - [Context] Using category from history: Debit Card
+2026-01-23 11:30:41,110 - root - [Evidence] Evidence(db_count=11, faq_score=0.56)
+2026-01-23 11:30:41,122 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-23 11:30:41,137 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=7th
+2026-01-23 11:30:41,138 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:30:42,685 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:30:42,692 - root - [EXPLAIN] Generated explanation for 0 products
+2026-01-23 11:30:46,047 - root - Processing query: explain 12th
+2026-01-23 11:30:46,047 - root - [SmartRouter] Processing: explain 12th
+2026-01-23 11:30:46,048 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:30:46,049 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:30:46,049 - root - [Context] Using bank from history: SBI
+2026-01-23 11:30:46,049 - root - [Context] Using category from history: Debit Card
+2026-01-23 11:30:46,195 - root - [Evidence] Evidence(db_count=11, faq_score=0.57)
+2026-01-23 11:30:46,205 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-23 11:30:46,217 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=12th
+2026-01-23 11:30:46,219 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:30:48,010 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:30:48,013 - root - [EXPLAIN] Generated explanation for 0 products
+2026-01-23 11:35:11,450 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-23 11:35:32,331 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-23 11:35:38,190 - root - MultiSourceRetriever initialized
+2026-01-23 11:35:38,964 - root - MultiSourceRetriever initialized
+2026-01-23 11:35:56,243 - root - Processing query: list of sbi debit cards
+2026-01-23 11:35:56,244 - root - [SmartRouter] Processing: list of sbi debit cards
+2026-01-23 11:35:56,402 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-23 11:36:02,780 - root - [Evidence] Evidence(db_count=11, faq_score=0.71)
+2026-01-23 11:36:03,006 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-23 11:36:04,060 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-23 11:36:04,064 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:36:04,112 - root - [LIST] Formatting 11 products as clean list
+2026-01-23 11:36:05,375 - root - Processing query: explain 6th
+2026-01-23 11:36:05,377 - root - [SmartRouter] Processing: explain 6th
+2026-01-23 11:36:05,379 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-23 11:36:05,381 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:36:05,381 - root - [FollowUp LIST] Query: 'explain 6th'
+2026-01-23 11:36:05,383 - root - [FollowUp LIST] State intent: LIST
+2026-01-23 11:36:05,388 - root - [FollowUp LIST] Products in state: 11
+2026-01-23 11:36:05,392 - root - [FollowUp LIST] Found 11 products in state
+2026-01-23 11:36:05,430 - root - [SmartRouter] Followup Transition: FOLLOWUP_ORDINAL_SELECTION
+2026-01-23 11:36:05,459 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=SBI Mumbai Metro
+2026-01-23 11:36:05,461 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:36:13,814 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:36:13,880 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-23 11:36:14,768 - root - Processing query: explain 5th 
+2026-01-23 11:36:14,768 - root - [SmartRouter] Processing: explain 5th 
+2026-01-23 11:36:14,769 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:36:14,770 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:36:14,771 - root - [FollowUp EXPLAIN] Query: 'explain 5th'
+2026-01-23 11:36:14,771 - root - [FollowUp EXPLAIN] Products in state: 11
+2026-01-23 11:36:14,781 - root - [SmartRouter] Followup Transition: FOLLOWUP_EXPLAIN_ORDINAL_CHAIN
+2026-01-23 11:36:14,796 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=SBI Intouch Tap & Go
+2026-01-23 11:36:14,796 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:36:21,367 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:36:21,371 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-23 11:36:40,466 - root - Processing query: explain 12th
+2026-01-23 11:36:40,467 - root - [SmartRouter] Processing: explain 12th
+2026-01-23 11:36:40,467 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:36:40,468 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:36:40,468 - root - [FollowUp EXPLAIN] Query: 'explain 12th'
+2026-01-23 11:36:40,469 - root - [FollowUp EXPLAIN] Products in state: 11
+2026-01-23 11:36:40,470 - root - [Context] Using bank from history: SBI
+2026-01-23 11:36:40,471 - root - [Context] Using category from history: Debit Card
+2026-01-23 11:36:40,611 - root - [Evidence] Evidence(db_count=11, faq_score=0.57)
+2026-01-23 11:36:40,621 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-23 11:36:40,632 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=12th
+2026-01-23 11:36:40,632 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:36:42,272 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:36:42,274 - root - [EXPLAIN] Generated explanation for 0 products
+2026-01-23 11:36:58,294 - root - Processing query: explain 9th
+2026-01-23 11:36:58,294 - root - [SmartRouter] Processing: explain 9th
+2026-01-23 11:36:58,295 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:36:58,296 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 11:36:58,296 - root - [FollowUp EXPLAIN] Query: 'explain 9th'
+2026-01-23 11:36:58,297 - root - [FollowUp EXPLAIN] Products in state: 11
+2026-01-23 11:36:58,312 - root - [SmartRouter] Followup Transition: FOLLOWUP_EXPLAIN_ORDINAL_CHAIN
+2026-01-23 11:36:58,326 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=SBI Premium
+2026-01-23 11:36:58,327 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 11:37:04,352 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:37:04,354 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-23 11:37:21,842 - root - Processing query: list of hdfc debit cards
+2026-01-23 11:37:21,842 - root - [SmartRouter] Processing: list of hdfc debit cards
+2026-01-23 11:37:21,845 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-23 11:37:21,846 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=HDFC, Cat=Debit Card, Products=11
+2026-01-23 11:37:21,847 - root - [FollowUp EXPLAIN] Query: 'list of hdfc debit cards'
+2026-01-23 11:37:21,847 - root - [FollowUp EXPLAIN] Products in state: 11
+2026-01-23 11:37:21,995 - root - [Evidence] Evidence(db_count=10, faq_score=0.71)
+2026-01-23 11:37:22,010 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-23 11:37:22,021 - root - [LIST Handler] Bank=HDFC, Category=Debit Card, Detailed=False
+2026-01-23 11:37:22,022 - root - [get_all_products] Retrieved 10 products (bank=HDFC, category=Debit Card)
+2026-01-23 11:37:22,022 - root - [LIST] Formatting 10 products as clean list
+2026-01-23 11:37:32,718 - root - Processing query: explain 2nd
+2026-01-23 11:37:32,719 - root - [SmartRouter] Processing: explain 2nd
+2026-01-23 11:37:32,720 - root - [HistoryState] Using metadata: LIST, 10 products
+2026-01-23 11:37:32,720 - root - [HistoryState] Final: Intent=LIST, Bank=HDFC, Cat=Debit Card, Products=10
+2026-01-23 11:37:32,721 - root - [FollowUp LIST] Query: 'explain 2nd'
+2026-01-23 11:37:32,722 - root - [FollowUp LIST] State intent: LIST
+2026-01-23 11:37:32,722 - root - [FollowUp LIST] Products in state: 10
+2026-01-23 11:37:32,723 - root - [FollowUp LIST] Found 10 products in state
+2026-01-23 11:37:32,733 - root - [SmartRouter] Followup Transition: FOLLOWUP_ORDINAL_SELECTION
+2026-01-23 11:37:32,758 - root - [EXPLAIN Handler] Bank=HDFC, Category=Debit Card, Product=HDFC EasyShop Woman
+2026-01-23 11:37:32,760 - root - [get_all_products] Retrieved 10 products (bank=HDFC, category=Debit Card)
+2026-01-23 11:37:38,952 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:37:38,954 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-23 11:39:35,053 - root - Processing query: explain 11th
+2026-01-23 11:39:35,053 - root - [SmartRouter] Processing: explain 11th
+2026-01-23 11:39:35,055 - root - [HistoryState] Using metadata: EXPLAIN, 10 products
+2026-01-23 11:39:35,056 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=HDFC, Cat=Debit Card, Products=10
+2026-01-23 11:39:35,057 - root - [FollowUp EXPLAIN] Query: 'explain 11th'
+2026-01-23 11:39:35,058 - root - [FollowUp EXPLAIN] Products in state: 10
+2026-01-23 11:39:35,059 - root - [Context] Using bank from history: HDFC
+2026-01-23 11:39:35,060 - root - [Context] Using category from history: Debit Card
+2026-01-23 11:39:35,334 - root - [Evidence] Evidence(db_count=10, faq_score=0.58)
+2026-01-23 11:39:35,812 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-23 11:39:36,690 - root - [EXPLAIN Handler] Bank=HDFC, Category=Debit Card, Product=11th
+2026-01-23 11:39:36,701 - root - [get_all_products] Retrieved 10 products (bank=HDFC, category=Debit Card)
+2026-01-23 11:39:38,162 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 11:39:38,163 - root - [EXPLAIN] Generated explanation for 0 products

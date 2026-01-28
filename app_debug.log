@@ -196,3 +196,1861 @@
 2026-01-23 11:56:43,144 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
 2026-01-23 11:56:44,553 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-01-23 11:56:44,553 - root - [EXPLAIN] Generated explanation for 0 products
+2026-01-23 12:43:30,281 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-23 12:44:04,856 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-23 12:44:11,059 - root - MultiSourceRetriever initialized
+2026-01-23 12:44:11,856 - root - MultiSourceRetriever initialized
+2026-01-23 12:44:39,112 - root - Processing query: list of sbi debit cards
+2026-01-23 12:44:39,112 - root - [SmartRouter] Processing: list of sbi debit cards
+2026-01-23 12:44:39,152 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-23 12:44:39,960 - root - [Evidence] Evidence(db_count=11, faq_score=0.71)
+2026-01-23 12:44:39,973 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-23 12:44:40,640 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-23 12:44:40,646 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 12:44:40,647 - root - [LIST] Formatting 11 products as clean list
+2026-01-23 12:44:48,595 - root - Processing query: explain 11th
+2026-01-23 12:44:48,596 - root - [SmartRouter] Processing: explain 11th
+2026-01-23 12:44:48,596 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-23 12:44:48,596 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-23 12:44:48,599 - root - [FollowUp LIST] Query: 'explain 11th'
+2026-01-23 12:44:48,600 - root - [FollowUp LIST] State intent: LIST
+2026-01-23 12:44:48,601 - root - [FollowUp LIST] Products in state: 11
+2026-01-23 12:44:48,603 - root - [Context] Using bank from history: SBI
+2026-01-23 12:44:48,603 - root - [Context] Using category from history: Debit Card
+2026-01-23 12:44:48,772 - root - [Evidence] Evidence(db_count=11, faq_score=0.56)
+2026-01-23 12:44:48,784 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-23 12:44:48,794 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=11th
+2026-01-23 12:44:48,796 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-23 12:44:51,473 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 12:44:51,537 - root - [EXPLAIN] Generated explanation for 0 products
+2026-01-23 16:20:08,430 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-23 16:21:36,597 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-23 16:21:42,583 - root - MultiSourceRetriever initialized
+2026-01-23 16:21:43,324 - root - MultiSourceRetriever initialized
+2026-01-23 16:22:01,297 - root - Processing query: how many SBI credit cards
+2026-01-23 16:22:01,297 - root - [SmartRouter] Processing: how many SBI credit cards
+2026-01-23 16:22:01,408 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Credit Card, Products=0
+2026-01-23 16:22:02,270 - root - [Evidence] Evidence(db_count=16, faq_score=0.75)
+2026-01-23 16:22:02,288 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-23 16:22:02,944 - root - [COUNT Handler] Bank=SBI, Category=Credit Card
+2026-01-23 16:22:02,947 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-23 16:22:02,947 - root - [COUNT] Python verification: SBI has EXACTLY 16 credit cards
+2026-01-23 16:22:13,344 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:22:46,644 - root - Processing query: how many HDFC debit cards
+2026-01-23 16:22:46,645 - root - [SmartRouter] Processing: how many HDFC debit cards
+2026-01-23 16:22:46,646 - root - [HistoryState] Using metadata: COUNT, 16 products
+2026-01-23 16:22:46,647 - root - [HistoryState] Final: Intent=COUNT, Bank=HDFC, Cat=Debit Card, Products=16
+2026-01-23 16:22:46,817 - root - [Evidence] Evidence(db_count=10, faq_score=0.69)
+2026-01-23 16:22:46,830 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-23 16:22:46,837 - root - [COUNT Handler] Bank=HDFC, Category=Debit Card
+2026-01-23 16:22:46,838 - root - [get_all_products] Retrieved 10 products (bank=HDFC, category=Debit Card)
+2026-01-23 16:22:46,838 - root - [COUNT] Python verification: HDFC has EXACTLY 10 debit cards
+2026-01-23 16:22:53,862 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:24:16,716 - root - Processing query: count SBI loans
+2026-01-23 16:24:16,717 - root - [SmartRouter] Processing: count SBI loans
+2026-01-23 16:24:16,719 - root - [HistoryState] Using metadata: COUNT, 10 products
+2026-01-23 16:24:16,719 - root - [HistoryState] Final: Intent=COUNT, Bank=SBI, Cat=Loan, Products=10
+2026-01-23 16:24:16,892 - root - [Evidence] Evidence(db_count=25, faq_score=0.72)
+2026-01-23 16:24:16,903 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-23 16:24:16,914 - root - [COUNT Handler] Bank=SBI, Category=Loan
+2026-01-23 16:24:16,915 - root - [get_all_products] Retrieved 25 products (bank=SBI, category=Loan)
+2026-01-23 16:24:16,915 - root - [COUNT] Python verification: SBI has EXACTLY 25 loans
+2026-01-23 16:24:29,312 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:25:03,406 - root - Processing query: total number of Axis credit cards
+2026-01-23 16:25:03,406 - root - [SmartRouter] Processing: total number of Axis credit cards
+2026-01-23 16:25:03,406 - root - [HistoryState] Using metadata: COUNT, 25 products
+2026-01-23 16:25:03,406 - root - [HistoryState] Final: Intent=COUNT, Bank=Axis, Cat=Credit Card, Products=25
+2026-01-23 16:25:03,568 - root - [Evidence] Evidence(db_count=5, faq_score=0.71)
+2026-01-23 16:25:03,652 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-23 16:25:03,722 - root - [COUNT Handler] Bank=Axis, Category=Credit Card
+2026-01-23 16:25:03,727 - root - [get_all_products] Retrieved 5 products (bank=Axis, category=Credit Card)
+2026-01-23 16:25:03,728 - root - [COUNT] Python verification: Axis has EXACTLY 5 credit cards
+2026-01-23 16:25:08,499 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:26:06,760 - root - Processing query: what documents are needed for loan
+2026-01-23 16:26:06,761 - root - [SmartRouter] Processing: what documents are needed for loan
+2026-01-23 16:26:06,761 - root - [HistoryState] Using metadata: COUNT, 5 products
+2026-01-23 16:26:06,762 - root - [HistoryState] Final: Intent=COUNT, Bank=Axis, Cat=Loan, Products=5
+2026-01-23 16:26:06,762 - root - [Context] Using bank from history: Axis
+2026-01-23 16:26:06,987 - root - [Evidence] Evidence(db_count=5, faq_score=0.71)
+2026-01-23 16:26:07,014 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 16:26:07,027 - root - [ChatGPT Mode] Processing: what documents are needed for loan (clarification=False, suppress_count=False)
+2026-01-23 16:26:07,027 - root - Multi-source retrieval for query: what documents are needed for loan
+2026-01-23 16:26:10,111 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:26:10,227 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-23 16:26:10,227 - root - After deduplication: 10 unique results
+2026-01-23 16:26:13,823 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:26:56,624 - root - Processing query: compare SBI vs HDFC home loan
+2026-01-23 16:26:56,624 - root - [SmartRouter] Processing: compare SBI vs HDFC home loan
+2026-01-23 16:26:56,626 - root - [HistoryState] Using metadata: COUNT, 5 products
+2026-01-23 16:26:56,626 - root - [HistoryState] Final: Intent=COUNT, Bank=HDFC, Cat=Home Loan, Products=5
+2026-01-23 16:26:56,785 - root - [Evidence] Evidence(db_count=0, faq_score=0.71)
+2026-01-23 16:26:56,797 - root - [Step 2] Accuracy-critical: FAQ (0.71)
+2026-01-23 16:26:56,809 - root - [ChatGPT Mode] Processing: compare SBI vs HDFC home loan (clarification=False, suppress_count=False)
+2026-01-23 16:26:56,809 - root - Multi-source retrieval for query: compare SBI vs HDFC home loan
+2026-01-23 16:26:58,193 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:26:58,274 - root - Retrieved 9 SQL results, 10 FAQ results
+2026-01-23 16:26:58,274 - root - After deduplication: 19 unique results
+2026-01-23 16:27:08,129 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:28:27,197 - root - Processing query: SBI home loan vs HDFC home loan interest rates
+2026-01-23 16:28:27,198 - root - [SmartRouter] Processing: SBI home loan vs HDFC home loan interest rates
+2026-01-23 16:28:27,198 - root - [HistoryState] Using metadata: COUNT, 5 products
+2026-01-23 16:28:27,199 - root - [HistoryState] Final: Intent=COUNT, Bank=HDFC, Cat=Home Loan, Products=5
+2026-01-23 16:28:27,391 - root - [Evidence] Evidence(db_count=0, faq_score=0.76)
+2026-01-23 16:28:27,403 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 16:28:27,411 - root - [ChatGPT Mode] Processing: SBI home loan vs HDFC home loan interest rates (clarification=False, suppress_count=False)
+2026-01-23 16:28:27,412 - root - Multi-source retrieval for query: SBI home loan vs HDFC home loan interest rates
+2026-01-23 16:28:28,922 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:28:29,046 - root - Retrieved 9 SQL results, 10 FAQ results
+2026-01-23 16:28:29,047 - root - After deduplication: 19 unique results
+2026-01-23 16:28:34,376 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:30:26,058 - root - Processing query: which is best
+2026-01-23 16:30:26,058 - root - [SmartRouter] Processing: which is best
+2026-01-23 16:30:26,058 - root - [HistoryState] Using metadata: COUNT, 5 products
+2026-01-23 16:30:26,058 - root - [HistoryState] Final: Intent=COUNT, Bank=HDFC, Cat=Home Loan, Products=5
+2026-01-23 16:30:26,062 - root - [Context] Using bank from history: HDFC
+2026-01-23 16:30:26,062 - root - [Context] Using category from history: Home Loan
+2026-01-23 16:30:26,210 - root - [Evidence] Evidence(db_count=0, faq_score=0.53)
+2026-01-23 16:30:26,309 - root - [Step 2] Accuracy-critical: UNKNOWN (0.50)
+2026-01-23 16:30:26,392 - root - [ChatGPT Mode] Processing: which is best (clarification=False, suppress_count=False)
+2026-01-23 16:30:26,392 - root - Multi-source retrieval for query: which is best
+2026-01-23 16:30:27,714 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:30:27,776 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-23 16:30:27,778 - root - After deduplication: 15 unique results
+2026-01-23 16:30:33,647 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:34:32,389 - root - Processing query: best home loan of sbi
+2026-01-23 16:34:32,391 - root - [SmartRouter] Processing: best home loan of sbi
+2026-01-23 16:34:32,391 - root - [HistoryState] Using metadata: COUNT, 5 products
+2026-01-23 16:34:32,392 - root - [HistoryState] Final: Intent=COUNT, Bank=SBI, Cat=Home Loan, Products=5
+2026-01-23 16:34:32,784 - root - [Evidence] Evidence(db_count=9, faq_score=0.76)
+2026-01-23 16:34:32,794 - root - [Step 2] Accuracy-critical: RECOMMEND (0.90)
+2026-01-23 16:34:32,804 - root - [ChatGPT Mode] Processing: best home loan of sbi (clarification=False, suppress_count=False)
+2026-01-23 16:34:32,806 - root - Multi-source retrieval for query: best home loan of sbi
+2026-01-23 16:34:33,875 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:34:33,972 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-23 16:34:33,972 - root - After deduplication: 15 unique results
+2026-01-23 16:34:44,125 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:34:44,130 - root - [RECOMMEND] Extracted product: SBI Regular Home Loan
+2026-01-23 16:58:05,431 - root - Processing query: which documnet required for loan
+2026-01-23 16:58:05,457 - root - [SmartRouter] Processing: which documnet required for loan
+2026-01-23 16:58:05,459 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Loan, Products=0
+2026-01-23 16:58:07,092 - root - [Evidence] Evidence(db_count=55, faq_score=0.70)
+2026-01-23 16:58:07,114 - root - [Step 2] Accuracy-critical: FAQ (0.70)
+2026-01-23 16:58:07,132 - root - [ChatGPT Mode] Processing: which documnet required for loan (clarification=False, suppress_count=False)
+2026-01-23 16:58:07,132 - root - Multi-source retrieval for query: which documnet required for loan
+2026-01-23 16:58:09,072 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:58:09,211 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-23 16:58:09,213 - root - After deduplication: 60 unique results
+2026-01-23 16:58:13,870 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:58:46,935 - root - Processing query: i want to apply personal loan tell me the process
+2026-01-23 16:58:46,935 - root - [SmartRouter] Processing: i want to apply personal loan tell me the process
+2026-01-23 16:58:46,937 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Loan, Products=0
+2026-01-23 16:58:47,311 - root - [Evidence] Evidence(db_count=55, faq_score=0.82)
+2026-01-23 16:58:47,330 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 16:58:47,347 - root - [ChatGPT Mode] Processing: i want to apply personal loan tell me the process (clarification=False, suppress_count=False)
+2026-01-23 16:58:47,347 - root - Multi-source retrieval for query: i want to apply personal loan tell me the process
+2026-01-23 16:58:49,017 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 16:58:49,313 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-23 16:58:49,317 - root - After deduplication: 60 unique results
+2026-01-23 16:58:57,576 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:00:38,242 - root - Processing query: which bank having low percentage of intrest 
+2026-01-23 17:00:38,243 - root - [SmartRouter] Processing: which bank having low percentage of intrest 
+2026-01-23 17:00:38,244 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Loan, Products=0
+2026-01-23 17:00:38,244 - root - [Context] Using category from history: Loan
+2026-01-23 17:00:38,467 - root - [Evidence] Evidence(db_count=55, faq_score=0.67)
+2026-01-23 17:00:38,477 - root - [Step 2] Accuracy-critical: FAQ (0.67)
+2026-01-23 17:00:38,485 - root - [ChatGPT Mode] Processing: which bank having low percentage of intrest  (clarification=False, suppress_count=False)
+2026-01-23 17:00:38,487 - root - Multi-source retrieval for query: which bank having low percentage of intrest 
+2026-01-23 17:00:39,799 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:00:39,932 - root - Retrieved 1 SQL results, 10 FAQ results
+2026-01-23 17:00:39,933 - root - After deduplication: 11 unique results
+2026-01-23 17:00:42,109 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:01:18,415 - root - Processing query: tell me the current intrest rate of sbi
+2026-01-23 17:01:18,415 - root - [SmartRouter] Processing: tell me the current intrest rate of sbi
+2026-01-23 17:01:18,415 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Loan, Products=0
+2026-01-23 17:01:18,417 - root - [Context] Using category from history: Loan
+2026-01-23 17:01:18,682 - root - [Evidence] Evidence(db_count=25, faq_score=0.75)
+2026-01-23 17:01:18,692 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 17:01:18,722 - root - [ChatGPT Mode] Processing: tell me the current intrest rate of sbi (clarification=False, suppress_count=False)
+2026-01-23 17:01:18,722 - root - Multi-source retrieval for query: tell me the current intrest rate of sbi
+2026-01-23 17:01:20,706 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:01:20,877 - root - Retrieved 1 SQL results, 10 FAQ results
+2026-01-23 17:01:20,878 - root - After deduplication: 10 unique results
+2026-01-23 17:01:23,119 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:02:02,872 - root - Processing query: tell me the minimum eligibility for taking a loan
+2026-01-23 17:02:02,873 - root - [SmartRouter] Processing: tell me the minimum eligibility for taking a loan
+2026-01-23 17:02:02,875 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Loan, Products=0
+2026-01-23 17:02:02,876 - root - [Context] Using bank from history: SBI
+2026-01-23 17:02:03,169 - root - [Evidence] Evidence(db_count=25, faq_score=0.72)
+2026-01-23 17:02:03,188 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 17:02:03,206 - root - [ChatGPT Mode] Processing: tell me the minimum eligibility for taking a loan (clarification=False, suppress_count=False)
+2026-01-23 17:02:03,207 - root - Multi-source retrieval for query: tell me the minimum eligibility for taking a loan
+2026-01-23 17:02:04,589 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:02:05,009 - root - Retrieved 1 SQL results, 10 FAQ results
+2026-01-23 17:02:05,015 - root - After deduplication: 10 unique results
+2026-01-23 17:02:09,217 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:02:48,823 - root - Processing query: i forgot my atm pin how can i reset
+2026-01-23 17:02:48,824 - root - [SmartRouter] Processing: i forgot my atm pin how can i reset
+2026-01-23 17:02:48,825 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Loan, Products=0
+2026-01-23 17:02:48,826 - root - [Context] Using bank from history: SBI
+2026-01-23 17:02:48,826 - root - [Context] Using category from history: Loan
+2026-01-23 17:02:49,053 - root - [Evidence] Evidence(db_count=25, faq_score=0.73)
+2026-01-23 17:02:49,065 - root - [Step 2] Accuracy-critical: FAQ (0.73)
+2026-01-23 17:02:49,076 - root - [ChatGPT Mode] Processing: i forgot my atm pin how can i reset (clarification=False, suppress_count=False)
+2026-01-23 17:02:49,077 - root - Multi-source retrieval for query: i forgot my atm pin how can i reset
+2026-01-23 17:02:50,160 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:02:50,290 - root - Retrieved 25 SQL results, 10 FAQ results
+2026-01-23 17:02:50,291 - root - After deduplication: 35 unique results
+2026-01-23 17:02:55,971 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:05:55,864 - root - Processing query: debit card
+2026-01-23 17:05:55,867 - root - [SmartRouter] Processing: debit card
+2026-01-23 17:05:55,870 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-23 17:05:55,920 - root - [Context] Using bank from history: SBI
+2026-01-23 17:05:56,274 - root - [Evidence] Evidence(db_count=11, faq_score=0.72)
+2026-01-23 17:05:56,295 - root - [Step 2] Accuracy-critical: FAQ (0.72)
+2026-01-23 17:05:56,328 - root - [ChatGPT Mode] Processing: debit card (clarification=False, suppress_count=False)
+2026-01-23 17:05:56,329 - root - Multi-source retrieval for query: debit card
+2026-01-23 17:05:57,452 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:05:57,609 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-23 17:05:57,701 - root - After deduplication: 15 unique results
+2026-01-23 17:06:06,892 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:06:30,927 - root - Processing query: hdfc debit card
+2026-01-23 17:06:30,928 - root - [SmartRouter] Processing: hdfc debit card
+2026-01-23 17:06:30,929 - root - [HistoryState] Final: Intent=None, Bank=HDFC, Cat=Debit Card, Products=0
+2026-01-23 17:06:31,297 - root - [Evidence] Evidence(db_count=10, faq_score=0.74)
+2026-01-23 17:06:31,321 - root - [Step 2] Accuracy-critical: FAQ (0.74)
+2026-01-23 17:06:31,346 - root - [ChatGPT Mode] Processing: hdfc debit card (clarification=False, suppress_count=False)
+2026-01-23 17:06:31,347 - root - Multi-source retrieval for query: hdfc debit card
+2026-01-23 17:06:32,555 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:06:33,330 - root - Retrieved 10 SQL results, 10 FAQ results
+2026-01-23 17:06:33,339 - root - After deduplication: 20 unique results
+2026-01-23 17:06:44,760 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:07:11,314 - root - Processing query: how to apply debit card
+2026-01-23 17:07:11,315 - root - [SmartRouter] Processing: how to apply debit card
+2026-01-23 17:07:11,315 - root - [HistoryState] Final: Intent=None, Bank=HDFC, Cat=Debit Card, Products=0
+2026-01-23 17:07:11,316 - root - [Context] Using bank from history: HDFC
+2026-01-23 17:07:11,504 - root - [Evidence] Evidence(db_count=10, faq_score=0.73)
+2026-01-23 17:07:11,524 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-23 17:07:11,535 - root - [ChatGPT Mode] Processing: how to apply debit card (clarification=False, suppress_count=False)
+2026-01-23 17:07:11,535 - root - Multi-source retrieval for query: how to apply debit card
+2026-01-23 17:07:13,091 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:07:13,162 - root - Retrieved 10 SQL results, 10 FAQ results
+2026-01-23 17:07:13,163 - root - After deduplication: 20 unique results
+2026-01-23 17:07:19,369 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-23 17:20:42,754 - root - Processing query: debit card
+2026-01-23 17:20:42,771 - root - [SmartRouter] Processing: debit card
+2026-01-23 17:20:42,773 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-23 17:20:42,826 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 10:19:20,394 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 10:20:33,799 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 10:20:41,174 - root - MultiSourceRetriever initialized
+2026-01-27 10:20:41,910 - root - MultiSourceRetriever initialized
+2026-01-27 10:27:24,765 - root - Processing query: hi
+2026-01-27 10:27:24,772 - root - [SmartRouter] Processing: hi
+2026-01-27 10:27:25,277 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 10:27:25,380 - root - [Step 2] Accuracy-critical: GREETING (0.99)
+2026-01-27 10:27:30,511 - root - Processing query: sbi
+2026-01-27 10:27:30,512 - root - [SmartRouter] Processing: sbi
+2026-01-27 10:27:30,513 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 10:27:31,746 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 10:27:31,759 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-27 10:27:31,776 - root - [ChatGPT Mode] Processing: sbi (clarification=False, suppress_count=False)
+2026-01-27 10:27:31,777 - root - Multi-source retrieval for query: sbi
+2026-01-27 10:27:36,447 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:27:36,527 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-27 10:27:36,527 - root - After deduplication: 60 unique results
+2026-01-27 10:27:38,543 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:27:41,954 - root - Processing query: debit cards
+2026-01-27 10:27:41,955 - root - [SmartRouter] Processing: debit cards
+2026-01-27 10:27:41,956 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 10:27:41,956 - root - [Context] Using bank from history: SBI
+2026-01-27 10:27:42,133 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 10:27:42,142 - root - [Step 2] Accuracy-critical: FAQ (0.70)
+2026-01-27 10:27:42,152 - root - [ChatGPT Mode] Processing: debit cards (clarification=False, suppress_count=False)
+2026-01-27 10:27:42,153 - root - Multi-source retrieval for query: debit cards
+2026-01-27 10:27:44,330 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:27:44,367 - root - Retrieved 11 SQL results, 10 FAQ results
+2026-01-27 10:27:44,367 - root - After deduplication: 21 unique results
+2026-01-27 10:27:52,658 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:28:16,149 - root - Processing query: list of sbi debit cards
+2026-01-27 10:28:16,150 - root - [SmartRouter] Processing: list of sbi debit cards
+2026-01-27 10:28:16,151 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 10:28:16,392 - root - [Evidence] Evidence(db_count=11, faq_score=0.71)
+2026-01-27 10:28:16,472 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 10:28:16,983 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 10:28:16,987 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 10:28:16,988 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 10:28:25,105 - root - Processing query: explain all sbi debit cards
+2026-01-27 10:28:25,105 - root - [SmartRouter] Processing: explain all sbi debit cards
+2026-01-27 10:28:25,106 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 10:28:25,106 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 10:28:25,108 - root - [FollowUp LIST] Query: 'explain all sbi debit cards'
+2026-01-27 10:28:25,108 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 10:28:25,110 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 10:28:25,341 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 10:28:25,372 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 10:28:25,385 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=True
+2026-01-27 10:28:25,386 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 10:28:25,386 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 10:29:55,683 - root - Processing query: credit cards
+2026-01-27 10:29:55,684 - root - [SmartRouter] Processing: credit cards
+2026-01-27 10:29:55,686 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 10:29:55,687 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-27 10:29:55,688 - root - [FollowUp LIST] Query: 'credit cards'
+2026-01-27 10:29:55,689 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 10:29:55,692 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 10:29:55,693 - root - [Context] Using bank from history: SBI
+2026-01-27 10:29:55,904 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-27 10:29:55,931 - root - [Step 2] Accuracy-critical: FAQ (0.66)
+2026-01-27 10:29:55,944 - root - [ChatGPT Mode] Processing: credit cards (clarification=False, suppress_count=False)
+2026-01-27 10:29:55,945 - root - Multi-source retrieval for query: credit cards
+2026-01-27 10:29:58,090 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:29:58,129 - root - Retrieved 16 SQL results, 10 FAQ results
+2026-01-27 10:29:58,130 - root - After deduplication: 26 unique results
+2026-01-27 10:30:15,602 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 10:51:41,132 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 10:52:07,099 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 10:52:12,309 - root - MultiSourceRetriever initialized
+2026-01-27 10:52:12,659 - root - MultiSourceRetriever initialized
+2026-01-27 11:05:05,624 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 11:05:19,742 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 11:05:25,839 - root - MultiSourceRetriever initialized
+2026-01-27 11:05:26,192 - root - MultiSourceRetriever initialized
+2026-01-27 11:12:51,355 - root - ✅ Database indexes created successfully
+2026-01-27 11:12:51,363 - root - ✅ Database indexes created successfully
+2026-01-27 11:12:53,079 - root - ✅ Database indexes created successfully
+2026-01-27 11:12:53,255 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 11:13:06,478 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 11:13:11,990 - root - MultiSourceRetriever initialized
+2026-01-27 11:13:12,264 - root - ✅ Database indexes created successfully
+2026-01-27 11:13:12,318 - root - MultiSourceRetriever initialized
+2026-01-27 11:17:53,912 - root - Processing query: sbi
+2026-01-27 11:17:53,914 - root - [SmartRouter] Processing: sbi
+2026-01-27 11:17:53,946 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:53,949 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:53,953 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 11:17:53,957 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:53,959 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:53,985 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:54,635 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 11:17:54,635 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-27 11:17:54,638 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 11:17:54,640 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-27 11:17:54,640 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-27 11:17:54,643 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 11:17:54,643 - root - [ChatGPT Mode] Processing: sbi (clarification=False, suppress_count=False)
+2026-01-27 11:17:54,643 - root - Multi-source retrieval for query: sbi
+2026-01-27 11:17:55,541 - root - ✅ Database indexes created successfully
+2026-01-27 11:17:59,364 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:17:59,660 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-27 11:17:59,662 - root - After deduplication: 60 unique results
+2026-01-27 11:18:01,651 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:18:04,561 - root - Processing query: debit cards
+2026-01-27 11:18:04,563 - root - [SmartRouter] Processing: debit cards
+2026-01-27 11:18:04,563 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 11:18:04,564 - root - [Context] Using bank from history: SBI
+2026-01-27 11:18:04,566 - root - ✅ Database indexes created successfully
+2026-01-27 11:18:04,725 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 11:18:04,727 - root - [Validation] ✅ FAQ operation (faq_score=0.70)
+2026-01-27 11:18:04,727 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 11:18:04,727 - root - [Step 2] Accuracy-critical: FAQ (0.70)
+2026-01-27 11:18:04,728 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.70, Path=EVIDENCE_BASED
+2026-01-27 11:18:04,728 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 11:18:04,729 - root - [ChatGPT Mode] Processing: debit cards (clarification=False, suppress_count=False)
+2026-01-27 11:18:04,729 - root - Multi-source retrieval for query: debit cards
+2026-01-27 11:18:06,238 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:18:06,291 - root - Retrieved 11 SQL results, 10 FAQ results
+2026-01-27 11:18:06,292 - root - After deduplication: 21 unique results
+2026-01-27 11:18:16,890 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:18:30,652 - root - Processing query: list of sbi debit cards
+2026-01-27 11:18:30,653 - root - [SmartRouter] Processing: list of sbi debit cards
+2026-01-27 11:18:30,654 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 11:18:30,658 - root - ✅ Database indexes created successfully
+2026-01-27 11:18:30,800 - root - [Evidence] Evidence(db_count=11, faq_score=0.71)
+2026-01-27 11:18:30,800 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-27 11:18:30,800 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:18:30,802 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 11:18:30,802 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 11:18:30,802 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:18:31,518 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 11:18:31,520 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 11:18:31,520 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 11:18:43,324 - root - Processing query: explain all sbi debit cards
+2026-01-27 11:18:43,324 - root - [SmartRouter] Processing: explain all sbi debit cards
+2026-01-27 11:18:43,326 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 11:18:43,327 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 11:18:43,327 - root - [FollowUp LIST] Query: 'explain all sbi debit cards'
+2026-01-27 11:18:43,328 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 11:18:43,328 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 11:18:43,334 - root - ✅ Database indexes created successfully
+2026-01-27 11:18:43,501 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 11:18:43,504 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-27 11:18:43,504 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:18:43,505 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 11:18:43,505 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 11:18:43,505 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:18:43,505 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=True
+2026-01-27 11:18:43,508 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 11:18:43,508 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 11:18:53,060 - root - Processing query: 
+credit cards
+2026-01-27 11:18:53,060 - root - [SmartRouter] Processing: 
+credit cards
+2026-01-27 11:18:53,062 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 11:18:53,062 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-27 11:18:53,064 - root - [FollowUp LIST] Query: 'credit cards'
+2026-01-27 11:18:53,064 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 11:18:53,065 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 11:18:53,067 - root - [Context] Using bank from history: SBI
+2026-01-27 11:18:53,071 - root - ✅ Database indexes created successfully
+2026-01-27 11:18:53,218 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-27 11:18:53,220 - root - [Validation] ✅ FAQ operation (faq_score=0.66)
+2026-01-27 11:18:53,221 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 11:18:53,221 - root - [Step 2] Accuracy-critical: FAQ (0.66)
+2026-01-27 11:18:53,221 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.66, Path=EVIDENCE_BASED
+2026-01-27 11:18:53,221 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 11:18:53,221 - root - [ChatGPT Mode] Processing: 
+credit cards (clarification=False, suppress_count=False)
+2026-01-27 11:18:53,221 - root - Multi-source retrieval for query: 
+credit cards
+2026-01-27 11:18:54,485 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:18:54,593 - root - Retrieved 16 SQL results, 10 FAQ results
+2026-01-27 11:18:54,596 - root - After deduplication: 26 unique results
+2026-01-27 11:19:13,330 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 11:19:16,550 - root - Processing query: explain all credit cards
+2026-01-27 11:19:16,551 - root - [SmartRouter] Processing: explain all credit cards
+2026-01-27 11:19:16,551 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 11:19:16,552 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-27 11:19:16,552 - root - [FollowUp LIST] Query: 'explain all credit cards'
+2026-01-27 11:19:16,552 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 11:19:16,553 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 11:19:16,553 - root - [Context] Using bank from history: SBI
+2026-01-27 11:19:16,555 - root - ✅ Database indexes created successfully
+2026-01-27 11:19:16,701 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-27 11:19:16,702 - root - [Validation] ✅ LIST operation (db_count=16)
+2026-01-27 11:19:16,703 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:19:16,704 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 11:19:16,704 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 11:19:16,704 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:19:16,704 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=True
+2026-01-27 11:19:16,705 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 11:19:16,705 - root - [LIST] Formatting 16 products as clean list
+2026-01-27 11:28:17,022 - root - ✅ Database indexes created successfully
+2026-01-27 11:28:17,024 - root - ✅ Database indexes created successfully
+2026-01-27 11:28:20,142 - root - ✅ Database indexes created successfully
+2026-01-27 11:28:20,455 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 11:28:48,024 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 11:28:54,188 - root - MultiSourceRetriever initialized
+2026-01-27 11:28:54,838 - root - ✅ Database indexes created successfully
+2026-01-27 11:28:54,956 - root - MultiSourceRetriever initialized
+2026-01-27 11:30:32,455 - root - Processing query: sbi
+2026-01-27 11:30:32,455 - root - [SmartRouter] Processing: sbi
+2026-01-27 11:30:32,468 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:32,471 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:32,471 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 11:30:32,476 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:32,479 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:32,498 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:33,239 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 11:30:33,240 - root - [Validation] ✅ IMPLICIT LIST operation (db_count=58)
+2026-01-27 11:30:33,240 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:30:33,242 - root - [Step 2] Accuracy-critical: LIST (0.80)
+2026-01-27 11:30:33,242 - root - → SMART ROUTER: Intent=LIST, Confidence=0.80, Path=EVIDENCE_BASED
+2026-01-27 11:30:33,243 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:30:33,874 - root - [LIST Handler] Bank=SBI, Category=None, Detailed=False
+2026-01-27 11:30:33,877 - root - [get_all_products] Retrieved 58 products (bank=SBI, category=None)
+2026-01-27 11:30:33,877 - root - [LIST] Formatting 58 products as clean list
+2026-01-27 11:30:43,519 - root - Processing query: debit card
+2026-01-27 11:30:43,521 - root - [SmartRouter] Processing: debit card
+2026-01-27 11:30:43,522 - root - [HistoryState] Using metadata: LIST, 58 products
+2026-01-27 11:30:43,522 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=58
+2026-01-27 11:30:43,524 - root - [FollowUp LIST] Query: 'debit card'
+2026-01-27 11:30:43,524 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 11:30:43,524 - root - [FollowUp LIST] Products in state: 58
+2026-01-27 11:30:43,526 - root - [Context] Using bank from history: SBI
+2026-01-27 11:30:43,529 - root - ✅ Database indexes created successfully
+2026-01-27 11:30:43,669 - root - [Evidence] Evidence(db_count=11, faq_score=0.72)
+2026-01-27 11:30:43,669 - root - [Validation] ✅ IMPLICIT LIST operation (db_count=11)
+2026-01-27 11:30:43,671 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:30:43,671 - root - [Step 2] Accuracy-critical: LIST (0.80)
+2026-01-27 11:30:43,671 - root - → SMART ROUTER: Intent=LIST, Confidence=0.80, Path=EVIDENCE_BASED
+2026-01-27 11:30:43,671 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:30:43,671 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 11:30:43,674 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 11:30:43,674 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 11:31:13,151 - root - Processing query: sbi
+2026-01-27 11:31:13,151 - root - [SmartRouter] Processing: sbi
+2026-01-27 11:31:13,153 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 11:31:13,155 - root - ✅ Database indexes created successfully
+2026-01-27 11:31:13,294 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 11:31:13,295 - root - [Validation] ✅ IMPLICIT LIST operation (db_count=58)
+2026-01-27 11:31:13,296 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 11:31:13,296 - root - [Step 2] Accuracy-critical: LIST (0.80)
+2026-01-27 11:31:13,296 - root - → SMART ROUTER: Intent=LIST, Confidence=0.80, Path=EVIDENCE_BASED
+2026-01-27 11:31:13,296 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 11:31:13,296 - root - [LIST Handler] Bank=SBI, Category=None, Detailed=False
+2026-01-27 11:31:13,298 - root - [get_all_products] Retrieved 58 products (bank=SBI, category=None)
+2026-01-27 11:31:13,299 - root - [LIST] Formatting 58 products as clean list
+2026-01-27 12:38:30,562 - root - ✅ Database indexes created successfully
+2026-01-27 12:38:30,565 - root - ✅ Database indexes created successfully
+2026-01-27 12:38:35,166 - root - ✅ Database indexes created successfully
+2026-01-27 12:38:35,501 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 12:39:10,147 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 12:39:15,839 - root - MultiSourceRetriever initialized
+2026-01-27 12:39:16,456 - root - ✅ Database indexes created successfully
+2026-01-27 12:39:16,532 - root - MultiSourceRetriever initialized
+2026-01-27 12:44:26,827 - root - Processing query: sbi 
+2026-01-27 12:44:26,828 - root - [SmartRouter] Processing: sbi 
+2026-01-27 12:44:26,851 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:26,856 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:26,859 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 12:44:26,864 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:26,865 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:26,886 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:27,761 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 12:44:27,762 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-27 12:44:27,762 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 12:44:27,762 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-27 12:44:27,764 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-27 12:44:27,764 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 12:44:27,764 - root - [ChatGPT Mode] Processing: sbi  (clarification=False, suppress_count=False)
+2026-01-27 12:44:27,764 - root - Multi-source retrieval for query: sbi 
+2026-01-27 12:44:28,574 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:31,629 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:44:31,764 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-27 12:44:31,764 - root - After deduplication: 60 unique results
+2026-01-27 12:44:33,990 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:44:39,200 - root - Processing query: debit cards
+2026-01-27 12:44:39,201 - root - [SmartRouter] Processing: debit cards
+2026-01-27 12:44:39,201 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 12:44:39,203 - root - [Context] Using bank from history: SBI
+2026-01-27 12:44:39,205 - root - ✅ Database indexes created successfully
+2026-01-27 12:44:39,366 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 12:44:39,367 - root - [Validation] ✅ FAQ operation (faq_score=0.70)
+2026-01-27 12:44:39,367 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 12:44:39,369 - root - [Step 2] Accuracy-critical: FAQ (0.70)
+2026-01-27 12:44:39,370 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.70, Path=EVIDENCE_BASED
+2026-01-27 12:44:39,370 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 12:44:39,370 - root - [ChatGPT Mode] Processing: debit cards (clarification=False, suppress_count=False)
+2026-01-27 12:44:39,371 - root - Multi-source retrieval for query: debit cards
+2026-01-27 12:44:41,194 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:44:41,251 - root - Retrieved 11 SQL results, 10 FAQ results
+2026-01-27 12:44:41,253 - root - After deduplication: 21 unique results
+2026-01-27 12:44:49,807 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:45:41,372 - root - Processing query: credit cards
+2026-01-27 12:45:41,374 - root - [SmartRouter] Processing: credit cards
+2026-01-27 12:45:41,375 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Credit Card, Products=0
+2026-01-27 12:45:41,375 - root - [Context] Using bank from history: SBI
+2026-01-27 12:45:41,376 - root - ✅ Database indexes created successfully
+2026-01-27 12:45:41,525 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-27 12:45:41,526 - root - [Validation] ✅ FAQ operation (faq_score=0.66)
+2026-01-27 12:45:41,527 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 12:45:41,527 - root - [Step 2] Accuracy-critical: FAQ (0.66)
+2026-01-27 12:45:41,527 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.66, Path=EVIDENCE_BASED
+2026-01-27 12:45:41,527 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 12:45:41,528 - root - [ChatGPT Mode] Processing: credit cards (clarification=False, suppress_count=False)
+2026-01-27 12:45:41,528 - root - Multi-source retrieval for query: credit cards
+2026-01-27 12:45:42,985 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:45:43,074 - root - Retrieved 16 SQL results, 10 FAQ results
+2026-01-27 12:45:43,074 - root - After deduplication: 26 unique results
+2026-01-27 12:45:59,436 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:51:46,539 - root - ✅ Database indexes created successfully
+2026-01-27 12:51:46,543 - root - ✅ Database indexes created successfully
+2026-01-27 12:51:49,451 - root - ✅ Database indexes created successfully
+2026-01-27 12:51:49,778 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 12:52:11,543 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 12:52:17,344 - root - MultiSourceRetriever initialized
+2026-01-27 12:52:17,976 - root - ✅ Database indexes created successfully
+2026-01-27 12:52:18,056 - root - MultiSourceRetriever initialized
+2026-01-27 12:53:09,367 - root - Processing query: sbi
+2026-01-27 12:53:09,368 - root - [SmartRouter] Processing: sbi
+2026-01-27 12:53:09,378 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:09,379 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:09,382 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 12:53:09,382 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:09,388 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:09,411 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:09,918 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 12:53:09,918 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-27 12:53:09,918 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 12:53:09,918 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-27 12:53:09,921 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-27 12:53:09,922 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 12:53:09,922 - root - [ChatGPT Mode] Processing: sbi (clarification=False, suppress_count=False)
+2026-01-27 12:53:09,922 - root - Multi-source retrieval for query: sbi
+2026-01-27 12:53:10,612 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:13,795 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:53:13,940 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-27 12:53:13,940 - root - After deduplication: 60 unique results
+2026-01-27 12:53:15,644 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 12:53:16,833 - root - Processing query: debit cards
+2026-01-27 12:53:16,833 - root - [SmartRouter] Processing: debit cards
+2026-01-27 12:53:16,834 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 12:53:16,834 - root - [Context] Using bank from history: SBI
+2026-01-27 12:53:16,839 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:16,983 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 12:53:16,983 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-27 12:53:16,983 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:53:16,985 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 12:53:16,985 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 12:53:16,987 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:53:17,645 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 12:53:17,648 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 12:53:17,648 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 12:53:21,329 - root - Processing query: credit cards
+2026-01-27 12:53:21,329 - root - [SmartRouter] Processing: credit cards
+2026-01-27 12:53:21,329 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 12:53:21,331 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-27 12:53:21,331 - root - [FollowUp LIST] Query: 'credit cards'
+2026-01-27 12:53:21,331 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:53:21,331 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 12:53:21,331 - root - [Context] Using bank from history: SBI
+2026-01-27 12:53:21,339 - root - ✅ Database indexes created successfully
+2026-01-27 12:53:21,479 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-27 12:53:21,479 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Credit Card)
+2026-01-27 12:53:21,479 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:53:21,482 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 12:53:21,482 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 12:53:21,482 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:53:21,482 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=False
+2026-01-27 12:53:21,484 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 12:53:21,484 - root - [LIST] Formatting 16 products as clean list
+2026-01-27 12:53:41,593 - root - Processing query: bank
+2026-01-27 12:53:41,593 - root - [SmartRouter] Processing: bank
+2026-01-27 12:53:41,595 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 12:53:41,596 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 12:53:41,597 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=VAGUE_QUERY
+2026-01-27 12:53:41,598 - root - → ROUTING: CLARIFY
+2026-01-27 12:53:47,705 - root - Processing query: debit cards
+2026-01-27 12:53:47,705 - root - [SmartRouter] Processing: debit cards
+2026-01-27 12:53:47,705 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-27 12:53:47,708 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 12:53:47,708 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=VAGUE_QUERY
+2026-01-27 12:53:47,708 - root - → ROUTING: CLARIFY
+2026-01-27 12:53:53,855 - root - Processing query: credit cards
+2026-01-27 12:53:53,855 - root - [SmartRouter] Processing: credit cards
+2026-01-27 12:53:53,856 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Credit Card, Products=0
+2026-01-27 12:53:53,856 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 12:53:53,856 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=VAGUE_QUERY
+2026-01-27 12:53:53,856 - root - → ROUTING: CLARIFY
+2026-01-27 12:54:51,239 - root - Processing query: sbi 
+2026-01-27 12:54:51,240 - root - [SmartRouter] Processing: sbi 
+2026-01-27 12:54:51,240 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Credit Card, Products=0
+2026-01-27 12:54:51,242 - root - [Context] Using category from history: Credit Card
+2026-01-27 12:54:51,247 - root - ✅ Database indexes created successfully
+2026-01-27 12:54:51,413 - root - [Evidence] Evidence(db_count=16, faq_score=0.78)
+2026-01-27 12:54:51,414 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Credit Card)
+2026-01-27 12:54:51,414 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:54:51,415 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 12:54:51,415 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 12:54:51,415 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:54:51,415 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=False
+2026-01-27 12:54:51,417 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 12:54:51,418 - root - [LIST] Formatting 16 products as clean list
+2026-01-27 12:55:02,117 - root - Processing query: debit cards
+2026-01-27 12:55:02,117 - root - [SmartRouter] Processing: debit cards
+2026-01-27 12:55:02,117 - root - [HistoryState] Using metadata: LIST, 16 products
+2026-01-27 12:55:02,117 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=16
+2026-01-27 12:55:02,117 - root - [FollowUp LIST] Query: 'debit cards'
+2026-01-27 12:55:02,117 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:55:02,121 - root - [FollowUp LIST] Products in state: 16
+2026-01-27 12:55:02,121 - root - [Context] Using bank from history: SBI
+2026-01-27 12:55:02,124 - root - ✅ Database indexes created successfully
+2026-01-27 12:55:02,264 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 12:55:02,264 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-27 12:55:02,264 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:55:02,264 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 12:55:02,264 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 12:55:02,266 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:55:02,267 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 12:55:02,268 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 12:55:02,268 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 12:55:07,452 - backoff - Backing off send_request(...) for 0.1s (requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Read timed out. (read timeout=15))
+2026-01-27 12:55:07,568 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D47FEA6B40>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,568 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EE8D0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,659 - backoff - Backing off send_request(...) for 0.1s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EECF0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:07,791 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EF6E0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,794 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EE810>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,796 - backoff - Backing off send_request(...) for 0.1s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EF020>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:07,940 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4535A1610>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,941 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556BACF0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:07,943 - backoff - Giving up send_request(...) after 4 tries (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556BA690>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:08,476 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4535A2690>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:08,506 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D455614B90>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:08,512 - backoff - Backing off send_request(...) for 0.8s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EF530>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:09,345 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EEE10>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:09,349 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EEFF0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:09,354 - backoff - Backing off send_request(...) for 1.8s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556EFEF0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:11,119 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D47FEA6D20>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:11,119 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556BA930>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:11,122 - backoff - Backing off send_request(...) for 1.4s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556BAE70>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:55:12,570 - urllib3.connectionpool - Retrying (Retry(total=1, connect=1, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4556B9BE0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:12,573 - urllib3.connectionpool - Retrying (Retry(total=0, connect=0, read=2, redirect=None, status=None)) after connection broken by 'NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D4018B68A0>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")': /batch/
+2026-01-27 12:55:12,576 - backoff - Giving up send_request(...) after 4 tries (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001D47FEE0D70>: Failed to resolve 'us.i.posthog.com' ([Errno 11001] getaddrinfo failed)")))
+2026-01-27 12:56:28,499 - root - Processing query: explain all sbi debit cards
+2026-01-27 12:56:28,500 - root - [SmartRouter] Processing: explain all sbi debit cards
+2026-01-27 12:56:28,501 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 12:56:28,501 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 12:56:28,502 - root - [FollowUp LIST] Query: 'explain all sbi debit cards'
+2026-01-27 12:56:28,502 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:56:28,502 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 12:56:28,505 - root - ✅ Database indexes created successfully
+2026-01-27 12:56:28,656 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 12:56:28,656 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-27 12:56:28,660 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:56:28,660 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 12:56:28,662 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 12:56:28,662 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:56:28,662 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=True
+2026-01-27 12:56:28,662 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 12:56:28,664 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 12:56:37,151 - root - Processing query: explain all sbi debit cards
+2026-01-27 12:56:37,151 - root - [SmartRouter] Processing: explain all sbi debit cards
+2026-01-27 12:56:37,153 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 12:56:37,154 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 12:56:37,154 - root - [FollowUp LIST] Query: 'explain all sbi debit cards'
+2026-01-27 12:56:37,155 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:56:37,155 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 12:56:37,158 - root - ✅ Database indexes created successfully
+2026-01-27 12:56:37,292 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 12:56:37,294 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-27 12:56:37,294 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:56:37,294 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 12:56:37,294 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 12:56:37,296 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:56:37,296 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=True
+2026-01-27 12:56:37,299 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 12:56:37,300 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 12:56:48,746 - root - Processing query: explain all sbi debit cards
+2026-01-27 12:56:48,748 - root - [SmartRouter] Processing: explain all sbi debit cards
+2026-01-27 12:56:48,748 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 12:56:48,749 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 12:56:48,750 - root - [FollowUp LIST] Query: 'explain all sbi debit cards'
+2026-01-27 12:56:48,751 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:56:48,751 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 12:56:48,754 - root - ✅ Database indexes created successfully
+2026-01-27 12:56:48,917 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 12:56:48,918 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-27 12:56:48,919 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:56:48,919 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 12:56:48,919 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 12:56:48,919 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:56:48,919 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=True
+2026-01-27 12:56:48,921 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 12:56:48,921 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 12:57:00,631 - root - Processing query: explain all sbi credit cards
+2026-01-27 12:57:00,631 - root - [SmartRouter] Processing: explain all sbi credit cards
+2026-01-27 12:57:00,631 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 12:57:00,631 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-27 12:57:00,631 - root - [FollowUp LIST] Query: 'explain all sbi credit cards'
+2026-01-27 12:57:00,631 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 12:57:00,631 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 12:57:00,640 - root - ✅ Database indexes created successfully
+2026-01-27 12:57:00,812 - root - [Evidence] Evidence(db_count=16, faq_score=0.79)
+2026-01-27 12:57:00,812 - root - [Validation] ✅ LIST operation (db_count=16)
+2026-01-27 12:57:00,812 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 12:57:00,814 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 12:57:00,814 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 12:57:00,814 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 12:57:00,814 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=True
+2026-01-27 12:57:00,817 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 12:57:00,817 - root - [LIST] Formatting 16 products as clean list
+2026-01-27 13:03:24,322 - root - Processing query: home loan
+2026-01-27 13:03:24,325 - root - [SmartRouter] Processing: home loan
+2026-01-27 13:03:24,326 - root - [HistoryState] Using metadata: LIST, 16 products
+2026-01-27 13:03:24,327 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Home Loan, Products=16
+2026-01-27 13:03:24,327 - root - [FollowUp LIST] Query: 'home loan'
+2026-01-27 13:03:24,327 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 13:03:24,328 - root - [FollowUp LIST] Products in state: 16
+2026-01-27 13:03:24,335 - root - ✅ Database indexes created successfully
+2026-01-27 13:03:24,339 - root - ✅ Database indexes created successfully
+2026-01-27 13:03:24,341 - root - [Context] Using bank from history: SBI
+2026-01-27 13:03:24,346 - root - ✅ Database indexes created successfully
+2026-01-27 13:03:24,716 - root - [Evidence] Evidence(db_count=9, faq_score=0.73)
+2026-01-27 13:03:24,716 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Home Loan)
+2026-01-27 13:03:24,717 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 13:03:24,717 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 13:03:24,718 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 13:03:24,718 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 13:03:24,718 - root - [LIST Handler] Bank=SBI, Category=Home Loan, Detailed=False
+2026-01-27 13:03:24,720 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 13:03:24,721 - root - [LIST] Formatting 8 products as clean list
+2026-01-27 13:03:53,193 - root - Processing query: explain all sbi home loans
+2026-01-27 13:03:53,195 - root - [SmartRouter] Processing: explain all sbi home loans
+2026-01-27 13:03:53,196 - root - [HistoryState] Using metadata: LIST, 8 products
+2026-01-27 13:03:53,196 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Home Loan, Products=8
+2026-01-27 13:03:53,198 - root - [FollowUp LIST] Query: 'explain all sbi home loans'
+2026-01-27 13:03:53,198 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 13:03:53,199 - root - [FollowUp LIST] Products in state: 8
+2026-01-27 13:03:53,202 - root - ✅ Database indexes created successfully
+2026-01-27 13:03:53,369 - root - [Evidence] Evidence(db_count=9, faq_score=0.77)
+2026-01-27 13:03:53,372 - root - [Validation] ✅ LIST operation (db_count=9)
+2026-01-27 13:03:53,372 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 13:03:53,372 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-27 13:03:53,374 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 13:03:53,374 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 13:03:53,375 - root - [LIST Handler] Bank=SBI, Category=Home Loan, Detailed=True
+2026-01-27 13:03:53,377 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 13:03:53,377 - root - [LIST] Formatting 8 products as clean list
+2026-01-27 15:25:03,927 - root - Processing query: how many home loans sbi offers
+2026-01-27 15:25:03,941 - root - [SmartRouter] Processing: how many home loans sbi offers
+2026-01-27 15:25:03,950 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Home Loan, Products=0
+2026-01-27 15:25:03,981 - root - ✅ Database indexes created successfully
+2026-01-27 15:25:03,989 - root - ✅ Database indexes created successfully
+2026-01-27 15:25:04,005 - root - ✅ Database indexes created successfully
+2026-01-27 15:25:05,296 - root - [Evidence] Evidence(db_count=9, faq_score=0.76)
+2026-01-27 15:25:05,298 - root - [Validation] ✅ COUNT operation (db_count=9)
+2026-01-27 15:25:05,299 - root - [Evidence Router] ✅ Operations: ['COUNT']
+2026-01-27 15:25:05,300 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-27 15:25:05,300 - root - → SMART ROUTER: Intent=COUNT, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-27 15:25:05,300 - root - → ROUTING: COUNT (guaranteed accuracy)
+2026-01-27 15:25:05,301 - root - [COUNT Handler] Bank=SBI, Category=Home Loan
+2026-01-27 15:25:05,305 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 15:25:05,305 - root - [COUNT] Python verification: SBI has EXACTLY 8 home loans
+2026-01-27 15:25:11,535 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:25:28,399 - root - Processing query: explain SBI Green Home Loan
+2026-01-27 15:25:28,400 - root - [SmartRouter] Processing: explain SBI Green Home Loan
+2026-01-27 15:25:28,401 - root - [HistoryState] Using metadata: COUNT, 8 products
+2026-01-27 15:25:28,401 - root - [HistoryState] Final: Intent=COUNT, Bank=SBI, Cat=Home Loan, Products=8
+2026-01-27 15:25:28,403 - root - [SmartRouter] Followup Transition: FOLLOWUP_COUNT_TO_EXPLAIN
+2026-01-27 15:25:28,405 - root - → VIRTUAL QUERY: 'explain SBI Green Home Loan' mapped to 'explain sbi green home loan'
+2026-01-27 15:25:28,405 - root - → SMART ROUTER: Intent=EXPLAIN_ALL, Confidence=0.95, Path=FOLLOWUP_COUNT_TO_EXPLAIN
+2026-01-27 15:25:28,406 - root - → ROUTING: EXPLAIN_ALL (guaranteed completeness)
+2026-01-27 15:25:28,406 - root - [EXPLAIN Handler] Bank=SBI, Category=Home Loan, Product=None
+2026-01-27 15:25:28,406 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 15:25:43,001 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:25:43,005 - root - [EXPLAIN] Generated explanation for 8 products
+2026-01-27 15:26:48,109 - root - Processing query: explain SBI Green Home Loan
+2026-01-27 15:26:48,109 - root - [SmartRouter] Processing: explain SBI Green Home Loan
+2026-01-27 15:26:48,110 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Home Loan, Products=0
+2026-01-27 15:26:48,113 - root - ✅ Database indexes created successfully
+2026-01-27 15:26:48,307 - root - [Evidence] Evidence(db_count=9, faq_score=0.82)
+2026-01-27 15:26:48,308 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Home Loan)
+2026-01-27 15:26:48,308 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 15:26:48,308 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 15:26:48,308 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:26:48,308 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 15:26:48,308 - root - [LIST Handler] Bank=SBI, Category=Home Loan, Detailed=True
+2026-01-27 15:26:48,310 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 15:26:48,310 - root - [LIST] Formatting 8 products as clean list
+2026-01-27 15:27:20,218 - root - ✅ Database indexes created successfully
+2026-01-27 15:27:20,222 - root - ✅ Database indexes created successfully
+2026-01-27 15:27:24,636 - root - ✅ Database indexes created successfully
+2026-01-27 15:27:25,076 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 15:28:26,332 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 15:28:35,326 - root - MultiSourceRetriever initialized
+2026-01-27 15:28:35,959 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:36,043 - root - MultiSourceRetriever initialized
+2026-01-27 15:28:45,410 - root - Processing query: explain SBI Green Home Loan
+2026-01-27 15:28:45,412 - root - [SmartRouter] Processing: explain SBI Green Home Loan
+2026-01-27 15:28:45,425 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:45,427 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:45,428 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Home Loan, Products=0
+2026-01-27 15:28:45,431 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:45,431 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:45,446 - root - ✅ Database indexes created successfully
+2026-01-27 15:28:46,000 - root - [Evidence] Evidence(db_count=9, faq_score=0.82)
+2026-01-27 15:28:46,001 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Home Loan)
+2026-01-27 15:28:46,001 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 15:28:46,001 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 15:28:46,001 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:28:46,001 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 15:28:46,684 - root - [LIST Handler] Bank=SBI, Category=Home Loan, Detailed=True
+2026-01-27 15:28:46,729 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 15:28:46,729 - root - [LIST] Formatting 8 products as clean list
+2026-01-27 15:33:34,723 - root - ✅ Database indexes created successfully
+2026-01-27 15:33:34,727 - root - ✅ Database indexes created successfully
+2026-01-27 15:33:37,478 - root - ✅ Database indexes created successfully
+2026-01-27 15:33:37,767 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 15:34:03,321 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 15:34:11,393 - root - MultiSourceRetriever initialized
+2026-01-27 15:34:12,004 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:12,082 - root - MultiSourceRetriever initialized
+2026-01-27 15:34:33,727 - root - Processing query: explain SBI Green Home Loan
+2026-01-27 15:34:33,727 - root - [SmartRouter] Processing: explain SBI Green Home Loan
+2026-01-27 15:34:33,748 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:33,757 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:33,759 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Home Loan, Products=0
+2026-01-27 15:34:33,769 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:33,779 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:33,818 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:34,699 - root - [Evidence] Evidence(db_count=9, faq_score=0.82)
+2026-01-27 15:34:34,700 - root - [Validation] ✅ EXPLAIN operation
+2026-01-27 15:34:34,700 - root - [Evidence Router] ✅ Operations: ['EXPLAIN']
+2026-01-27 15:34:34,701 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-27 15:34:34,701 - root - → SMART ROUTER: Intent=EXPLAIN, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:34:34,701 - root - → ROUTING: EXPLAIN
+2026-01-27 15:34:35,350 - root - [EXPLAIN Handler] Bank=SBI, Category=Home Loan, Product=green
+2026-01-27 15:34:35,355 - root - [get_all_products] Retrieved 8 products (bank=SBI, category=Home Loan)
+2026-01-27 15:34:42,818 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:34:42,933 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-27 15:34:57,017 - root - Processing query: sbi 
+2026-01-27 15:34:57,019 - root - [SmartRouter] Processing: sbi 
+2026-01-27 15:34:57,019 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-27 15:34:57,026 - root - ✅ Database indexes created successfully
+2026-01-27 15:34:57,210 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-27 15:34:57,212 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-27 15:34:57,212 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-27 15:34:57,212 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-27 15:34:57,212 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-27 15:34:57,213 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-27 15:34:57,214 - root - [ChatGPT Mode] Processing: sbi  (clarification=False, suppress_count=False)
+2026-01-27 15:34:57,214 - root - Multi-source retrieval for query: sbi 
+2026-01-27 15:34:57,877 - root - ✅ Database indexes created successfully
+2026-01-27 15:35:00,042 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:35:00,160 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-27 15:35:00,160 - root - After deduplication: 60 unique results
+2026-01-27 15:35:02,268 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:35:06,114 - root - Processing query: debit cards
+2026-01-27 15:35:06,114 - root - [SmartRouter] Processing: debit cards
+2026-01-27 15:35:06,114 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 15:35:06,114 - root - [Context] Using bank from history: SBI
+2026-01-27 15:35:06,120 - root - ✅ Database indexes created successfully
+2026-01-27 15:35:06,300 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-27 15:35:06,301 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-27 15:35:06,301 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 15:35:06,301 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 15:35:06,301 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:35:06,303 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 15:35:06,304 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 15:35:06,304 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 15:35:06,305 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 15:35:11,070 - root - Processing query: debit card
+2026-01-27 15:35:11,071 - root - [SmartRouter] Processing: debit card
+2026-01-27 15:35:11,071 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 15:35:11,071 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 15:35:11,071 - root - [FollowUp LIST] Query: 'debit card'
+2026-01-27 15:35:11,071 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 15:35:11,071 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 15:35:11,074 - root - [Context] Using bank from history: SBI
+2026-01-27 15:35:11,078 - root - ✅ Database indexes created successfully
+2026-01-27 15:35:11,206 - root - [Evidence] Evidence(db_count=11, faq_score=0.72)
+2026-01-27 15:35:11,206 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-27 15:35:11,208 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 15:35:11,208 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 15:35:11,208 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:35:11,209 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 15:35:11,209 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-27 15:35:11,211 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 15:35:11,211 - root - [LIST] Formatting 11 products as clean list
+2026-01-27 15:35:18,992 - root - Processing query: explain third
+2026-01-27 15:35:18,993 - root - [SmartRouter] Processing: explain third
+2026-01-27 15:35:18,993 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-27 15:35:18,993 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 15:35:18,993 - root - [FollowUp LIST] Query: 'explain third'
+2026-01-27 15:35:18,993 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 15:35:18,995 - root - [FollowUp LIST] Products in state: 11
+2026-01-27 15:35:18,995 - root - [FollowUp LIST] Found 11 products in state
+2026-01-27 15:35:18,996 - root - [FollowUp LIST] Matched ordinal: 'third' → index: 2
+2026-01-27 15:35:18,996 - root - [FollowUp LIST] ✅ Routing to EXPLAIN: 'SBI Gold International' (index 2)
+2026-01-27 15:35:18,997 - root - [SmartRouter] Followup Transition: FOLLOWUP_ORDINAL_SELECTION
+2026-01-27 15:35:18,998 - root - → VIRTUAL QUERY: 'explain third' mapped to 'Explain SBI Gold International'
+2026-01-27 15:35:18,998 - root - → SMART ROUTER: Intent=EXPLAIN, Confidence=0.98, Path=FOLLOWUP_ORDINAL_SELECTION
+2026-01-27 15:35:18,998 - root - → ROUTING: EXPLAIN
+2026-01-27 15:35:18,999 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=SBI Gold International
+2026-01-27 15:35:19,000 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 15:35:22,865 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:35:22,867 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-27 15:35:41,776 - root - Processing query: explain SBI Platinum International
+2026-01-27 15:35:41,777 - root - [SmartRouter] Processing: explain SBI Platinum International
+2026-01-27 15:35:41,778 - root - [HistoryState] Using metadata: EXPLAIN, 11 products
+2026-01-27 15:35:41,778 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-27 15:35:41,778 - root - [FollowUp EXPLAIN] Query: 'explain sbi platinum international'
+2026-01-27 15:35:41,778 - root - [FollowUp EXPLAIN] Products in state: 11
+2026-01-27 15:35:41,778 - root - [Context] Using category from history: Debit Card
+2026-01-27 15:35:41,783 - root - ✅ Database indexes created successfully
+2026-01-27 15:35:41,916 - root - [Evidence] Evidence(db_count=11, faq_score=0.73)
+2026-01-27 15:35:41,917 - root - [Validation] ✅ EXPLAIN operation
+2026-01-27 15:35:41,917 - root - [Evidence Router] ✅ Operations: ['EXPLAIN']
+2026-01-27 15:35:41,917 - root - [Step 2] Accuracy-critical: EXPLAIN (0.85)
+2026-01-27 15:35:41,917 - root - → SMART ROUTER: Intent=EXPLAIN, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:35:41,919 - root - → ROUTING: EXPLAIN
+2026-01-27 15:35:41,919 - root - [EXPLAIN Handler] Bank=SBI, Category=Debit Card, Product=platinum international
+2026-01-27 15:35:41,921 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-27 15:35:46,828 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:35:46,830 - root - [EXPLAIN] Generated explanation for 1 products
+2026-01-27 15:39:56,923 - root - Processing query: compare SBI My Card and SBI Premium
+2026-01-27 15:39:56,923 - root - [SmartRouter] Processing: compare SBI My Card and SBI Premium
+2026-01-27 15:39:56,923 - root - [HistoryState] Using metadata: EXPLAIN, 1 products
+2026-01-27 15:39:56,926 - root - [HistoryState] Final: Intent=EXPLAIN, Bank=SBI, Cat=Debit Card, Products=1
+2026-01-27 15:39:56,926 - root - [FollowUp EXPLAIN] Query: 'compare sbi my card and sbi premium'
+2026-01-27 15:39:56,927 - root - [FollowUp EXPLAIN] Products in state: 1
+2026-01-27 15:39:56,929 - root - ✅ Database indexes created successfully
+2026-01-27 15:39:56,931 - root - ✅ Database indexes created successfully
+2026-01-27 15:39:56,931 - root - [Context] Using category from history: Debit Card
+2026-01-27 15:39:56,931 - root - ✅ Database indexes created successfully
+2026-01-27 15:39:57,134 - root - [Evidence] Evidence(db_count=11, faq_score=0.75)
+2026-01-27 15:39:57,134 - root - [Validation] ✅ COMPARE operation
+2026-01-27 15:39:57,136 - root - [Evidence Router] ✅ Operations: ['COMPARE']
+2026-01-27 15:39:57,136 - root - [Step 2] Accuracy-critical: COMPARE (0.90)
+2026-01-27 15:39:57,136 - root - → SMART ROUTER: Intent=COMPARE, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-27 15:39:57,138 - root - → ROUTING: COMPARE (ChatGPT)
+2026-01-27 15:39:57,138 - root - [ChatGPT Mode] Processing: compare SBI My Card and SBI Premium (clarification=False, suppress_count=False)
+2026-01-27 15:39:57,139 - root - Multi-source retrieval for query: compare SBI My Card and SBI Premium
+2026-01-27 15:39:59,745 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:39:59,793 - root - Retrieved 2 SQL results, 10 FAQ results
+2026-01-27 15:39:59,793 - root - After deduplication: 12 unique results
+2026-01-27 15:40:04,262 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:40:04,267 - root - [COMPARE] Extracted products: ['SBI My Card', 'Personalized Image on Card', 'Premium Account']
+2026-01-27 15:40:40,014 - root - Processing query: which is best from them
+2026-01-27 15:40:40,017 - root - [SmartRouter] Processing: which is best from them
+2026-01-27 15:40:40,017 - root - [HistoryState] COMPARE: ['SBI My Card', 'Personalized Image on Card', 'Premium Account']
+2026-01-27 15:40:40,017 - root - [HistoryState] Final: Intent=COMPARE, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-27 15:40:40,017 - root - [FollowUp COMPARE] Which better? -> RECOMMEND from: ['SBI My Card', 'Personalized Image on Card', 'Premium Account']
+2026-01-27 15:40:40,017 - root - [SmartRouter] Followup Transition: FOLLOWUP_COMPARE_TO_RECOMMEND
+2026-01-27 15:40:40,021 - root - → VIRTUAL QUERY: 'which is best from them' mapped to 'Which is better: SBI My Card vs Personalized Image on Card vs Premium Account'
+2026-01-27 15:40:40,021 - root - → SMART ROUTER: Intent=RECOMMEND, Confidence=0.95, Path=FOLLOWUP_COMPARE_TO_RECOMMEND
+2026-01-27 15:40:40,021 - root - → ROUTING: RECOMMEND (ChatGPT)
+2026-01-27 15:40:40,021 - root - [ChatGPT Mode] Processing: Which is better: SBI My Card vs Personalized Image on Card vs Premium Account (clarification=False, suppress_count=False)
+2026-01-27 15:40:40,022 - root - Multi-source retrieval for query: Which is better: SBI My Card vs Personalized Image on Card vs Premium Account
+2026-01-27 15:40:42,087 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:40:42,177 - root - Retrieved 1 SQL results, 10 FAQ results
+2026-01-27 15:40:42,177 - root - After deduplication: 11 unique results
+2026-01-27 15:40:46,558 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 15:40:46,558 - root - [RECOMMEND] Extracted product: SBI My Card
+2026-01-27 15:41:37,854 - root - Processing query: credit card
+2026-01-27 15:41:37,854 - root - [SmartRouter] Processing: credit card
+2026-01-27 15:41:37,856 - root - [HistoryState] RECOMMEND: SBI My Card
+2026-01-27 15:41:37,857 - root - [HistoryState] Final: Intent=RECOMMEND, Bank=SBI, Cat=Credit Card, Products=0
+2026-01-27 15:41:37,857 - root - [Context] Using bank from history: SBI
+2026-01-27 15:41:37,859 - root - ✅ Database indexes created successfully
+2026-01-27 15:41:37,996 - root - [Evidence] Evidence(db_count=16, faq_score=0.68)
+2026-01-27 15:41:37,996 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Credit Card)
+2026-01-27 15:41:37,998 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-27 15:41:37,998 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-27 15:41:37,998 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-27 15:41:37,999 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-27 15:41:37,999 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=False
+2026-01-27 15:41:38,001 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 15:41:38,001 - root - [LIST] Formatting 16 products as clean list
+2026-01-27 15:41:53,491 - root - Processing query: how many credit cards sbi offers
+2026-01-27 15:41:53,493 - root - [SmartRouter] Processing: how many credit cards sbi offers
+2026-01-27 15:41:53,493 - root - [HistoryState] Using metadata: LIST, 16 products
+2026-01-27 15:41:53,493 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=16
+2026-01-27 15:41:53,496 - root - [FollowUp LIST] Query: 'how many credit cards sbi offers'
+2026-01-27 15:41:53,496 - root - [FollowUp LIST] State intent: LIST
+2026-01-27 15:41:53,496 - root - [FollowUp LIST] Products in state: 16
+2026-01-27 15:41:53,498 - root - ✅ Database indexes created successfully
+2026-01-27 15:41:53,678 - root - [Evidence] Evidence(db_count=16, faq_score=0.74)
+2026-01-27 15:41:53,678 - root - [Validation] ✅ COUNT operation (db_count=16)
+2026-01-27 15:41:53,680 - root - [Evidence Router] ✅ Operations: ['COUNT']
+2026-01-27 15:41:53,680 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-27 15:41:53,680 - root - → SMART ROUTER: Intent=COUNT, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-27 15:41:53,681 - root - → ROUTING: COUNT (guaranteed accuracy)
+2026-01-27 15:41:53,682 - root - [COUNT Handler] Bank=SBI, Category=Credit Card
+2026-01-27 15:41:53,683 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-27 15:41:53,683 - root - [COUNT] Python verification: SBI has EXACTLY 16 credit cards
+2026-01-27 15:41:59,738 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 17:07:12,865 - root - ✅ Database indexes created successfully
+2026-01-27 17:07:12,867 - root - ✅ Database indexes created successfully
+2026-01-27 17:07:14,710 - root - ✅ Database indexes created successfully
+2026-01-27 17:07:14,909 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-27 17:07:28,642 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-27 17:07:33,848 - root - MultiSourceRetriever initialized
+2026-01-27 17:07:34,131 - root - ✅ Database indexes created successfully
+2026-01-27 17:07:34,177 - root - MultiSourceRetriever initialized
+2026-01-27 17:22:42,462 - root - Processing query: shivaram
+2026-01-27 17:22:42,474 - root - [SmartRouter] Processing: shivaram
+2026-01-27 17:22:42,569 - root - ✅ Database indexes created successfully
+2026-01-27 17:22:42,574 - root - ✅ Database indexes created successfully
+2026-01-27 17:22:42,583 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:22:42,591 - root - ✅ Database indexes created successfully
+2026-01-27 17:22:42,598 - root - ✅ Database indexes created successfully
+2026-01-27 17:22:42,652 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:22:42,654 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:22:42,654 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:22:42,655 - root - → ROUTING: CLARIFY
+2026-01-27 17:22:53,470 - root - Processing query: aman
+2026-01-27 17:22:53,472 - root - [SmartRouter] Processing: aman
+2026-01-27 17:22:53,472 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:22:53,474 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:22:53,475 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:22:53,476 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:22:53,476 - root - → ROUTING: CLARIFY
+2026-01-27 17:22:59,816 - root - Processing query: priya
+2026-01-27 17:22:59,817 - root - [SmartRouter] Processing: priya
+2026-01-27 17:22:59,817 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:22:59,818 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:22:59,818 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:22:59,818 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:22:59,819 - root - → ROUTING: CLARIFY
+2026-01-27 17:23:16,175 - root - Processing query: list
+2026-01-27 17:23:16,175 - root - [SmartRouter] Processing: list
+2026-01-27 17:23:16,176 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:23:16,176 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:23:16,176 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:23:16,176 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:23:16,178 - root - → ROUTING: CLARIFY
+2026-01-27 17:24:02,576 - root - Processing query: elon musk
+2026-01-27 17:24:02,577 - root - [SmartRouter] Processing: elon musk
+2026-01-27 17:24:02,578 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:24:02,579 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:24:02,579 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:24:02,580 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:24:02,580 - root - → ROUTING: CLARIFY
+2026-01-27 17:24:19,015 - root - Processing query: 27 jan
+2026-01-27 17:24:19,016 - root - [SmartRouter] Processing: 27 jan
+2026-01-27 17:24:19,016 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-27 17:24:19,017 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-27 17:24:19,018 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-27 17:24:19,019 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-27 17:24:19,019 - root - → ROUTING: CLARIFY
+2026-01-28 13:22:05,785 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 13:23:15,870 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 13:23:21,631 - root - MultiSourceRetriever initialized
+2026-01-28 13:23:22,401 - root - MultiSourceRetriever initialized
+2026-01-28 13:23:37,878 - root - Processing query: bank
+2026-01-28 13:23:37,878 - root - [SmartRouter] Processing: bank
+2026-01-28 13:23:37,920 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 13:23:37,948 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 13:25:25,543 - root - Processing query: debit card
+2026-01-28 13:25:25,545 - root - [SmartRouter] Processing: debit card
+2026-01-28 13:25:25,545 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-28 13:25:25,547 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 13:25:30,231 - root - Processing query: debit cards
+2026-01-28 13:25:30,231 - root - [SmartRouter] Processing: debit cards
+2026-01-28 13:25:30,231 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-28 13:25:30,234 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 13:25:33,755 - root - Processing query: list
+2026-01-28 13:25:33,757 - root - [SmartRouter] Processing: list
+2026-01-28 13:25:33,757 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-28 13:25:33,759 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:25:34,478 - root - [Evidence] Evidence(db_count=23, faq_score=0.54)
+2026-01-28 13:25:34,486 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-28 13:25:35,173 - root - [LIST Handler] Bank=None, Category=Debit Card, Detailed=False
+2026-01-28 13:25:35,176 - root - [get_all_products] Retrieved 23 products (bank=None, category=Debit Card)
+2026-01-28 13:25:35,177 - root - [LIST] Formatting 23 products as clean list
+2026-01-28 13:26:33,076 - root - Processing query: which is best debit card from sbi and how to apply
+2026-01-28 13:26:33,077 - root - [SmartRouter] Processing: which is best debit card from sbi and how to apply
+2026-01-28 13:26:33,077 - root - [HistoryState] Using metadata: LIST, 23 products
+2026-01-28 13:26:33,078 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=23
+2026-01-28 13:26:33,078 - root - [FollowUp LIST] Query: 'which is best debit card from sbi and how to apply'
+2026-01-28 13:26:33,078 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 13:26:33,080 - root - [FollowUp LIST] Products in state: 23
+2026-01-28 13:26:33,082 - root - [SmartRouter] Followup Transition: FOLLOWUP_LIST_TO_RECOMMEND
+2026-01-28 13:26:33,099 - root - [ChatGPT Mode] Processing: which is best debit card from sbi and how to apply (clarification=False, suppress_count=False)
+2026-01-28 13:26:33,099 - root - Multi-source retrieval for query: which is best debit card from sbi and how to apply
+2026-01-28 13:26:37,638 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:26:37,801 - root - Retrieved 11 SQL results, 10 FAQ results
+2026-01-28 13:26:37,801 - root - After deduplication: 21 unique results
+2026-01-28 13:26:47,567 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:26:47,571 - root - [RECOMMEND] Extracted product: SBI Pride
+2026-01-28 13:29:25,041 - root - Processing query: shivaram
+2026-01-28 13:29:25,045 - root - [SmartRouter] Processing: shivaram
+2026-01-28 13:29:25,045 - root - [HistoryState] RECOMMEND: SBI Pride
+2026-01-28 13:29:25,045 - root - [HistoryState] Final: Intent=RECOMMEND, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-28 13:29:25,089 - root - [Context] Using bank from history: SBI
+2026-01-28 13:29:25,089 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:29:25,351 - root - [Evidence] Evidence(db_count=11, faq_score=0.59)
+2026-01-28 13:29:25,363 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 13:29:25,372 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 13:29:25,374 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 13:29:25,375 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 13:29:31,896 - root - Processing query: shivaram
+2026-01-28 13:29:31,896 - root - [SmartRouter] Processing: shivaram
+2026-01-28 13:29:31,897 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 13:29:31,897 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 13:29:31,898 - root - [FollowUp LIST] Query: 'shivaram'
+2026-01-28 13:29:31,899 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 13:29:31,899 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 13:29:31,899 - root - [Context] Using bank from history: SBI
+2026-01-28 13:29:31,899 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:29:32,051 - root - [Evidence] Evidence(db_count=11, faq_score=0.59)
+2026-01-28 13:29:32,063 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 13:29:32,070 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 13:29:32,071 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 13:29:32,071 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 13:44:54,807 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 13:45:18,998 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 13:45:24,434 - root - MultiSourceRetriever initialized
+2026-01-28 13:45:25,154 - root - MultiSourceRetriever initialized
+2026-01-28 13:46:24,846 - root - ✅ Database indexes created successfully
+2026-01-28 13:46:24,892 - root - ✅ Database indexes created successfully
+2026-01-28 13:46:27,889 - root - ✅ Database indexes created successfully
+2026-01-28 13:46:28,161 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 13:46:40,133 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 13:46:44,757 - root - MultiSourceRetriever initialized
+2026-01-28 13:46:45,128 - root - ✅ Database indexes created successfully
+2026-01-28 13:46:45,178 - root - MultiSourceRetriever initialized
+2026-01-28 13:48:51,538 - root - Processing query: shivaram
+2026-01-28 13:48:51,546 - root - [SmartRouter] Processing: shivaram
+2026-01-28 13:48:51,597 - root - ✅ Database indexes created successfully
+2026-01-28 13:48:51,601 - root - ✅ Database indexes created successfully
+2026-01-28 13:48:51,605 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 13:48:51,609 - root - ✅ Database indexes created successfully
+2026-01-28 13:48:51,610 - root - ✅ Database indexes created successfully
+2026-01-28 13:48:52,318 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 13:48:52,318 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 13:48:52,318 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 13:48:52,319 - root - → ROUTING: CLARIFY
+2026-01-28 13:49:07,117 - root - Processing query: debit cards
+2026-01-28 13:49:07,117 - root - [SmartRouter] Processing: debit cards
+2026-01-28 13:49:07,119 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=Debit Card, Products=0
+2026-01-28 13:49:07,119 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 13:49:07,120 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=VAGUE_QUERY
+2026-01-28 13:49:07,121 - root - → ROUTING: CLARIFY
+2026-01-28 13:49:10,240 - root - Processing query: sbi
+2026-01-28 13:49:10,241 - root - [SmartRouter] Processing: sbi
+2026-01-28 13:49:10,241 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-28 13:49:10,242 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:49:10,267 - root - ✅ Database indexes created successfully
+2026-01-28 13:49:11,031 - root - [Evidence] Evidence(db_count=11, faq_score=0.78)
+2026-01-28 13:49:13,301 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:13,325 - root - [Query Validator] 'sbi' → YES (banking_related: True)
+2026-01-28 13:49:13,325 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-28 13:49:13,325 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 13:49:13,327 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 13:49:13,327 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 13:49:13,328 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 13:49:13,801 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 13:49:13,809 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 13:49:13,809 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 13:49:18,300 - root - Processing query: shivaram
+2026-01-28 13:49:18,301 - root - [SmartRouter] Processing: shivaram
+2026-01-28 13:49:18,301 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 13:49:18,301 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 13:49:18,301 - root - [FollowUp LIST] Query: 'shivaram'
+2026-01-28 13:49:18,304 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 13:49:18,304 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 13:49:18,307 - root - [Context] Using bank from history: SBI
+2026-01-28 13:49:18,308 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:49:18,309 - root - ✅ Database indexes created successfully
+2026-01-28 13:49:18,454 - root - [Evidence] Evidence(db_count=11, faq_score=0.59)
+2026-01-28 13:49:19,391 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:19,432 - root - [Query Validator] 'shivaram' → NO (banking_related: False)
+2026-01-28 13:49:19,434 - root - [Validation] ⚠️ REFUSE - Non-banking query: 'shivaram'
+2026-01-28 13:49:19,450 - root - [Evidence Router] ✅ Operations: ['REFUSE']
+2026-01-28 13:49:19,451 - root - [Step 2] Accuracy-critical: UNKNOWN (0.95)
+2026-01-28 13:49:19,453 - root - → SMART ROUTER: Intent=UNKNOWN, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 13:49:19,453 - root - → ROUTING: FALLBACK (intent=UNKNOWN)
+2026-01-28 13:49:19,454 - root - [ChatGPT Mode] Processing: shivaram (clarification=False, suppress_count=False)
+2026-01-28 13:49:19,455 - root - Multi-source retrieval for query: shivaram
+2026-01-28 13:49:20,137 - root - ✅ Database indexes created successfully
+2026-01-28 13:49:21,858 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:21,932 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-28 13:49:21,932 - root - After deduplication: 15 unique results
+2026-01-28 13:49:24,557 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:33,421 - root - Processing query: aman
+2026-01-28 13:49:33,422 - root - [SmartRouter] Processing: aman
+2026-01-28 13:49:33,422 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 13:49:33,422 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 13:49:33,424 - root - [FollowUp LIST] Query: 'aman'
+2026-01-28 13:49:33,424 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 13:49:33,426 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 13:49:33,426 - root - [Context] Using bank from history: SBI
+2026-01-28 13:49:33,427 - root - [Context] Using category from history: Debit Card
+2026-01-28 13:49:33,430 - root - ✅ Database indexes created successfully
+2026-01-28 13:49:33,611 - root - [Evidence] Evidence(db_count=11, faq_score=0.58)
+2026-01-28 13:49:35,666 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:35,668 - root - [Query Validator] 'aman' → NO (banking_related: False)
+2026-01-28 13:49:35,668 - root - [Validation] ⚠️ REFUSE - Non-banking query: 'aman'
+2026-01-28 13:49:35,668 - root - [Evidence Router] ✅ Operations: ['REFUSE']
+2026-01-28 13:49:35,668 - root - [Step 2] Accuracy-critical: UNKNOWN (0.95)
+2026-01-28 13:49:35,670 - root - → SMART ROUTER: Intent=UNKNOWN, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 13:49:35,671 - root - → ROUTING: FALLBACK (intent=UNKNOWN)
+2026-01-28 13:49:35,671 - root - [ChatGPT Mode] Processing: aman (clarification=False, suppress_count=False)
+2026-01-28 13:49:35,671 - root - Multi-source retrieval for query: aman
+2026-01-28 13:49:37,259 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:49:37,352 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 13:49:37,354 - root - After deduplication: 60 unique results
+2026-01-28 13:49:40,007 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:50:01,543 - root - Processing query: debit card
+2026-01-28 13:50:01,543 - root - [SmartRouter] Processing: debit card
+2026-01-28 13:50:01,543 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 13:50:01,546 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 13:50:01,546 - root - [FollowUp LIST] Query: 'debit card'
+2026-01-28 13:50:01,546 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 13:50:01,547 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 13:50:01,547 - root - [Context] Using bank from history: SBI
+2026-01-28 13:50:01,550 - root - ✅ Database indexes created successfully
+2026-01-28 13:50:01,696 - root - [Evidence] Evidence(db_count=11, faq_score=0.72)
+2026-01-28 13:50:02,561 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 13:50:02,579 - root - [Query Validator] 'debit card' → YES (banking_related: True)
+2026-01-28 13:50:02,579 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-28 13:50:02,581 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 13:50:02,582 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 13:50:02,583 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 13:50:02,585 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 13:50:02,587 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 13:50:02,589 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 13:50:02,589 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 14:16:21,505 - root - Processing query: hi
+2026-01-28 14:16:21,513 - root - [SmartRouter] Processing: hi
+2026-01-28 14:16:21,516 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:16:21,540 - root - ✅ Database indexes created successfully
+2026-01-28 14:16:21,544 - root - ✅ Database indexes created successfully
+2026-01-28 14:16:21,547 - root - [Step 2] Accuracy-critical: GREETING (0.99)
+2026-01-28 14:16:21,548 - root - → SMART ROUTER: Intent=GREETING, Confidence=0.99, Path=GREETING
+2026-01-28 14:16:21,549 - root - → ROUTING: GREETING
+2026-01-28 14:16:26,091 - root - Processing query: ello
+2026-01-28 14:16:26,091 - root - [SmartRouter] Processing: ello
+2026-01-28 14:16:26,094 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:16:26,094 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:16:26,094 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:16:26,096 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:16:26,096 - root - → ROUTING: CLARIFY
+2026-01-28 14:16:37,386 - root - Processing query: im good
+2026-01-28 14:16:37,386 - root - [SmartRouter] Processing: im good
+2026-01-28 14:16:37,388 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:16:37,388 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:16:37,388 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:16:37,388 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:16:37,390 - root - → ROUTING: CLARIFY
+2026-01-28 14:21:09,397 - root - Processing query: im bad person
+2026-01-28 14:21:09,399 - root - [SmartRouter] Processing: im bad person
+2026-01-28 14:21:09,400 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:21:09,400 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:21:09,400 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:21:09,400 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:21:09,400 - root - → ROUTING: CLARIFY
+2026-01-28 14:21:19,393 - root - Processing query: who are you
+2026-01-28 14:21:19,394 - root - [SmartRouter] Processing: who are you
+2026-01-28 14:21:19,394 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:21:19,394 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:21:19,396 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:21:19,396 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:21:19,396 - root - → ROUTING: CLARIFY
+2026-01-28 14:22:15,701 - root - Processing query: narendra modi
+2026-01-28 14:22:15,701 - root - [SmartRouter] Processing: narendra modi
+2026-01-28 14:22:15,702 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:22:15,706 - root - ✅ Database indexes created successfully
+2026-01-28 14:22:15,709 - root - ✅ Database indexes created successfully
+2026-01-28 14:22:15,709 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:22:15,709 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:22:15,709 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:22:15,709 - root - → ROUTING: CLARIFY
+2026-01-28 14:27:40,237 - root - ✅ Database indexes created successfully
+2026-01-28 14:27:40,240 - root - ✅ Database indexes created successfully
+2026-01-28 14:27:43,365 - root - ✅ Database indexes created successfully
+2026-01-28 14:27:43,929 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 14:28:10,096 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 14:28:17,382 - root - MultiSourceRetriever initialized
+2026-01-28 14:28:18,670 - root - ✅ Database indexes created successfully
+2026-01-28 14:28:18,762 - root - MultiSourceRetriever initialized
+2026-01-28 14:28:30,358 - root - Processing query: hi
+2026-01-28 14:28:30,359 - root - [SmartRouter] Processing: hi
+2026-01-28 14:28:30,371 - root - ✅ Database indexes created successfully
+2026-01-28 14:28:30,375 - root - ✅ Database indexes created successfully
+2026-01-28 14:28:30,378 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:28:30,378 - root - ✅ Database indexes created successfully
+2026-01-28 14:28:30,381 - root - ✅ Database indexes created successfully
+2026-01-28 14:28:30,393 - root - [Step 2] Accuracy-critical: GREETING (0.99)
+2026-01-28 14:28:30,393 - root - → SMART ROUTER: Intent=GREETING, Confidence=0.99, Path=GREETING
+2026-01-28 14:28:30,394 - root - → ROUTING: GREETING
+2026-01-28 14:28:33,548 - root - Processing query: ello
+2026-01-28 14:28:33,549 - root - [SmartRouter] Processing: ello
+2026-01-28 14:28:33,550 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:28:33,551 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:28:33,551 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:28:33,551 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:28:33,554 - root - → ROUTING: CLARIFY
+2026-01-28 14:28:43,349 - root - Processing query: who are you
+2026-01-28 14:28:43,349 - root - [SmartRouter] Processing: who are you
+2026-01-28 14:28:43,354 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:28:43,354 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:28:43,355 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:28:43,355 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:28:43,355 - root - → ROUTING: CLARIFY
+2026-01-28 14:28:57,503 - root - Processing query: narendra modi
+2026-01-28 14:28:57,504 - root - [SmartRouter] Processing: narendra modi
+2026-01-28 14:28:57,504 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:28:57,504 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:28:57,504 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:28:57,507 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:28:57,507 - root - → ROUTING: CLARIFY
+2026-01-28 14:32:58,859 - root - ✅ Database indexes created successfully
+2026-01-28 14:32:58,865 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:00,161 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:00,380 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 14:33:10,367 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 14:33:16,787 - root - MultiSourceRetriever initialized
+2026-01-28 14:33:18,011 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:18,109 - root - MultiSourceRetriever initialized
+2026-01-28 14:33:26,621 - root - Processing query: narendra modo
+2026-01-28 14:33:26,621 - root - [SmartRouter] Processing: narendra modo
+2026-01-28 14:33:26,633 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:26,636 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:26,638 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:33:26,642 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:26,644 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:30,077 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:30,138 - root - [Query Validator] 'narendra modo' → NO (banking_related: False)
+2026-01-28 14:33:30,138 - root - [Evidence Router] ⚠️ REFUSE - Non-banking query (no scope): 'narendra modo'
+2026-01-28 14:33:30,138 - root - [Step 2] Accuracy-critical: UNKNOWN (0.95)
+2026-01-28 14:33:30,140 - root - → SMART ROUTER: Intent=UNKNOWN, Confidence=0.95, Path=NON_BANKING_NO_SCOPE
+2026-01-28 14:33:30,141 - root - → ROUTING: FALLBACK (intent=UNKNOWN)
+2026-01-28 14:33:30,144 - root - [ChatGPT Mode] Processing: narendra modo (clarification=False, suppress_count=False)
+2026-01-28 14:33:30,144 - root - Multi-source retrieval for query: narendra modo
+2026-01-28 14:33:30,534 - root - ✅ Database indexes created successfully
+2026-01-28 14:33:31,818 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:32,467 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 14:33:32,467 - root - After deduplication: 60 unique results
+2026-01-28 14:33:34,043 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:51,561 - root - Processing query: who is narendra modi
+2026-01-28 14:33:51,563 - root - [SmartRouter] Processing: who is narendra modi
+2026-01-28 14:33:51,564 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:33:52,869 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:52,871 - root - [Query Validator] 'who is narendra modi' → NO (banking_related: False)
+2026-01-28 14:33:52,871 - root - [Evidence Router] ⚠️ REFUSE - Non-banking query (no scope): 'who is narendra modi'
+2026-01-28 14:33:52,872 - root - [Step 2] Accuracy-critical: UNKNOWN (0.95)
+2026-01-28 14:33:52,878 - root - → SMART ROUTER: Intent=UNKNOWN, Confidence=0.95, Path=NON_BANKING_NO_SCOPE
+2026-01-28 14:33:52,879 - root - → ROUTING: FALLBACK (intent=UNKNOWN)
+2026-01-28 14:33:52,882 - root - [ChatGPT Mode] Processing: who is narendra modi (clarification=False, suppress_count=False)
+2026-01-28 14:33:52,884 - root - Multi-source retrieval for query: who is narendra modi
+2026-01-28 14:33:54,136 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:33:54,270 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 14:33:54,270 - root - After deduplication: 60 unique results
+2026-01-28 14:33:59,570 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:36:58,092 - root - ✅ Database indexes created successfully
+2026-01-28 14:36:58,095 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:01,675 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:01,970 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 14:37:20,177 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 14:37:27,598 - root - MultiSourceRetriever initialized
+2026-01-28 14:37:28,869 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:28,957 - root - MultiSourceRetriever initialized
+2026-01-28 14:37:43,944 - root - Processing query: babar
+2026-01-28 14:37:43,945 - root - [SmartRouter] Processing: babar
+2026-01-28 14:37:43,955 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:43,959 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:43,960 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:37:43,960 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:43,960 - root - ✅ Database indexes created successfully
+2026-01-28 14:37:46,386 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:37:46,401 - root - [Query Validator] 'babar' → NO (banking_related: False)
+2026-01-28 14:37:46,403 - root - [Evidence Router] ⚠️ REFUSE - Non-banking query (no scope): 'babar'
+2026-01-28 14:37:46,403 - root - [Step 2] Accuracy-critical: REFUSE (0.95)
+2026-01-28 14:37:46,403 - root - → SMART ROUTER: Intent=REFUSE, Confidence=0.95, Path=NON_BANKING_NO_SCOPE
+2026-01-28 14:37:46,403 - root - → ROUTING: REFUSE (non-banking query)
+2026-01-28 14:48:23,593 - root - Processing query: what do you know about me
+2026-01-28 14:48:23,599 - root - [SmartRouter] Processing: what do you know about me
+2026-01-28 14:48:23,604 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:48:23,631 - root - ✅ Database indexes created successfully
+2026-01-28 14:48:23,637 - root - ✅ Database indexes created successfully
+2026-01-28 14:48:26,155 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 14:48:26,261 - root - [Query Validator] 'what do you know about me' → NO (banking_related: False)
+2026-01-28 14:48:26,263 - root - [Evidence Router] ⚠️ REFUSE - Non-banking query (no scope): 'what do you know about me'
+2026-01-28 14:48:26,263 - root - [Step 2] Accuracy-critical: REFUSE (0.95)
+2026-01-28 14:48:26,265 - root - → SMART ROUTER: Intent=REFUSE, Confidence=0.95, Path=NON_BANKING_NO_SCOPE
+2026-01-28 14:48:26,265 - root - → ROUTING: REFUSE (non-banking query)
+2026-01-28 14:58:14,981 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:14,983 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:16,766 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:17,001 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 14:58:34,063 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 14:58:41,041 - root - MultiSourceRetriever initialized
+2026-01-28 14:58:41,378 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:41,423 - root - MultiSourceRetriever initialized
+2026-01-28 14:58:59,609 - root - Processing query: who are you
+2026-01-28 14:58:59,609 - root - [SmartRouter] Processing: who are you
+2026-01-28 14:58:59,621 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:59,628 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:59,630 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:58:59,631 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:59,634 - root - ✅ Database indexes created successfully
+2026-01-28 14:58:59,658 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:58:59,659 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:58:59,659 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:58:59,659 - root - → ROUTING: CLARIFY
+2026-01-28 14:59:13,467 - root - Processing query: how are you
+2026-01-28 14:59:13,467 - root - [SmartRouter] Processing: how are you
+2026-01-28 14:59:13,467 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:59:13,467 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:59:13,470 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:59:13,470 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:59:13,470 - root - → ROUTING: CLARIFY
+2026-01-28 14:59:46,136 - root - Processing query: how life going
+2026-01-28 14:59:46,137 - root - [SmartRouter] Processing: how life going
+2026-01-28 14:59:46,137 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 14:59:46,139 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 14:59:46,139 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 14:59:46,140 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 14:59:46,140 - root - → ROUTING: CLARIFY
+2026-01-28 15:03:56,736 - root - ✅ Database indexes created successfully
+2026-01-28 15:03:56,743 - root - ✅ Database indexes created successfully
+2026-01-28 15:03:59,436 - root - ✅ Database indexes created successfully
+2026-01-28 15:03:59,690 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 15:04:10,672 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 15:04:18,180 - root - MultiSourceRetriever initialized
+2026-01-28 15:04:18,483 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:18,541 - root - MultiSourceRetriever initialized
+2026-01-28 15:04:32,671 - root - Processing query: who are you
+2026-01-28 15:04:32,673 - root - [SmartRouter] Processing: who are you
+2026-01-28 15:04:32,687 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:32,691 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:32,694 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:04:32,695 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:32,699 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:32,709 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 15:04:32,709 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:04:32,709 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 15:04:32,716 - root - → ROUTING: CLARIFY
+2026-01-28 15:04:32,716 - root - → CLARIFY: Conversational query detected, routing to ChatGPT
+2026-01-28 15:04:32,717 - root - [ChatGPT Mode] Processing: who are you (clarification=True, suppress_count=False)
+2026-01-28 15:04:32,717 - root - Multi-source retrieval for query: who are you
+2026-01-28 15:04:33,327 - root - ✅ Database indexes created successfully
+2026-01-28 15:04:35,811 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:04:36,417 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 15:04:36,417 - root - After deduplication: 60 unique results
+2026-01-28 15:04:38,931 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:05:07,499 - root - Processing query: what do you know about me
+2026-01-28 15:05:07,499 - root - [SmartRouter] Processing: what do you know about me
+2026-01-28 15:05:07,502 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:05:07,502 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 15:05:07,502 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:05:07,504 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 15:05:07,504 - root - → ROUTING: CLARIFY
+2026-01-28 15:05:15,756 - root - Processing query: are you happy
+2026-01-28 15:05:15,756 - root - [SmartRouter] Processing: are you happy
+2026-01-28 15:05:15,757 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:05:15,757 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 15:05:15,758 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:05:15,758 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 15:05:15,759 - root - → ROUTING: CLARIFY
+2026-01-28 15:05:32,710 - root - Processing query: shivaram
+2026-01-28 15:05:32,710 - root - [SmartRouter] Processing: shivaram
+2026-01-28 15:05:32,710 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:05:32,710 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 15:05:32,710 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:05:32,716 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 15:05:32,716 - root - → ROUTING: CLARIFY
+2026-01-28 15:05:35,489 - root - Processing query: bank
+2026-01-28 15:05:35,490 - root - [SmartRouter] Processing: bank
+2026-01-28 15:05:35,491 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:05:35,491 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:05:35,493 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=VAGUE_QUERY
+2026-01-28 15:05:35,493 - root - → ROUTING: CLARIFY
+2026-01-28 15:05:38,280 - root - Processing query: sbi
+2026-01-28 15:05:38,281 - root - [SmartRouter] Processing: sbi
+2026-01-28 15:05:38,282 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-28 15:05:38,285 - root - ✅ Database indexes created successfully
+2026-01-28 15:05:38,454 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-28 15:05:38,455 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-28 15:05:38,455 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-28 15:05:38,455 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-28 15:05:38,457 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-28 15:05:38,457 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-28 15:05:38,458 - root - [ChatGPT Mode] Processing: sbi (clarification=False, suppress_count=False)
+2026-01-28 15:05:38,458 - root - Multi-source retrieval for query: sbi
+2026-01-28 15:05:39,999 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:05:40,062 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 15:05:40,062 - root - After deduplication: 60 unique results
+2026-01-28 15:05:41,693 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:05:48,432 - root - Processing query: debit cards
+2026-01-28 15:05:48,433 - root - [SmartRouter] Processing: debit cards
+2026-01-28 15:05:48,433 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-28 15:05:48,435 - root - [Context] Using bank from history: SBI
+2026-01-28 15:05:48,437 - root - ✅ Database indexes created successfully
+2026-01-28 15:05:48,573 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-28 15:05:48,574 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-28 15:05:48,574 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:05:48,576 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:05:48,576 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:05:48,577 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:05:49,247 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 15:05:49,287 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 15:05:49,287 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 15:05:56,421 - root - Processing query: credit cards
+2026-01-28 15:05:56,423 - root - [SmartRouter] Processing: credit cards
+2026-01-28 15:05:56,424 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 15:05:56,424 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-28 15:05:56,425 - root - [FollowUp LIST] Query: 'credit cards'
+2026-01-28 15:05:56,425 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:05:56,426 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 15:05:56,426 - root - [Context] Using bank from history: SBI
+2026-01-28 15:05:56,431 - root - ✅ Database indexes created successfully
+2026-01-28 15:05:56,584 - root - [Evidence] Evidence(db_count=16, faq_score=0.66)
+2026-01-28 15:05:56,584 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Credit Card)
+2026-01-28 15:05:56,586 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:05:56,586 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:05:56,586 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:05:56,586 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:05:56,586 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=False
+2026-01-28 15:05:56,588 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-28 15:05:56,588 - root - [LIST] Formatting 16 products as clean list
+2026-01-28 15:06:00,483 - root - Processing query: shivaram
+2026-01-28 15:06:00,483 - root - [SmartRouter] Processing: shivaram
+2026-01-28 15:06:00,484 - root - [HistoryState] Using metadata: LIST, 16 products
+2026-01-28 15:06:00,484 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=16
+2026-01-28 15:06:00,484 - root - [FollowUp LIST] Query: 'shivaram'
+2026-01-28 15:06:00,486 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:06:00,486 - root - [FollowUp LIST] Products in state: 16
+2026-01-28 15:06:00,487 - root - [Context] Using bank from history: SBI
+2026-01-28 15:06:00,488 - root - [Context] Using category from history: Credit Card
+2026-01-28 15:06:00,491 - root - ✅ Database indexes created successfully
+2026-01-28 15:06:00,617 - root - [Evidence] Evidence(db_count=16, faq_score=0.59)
+2026-01-28 15:06:00,617 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Credit Card)
+2026-01-28 15:06:00,618 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:06:00,618 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:06:00,618 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:06:00,618 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:06:00,618 - root - [LIST Handler] Bank=SBI, Category=Credit Card, Detailed=False
+2026-01-28 15:06:00,620 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-28 15:06:00,621 - root - [LIST] Formatting 16 products as clean list
+2026-01-28 15:10:42,549 - root - ✅ Database indexes created successfully
+2026-01-28 15:10:42,554 - root - ✅ Database indexes created successfully
+2026-01-28 15:10:45,445 - root - ✅ Database indexes created successfully
+2026-01-28 15:10:45,804 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 15:11:13,414 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 15:11:20,840 - root - MultiSourceRetriever initialized
+2026-01-28 15:11:22,389 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:23,016 - root - MultiSourceRetriever initialized
+2026-01-28 15:11:42,920 - root - Processing query: who are you
+2026-01-28 15:11:42,921 - root - [SmartRouter] Processing: who are you
+2026-01-28 15:11:42,931 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:42,936 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:42,941 - root - [HistoryState] Final: Intent=None, Bank=None, Cat=None, Products=0
+2026-01-28 15:11:42,944 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:42,949 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:43,668 - root - [Evidence Router] ❌ No scope → CLARIFY
+2026-01-28 15:11:43,670 - root - [Step 2] Accuracy-critical: CLARIFY (0.95)
+2026-01-28 15:11:43,671 - root - → SMART ROUTER: Intent=CLARIFY, Confidence=0.95, Path=NO_SCOPE
+2026-01-28 15:11:43,671 - root - → ROUTING: CLARIFY
+2026-01-28 15:11:43,671 - root - → CLARIFY: Conversational query detected, routing to ChatGPT
+2026-01-28 15:11:43,671 - root - [ChatGPT Mode] Processing: who are you (clarification=True, suppress_count=False)
+2026-01-28 15:11:43,671 - root - Multi-source retrieval for query: who are you
+2026-01-28 15:11:44,389 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:46,141 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:11:47,931 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 15:11:47,931 - root - After deduplication: 60 unique results
+2026-01-28 15:11:51,362 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:11:56,935 - root - Processing query: sbi 
+2026-01-28 15:11:56,937 - root - [SmartRouter] Processing: sbi 
+2026-01-28 15:11:56,937 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-28 15:11:56,941 - root - ✅ Database indexes created successfully
+2026-01-28 15:11:57,119 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-28 15:11:57,120 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-28 15:11:57,120 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-28 15:11:57,121 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-28 15:11:57,121 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-28 15:11:57,121 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-28 15:11:57,121 - root - [ChatGPT Mode] Processing: sbi  (clarification=False, suppress_count=False)
+2026-01-28 15:11:57,121 - root - Multi-source retrieval for query: sbi 
+2026-01-28 15:11:59,004 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:11:59,092 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 15:11:59,093 - root - After deduplication: 60 unique results
+2026-01-28 15:12:22,268 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:12:30,351 - root - Processing query: debit cards 
+2026-01-28 15:12:30,354 - root - [SmartRouter] Processing: debit cards 
+2026-01-28 15:12:30,360 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-28 15:12:30,360 - root - [Context] Using bank from history: SBI
+2026-01-28 15:12:30,365 - root - ✅ Database indexes created successfully
+2026-01-28 15:12:30,515 - root - [Evidence] Evidence(db_count=11, faq_score=0.70)
+2026-01-28 15:12:31,471 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:12:31,476 - root - [Query Validator] 'debit cards ' → YES (banking_related: True)
+2026-01-28 15:12:31,476 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-28 15:12:31,478 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:12:31,478 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:12:31,478 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:12:31,479 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:12:32,220 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 15:12:32,222 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 15:12:32,222 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 15:12:47,772 - root - Processing query: shivaram
+2026-01-28 15:12:47,774 - root - [SmartRouter] Processing: shivaram
+2026-01-28 15:12:47,774 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 15:12:47,776 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 15:12:47,777 - root - [FollowUp LIST] Query: 'shivaram'
+2026-01-28 15:12:47,777 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:12:47,778 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 15:12:47,780 - root - [Context] Using bank from history: SBI
+2026-01-28 15:12:47,781 - root - [Context] Using category from history: Debit Card
+2026-01-28 15:12:47,783 - root - ✅ Database indexes created successfully
+2026-01-28 15:12:47,934 - root - [Evidence] Evidence(db_count=11, faq_score=0.59)
+2026-01-28 15:12:50,502 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:12:50,509 - root - [Query Validator] 'shivaram' → NO (banking_related: False)
+2026-01-28 15:12:50,509 - root - [Validation] ⚠️ REFUSE - Non-banking query with context: 'shivaram'
+2026-01-28 15:12:50,518 - root - [Evidence Router] ✅ Operations: ['REFUSE']
+2026-01-28 15:12:50,523 - root - [Step 2] Accuracy-critical: REFUSE (0.95)
+2026-01-28 15:12:50,528 - root - → SMART ROUTER: Intent=REFUSE, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 15:12:50,529 - root - → ROUTING: REFUSE (non-banking query with context)
+2026-01-28 15:12:50,534 - root - [ChatGPT Mode] Processing: shivaram (clarification=True, suppress_count=False)
+2026-01-28 15:12:50,536 - root - Multi-source retrieval for query: shivaram
+2026-01-28 15:12:51,938 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:12:52,004 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-28 15:12:52,004 - root - After deduplication: 15 unique results
+2026-01-28 15:12:55,277 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:18:59,099 - root - ✅ Database indexes created successfully
+2026-01-28 15:18:59,100 - root - ✅ Database indexes created successfully
+2026-01-28 15:19:02,144 - root - ✅ Database indexes created successfully
+2026-01-28 15:19:02,483 - chromadb.telemetry.product.posthog - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-01-28 15:19:28,482 - sentence_transformers.SentenceTransformer - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-28 15:19:41,540 - huggingface_hub.utils._http - '(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: ffce2d7d-d173-48cc-b556-67085336a2e3)')' thrown while requesting HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json
+2026-01-28 15:19:41,541 - huggingface_hub.utils._http - Retrying in 1s [Retry 1/5].
+2026-01-28 15:19:46,616 - root - MultiSourceRetriever initialized
+2026-01-28 15:19:46,970 - root - ✅ Database indexes created successfully
+2026-01-28 15:19:47,023 - root - MultiSourceRetriever initialized
+2026-01-28 15:20:06,760 - root - Processing query: sbi
+2026-01-28 15:20:06,760 - root - [SmartRouter] Processing: sbi
+2026-01-28 15:20:06,784 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:06,790 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:06,793 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=None, Products=0
+2026-01-28 15:20:06,796 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:06,800 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:07,512 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:08,359 - root - [Evidence] Evidence(db_count=58, faq_score=0.78)
+2026-01-28 15:20:08,361 - root - [Validation] ✅ FAQ operation (faq_score=0.78)
+2026-01-28 15:20:08,361 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-28 15:20:08,361 - root - [Step 2] Accuracy-critical: FAQ (0.78)
+2026-01-28 15:20:08,361 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.78, Path=EVIDENCE_BASED
+2026-01-28 15:20:08,361 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-28 15:20:08,361 - root - [ChatGPT Mode] Processing: sbi (clarification=False, suppress_count=False)
+2026-01-28 15:20:08,361 - root - Multi-source retrieval for query: sbi
+2026-01-28 15:20:08,995 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:12,057 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:20:12,159 - root - Retrieved 50 SQL results, 10 FAQ results
+2026-01-28 15:20:12,159 - root - After deduplication: 60 unique results
+2026-01-28 15:20:14,023 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:20:17,840 - root - Processing query: sbi debit cards
+2026-01-28 15:20:17,842 - root - [SmartRouter] Processing: sbi debit cards
+2026-01-28 15:20:17,843 - root - [HistoryState] Final: Intent=None, Bank=SBI, Cat=Debit Card, Products=0
+2026-01-28 15:20:17,844 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:17,999 - root - [Evidence] Evidence(db_count=11, faq_score=0.78)
+2026-01-28 15:20:19,239 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:20:19,243 - root - [Query Validator] 'sbi debit cards' → YES (banking_related: True)
+2026-01-28 15:20:19,243 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: SBI Debit Card)
+2026-01-28 15:20:19,243 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:20:19,245 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:20:19,245 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:20:19,246 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:20:20,027 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 15:20:20,028 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 15:20:20,028 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 15:20:47,667 - root - Processing query: what do you know about me
+2026-01-28 15:20:47,667 - root - [SmartRouter] Processing: what do you know about me
+2026-01-28 15:20:47,667 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 15:20:47,667 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 15:20:47,667 - root - [FollowUp LIST] Query: 'what do you know about me'
+2026-01-28 15:20:47,667 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:20:47,667 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 15:20:47,671 - root - [Context] Using bank from history: SBI
+2026-01-28 15:20:47,671 - root - [Context] Using category from history: Debit Card
+2026-01-28 15:20:47,675 - root - ✅ Database indexes created successfully
+2026-01-28 15:20:47,841 - root - [Evidence] Evidence(db_count=11, faq_score=0.57)
+2026-01-28 15:20:49,078 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:20:49,081 - root - [Query Validator] 'what do you know about me' → NO (banking_related: False)
+2026-01-28 15:20:49,082 - root - [Validation] ⚠️ REFUSE - Non-banking query with context: 'what do you know about me'
+2026-01-28 15:20:49,082 - root - [Evidence Router] ✅ Operations: ['REFUSE']
+2026-01-28 15:20:49,082 - root - [Step 2] Accuracy-critical: REFUSE (0.95)
+2026-01-28 15:20:49,082 - root - → SMART ROUTER: Intent=REFUSE, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 15:20:49,084 - root - → ROUTING: REFUSE (non-banking query with context)
+2026-01-28 15:20:49,084 - root - [ChatGPT Mode] Processing: what do you know about me (clarification=True, suppress_count=False)
+2026-01-28 15:20:49,086 - root - Multi-source retrieval for query: what do you know about me
+2026-01-28 15:20:50,200 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:20:51,503 - root - Retrieved 11 SQL results, 10 FAQ results
+2026-01-28 15:20:51,503 - root - After deduplication: 21 unique results
+2026-01-28 15:20:54,636 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:23:34,768 - root - Processing query: what are the products sbi have
+2026-01-28 15:23:34,817 - root - [SmartRouter] Processing: what are the products sbi have
+2026-01-28 15:23:34,829 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 15:23:34,830 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Debit Card, Products=11
+2026-01-28 15:23:34,863 - root - [FollowUp LIST] Query: 'what are the products sbi have'
+2026-01-28 15:23:34,899 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:23:34,923 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 15:23:34,942 - root - [Context] Using category from history: Debit Card
+2026-01-28 15:23:35,298 - root - ✅ Database indexes created successfully
+2026-01-28 15:23:40,466 - root - [Evidence] Evidence(db_count=11, faq_score=0.76)
+2026-01-28 15:23:40,499 - root - [Validation] ✅ LIST operation (db_count=11)
+2026-01-28 15:23:40,506 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:23:40,508 - root - [Step 2] Accuracy-critical: LIST (0.90)
+2026-01-28 15:23:40,517 - root - → SMART ROUTER: Intent=LIST, Confidence=0.90, Path=EVIDENCE_BASED
+2026-01-28 15:23:40,529 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:23:40,639 - root - [LIST Handler] Bank=SBI, Category=Debit Card, Detailed=False
+2026-01-28 15:23:40,659 - root - [get_all_products] Retrieved 11 products (bank=SBI, category=Debit Card)
+2026-01-28 15:23:40,659 - root - [LIST] Formatting 11 products as clean list
+2026-01-28 15:24:03,664 - root - Processing query: how many credit cards sbi have
+2026-01-28 15:24:03,665 - root - [SmartRouter] Processing: how many credit cards sbi have
+2026-01-28 15:24:03,666 - root - [HistoryState] Using metadata: LIST, 11 products
+2026-01-28 15:24:03,666 - root - [HistoryState] Final: Intent=LIST, Bank=SBI, Cat=Credit Card, Products=11
+2026-01-28 15:24:03,667 - root - [FollowUp LIST] Query: 'how many credit cards sbi have'
+2026-01-28 15:24:03,669 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:24:03,669 - root - [FollowUp LIST] Products in state: 11
+2026-01-28 15:24:03,677 - root - ✅ Database indexes created successfully
+2026-01-28 15:24:04,043 - root - [Evidence] Evidence(db_count=16, faq_score=0.76)
+2026-01-28 15:24:04,045 - root - [Validation] ✅ COUNT operation (db_count=16)
+2026-01-28 15:24:04,046 - root - [Evidence Router] ✅ Operations: ['COUNT']
+2026-01-28 15:24:04,046 - root - [Step 2] Accuracy-critical: COUNT (0.95)
+2026-01-28 15:24:04,047 - root - → SMART ROUTER: Intent=COUNT, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 15:24:04,047 - root - → ROUTING: COUNT (guaranteed accuracy)
+2026-01-28 15:24:04,047 - root - [COUNT Handler] Bank=SBI, Category=Credit Card
+2026-01-28 15:24:04,049 - root - [get_all_products] Retrieved 16 products (bank=SBI, category=Credit Card)
+2026-01-28 15:24:04,050 - root - [COUNT] Python verification: SBI has EXACTLY 16 credit cards
+2026-01-28 15:24:11,559 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:24:32,509 - root - Processing query: axis
+2026-01-28 15:24:32,514 - root - [SmartRouter] Processing: axis
+2026-01-28 15:24:32,517 - root - [HistoryState] Using metadata: COUNT, 16 products
+2026-01-28 15:24:32,517 - root - [HistoryState] Final: Intent=COUNT, Bank=Axis, Cat=Credit Card, Products=16
+2026-01-28 15:24:32,523 - root - [Context] Using category from history: Credit Card
+2026-01-28 15:24:32,528 - root - ✅ Database indexes created successfully
+2026-01-28 15:24:33,046 - root - [Evidence] Evidence(db_count=5, faq_score=0.62)
+2026-01-28 15:24:34,137 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:24:34,137 - root - [Query Validator] 'axis' → YES (banking_related: True)
+2026-01-28 15:24:34,137 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: Axis Credit Card)
+2026-01-28 15:24:34,137 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:24:34,137 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:24:34,141 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:24:34,141 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:24:34,141 - root - [LIST Handler] Bank=Axis, Category=Credit Card, Detailed=False
+2026-01-28 15:24:34,144 - root - [get_all_products] Retrieved 5 products (bank=Axis, category=Credit Card)
+2026-01-28 15:24:34,144 - root - [LIST] Formatting 5 products as clean list
+2026-01-28 15:24:41,359 - root - Processing query: axis bank
+2026-01-28 15:24:41,363 - root - [SmartRouter] Processing: axis bank
+2026-01-28 15:24:41,363 - root - [HistoryState] Using metadata: LIST, 5 products
+2026-01-28 15:24:41,365 - root - [HistoryState] Final: Intent=LIST, Bank=Axis, Cat=Credit Card, Products=5
+2026-01-28 15:24:41,366 - root - [FollowUp LIST] Query: 'axis bank'
+2026-01-28 15:24:41,367 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:24:41,367 - root - [FollowUp LIST] Products in state: 5
+2026-01-28 15:24:41,370 - root - [Context] Using category from history: Credit Card
+2026-01-28 15:24:41,377 - root - ✅ Database indexes created successfully
+2026-01-28 15:24:41,781 - root - [Evidence] Evidence(db_count=5, faq_score=0.73)
+2026-01-28 15:24:43,059 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:24:43,059 - root - [Query Validator] 'axis bank' → YES (banking_related: True)
+2026-01-28 15:24:43,059 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: Axis Credit Card)
+2026-01-28 15:24:43,059 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:24:43,059 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:24:43,059 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:24:43,065 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:24:43,065 - root - [LIST Handler] Bank=Axis, Category=Credit Card, Detailed=False
+2026-01-28 15:24:43,066 - root - [get_all_products] Retrieved 5 products (bank=Axis, category=Credit Card)
+2026-01-28 15:24:43,066 - root - [LIST] Formatting 5 products as clean list
+2026-01-28 15:25:03,936 - root - Processing query: how to apply axis credit card
+2026-01-28 15:25:03,936 - root - [SmartRouter] Processing: how to apply axis credit card
+2026-01-28 15:25:03,936 - root - [HistoryState] Using metadata: LIST, 5 products
+2026-01-28 15:25:03,936 - root - [HistoryState] Final: Intent=LIST, Bank=Axis, Cat=Credit Card, Products=5
+2026-01-28 15:25:03,940 - root - [FollowUp LIST] Query: 'how to apply axis credit card'
+2026-01-28 15:25:03,941 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:25:03,941 - root - [FollowUp LIST] Products in state: 5
+2026-01-28 15:25:03,954 - root - ✅ Database indexes created successfully
+2026-01-28 15:25:04,259 - root - [Evidence] Evidence(db_count=5, faq_score=0.87)
+2026-01-28 15:25:04,268 - root - [Validation] ✅ FAQ operation (non-product target detected)
+2026-01-28 15:25:04,268 - root - [Evidence Router] ✅ Operations: ['FAQ']
+2026-01-28 15:25:04,271 - root - [Step 2] Accuracy-critical: FAQ (0.95)
+2026-01-28 15:25:04,274 - root - → SMART ROUTER: Intent=FAQ, Confidence=0.95, Path=EVIDENCE_BASED
+2026-01-28 15:25:04,275 - root - → ROUTING: FAQ (ChatGPT)
+2026-01-28 15:25:04,277 - root - [ChatGPT Mode] Processing: how to apply axis credit card (clarification=False, suppress_count=False)
+2026-01-28 15:25:04,279 - root - Multi-source retrieval for query: how to apply axis credit card
+2026-01-28 15:25:05,505 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:25:05,729 - root - Retrieved 5 SQL results, 10 FAQ results
+2026-01-28 15:25:05,729 - root - After deduplication: 15 unique results
+2026-01-28 15:25:10,059 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:26:09,147 - root - Processing query: how to register mobile number in axis bank
+2026-01-28 15:26:09,147 - root - [SmartRouter] Processing: how to register mobile number in axis bank
+2026-01-28 15:26:09,148 - root - [HistoryState] Using metadata: LIST, 5 products
+2026-01-28 15:26:09,150 - root - [HistoryState] Final: Intent=LIST, Bank=Axis, Cat=Credit Card, Products=5
+2026-01-28 15:26:09,150 - root - [FollowUp LIST] Query: 'how to register mobile number in axis bank'
+2026-01-28 15:26:09,150 - root - [FollowUp LIST] State intent: LIST
+2026-01-28 15:26:09,150 - root - [FollowUp LIST] Products in state: 5
+2026-01-28 15:26:09,158 - root - ✅ Database indexes created successfully
+2026-01-28 15:26:09,164 - root - ✅ Database indexes created successfully
+2026-01-28 15:26:09,169 - root - [Context] Using category from history: Credit Card
+2026-01-28 15:26:09,183 - root - ✅ Database indexes created successfully
+2026-01-28 15:26:10,059 - root - [Evidence] Evidence(db_count=5, faq_score=0.83)
+2026-01-28 15:26:11,037 - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-28 15:26:11,044 - root - [Query Validator] 'how to register mobile number in axis bank' → YES (banking_related: True)
+2026-01-28 15:26:11,044 - root - [Validation] ✅ LIST operation (Implicit Context Promotion: Axis Credit Card)
+2026-01-28 15:26:11,044 - root - [Evidence Router] ✅ Operations: ['LIST']
+2026-01-28 15:26:11,046 - root - [Step 2] Accuracy-critical: LIST (0.85)
+2026-01-28 15:26:11,046 - root - → SMART ROUTER: Intent=LIST, Confidence=0.85, Path=EVIDENCE_BASED
+2026-01-28 15:26:11,047 - root - → ROUTING: LIST (guaranteed completeness)
+2026-01-28 15:26:11,047 - root - [LIST Handler] Bank=Axis, Category=Credit Card, Detailed=False
+2026-01-28 15:26:11,049 - root - [get_all_products] Retrieved 5 products (bank=Axis, category=Credit Card)
+2026-01-28 15:26:11,049 - root - [LIST] Formatting 5 products as clean list

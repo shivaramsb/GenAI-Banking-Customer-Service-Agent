@@ -15,6 +15,8 @@ from typing import List, Optional, Dict, Tuple
 from concurrent.futures import ThreadPoolExecutor
 import re
 
+from src.query_validator import is_banking_query
+
 
 # =============================================================================
 # DATA STRUCTURES
@@ -275,7 +277,7 @@ def validate_operations(query: str, scope: ScopeResult, evidence: Evidence) -> L
         operations.append(Operation('LIST', confidence=0.90))
         logging.info(f"[Validation] ✅ LIST operation (db_count={evidence.db_count})")
         return operations
-    
+
     # COMPARE operation (PRIORITY: check BEFORE FAQ)
     if has_compare_signal and evidence.db_count > 0:
         operations.append(Operation('COMPARE', confidence=0.90))
@@ -293,6 +295,46 @@ def validate_operations(query: str, scope: ScopeResult, evidence: Evidence) -> L
         operations.append(Operation('EXPLAIN', confidence=0.85))
         logging.info(f"[Validation] ✅ EXPLAIN operation")
         return operations
+
+    # PRIORITY 4: Implicit LIST (Smart Fork - Context-Aware)
+    # Apply context to list products when bank + category are known
+    # BUT: Skip if query is procedural (FAQ-like)
+    if (scope.bank and scope.category and evidence.db_count > 0 and 
+        not target_is_non_product and 
+        not has_count_signal and 
+        not has_compare_signal and
+        not has_recommend_signal and
+        not has_explain_signal):
+        
+        # CRITICAL: Detect procedural/FAQ patterns and skip implicit LIST
+        # These queries should go to FAQ even with context
+        procedural_patterns = [
+            'how to', 'how do', 'how can', 'steps to', 'process to',
+            'register', 'activate', 'apply for', 'get a', 'open a',
+            'procedure', 'way to', 'method to', 'can i', 'do i need'
+        ]
+        
+        query_lower = query.lower()
+        is_procedural = any(pattern in query_lower for pattern in procedural_patterns)
+        
+        # Also check FAQ score - if HIGH, it's likely procedural
+        is_high_faq = evidence.faq_strength >= 0.75
+        
+        if is_procedural or is_high_faq:
+            logging.info(f"[Validation] ⚠️ Skipping implicit LIST - procedural query detected (faq_score={evidence.faq_strength:.2f})")
+            # Let it fall through to FAQ check below
+        else:
+            # CRITICAL: Validate query is banking-related before applying context
+            # This prevents random words (e.g., "shivaram") from triggering lists
+            if is_banking_query(query):
+                operations.append(Operation('LIST', confidence=0.85))
+                logging.info(f"[Validation] ✅ LIST operation (Implicit Context Promotion: {scope.bank} {scope.category})")
+                return operations
+            else:
+                # Query is NOT banking-related - refuse it
+                operations.append(Operation('REFUSE', confidence=0.95))
+                logging.warning(f"[Validation] ⚠️ REFUSE - Non-banking query with context: '{query}'")
+                return operations
     
     # FAQ operation (only if no structured operation triggered)
     if is_faq_candidate and evidence.faq_strength >= 0.6:

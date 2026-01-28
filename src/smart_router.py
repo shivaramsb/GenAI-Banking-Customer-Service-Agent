@@ -336,6 +336,7 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
         ))
     )
     
+    
     if is_vague:
         # Create specific clarification message based on category
         if category:
@@ -368,6 +369,7 @@ def route_accuracy_critical(entities: Dict, query: str) -> Optional[Dict]:
             'RECOMMEND': 'RECOMMEND',
             'FAQ': 'FAQ',
             'CLARIFY': 'CLARIFY',
+            'REFUSE': 'REFUSE',  # Non-banking query with context
             'LLM_FALLBACK': 'UNKNOWN'
         }
         

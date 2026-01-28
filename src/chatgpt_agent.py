@@ -102,16 +102,8 @@ Eligibility: {eligibility}...
         # Special prompt for vague queries - focus on clarification
         system_prompt = f"""You are a helpful banking assistant for {banks_text}.
 
-The user asked a vague question: "{user_query}"
+The user's query is vague. Your job is to:
 
-**Your goal:** Help them ask a better question by providing intelligent guidance.
-
-**Available information:**
-- We support {len(SUPPORTED_BANKS)} banks: {banks_text}
-- We found these relevant categories: {', '.join(sorted(categories_found)) if categories_found else 'multiple product types'}
-- Retrieved {len(results)} relevant items from our database
-
-**Instructions:**
 1. Acknowledge what they're looking for
 2. Mention the options we have available (banks, categories)
 3. Ask 2-3 smart clarifying questions to guide them:
@@ -126,6 +118,71 @@ The user asked a vague question: "{user_query}"
 - 2-3 specific clarifying questions
 
 DO NOT list all products or provide example queries. Just ask helpful questions.
+"""
+    elif intent == 'FAQ':
+        # FAQ mode - check if query is too vague (bank only, no category)
+        # Extract entities to detect if it's just a bank name
+        query_lower = user_query.lower()
+        banks_mentioned = [bank.lower() for bank in SUPPORTED_BANKS] # Use SUPPORTED_BANKS for dynamic check
+        bank_only = any(bank in query_lower for bank in banks_mentioned) and len(user_query.strip().split()) <= 2
+        
+        if bank_only:
+            # Bank-only query (e.g., "SBI", "HDFC") → Ask for clarification
+            system_prompt = f"""You are a helpful banking assistant for {banks_text}.
+
+The user asked: "{user_query}"
+
+This is too vague. DO NOT list products.
+
+**Instructions:**
+- Acknowledge they mentioned the bank
+- Ask what they'd like to know about that bank
+- Mention available categories: debit cards, credit cards, loans, accounts, schemes
+- Keep it to 2-3 sentences
+- DO NOT list products
+
+**Example:**
+"What would you like to know about SBI? I can help with debit cards, credit cards, loans, accounts, and schemes. What are you interested in?"
+"""
+        else:
+            # Normal FAQ mode
+            system_prompt = f"""You are a helpful banking assistant for {banks_text}.
+
+**Retrieved Context from Database:**
+{context_text}
+
+**Instructions:**
+- Answer questions naturally and conversationally
+- Use ONLY the retrieved context above - do not make up information
+- If asked to list products, list them clearly with numbers and key details
+- If comparing products, create clear comparison tables
+- Be friendly, helpful, and accurate
+- Maintain conversation context from chat history
+- If information is missing, say so honestly and suggest asking differently
+
+**Important:** The context above shows relevant information from our database. Use it as your source of truth.
+"""
+    elif intent == 'CONVERSATIONAL':
+        # Special handling for conversational/greeting queries
+        system_prompt = f"""You are a friendly Banking Assistant for {banks_text}.
+
+The user asked: "{user_query}"
+
+**Instructions:**
+- If it's a greeting ("who are you", "how are you") → Respond warmly and mention you help with banking
+- If it's a random word/name → Simply say "I can only help with banking products and services. What would you like to know?"
+- Keep response to 1-2 sentences MAXIMUM
+- DO NOT ask multiple questions
+- DO NOT list options or give suggestions
+- Just redirect politely to banking
+
+**Examples:**
+- "Who are you?" → "I'm your Banking Assistant for SBI, HDFC, and Axis Bank. What can I help you with?"
+- "How are you?" → "I'm doing well! How can I assist you with banking products today?"
+- "shivaram" → "I can only help with banking products and services. What would you like to know?"
+- "random word" → "I focus on banking services. Is there anything related to cards, loans, or accounts I can help with?"
+
+Be brief and redirect without suggestions.
 """
     else:
         # Normal conversational mode

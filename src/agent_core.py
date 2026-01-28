@@ -93,11 +93,36 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
         category = query_info.get('category')
         logging.info(f"→ ROUTING: CLARIFY")
         
+        # Detect conversational/greeting queries - route to ChatGPT for natural handling
+        conversational_patterns = [
+            'who are you', 'what are you', 'who r u',
+            'how are you', 'how r u', 'how are u',
+            'what is your name', 'tell me about yourself',
+            'introduce yourself', 'what do you do',
+            'how life', 'how is life', 'what\'s up', 'wassup',
+            'good morning', 'good afternoon', 'good evening',
+            'nice to meet', 'pleasure to meet'
+        ]
+        
+        query_lower = user_query.lower()
+        is_conversational = any(pattern in query_lower for pattern in conversational_patterns)
+        
+        # If conversational, use ChatGPT for natural response
+        if is_conversational:
+            logging.info("→ CLARIFY: Conversational query detected, routing to ChatGPT")
+            return chatgpt_query(
+                user_query, 
+                chat_history, 
+                clarification_mode=True,  # Special mode for conversational queries
+                intent='CONVERSATIONAL'
+            )
+        
+        # Normal clarification for vague banking queries
         # Natural language response based on what was detected
         if category:
             response_text = f"I can help you with {category}s! Which bank are you interested in - SBI, HDFC, or Axis? Or would you like me to compare options across banks?"
         else:
-            response_text = "I'd be happy to help! Are you looking for debit cards,credit cards, loans, or something else? And which bank - SBI, HDFC, or Axis?"
+            response_text = "Hello! 👋 I'm your Banking Assistant, I'd be happy to help! Are you looking for debit cards,credit cards, loans, or something else? And which bank - SBI, HDFC, or Axis?"
         
         return {
             "text": response_text,
@@ -105,6 +130,17 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
             "data": [],
             "metadata": {"routing_path": routing_path}
         }
+    
+    # REFUSE - Non-banking query with context detected
+    if intent == 'REFUSE':
+        logging.info(f"→ ROUTING: REFUSE (non-banking query with context)")
+        # Route to ChatGPT for natural, polite redirection
+        return chatgpt_query(
+            user_query,
+            chat_history,
+            clarification_mode=True,
+            intent='CONVERSATIONAL'  # Use same natural handling
+        )
     
     # COUNT - Guaranteed accuracy
     if intent == 'COUNT':
@@ -141,14 +177,10 @@ def process_query(user_query, user_id="guest", chat_history=None, mode="auto"):
         logging.info("→ ROUTING: RECOMMEND (ChatGPT)")
         return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='RECOMMEND')
     
-    # FOLLOWUP
-    if intent == 'FOLLOWUP':
-        logging.info("→ ROUTING: FOLLOWUP (ChatGPT with history)")
-        return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='FOLLOWUP')
-    
-    # UNKNOWN or fallback
-    logging.info(f"→ ROUTING: FALLBACK (intent={intent})")
-    return chatgpt_query(effective_query, chat_history, clarification_mode=False, intent='UNKNOWN')
+    # Fallback: ChatGPT
+    logging.info("→ ROUTING: FALLBACK (intent=UNKNOWN)")
+    return chatgpt_query(effective_query, chat_history, clarification_mode=False)
+
 
 
 # =============================================================================
